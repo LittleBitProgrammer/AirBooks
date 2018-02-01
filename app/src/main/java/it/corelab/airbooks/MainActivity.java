@@ -1,5 +1,8 @@
 package it.corelab.airbooks;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,12 +39,77 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
     //          bindView
     //=============================
 
-    @BindView(R.id.bottom_navigation) AHBottomNavigation bottomNavigation;
+    //this is an example of how to initilize
+    //do not uncomment or the app will crash
+    // @BindView(R.id.bottom_navigation) AHBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AHBottomNavigation bottomNavigation = findViewById(R.id.bottom_navigation);
+
+        Resources resources = getResources();
+
+
+        //==========================
+        //        drawable
+        //==========================
+
+        Drawable home = resources.getDrawable(R.drawable.icona_home);
+        Drawable explore = resources.getDrawable(R.drawable.icona_esplora_piena);
+        Drawable library = resources.getDrawable(R.drawable.icona_segnalibro);
+        Drawable profile = resources.getDrawable(R.drawable.icona_profilo);
+
+
+        //==========================
+        //          Color
+        //==========================
+
+        int accentColor = resources.getColor(R.color.accent_color);
+        int inactiveColor = resources.getColor(R.color.inactive_color);
+
+
+        //==========================
+        //        bottomItem
+        //==========================
+
+        AHBottomNavigationItem homeItem = new AHBottomNavigationItem(resources.getString(R.string.tab1), home);
+        AHBottomNavigationItem exploreItem = new AHBottomNavigationItem(resources.getString(R.string.tab2), explore);
+        AHBottomNavigationItem libraryItem = new AHBottomNavigationItem(resources.getString(R.string.tab3), library);
+        AHBottomNavigationItem profileItem = new AHBottomNavigationItem(resources.getString(R.string.tab4), profile);
+
+
+        //==========================
+        //        addItem
+        //==========================
+
+        bottomNavigation.addItem(homeItem);
+        bottomNavigation.addItem(exploreItem);
+        bottomNavigation.addItem(libraryItem);
+        bottomNavigation.addItem(profileItem);
+
+
+        //==========================
+        //      ColorBottom
+        //==========================
+
+        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FFFFFF"));
+
+
+        //==========================
+        //        ColorIcon
+        //==========================
+
+        bottomNavigation.setInactiveColor(inactiveColor);
+        bottomNavigation.setAccentColor(accentColor);
+
+
+        //==========================
+        //        iconLabel
+        //==========================
+
+        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
 
 
 
@@ -89,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
             }
         }).start();
     }*/
-    private String loadAssetTextAsString(String name) {
+    /*private String loadAssetTextAsString(String name) {
         BufferedReader in = null;
         try {
             StringBuilder buf = new StringBuilder();
@@ -123,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
     protected void onDestroy() {
         super.onDestroy();
         folioReader.unregisterHighlightListener();
-    }
+    }*/
     @Override
     public void onHighlight(HighLight highlight, HighLight.HighLightAction type) {
         Toast.makeText(this,
