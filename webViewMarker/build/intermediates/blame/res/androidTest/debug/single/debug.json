@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4_text_select_handle_left.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-mdpi-v4/text_select_handle_left.png"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4_text_select_handle_right.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-hdpi-v4/text_select_handle_right.png"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_text_select_handle_left.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/text_select_handle_left.png"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4_text_select_handle_right.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-mdpi-v4/text_select_handle_right.png"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4_text_select_handle_left.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-hdpi-v4/text_select_handle_left.png"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/layout_selection_drag_layer.xml.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/layout/selection_drag_layer.xml"
+    },
+    {
+        "merged": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4_text_select_handle_right.png.flat",
+        "source": "/Users/utente_prova/Downloads/FolioReader-Android-master/webViewMarker/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/text_select_handle_right.png"
+    }
+]
