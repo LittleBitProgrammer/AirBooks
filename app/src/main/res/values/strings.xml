@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AirBooks</string>
+    <string name="tab1">Home</string>
+    <string name="tab2">Explore</string>
+    <string name="tab3">Library</string>
+    <string name="tab4">Profile</string>
 </resources>

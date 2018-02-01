@@ -34,4 +34,5 @@ dependencies {
     compile 'com.folioreader:folioreader:0.3.3'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.aurelhubert:ahbottomnavigation:2.1.0'
 }

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.folioreader.model.HighLight;
@@ -19,6 +21,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity implements OnHighlightListener {
 
 
@@ -28,10 +32,18 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
 
     private FolioReader folioReader;
 
+    //=============================
+    //          bindView
+    //=============================
+
+    @BindView(R.id.bottom_navigation) AHBottomNavigation bottomNavigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // instanza di folioReader
         //uncomment per lettura epub
