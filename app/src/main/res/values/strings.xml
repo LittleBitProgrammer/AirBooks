@@ -4,4 +4,5 @@
     <string name="tab2">Explore</string>
     <string name="tab3">Library</string>
     <string name="tab4">Profile</string>
+    <string name="homeSection">Home</string>
 </resources>

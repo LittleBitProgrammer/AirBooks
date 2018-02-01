@@ -3,9 +3,17 @@ package it.corelab.airbooks;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -25,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import it.corelab.airbooks.R.drawable;
 
 public class MainActivity extends AppCompatActivity implements OnHighlightListener {
 
@@ -47,9 +56,23 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //==========================
+        //      hide status bar
+        //==========================
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        //==========================
+        //       declaration
+        //==========================
+
         AHBottomNavigation bottomNavigation = findViewById(R.id.bottom_navigation);
 
         Resources resources = getResources();
+        bottomNavigation.setSoundEffectsEnabled(true);
 
 
         //==========================
@@ -61,13 +84,13 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
         Drawable library = resources.getDrawable(R.drawable.icona_segnalibro);
         Drawable profile = resources.getDrawable(R.drawable.icona_profilo);
 
-
         //==========================
         //          Color
         //==========================
 
         int accentColor = resources.getColor(R.color.accent_color);
         int inactiveColor = resources.getColor(R.color.inactive_color);
+        int intestattionColor = resources.getColor(R.color.intestazioni);
 
 
         //==========================
@@ -110,6 +133,23 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
         //==========================
 
         bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
+
+
+        //==========================
+        //  ActionBar customization
+        //==========================
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+        getSupportActionBar().setElevation(0);
+
+
+        //==========================
+        // BottomBar customization
+        //==========================
+
+        bottomNavigation.setUseElevation(false);
+        bottomNavigation.setColored(false);
 
 
 
