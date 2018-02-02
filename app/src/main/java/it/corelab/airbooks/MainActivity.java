@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
 
 
 
+
         // instanza di folioReader
         //uncomment per lettura epub
 
