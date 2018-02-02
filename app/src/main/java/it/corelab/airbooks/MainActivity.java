@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
         AHBottomNavigation bottomNavigation = findViewById(R.id.bottom_navigation);
 
         Resources resources = getResources();
-        bottomNavigation.setSoundEffectsEnabled(true);
 
 
         //==========================
@@ -150,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
 
         bottomNavigation.setUseElevation(false);
         bottomNavigation.setColored(false);
+        bottomNavigation.setSoundEffectsEnabled(true);
+        bottomNavigation.setCurrentItem(0);
 
 
 
