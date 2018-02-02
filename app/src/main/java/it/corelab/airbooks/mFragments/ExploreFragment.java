@@ -17,6 +17,7 @@ public class ExploreFragment extends android.support.v4.app.Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstance){
+
         View rootView = inflater.inflate(R.layout.explore_fragment, container, false);
         return rootView;
     }

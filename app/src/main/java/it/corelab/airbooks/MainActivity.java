@@ -125,7 +125,6 @@ public class MainActivity extends AppCompatActivity /*implements AHBottomNavigat
         getSupportActionBar().setCustomView(R.layout.abs_layout);
         getSupportActionBar().setElevation(0);
 
-
         //==========================
         // BottomBar customization
         //==========================
@@ -141,15 +140,51 @@ public class MainActivity extends AppCompatActivity /*implements AHBottomNavigat
                 if (position == 0){
                     HomeFragment homeFragment = new HomeFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
+
+
+                    //==========================
+                    //     Home ActionBar
+                    //==========================
+
+                    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                    getSupportActionBar().setCustomView(R.layout.abs_layout);
+                    getSupportActionBar().setElevation(0);
                 }else if (position == 1){
                     ExploreFragment exploreFragment = new ExploreFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, exploreFragment).commit();
+
+
+                    //==========================
+                    //    Explore ActionBar
+                    //==========================
+
+                    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                    getSupportActionBar().setCustomView(R.layout.explore_action_bar_layout);
+                    getSupportActionBar().setElevation(0);
                 }else if (position == 2){
                     LibraryFragment libraryFragment = new LibraryFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, libraryFragment).commit();
+
+
+                    //==========================
+                    //     Library ActionBar
+                    //==========================
+
+                    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                    getSupportActionBar().setCustomView(R.layout.library_action_bar_layout);
+                    getSupportActionBar().setElevation(0);
                 }else if (position == 3){
                     ProfileFragment profileFragment = new ProfileFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit();
+
+
+                    //==========================
+                    //     Profile ActionBar
+                    //==========================
+
+                    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                    getSupportActionBar().setCustomView(R.layout.profile_action_bar_layout);
+                    getSupportActionBar().setElevation(0);
                 }
                 return true;
             }
