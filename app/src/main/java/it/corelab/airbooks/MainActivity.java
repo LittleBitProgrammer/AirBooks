@@ -3,39 +3,22 @@ package it.corelab.airbooks;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.folioreader.model.HighLight;
-import com.folioreader.ui.base.OnSaveHighlight;
 import com.folioreader.util.FolioReader;
-import com.folioreader.util.OnHighlightListener;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import it.corelab.airbooks.mFragments.ExploreFragment;
+import it.corelab.airbooks.mFragments.HomeFragment;
+import it.corelab.airbooks.mFragments.LibraryFragment;
+import it.corelab.airbooks.mFragments.ProfileFragment;
+//serve a implementare lettore epub
 
-import butterknife.BindView;
-import it.corelab.airbooks.R.drawable;
-
-public class MainActivity extends AppCompatActivity implements OnHighlightListener {
+public class MainActivity extends AppCompatActivity /*implements AHBottomNavigation.OnTabSelectedListener*//*implements OnHighlightListener */{
 
 
     //=============================
@@ -151,6 +134,26 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
         bottomNavigation.setColored(false);
         bottomNavigation.setSoundEffectsEnabled(true);
         bottomNavigation.setCurrentItem(0);
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                // Do something cool here...
+                if (position == 0){
+                    HomeFragment homeFragment = new HomeFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
+                }else if (position == 1){
+                    ExploreFragment exploreFragment = new ExploreFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, exploreFragment).commit();
+                }else if (position == 2){
+                    LibraryFragment libraryFragment = new LibraryFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, libraryFragment).commit();
+                }else if (position == 3){
+                    ProfileFragment profileFragment = new ProfileFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit();
+                }
+                return true;
+            }
+        });
 
 
 
@@ -234,10 +237,10 @@ public class MainActivity extends AppCompatActivity implements OnHighlightListen
         super.onDestroy();
         folioReader.unregisterHighlightListener();
     }*/
-    @Override
+   /* @Override
     public void onHighlight(HighLight highlight, HighLight.HighLightAction type) {
         Toast.makeText(this,
                 "highlight id = " + highlight.getUUID() + " type = " + type,
                 Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
