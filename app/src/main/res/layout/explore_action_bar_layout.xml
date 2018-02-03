@@ -9,7 +9,6 @@
         android:layout_height="?attr/actionBarSize"
         android:scaleType="centerInside"
         android:id="@+id/action_add"
-        android:
         android:paddingTop="10dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"/>
