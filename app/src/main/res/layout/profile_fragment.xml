@@ -1,24 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/AppTheme.NoActionBar">
+    android:background="@color/dark_background"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+
+    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profileImagePlaceHolder"
+        android:layout_width="113dp"
+        android:layout_height="124dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="37dp"
+        android:scaleType="center"
+        android:src="@drawable/profilo_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="16dip"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="repeat" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/NameSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="sans-serif"
+        android:text="Marion Newton"
+        android:textColor="#6E7B8C"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionTest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:text="Focus on product design, Never stop exporeing new design."
+        android:textColor="#8895A3"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/profileImagePlaceHolder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
+
+    <ImageView
+        android:id="@+id/imagePin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTest"
+        app:srcCompat="@drawable/pin_icona"
+        android:layout_marginLeft="18dp" />
+
+    <TextView
+        android:id="@+id/fromTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Naples · Italy"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imagePin"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTest" />
+
+    <ImageButton
+        android:id="@+id/followButton"
+        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImagePlaceHolder"
+        app:srcCompat="@drawable/button_follow" />
+
+    <TextView
+        android:id="@+id/FollowText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Profile section"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="FOLLOW"
+        android:textColor="#F6FAFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/followButton"
+        app:layout_constraintEnd_toEndOf="@+id/followButton"
+        app:layout_constraintStart_toStartOf="@+id/followButton"
+        app:layout_constraintTop_toTopOf="@+id/followButton" />
+
+    <TextView
+        android:id="@+id/followNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="sans-serif"
+        android:text="2178"
+        android:textColor="#6E7B8C"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePin" />
+
+    <TextView
+        android:id="@+id/FollowerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="35dp"
+        android:text="Follower"
+        android:textColor="#8895A3"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/followNumber"
+        app:layout_constraintTop_toBottomOf="@+id/fromTo" />
 </android.support.constraint.ConstraintLayout>
