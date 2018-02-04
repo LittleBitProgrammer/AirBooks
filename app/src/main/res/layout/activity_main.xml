@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+    <it.corelab.airbooks.NoSwipePager
+        android:id="@+id/noSwiperPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <FrameLayout
         android:id="@+id/frame"
@@ -12,10 +17,13 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
     </FrameLayout>
 
+
+
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"/>
+
 </android.support.design.widget.CoordinatorLayout>
 

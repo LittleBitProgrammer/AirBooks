@@ -16,6 +16,20 @@ import it.corelab.airbooks.R;
  */
 
 public class LibraryFragment extends android.support.v4.app.Fragment {
+
+
+    //=======================
+    //  costructor required
+    //=======================
+
+    public LibraryFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstance){

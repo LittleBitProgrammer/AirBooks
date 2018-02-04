@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,22 +14,21 @@ import android.view.WindowManager;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.folioreader.util.FolioReader;
 
 import it.corelab.airbooks.mFragments.ExploreFragment;
 import it.corelab.airbooks.mFragments.HomeFragment;
 import it.corelab.airbooks.mFragments.LibraryFragment;
 import it.corelab.airbooks.mFragments.ProfileFragment;
-//serve a implementare lettore epub
 
-public class MainActivity extends AppCompatActivity implements AHBottomNavigation.OnTabSelectedListener/*implements OnHighlightListener */{
+public class MainActivity extends AppCompatActivity {
 
 
     //=============================
     //  class variable declaration
     //=============================
 
-    private FolioReader folioReader;
+    private NoSwipePager viewPager;
+    private BottomBarAdapter pagerAdapter;
 
     //=============================
     //          bindView
@@ -54,9 +56,79 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
         //==========================
 
         AHBottomNavigation bottomNavigation = findViewById(R.id.bottom_navigation);
-
         Resources resources = getResources();
 
+
+        onCreateItem();
+
+        //==========================
+        //  ActionBar customization
+        //==========================
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+        getSupportActionBar().setElevation(0);
+
+
+        //==========================
+        // fragment inizialization
+        //==========================
+
+        setupViewPager();
+
+
+        //==========================
+        //      tab management
+        //==========================
+
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+
+                if (!wasSelected) {
+                    viewPager.setCurrentItem(position);
+                }else if (position == 1){
+                    pagerAdapter.getRegisteredFragment(1);
+                }else if (position == 2){
+                    pagerAdapter.getRegisteredFragment(2);
+                }else if (position == 3){
+                    pagerAdapter.getRegisteredFragment(3);
+                }
+                return true;
+            }
+        });
+
+    }
+
+
+
+
+
+                                   /*      on create finish       */
+//=================================================================================================
+                                  /*      on create finish       */
+
+
+
+
+    //============================================================================================//
+    //                                      methods_main                                          //
+    //============================================================================================//
+
+
+    public void onCreateItem(){
+
+        AHBottomNavigation bottomNavigation = findViewById(R.id.bottom_navigation);
+        Resources resources = getResources();
+
+
+        //==========================
+        //          Color
+        //==========================
+
+        int accentColor = resources.getColor(R.color.accent_color);
+        int inactiveColor = resources.getColor(R.color.inactive_color);
+        int intestattionColor = resources.getColor(R.color.intestazioni);
 
         //==========================
         //        drawable
@@ -67,14 +139,6 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
         Drawable library = resources.getDrawable(R.drawable.icona_segnalibro);
         Drawable profile = resources.getDrawable(R.drawable.icona_profilo);
 
-        //==========================
-        //          Color
-        //==========================
-
-        int accentColor = resources.getColor(R.color.accent_color);
-        int inactiveColor = resources.getColor(R.color.inactive_color);
-        int intestattionColor = resources.getColor(R.color.intestazioni);
-
 
         //==========================
         //        bottomItem
@@ -84,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
         AHBottomNavigationItem exploreItem = new AHBottomNavigationItem(resources.getString(R.string.tab2), explore);
         AHBottomNavigationItem libraryItem = new AHBottomNavigationItem(resources.getString(R.string.tab3), library);
         AHBottomNavigationItem profileItem = new AHBottomNavigationItem(resources.getString(R.string.tab4), profile);
-
 
         //==========================
         //        addItem
@@ -119,21 +182,6 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
 
 
         //==========================
-        //  ActionBar customization
-        //==========================
-
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
-        getSupportActionBar().setElevation(0);
-
-
-        //==========================
-        // fragment inizialization
-        //==========================
-
-        bottomNavigation.setOnTabSelectedListener(this);
-
-        //==========================
         // BottomBar customization
         //==========================
 
@@ -141,87 +189,129 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
         bottomNavigation.setColored(false);
         bottomNavigation.setSoundEffectsEnabled(true);
         bottomNavigation.setCurrentItem(0);
+    }
+
+    @SuppressLint("RestrictedApi")
+    @NonNull
+    private ProfileFragment createProfileFragment() {
+        ProfileFragment fragment = new ProfileFragment();
+
+        //==========================
+        //     Profile ActionBar
+        //==========================
+
+            getSupportActionBar().hide();
+            getSupportActionBar().setShowHideAnimationEnabled(false);
+
+        return fragment;
+    }
+
+    @NonNull
+    private HomeFragment createHomeFragment() {
+        HomeFragment fragment = new HomeFragment();
 
 
-        // instanza di folioReader
-        //uncomment per lettura epub
+        //==========================
+        //     Home ActionBar
+        //==========================
+
+        getSupportActionBar().show();
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+        getSupportActionBar().setElevation(0);
+
+        return fragment;
+    }
+
+    @NonNull
+    private LibraryFragment createLibraryFragment() {
+        LibraryFragment fragment = new LibraryFragment();
+
+
+        //==========================
+        //     Library ActionBar
+        //==========================
+
+        getSupportActionBar().show();
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.library_action_bar_layout);
+        getSupportActionBar().setElevation(0);
+        return fragment;
+    }
+
+    @NonNull
+    private ExploreFragment createExploreFragment() {
+        ExploreFragment fragment = new ExploreFragment();
+        //==========================
+        //    Explore ActionBar
+        //==========================
+
+        getSupportActionBar().show();
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.explore_action_bar_layout);
+        getSupportActionBar().setElevation(0);
+        return fragment;
+    }
+
+    private void setupViewPager() {
+        viewPager = (NoSwipePager) findViewById(R.id.noSwiperPage);
+        viewPager.setPagingEnabled(false);
+        pagerAdapter = new BottomBarAdapter(getSupportFragmentManager());
+
+        pagerAdapter.addFragments(createHomeFragment());
+        pagerAdapter.addFragments(createExploreFragment());
+        pagerAdapter.addFragments(createLibraryFragment());
+        pagerAdapter.addFragments(createProfileFragment());
+
+        viewPager.setAdapter(pagerAdapter);
+    }
+
+    @NonNull
+    private Bundle passFragmentArguments(int color) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("color", color);
+        return bundle;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//============================================================================================//
+//                                      FolioReader *Help*                                    //
+//============================================================================================//
+
+
+
+/*  =================== istanziare FolioReader nel metodo onCreate =================== */
+
+
+// instanza di folioReader
+//uncomment per lettura epub
 
         /*
         FolioReader folioReader = new FolioReader(this);
         folioReader.registerHighlightListener(this);
         folioReader.openBook(R.raw.canzone);
-        getHighlightsAndSave();
-        */
-    }
-
-    @SuppressLint("RestrictedApi")
-    @Override
-    public boolean onTabSelected(int position, boolean wasSelected){
-        if (position == 0){
-            HomeFragment homeFragment = new HomeFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
+        getHighlightsAndSave();                          */
 
 
-            //==========================
-            //     Home ActionBar
-            //==========================
-
-            getSupportActionBar().show();
-            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            getSupportActionBar().setCustomView(R.layout.abs_layout);
-            getSupportActionBar().setElevation(0);
-        }else if (position == 1){
-            ExploreFragment exploreFragment = new ExploreFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame, exploreFragment).commit();
 
 
-            //==========================
-            //    Explore ActionBar
-            //==========================
-
-            getSupportActionBar().show();
-            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            getSupportActionBar().setCustomView(R.layout.explore_action_bar_layout);
-            getSupportActionBar().setElevation(0);
-        }else if (position == 2){
-            LibraryFragment libraryFragment = new LibraryFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame, libraryFragment).commit();
+/*  ========================= fuori dal metodo onCreate ============================ */
 
 
-            //==========================
-            //     Library ActionBar
-            //==========================
 
-            getSupportActionBar().show();
-            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            getSupportActionBar().setCustomView(R.layout.library_action_bar_layout);
-            getSupportActionBar().setElevation(0);
-        }else if (position == 3){
-            ProfileFragment profileFragment = new ProfileFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit();
-
-
-            //==========================
-            //     Profile ActionBar
-            //==========================
-
-            /*getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            getSupportActionBar().setCustomView(R.layout.profile_action_bar_layout);
-            getSupportActionBar().setElevation(0);
-            getSupportActionBar().hide();*/
-            getSupportActionBar().hide();
-            getSupportActionBar().setShowHideAnimationEnabled(false);
-        }
-        return true;
-    }
-
-
-    //=============================
-    //            methods
-    //=============================
-
-
-    //uncomment solo quando è possibile leggere epub
+//uncomment solo quando è possibile leggere epub
    /* private void getHighlightsAndSave() {
         new Thread(new Runnable() {
             @Override
@@ -289,4 +379,3 @@ public class MainActivity extends AppCompatActivity implements AHBottomNavigatio
                 "highlight id = " + highlight.getUUID() + " type = " + type,
                 Toast.LENGTH_SHORT).show();
     }*/
-}
