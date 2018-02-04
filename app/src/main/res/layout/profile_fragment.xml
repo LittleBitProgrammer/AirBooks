@@ -19,7 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="16dip"
         app:riv_mutate_background="true"
-        app:riv_tile_mode="repeat" />
+        app:riv_tile_mode="repeat"
+        android:layout_marginRight="18dp" />
 
     <TextView
         android:id="@+id/NameSurname"
@@ -32,7 +33,8 @@
         android:textColor="#6E7B8C"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="18dp" />
 
     <TextView
         android:id="@+id/descriptionTest"
@@ -46,7 +48,9 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/profileImagePlaceHolder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
+        app:layout_constraintTop_toBottomOf="@+id/NameSurname"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="16dp" />
 
     <ImageView
         android:id="@+id/imagePin"
@@ -68,7 +72,8 @@
         android:text="Naples · Italy"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imagePin"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTest" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTest"
+        android:layout_marginLeft="8dp" />
 
     <ImageButton
         android:id="@+id/followButton"
@@ -80,7 +85,8 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImagePlaceHolder"
-        app:srcCompat="@drawable/button_follow" />
+        app:srcCompat="@drawable/button_follow"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/FollowText"
@@ -110,7 +116,8 @@
         android:textColor="#6E7B8C"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePin" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePin"
+        android:layout_marginLeft="18dp" />
 
     <TextView
         android:id="@+id/FollowerText"
@@ -122,5 +129,31 @@
         android:textColor="#8895A3"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/followNumber"
-        app:layout_constraintTop_toBottomOf="@+id/fromTo" />
+        app:layout_constraintTop_toBottomOf="@+id/fromTo"
+        android:layout_marginLeft="13dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allBooksLabel" />
+
+    <TextView
+        android:id="@+id/allBooksLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="43dp"
+        android:fontFamily="sans-serif"
+        android:text="All Books (27)"
+        android:textColor="#687688"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/followNumber"
+        android:layout_marginLeft="18dp" />
 </android.support.constraint.ConstraintLayout>
