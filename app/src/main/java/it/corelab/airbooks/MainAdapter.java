@@ -1,9 +1,11 @@
 package it.corelab.airbooks;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,10 +16,10 @@ import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    private ArrayList<String> mDataset;
+    private ArrayList<Drawable> mImageSet;
 
-    public MainAdapter(ArrayList<String> mDataset) {
-        this.mDataset = mDataset;
+    public MainAdapter(ArrayList<Drawable> mImageSet) {
+        this.mImageSet = mImageSet;
     }
 
     @Override
@@ -30,20 +32,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
-        holder.mTitle.setText(mDataset.get(position));
+        holder.mImageView.setImageDrawable(mImageSet.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mImageSet.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTitle;
+        public ImageView mImageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            mTitle = (TextView) itemView.findViewById(R.id.title);
+            mImageView = (ImageView) itemView.findViewById(R.id.cardImage);
         }
     }
 }

@@ -1,6 +1,7 @@
 package it.corelab.airbooks;
 
 import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -10,7 +11,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -29,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     private NoSwipePager viewPager;
     private BottomBarAdapter pagerAdapter;
+    private Toolbar toolbar;
+    private TextView textView;
+    private ImageButton search;
+    private ImageButton add;
+    private ImageButton add_prefer;
+
 
     //=============================
     //          bindView
@@ -62,12 +74,26 @@ public class MainActivity extends AppCompatActivity {
         onCreateItem();
 
         //==========================
+        //      findViewById
+        //==========================
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        textView = findViewById(R.id.toolbar_title);
+        search = findViewById(R.id.search);
+        add = findViewById(R.id.action_add);
+        add_prefer = findViewById(R.id.add_preferiti);
+
+
+        //==========================
         //  ActionBar customization
         //==========================
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
-        getSupportActionBar().setElevation(0);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        textView.setText("HOME");
+        add_prefer.setClickable(false);
+        add_prefer.setEnabled(false);
+        add_prefer.setVisibility(View.INVISIBLE);
 
 
         //==========================
@@ -82,17 +108,61 @@ public class MainActivity extends AppCompatActivity {
         //==========================
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
 
                 if (!wasSelected) {
                     viewPager.setCurrentItem(position);
-                }else if (position == 1){
-                    pagerAdapter.getRegisteredFragment(1);
-                }else if (position == 2){
-                    pagerAdapter.getRegisteredFragment(2);
-                }else if (position == 3){
-                    pagerAdapter.getRegisteredFragment(3);
+                    if (position == 0){
+                        pagerAdapter.getRegisteredFragment(1);
+                        getSupportActionBar().show();
+                        getSupportActionBar().setDisplayShowTitleEnabled(false);
+                        textView.setText(R.string.homeSection);
+
+                        add.setClickable(true);
+                        add.setEnabled(true);
+                        add.setVisibility(View.VISIBLE);
+                        search.setClickable(true);
+                        search.setEnabled(true);
+                        search.setVisibility(View.VISIBLE);
+                        add_prefer.setClickable(false);
+                        add_prefer.setEnabled(false);
+                        add_prefer.setVisibility(View.INVISIBLE);
+                    }else if (position == 1){
+                        pagerAdapter.getRegisteredFragment(0);
+                        getSupportActionBar().show();
+                        getSupportActionBar().setDisplayShowTitleEnabled(false);
+                        textView.setText(R.string.exploreSection);
+
+                        add_prefer.setClickable(true);
+                        add_prefer.setEnabled(true);
+                        add_prefer.setVisibility(View.VISIBLE);
+                        add.setClickable(false);
+                        add.setEnabled(false);
+                        add.setVisibility(View.INVISIBLE);
+                        search.setClickable(false);
+                        search.setEnabled(false);
+                        search.setVisibility(View.INVISIBLE);
+                    }else if (position == 2){
+                        pagerAdapter.getRegisteredFragment(2);
+                        getSupportActionBar().show();
+                        getSupportActionBar().setDisplayShowTitleEnabled(false);
+                        textView.setText(R.string.librarySection);
+
+                        add.setClickable(true);
+                        add.setEnabled(true);
+                        add.setVisibility(View.VISIBLE);
+                        search.setClickable(true);
+                        search.setEnabled(true);
+                        search.setVisibility(View.VISIBLE);
+                        add_prefer.setClickable(false);
+                        add_prefer.setEnabled(false);
+                        add_prefer.setVisibility(View.INVISIBLE);
+                    }else if (position == 3){
+                        pagerAdapter.getRegisteredFragment(3);
+                        getSupportActionBar().hide();
+                    }
                 }
                 return true;
             }
@@ -196,29 +266,12 @@ public class MainActivity extends AppCompatActivity {
     private ProfileFragment createProfileFragment() {
         ProfileFragment fragment = new ProfileFragment();
 
-        //==========================
-        //     Profile ActionBar
-        //==========================
-
-            getSupportActionBar().hide();
-            getSupportActionBar().setShowHideAnimationEnabled(false);
-
         return fragment;
     }
 
     @NonNull
     private HomeFragment createHomeFragment() {
         HomeFragment fragment = new HomeFragment();
-
-
-        //==========================
-        //     Home ActionBar
-        //==========================
-
-        getSupportActionBar().show();
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
-        getSupportActionBar().setElevation(0);
 
         return fragment;
     }
@@ -227,29 +280,13 @@ public class MainActivity extends AppCompatActivity {
     private LibraryFragment createLibraryFragment() {
         LibraryFragment fragment = new LibraryFragment();
 
-
-        //==========================
-        //     Library ActionBar
-        //==========================
-
-        getSupportActionBar().show();
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.library_action_bar_layout);
-        getSupportActionBar().setElevation(0);
         return fragment;
     }
 
     @NonNull
     private ExploreFragment createExploreFragment() {
         ExploreFragment fragment = new ExploreFragment();
-        //==========================
-        //    Explore ActionBar
-        //==========================
 
-        getSupportActionBar().show();
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.explore_action_bar_layout);
-        getSupportActionBar().setElevation(0);
         return fragment;
     }
 
