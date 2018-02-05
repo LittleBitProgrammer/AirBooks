@@ -120,45 +120,27 @@ public class MainActivity extends AppCompatActivity {
                         getSupportActionBar().setDisplayShowTitleEnabled(false);
                         textView.setText(R.string.homeSection);
 
-                        add.setClickable(true);
-                        add.setEnabled(true);
-                        add.setVisibility(View.VISIBLE);
-                        search.setClickable(true);
-                        search.setEnabled(true);
-                        search.setVisibility(View.VISIBLE);
-                        add_prefer.setClickable(false);
-                        add_prefer.setEnabled(false);
-                        add_prefer.setVisibility(View.INVISIBLE);
+                        enableAdd();
+                        enableSearch();
+                        disableAddPrefer();
                     }else if (position == 1){
                         pagerAdapter.getRegisteredFragment(0);
                         getSupportActionBar().show();
                         getSupportActionBar().setDisplayShowTitleEnabled(false);
                         textView.setText(R.string.exploreSection);
 
-                        add_prefer.setClickable(true);
-                        add_prefer.setEnabled(true);
-                        add_prefer.setVisibility(View.VISIBLE);
-                        add.setClickable(false);
-                        add.setEnabled(false);
-                        add.setVisibility(View.INVISIBLE);
-                        search.setClickable(false);
-                        search.setEnabled(false);
-                        search.setVisibility(View.INVISIBLE);
+                        enableAddPrefer();
+                        disableAdd();
+                        disableSearch();
                     }else if (position == 2){
                         pagerAdapter.getRegisteredFragment(2);
                         getSupportActionBar().show();
                         getSupportActionBar().setDisplayShowTitleEnabled(false);
                         textView.setText(R.string.librarySection);
 
-                        add.setClickable(true);
-                        add.setEnabled(true);
-                        add.setVisibility(View.VISIBLE);
-                        search.setClickable(true);
-                        search.setEnabled(true);
-                        search.setVisibility(View.VISIBLE);
-                        add_prefer.setClickable(false);
-                        add_prefer.setEnabled(false);
-                        add_prefer.setVisibility(View.INVISIBLE);
+                        enableAdd();
+                        enableSearch();
+                        disableAddPrefer();
                     }else if (position == 3){
                         pagerAdapter.getRegisteredFragment(3);
                         getSupportActionBar().hide();
@@ -308,6 +290,37 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("color", color);
         return bundle;
+    }
+
+    private void disableAddPrefer(){
+        add_prefer.setClickable(false);
+        add_prefer.setEnabled(false);
+        add_prefer.setVisibility(View.INVISIBLE);
+    }
+    private void enableAdd(){
+        add.setClickable(true);
+        add.setEnabled(true);
+        add.setVisibility(View.VISIBLE);
+    }
+    private void enableSearch(){
+        search.setClickable(true);
+        search.setEnabled(true);
+        search.setVisibility(View.VISIBLE);
+    }
+    private void enableAddPrefer(){
+        add_prefer.setClickable(true);
+        add_prefer.setEnabled(true);
+        add_prefer.setVisibility(View.VISIBLE);
+    }
+    private void disableAdd(){
+        add.setClickable(false);
+        add.setEnabled(false);
+        add.setVisibility(View.INVISIBLE);
+    }
+    private void disableSearch(){
+        search.setClickable(false);
+        search.setEnabled(false);
+        search.setVisibility(View.INVISIBLE);
     }
 }
 
