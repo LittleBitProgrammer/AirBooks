@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +17,11 @@ import android.view.WindowManager;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.GravitySnapHelper;
+import it.corelab.airbooks.Item;
 import it.corelab.airbooks.MainAdapter;
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.SnapRecyclerAdapter;
 
 /**
  * Created by Roberto_Vecchio on 02/02/18.
@@ -27,7 +32,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private ArrayList<Drawable> mImageset;
+    private ArrayList<Item> items;
 
 
     //=======================
@@ -65,31 +70,36 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         Drawable lampadina = resources.getDrawable(R.drawable.lampadina);
         Drawable papera = resources.getDrawable(R.drawable.papera);
 
-        mImageset = new ArrayList<>();
 
-        mImageset.add(allThis);
-        mImageset.add(titan);
-        mImageset.add(spazio);
-        mImageset.add(art);
-        mImageset.add(creative);
-        mImageset.add(cupcake);
-        mImageset.add(fiore);
-        mImageset.add(gelato);
-        mImageset.add(lampadina);
-        mImageset.add(papera);
 
-        for (int i = 0; i <10 ; i++) {
-            mImageset.get(i);
-        }
-
+        createApps();
 
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new MainAdapter(mImageset);
+        SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setHasFixedSize(true);
+
+        SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
         recyclerView.setAdapter(adapter);
 
+
         return rootView;
+    }
+    private void createApps() {
+        items = new ArrayList<>();
+        items.add(new Item("Google+", R.drawable.all_this));
+        items.add(new Item("Facebook", R.drawable.titan));
+        items.add(new Item("LinkedIn", R.drawable.spazio));
+        items.add(new Item("Youtube", R.drawable.art_bookcover));
+        items.add(new Item("Instagram", R.drawable.creative_bookcover));
+        items.add(new Item("Skype", R.drawable.cupcake));
+        items.add(new Item("Twitter", R.drawable.fiore));
+        items.add(new Item("Wikipedia", R.drawable.gelato));
+        items.add(new Item("Whats app", R.drawable.lampadina));
+        items.add(new Item("Pokemon Go", R.drawable.papera));
     }
 }
