@@ -276,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (NoSwipePager) findViewById(R.id.noSwiperPage);
         viewPager.setPagingEnabled(false);
         pagerAdapter = new BottomBarAdapter(getSupportFragmentManager());
+        viewPager.setOffscreenPageLimit(3);
 
         pagerAdapter.addFragments(createHomeFragment());
         pagerAdapter.addFragments(createExploreFragment());
