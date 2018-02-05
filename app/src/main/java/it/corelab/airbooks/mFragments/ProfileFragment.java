@@ -22,6 +22,7 @@ import it.corelab.airbooks.Item;
 import it.corelab.airbooks.MainAdapter;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.SnapRecyclerAdapter;
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 /**
  * Created by Roberto_Vecchio on 02/02/18.
@@ -85,6 +86,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
         SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
         recyclerView.setAdapter(adapter);
+        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
         return rootView;
