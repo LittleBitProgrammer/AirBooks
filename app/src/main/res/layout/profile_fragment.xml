@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_background"
+    android:background="@drawable/gradient"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +12,7 @@
         android:layout_width="113dp"
         android:layout_height="124dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="22dp"
         android:scaleType="center"
         android:src="@drawable/profilo_image"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="sans-serif"
         android:text="Marion Newton"
         android:textColor="#6E7B8C"
@@ -41,6 +41,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="10dp"
         android:text="Focus on product design, Never stop exporeing new design."
@@ -48,32 +50,30 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/profileImagePlaceHolder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameSurname"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
 
     <ImageView
         android:id="@+id/imagePin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTest"
-        app:srcCompat="@drawable/pin_icona"
-        android:layout_marginLeft="18dp" />
+        app:srcCompat="@drawable/pin_icona" />
 
     <TextView
         android:id="@+id/fromTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="Naples · Italy"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imagePin"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTest"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTest" />
 
     <ImageButton
         android:id="@+id/followButton"
@@ -81,12 +81,12 @@
         android:layout_width="149dp"
         android:layout_height="47dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="25dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImagePlaceHolder"
-        app:srcCompat="@drawable/button_follow"
-        android:layout_marginRight="16dp" />
+        app:srcCompat="@drawable/button_follow" />
 
     <TextView
         android:id="@+id/FollowText"
@@ -109,6 +109,7 @@
         android:id="@+id/followNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="35dp"
         android:fontFamily="sans-serif"
@@ -116,21 +117,20 @@
         android:textColor="#6E7B8C"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePin"
-        android:layout_marginLeft="18dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePin" />
 
     <TextView
         android:id="@+id/FollowerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="35dp"
         android:text="Follower"
         android:textColor="#8895A3"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/followNumber"
-        app:layout_constraintTop_toBottomOf="@+id/fromTo"
-        android:layout_marginLeft="13dp" />
+        app:layout_constraintTop_toBottomOf="@+id/fromTo" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -140,24 +140,43 @@
         android:paddingLeft="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/allBooksLabel" />
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
-        android:clipToPadding="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allBooksLabel" />
 
     <TextView
         android:id="@+id/allBooksLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif"
         android:text="All Books (27)"
         android:textColor="#687688"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/followNumber"
+        app:layout_constraintTop_toBottomOf="@+id/followNumber" />
+
+    <TextView
+        android:id="@+id/allReviewsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="sans-serif"
+        android:text="All reviews (220)"
+        android:textColor="#687688"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view"
         android:layout_marginLeft="18dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allReviewsLabel"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

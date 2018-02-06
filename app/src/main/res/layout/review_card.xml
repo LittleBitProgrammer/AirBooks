@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="286dp"
+    android:layout_height="105dp"
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="-9dp"
+    android:layout_marginTop="4dp"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:cardPreventCornerOverlap="false">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/firstTextReview"
+            android:layout_width="172dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/cardView"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="0dp"
+            android:text="This book is fantastic. It  has the misfortune of…"
+            android:textColor="#86909F"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/seFullReviewText"
+            android:layout_width="77dp"
+            android:layout_height="14dp"
+            android:layout_alignLeft="@+id/firstTextReview"
+            android:layout_alignStart="@+id/firstTextReview"
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif"
+            android:text="See full review"
+            android:textColor="#B5BDC4"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="@+id/seFullReviewText"
+            android:paddingLeft="98dp"
+            android:paddingTop="52dp"
+            android:src="@drawable/full_review" />
+
+        <ImageView
+            android:id="@+id/stellaPiena1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="17dp"
+            android:paddingTop="75dp"
+            android:src="@drawable/stella_piena" />
+        <ImageView
+            android:id="@+id/stellaPiena2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="33dp"
+            android:paddingTop="75dp"
+            android:src="@drawable/stella_piena" />
+        <ImageView
+            android:id="@+id/stellaPiena3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingTop="75dp"
+            android:src="@drawable/stella_piena" />
+        <ImageView
+            android:id="@+id/stellaPiena4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="67dp"
+            android:paddingTop="75dp"
+            android:src="@drawable/stella_piena" />
+        <ImageView
+            android:id="@+id/stellaVuota5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="84dp"
+            android:paddingTop="75dp"
+            android:src="@drawable/stella_vuota_corr" />
+
+        <TextView
+            android:id="@+id/voteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="110dp"
+            android:paddingTop="75dp"
+            android:text="8.6"
+            android:textColor="#B5BDC4"
+            android:textSize="13sp" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="64dp"
+            android:layout_height="91dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="208dp"
+            android:layout_marginStart="208dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            android:id="@+id/cardView">
+
+            <ImageView
+                android:id="@+id/cardReviewImage"
+                android:layout_width="73dp"
+                android:layout_height="103dp"
+                android:scaleType="fitXY" />
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

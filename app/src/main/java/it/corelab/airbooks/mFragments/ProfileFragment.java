@@ -17,6 +17,7 @@ import android.view.WindowManager;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.CardViewReviewAdapter;
 import it.corelab.airbooks.GravitySnapHelper;
 import it.corelab.airbooks.Item;
 import it.corelab.airbooks.MainAdapter;
@@ -31,9 +32,9 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 public class ProfileFragment extends android.support.v4.app.Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
+    private RecyclerView cardReviewRecycleView;
     private ArrayList<Item> items;
+    private ArrayList<Item> reviewCard;
 
 
     //=======================
@@ -47,8 +48,9 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
     }
 
     @SuppressLint("RestrictedApi")
@@ -74,6 +76,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
 
         createApps();
+        createReviewCard();
 
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -87,6 +90,19 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
         recyclerView.setAdapter(adapter);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+        //=================================================
+
+        cardReviewRecycleView = rootView.findViewById(R.id.recycler_view_cardView);
+        SnapHelper snapCardHelper = new GravitySnapHelper(Gravity.START);
+        snapCardHelper.attachToRecyclerView(cardReviewRecycleView);
+
+        cardReviewRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        cardReviewRecycleView.setHasFixedSize(true);
+
+        CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(), reviewCard);
+        cardReviewRecycleView.setAdapter(reviewAdapter);
+        OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
         return rootView;
@@ -103,5 +119,18 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         items.add(new Item("Wikipedia", R.drawable.gelato));
         items.add(new Item("Whats app", R.drawable.lampadina));
         items.add(new Item("Pokemon Go", R.drawable.papera));
+    }
+    private void createReviewCard(){
+        reviewCard = new ArrayList<>();
+        reviewCard.add(new Item("All this", R.drawable.all_this));
+        reviewCard.add(new Item("Titn", R.drawable.titan));
+        reviewCard.add(new Item("Spazio", R.drawable.spazio));
+        reviewCard.add(new Item("Bookcover", R.drawable.art_bookcover));
+        reviewCard.add(new Item("Creative", R.drawable.creative_bookcover));
+        reviewCard.add(new Item("Cupcake", R.drawable.cupcake));
+        reviewCard.add(new Item("fiore", R.drawable.fiore));
+        reviewCard.add(new Item("gelato", R.drawable.gelato));
+        reviewCard.add(new Item("Lampadina", R.drawable.lampadina));
+        reviewCard.add(new Item("Papera", R.drawable.papera));
     }
 }
