@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +12,7 @@
         android:layout_height="115dp"
         android:layout_marginEnd="126dp"
         android:layout_marginStart="126dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="18dp"
         android:cropToPadding="false"
         android:scaleType="fitXY"
         android:src="@drawable/group_2"
@@ -65,7 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
         android:text="Italy"
+        android:textColor="#6E7B8C"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imagePin"
         app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
@@ -74,16 +75,16 @@
         android:id="@+id/followButton"
         style="@android:style/Widget.DeviceDefault.Light.ImageButton"
         android:layout_width="149dp"
-        android:layout_height="23dp"
+        android:layout_height="26dp"
         android:layout_marginEnd="105dp"
         android:layout_marginStart="106dp"
+        android:src="@drawable/btn_click"
         android:layout_marginTop="6dp"
-        android:background="@android:color/transparent"
+        android:background="#4A91E3"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/readerImage"
-        app:srcCompat="@drawable/button_follow" />
+        app:layout_constraintTop_toBottomOf="@+id/readerImage" />
 
     <TextView
         android:id="@+id/FollowText"
@@ -95,7 +96,7 @@
         android:layout_marginTop="8dp"
         android:text="Follow"
         android:textColor="#F6FAFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/followButton"
         app:layout_constraintEnd_toEndOf="@+id/followButton"
@@ -129,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="19dp"
         android:fontFamily="sans-serif"
         android:text="All Books (27)"
         android:textColor="#687688"
