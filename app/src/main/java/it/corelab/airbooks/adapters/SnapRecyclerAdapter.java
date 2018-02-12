@@ -1,15 +1,16 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.adapters;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import it.corelab.airbooks.Item;
+import it.corelab.airbooks.R;
 
 /**
  * Created by Roberto_Vecchio on 05/02/18.

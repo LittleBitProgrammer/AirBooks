@@ -1,10 +1,12 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.adapters;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+
+import it.corelab.airbooks.FadeFragment;
 
 /**
  * Created by Roberto_Vecchio on 11/02/18.

@@ -1,6 +1,7 @@
 package it.corelab.airbooks;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -111,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.addItems(bottomNavigationItems);
 
         bottomNavigation.setTranslucentNavigationEnabled(true);
+
+        // Change colors
+        bottomNavigation.setAccentColor(Color.parseColor("#4A88AC"));
+        bottomNavigation.setInactiveColor(Color.parseColor("#E1E4E9"));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            bottomNavigation.setElevation(0);
+        }
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override

@@ -12,4 +12,5 @@
     <color name="inactive_color">#E1E4E9</color>
     <color name="accent_color">#6e7b8c</color>
     <color name="intestazioni">#6D7B8B</color>
+    <color name="genereLibro">#4B85AA</color>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/changeImage"
+        android:title="Change image" />
+    <item
+        android:id="@+id/changeEmail"
+        android:title="Change Email" />
+    <item
+        android:id="@+id/changePassword"
+        android:title="Change pasword" />
+</menu>

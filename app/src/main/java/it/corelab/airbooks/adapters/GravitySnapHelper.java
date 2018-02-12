@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.adapters;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
+
+import it.corelab.airbooks.R;
 
 /**
  * Created by Roberto_Vecchio on 05/02/18.

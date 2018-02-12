@@ -1,5 +1,6 @@
 package it.corelab.airbooks;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.PopupMenu;
 
 import java.util.ArrayList;
 
@@ -28,6 +33,7 @@ public class FadeFragment extends Fragment {
    private RecyclerView cardReviewRecycleView;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
+   private Button buttonAction;
 
    /*
    create a new istance of the fragment
@@ -100,13 +106,38 @@ public class FadeFragment extends Fragment {
        createApps();
        createReviewCard();
        fragmentContainer = view.findViewById(R.id.fragment_container);
+
+       buttonAction = view.findViewById(R.id.buttonAction);
+       final View parent = (View) buttonAction.getParent();  // button: the view you want to enlarge hit area
+       parent.post( new Runnable() {
+           public void run() {
+               final Rect rect = new Rect();
+               buttonAction.getHitRect(rect);
+               rect.top -= 100;    // increase top hit area
+               rect.left -= 100;   // increase left hit area
+               rect.bottom += 100; // increase bottom hit area
+               rect.right += 100;  // increase right hit area
+               parent.setTouchDelegate( new TouchDelegate( rect , buttonAction));
+           }
+       });
+
+       buttonAction.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               PopupMenu popupMenu = new PopupMenu(getActivity(), buttonAction);
+               popupMenu.getMenuInflater().inflate(R.menu.actions, popupMenu.getMenu());
+
+               popupMenu.show();
+           }
+       });
+
        recyclerView = view.findViewById(R.id.recycler_view);
        recyclerView.setHasFixedSize(true);
 
        recyclerView.setItemViewCacheSize(20);
        recyclerView.setDrawingCacheEnabled(true);
        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-       
+
        SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
        snapHelper.attachToRecyclerView(recyclerView);
 

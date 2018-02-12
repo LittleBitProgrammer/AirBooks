@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.adapters;
 
 /**
  * Created by Roberto_Vecchio on 06/02/18.
@@ -8,16 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.Item;
+import it.corelab.airbooks.R;
 
-public class CardViewReviewAdapter extends RecyclerView.Adapter<it.corelab.airbooks.CardViewReviewAdapter.ReyclerViewHolder> {
+
+public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAdapter.ReyclerViewHolder> {
 
     private LayoutInflater layoutInflater;
     private Context context;
@@ -30,14 +31,14 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<it.corelab.airbo
     }
 
     @Override
-    public it.corelab.airbooks.CardViewReviewAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardViewReviewAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = layoutInflater.inflate(R.layout.review_card, parent, false);
 
-        return new it.corelab.airbooks.CardViewReviewAdapter.ReyclerViewHolder(item);
+        return new CardViewReviewAdapter.ReyclerViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(final it.corelab.airbooks.CardViewReviewAdapter.ReyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final CardViewReviewAdapter.ReyclerViewHolder holder, int position) {
         Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());

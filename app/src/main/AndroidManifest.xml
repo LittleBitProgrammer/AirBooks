@@ -30,6 +30,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.folioreader.ui.folio.activity.FolioActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
