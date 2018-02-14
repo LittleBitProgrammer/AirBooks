@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
+import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
@@ -31,8 +32,10 @@ public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
    private RecyclerView cardReviewRecycleView;
+   private RecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
+   private ArrayList<Item> exploreCardItem;
    private Button buttonAction;
 
    /*
@@ -54,6 +57,7 @@ public class FadeFragment extends Fragment {
            return view;
        }else if(getArguments().getInt("index",0) == 1 ){
            View view = inflanter.inflate(R.layout.explore_fragment, container, false);
+           initExplore(view);
            return view;
        }else if(getArguments().getInt("index", 0) == 2){
            View view = inflanter.inflate(R.layout.library_fragment, container, false);
@@ -96,6 +100,31 @@ public class FadeFragment extends Fragment {
         if (getArguments().getInt("index", 0) > 0 && recyclerView != null) {
             recyclerView.smoothScrollToPosition(0);
         }
+    }
+
+    /*
+    explore init
+     */
+
+    public void initExplore(View view){
+
+        createExploreCard();
+
+        fragmentContainer = view.findViewById(R.id.fragment_container);
+
+        recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+
+        recyclerCardExplore.setItemViewCacheSize(20);
+        recyclerCardExplore.setDrawingCacheEnabled(true);
+        recyclerCardExplore.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        recyclerCardExplore.setLayoutManager(new CenterZoomLayoutManager(getActivity(), CenterZoomLayoutManager.HORIZONTAL, false));
+        recyclerCardExplore.setHasFixedSize(true);
+
+        SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
+        recyclerCardExplore.setAdapter(adapter);
+        OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
     }
 
    /*
@@ -188,5 +217,20 @@ public class FadeFragment extends Fragment {
         reviewCard.add(new Item("gelato", R.drawable.gelato));
         reviewCard.add(new Item("Lampadina", R.drawable.lampadina));
         reviewCard.add(new Item("Papera", R.drawable.papera));
+    }
+
+    private void createExploreCard(){
+        exploreCardItem = new ArrayList<>();
+
+        exploreCardItem.add(new Item("All this", R.drawable.all_this));
+        exploreCardItem.add(new Item("Titn", R.drawable.titan));
+        exploreCardItem.add(new Item("Spazio", R.drawable.spazio));
+        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover));
+        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover));
+        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake));
+        exploreCardItem.add(new Item("fiore", R.drawable.fiore));
+        exploreCardItem.add(new Item("gelato", R.drawable.gelato));
+        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina));
+        exploreCardItem.add(new Item("Papera", R.drawable.papera));
     }
 }
