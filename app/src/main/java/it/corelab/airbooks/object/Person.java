@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.object;
 
 /**
  * Created by Roberto_Vecchio on 03/02/18.

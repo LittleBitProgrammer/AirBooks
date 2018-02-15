@@ -95,7 +95,7 @@
 
         <ImageView
             android:id="@+id/cardImage_explore"
-            android:layout_width="224dp"
+            android:layout_width="228dp"
             android:layout_height="341dp"
             android:scaleType="fitXY" />
 

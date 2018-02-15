@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import it.corelab.airbooks.Item;
+import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.R;
 
 

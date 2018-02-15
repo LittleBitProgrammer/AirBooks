@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,9 @@ import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
 import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
+import it.corelab.airbooks.adapters.SnapShowcaseRecyclerAdapter;
+import it.corelab.airbooks.object.Item;
+import it.corelab.airbooks.object.Showcase;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 
@@ -32,10 +34,12 @@ public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
    private RecyclerView cardReviewRecycleView;
+   private RecyclerView recyclerCardShowcase;
    private SnappingRecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
+   private ArrayList<Showcase> showcaseCardItem;
    private Button buttonAction;
 
    /*
@@ -54,6 +58,7 @@ public class FadeFragment extends Fragment {
    public View onCreateView(LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
        if(getArguments().getInt("index", 0) == 0){
            View view= inflanter.inflate(R.layout.home_fragment, container, false);
+           initHome(view);
            return view;
        }else if(getArguments().getInt("index",0) == 1 ){
            View view = inflanter.inflate(R.layout.explore_fragment, container, false);
@@ -102,6 +107,28 @@ public class FadeFragment extends Fragment {
         }
     }
 
+    /*
+    home init
+     */
+
+    public void initHome(View view){
+
+        createShowcaseCard();
+
+        fragmentContainer = view.findViewById(R.id.fragment_container);
+
+        recyclerCardShowcase = view.findViewById(R.id.recycler_view_home);
+
+        recyclerCardShowcase.setItemViewCacheSize(20);
+        recyclerCardShowcase.setDrawingCacheEnabled(true);
+        recyclerCardShowcase.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        recyclerCardShowcase.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerCardShowcase.setHasFixedSize(true);
+
+        SnapShowcaseRecyclerAdapter adapterShowcase = new SnapShowcaseRecyclerAdapter(getActivity(), showcaseCardItem);
+        recyclerCardShowcase.setAdapter(adapterShowcase);
+    }
     /*
     explore init
      */
@@ -230,5 +257,13 @@ public class FadeFragment extends Fragment {
         exploreCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
         exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
         exploreCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
+    }
+
+    private void createShowcaseCard(){
+        showcaseCardItem = new ArrayList<>();
+
+        showcaseCardItem.add(new Showcase(R.drawable.shota, "SHERLOCK"));
+        showcaseCardItem.add(new Showcase(R.drawable.got, "GOT"));
+        showcaseCardItem.add(new Showcase(R.drawable.stranger, "STRANGER"));
     }
 }

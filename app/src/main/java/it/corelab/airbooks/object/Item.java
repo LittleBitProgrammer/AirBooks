@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.object;
 
 /**
  * Created by Roberto_Vecchio on 05/02/18.
@@ -10,6 +10,9 @@ public class Item {
     private String name;
     private String author;
     private int numberReviews;
+    private int numberOfReaders;
+    private int numbersLovers;
+    private int genreColor;
 
     public Item(String name, int drawable) {
         this.drawable = drawable;
@@ -27,6 +30,16 @@ public class Item {
         this.drawable = drawable;
         this.author = author;
         this.numberReviews = numberReviews;
+    }
+
+    public Item(String name, int drawable, String author, int numberReviews, int numberOfReaders, int numbersLovers, int genreColor){
+        this.name = name;
+        this.drawable = drawable;
+        this.author = author;
+        this.numberReviews = numberReviews;
+        this.numberOfReaders = numberOfReaders;
+        this.numbersLovers = numbersLovers;
+        this.genreColor = genreColor;
     }
 
     public Item(String name){
@@ -49,6 +62,18 @@ public class Item {
         return numberReviews;
     }
 
+    public int getNumberOfReaders(){
+        return numberOfReaders;
+    }
+
+    public int getNumbersLovers(){
+        return numbersLovers;
+    }
+
+    public int getGenreColor(){
+        return genreColor;
+    }
+
     public void setDrawable(int drawable){
         this.drawable = drawable;
     }
@@ -63,5 +88,17 @@ public class Item {
 
     public void setNumberReviews(int numberReviews){
         this.numberReviews = numberReviews;
+    }
+
+    public void setNumberOfReaders(int numberOfReaders){
+        this.numberOfReaders = numberOfReaders;
+    }
+
+    public void setNumbersLovers(int numbersLovers){
+        this.numbersLovers = numbersLovers;
+    }
+
+    public void setGenreColor(int genreColor){
+        this.genreColor = genreColor;
     }
 }
