@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,9 @@ public class SnapExploreRecyclerAdapter extends RecyclerView.Adapter<SnapExplore
         Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
+        holder.bookName.setText(item.getName());
+        holder.authorName.setText(item.getAuthor());
+        holder.numberReviews.setText("" + item.getNumberReviews() + " Reviews");
 
     }
 
@@ -49,12 +53,18 @@ public class SnapExploreRecyclerAdapter extends RecyclerView.Adapter<SnapExplore
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
+        private TextView bookName;
+        private TextView authorName;
+        private TextView numberReviews;
 
 
         private ReyclerViewHolder(final View v) {
             super(v);
 
             image = (ImageView) v.findViewById(R.id.cardImage_explore);
+            bookName = (TextView) v.findViewById(R.id.bookName);
+            authorName = (TextView) v.findViewById(R.id.author_id);
+            numberReviews = (TextView) v.findViewById(R.id.number_reviews_explore);
         }
     }
 }

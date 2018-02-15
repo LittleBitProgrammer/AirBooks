@@ -220,15 +220,15 @@ public class FadeFragment extends Fragment {
     private void createExploreCard(){
         exploreCardItem = new ArrayList<>();
 
-        exploreCardItem.add(new Item("All this", R.drawable.all_this));
-        exploreCardItem.add(new Item("Titn", R.drawable.titan));
-        exploreCardItem.add(new Item("Spazio", R.drawable.spazio));
-        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover));
-        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover));
-        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake));
-        exploreCardItem.add(new Item("fiore", R.drawable.fiore));
-        exploreCardItem.add(new Item("gelato", R.drawable.gelato));
-        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina));
-        exploreCardItem.add(new Item("Papera", R.drawable.papera));
+        exploreCardItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 93));
+        exploreCardItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco",25));
+        exploreCardItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale",801));
+        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer",1044));
+        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo",528));
+        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia",19));
+        exploreCardItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown",10246));
+        exploreCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
+        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
+        exploreCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
     }
 }
