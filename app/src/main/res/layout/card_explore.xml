@@ -3,8 +3,6 @@
     android:layout_width="224dp"
     android:layout_height="341dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="63dp"
-    android:layout_marginRight="-27dp"
     app:cardCornerRadius="5dp"
     android:orientation="vertical">
 

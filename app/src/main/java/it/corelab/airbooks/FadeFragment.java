@@ -32,7 +32,7 @@ public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
    private RecyclerView cardReviewRecycleView;
-   private RecyclerView recyclerCardExplore;
+   private SnappingRecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
@@ -113,13 +113,11 @@ public class FadeFragment extends Fragment {
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
         recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+        recyclerCardExplore.enableViewScaling(true);
 
         recyclerCardExplore.setItemViewCacheSize(20);
         recyclerCardExplore.setDrawingCacheEnabled(true);
         recyclerCardExplore.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
-        recyclerCardExplore.setLayoutManager(new CenterZoomLayoutManager(getActivity(), CenterZoomLayoutManager.HORIZONTAL, false));
-        recyclerCardExplore.setHasFixedSize(true);
 
         SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
         recyclerCardExplore.setAdapter(adapter);
