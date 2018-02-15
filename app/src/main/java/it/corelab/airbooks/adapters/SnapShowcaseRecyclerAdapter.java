@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class SnapShowcaseRecyclerAdapter extends RecyclerView.Adapter<SnapShowca
         Showcase item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
+        holder.text.setText(item.getTitle());
 
     }
 
@@ -51,12 +53,14 @@ public class SnapShowcaseRecyclerAdapter extends RecyclerView.Adapter<SnapShowca
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
+        private TextView text;
 
 
         private ReyclerViewHolder(final View v) {
             super(v);
 
             image = (ImageView) v.findViewById(R.id.cardImage_showcase);
+            text =  (TextView) v.findViewById(R.id.text_showcase);
         }
     }
 }
