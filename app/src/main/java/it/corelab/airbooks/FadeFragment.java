@@ -2,6 +2,7 @@ package it.corelab.airbooks;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +20,8 @@ import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
@@ -35,12 +38,14 @@ public class FadeFragment extends Fragment {
    private RecyclerView recyclerView;
    private RecyclerView cardReviewRecycleView;
    private RecyclerView recyclerCardShowcase;
+   private LinearLayoutManager linearLayoutManager;
    private SnappingRecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Showcase> showcaseCardItem;
    private Button buttonAction;
+   private Timer timer;
 
    /*
    create a new istance of the fragment
@@ -51,6 +56,39 @@ public class FadeFragment extends Fragment {
        b.putInt("index", index);
        fragment.setArguments(b);
        return fragment;
+   }
+
+   int cursor = 0;
+
+   class AdvertisementTimerTask extends TimerTask{
+       final int count;
+
+       public AdvertisementTimerTask(int count){
+           this.count = count;
+       }
+
+       @Override
+       public void run(){
+           if (cursor < count){
+               getActivity().runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       recyclerCardShowcase.smoothScrollToPosition(cursor);
+                       cursor++;
+                   }
+               });
+           }
+           if(cursor >= count){
+               cursor = 0;
+           }
+       }
+   }
+
+   public void onStop(){
+       super.onStop();
+       if (timer != null){
+           timer.cancel();
+       }
    }
 
    @Nullable
@@ -117,17 +155,34 @@ public class FadeFragment extends Fragment {
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
-        recyclerCardShowcase = view.findViewById(R.id.recycler_view_home);
+        recyclerCardShowcase = view.findViewById(R.id.rv_showcase);
+
+        SnapShowcaseRecyclerAdapter adapterShowcase = new SnapShowcaseRecyclerAdapter(getActivity(), showcaseCardItem);
+        recyclerCardShowcase.setAdapter(adapterShowcase);
 
         recyclerCardShowcase.setItemViewCacheSize(20);
         recyclerCardShowcase.setDrawingCacheEnabled(true);
         recyclerCardShowcase.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        recyclerCardShowcase.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        timer = new Timer();
+        timer.schedule(new AdvertisementTimerTask(recyclerCardShowcase.getAdapter().getItemCount()),0,4*1000);
+        SnapHelper snapHelper = new GravitySnapHelper(Gravity.CENTER_HORIZONTAL);
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerCardShowcase.setLayoutManager(linearLayoutManager);
         recyclerCardShowcase.setHasFixedSize(true);
 
-        SnapShowcaseRecyclerAdapter adapterShowcase = new SnapShowcaseRecyclerAdapter(getActivity(), showcaseCardItem);
-        recyclerCardShowcase.setAdapter(adapterShowcase);
+        recyclerCardShowcase.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE){
+                    cursor = linearLayoutManager.findLastVisibleItemPosition();
+                }
+            }
+        });
     }
     /*
     explore init

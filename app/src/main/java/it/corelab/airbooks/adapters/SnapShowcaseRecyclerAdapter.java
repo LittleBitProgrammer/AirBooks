@@ -39,6 +39,7 @@ public class SnapShowcaseRecyclerAdapter extends RecyclerView.Adapter<SnapShowca
 
     @Override
     public void onBindViewHolder(final SnapShowcaseRecyclerAdapter.ReyclerViewHolder holder, int position) {
+        position = position % items.size();
         Showcase item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
@@ -48,7 +49,7 @@ public class SnapShowcaseRecyclerAdapter extends RecyclerView.Adapter<SnapShowca
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return Integer.MAX_VALUE;
     }
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
