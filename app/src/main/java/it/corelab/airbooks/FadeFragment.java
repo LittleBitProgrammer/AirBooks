@@ -2,7 +2,6 @@ package it.corelab.airbooks;
 
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,15 +18,17 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Timer;
+
+import butterknife.BindView;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
 import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
-import it.corelab.airbooks.adapters.SnapShowcaseRecyclerAdapter;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Showcase;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
@@ -37,15 +38,15 @@ public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
    private RecyclerView cardReviewRecycleView;
-   private RecyclerView recyclerCardShowcase;
-   private LinearLayoutManager linearLayoutManager;
    private SnappingRecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Showcase> showcaseCardItem;
    private Button buttonAction;
-   private Timer timer;
+
+   private InfiniteRotationView rotationView;
+
 
    /*
    create a new istance of the fragment
@@ -58,44 +59,13 @@ public class FadeFragment extends Fragment {
        return fragment;
    }
 
-   int cursor = 0;
 
-   class AdvertisementTimerTask extends TimerTask{
-       final int count;
-
-       public AdvertisementTimerTask(int count){
-           this.count = count;
-       }
-
-       @Override
-       public void run(){
-           if (cursor < count){
-               getActivity().runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       recyclerCardShowcase.smoothScrollToPosition(cursor);
-                       cursor++;
-                   }
-               });
-           }
-           if(cursor >= count){
-               cursor = 0;
-           }
-       }
-   }
-
-   public void onStop(){
-       super.onStop();
-       if (timer != null){
-           timer.cancel();
-       }
-   }
 
    @Nullable
    @Override
    public View onCreateView(LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
        if(getArguments().getInt("index", 0) == 0){
-           View view= inflanter.inflate(R.layout.home_fragment, container, false);
+           View view = inflanter.inflate(R.layout.home_fragment, container, false);
            initHome(view);
            return view;
        }else if(getArguments().getInt("index",0) == 1 ){
@@ -144,45 +114,25 @@ public class FadeFragment extends Fragment {
             recyclerView.smoothScrollToPosition(0);
         }
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        rotationView.stopAutoScroll();
+    }
 
     /*
     home init
      */
 
     public void initHome(View view){
-
         createShowcaseCard();
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
-        recyclerCardShowcase = view.findViewById(R.id.rv_showcase);
+        rotationView = view.findViewById(R.id.rv_showcase);
 
-        SnapShowcaseRecyclerAdapter adapterShowcase = new SnapShowcaseRecyclerAdapter(getActivity(), showcaseCardItem);
-        recyclerCardShowcase.setAdapter(adapterShowcase);
-
-        recyclerCardShowcase.setItemViewCacheSize(20);
-        recyclerCardShowcase.setDrawingCacheEnabled(true);
-        recyclerCardShowcase.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
-        timer = new Timer();
-        timer.schedule(new AdvertisementTimerTask(recyclerCardShowcase.getAdapter().getItemCount()),0,4*1000);
-        SnapHelper snapHelper = new GravitySnapHelper(Gravity.CENTER_HORIZONTAL);
-        snapHelper.attachToRecyclerView(recyclerView);
-
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerCardShowcase.setLayoutManager(linearLayoutManager);
-        recyclerCardShowcase.setHasFixedSize(true);
-
-        recyclerCardShowcase.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE){
-                    cursor = linearLayoutManager.findLastVisibleItemPosition();
-                }
-            }
-        });
+        rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
+        rotationView.autoScroll(3, 2000);
     }
     /*
     explore init
@@ -313,11 +263,11 @@ public class FadeFragment extends Fragment {
         exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
         exploreCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
     }
+    public void createShowcaseCard() {
 
-    private void createShowcaseCard(){
         showcaseCardItem = new ArrayList<>();
 
-        showcaseCardItem.add(new Showcase(R.drawable.shota, "SHERLOCK"));
+        showcaseCardItem.add( new Showcase(R.drawable.shota, "SHERLOCK"));
         showcaseCardItem.add(new Showcase(R.drawable.got, "GOT"));
         showcaseCardItem.add(new Showcase(R.drawable.stranger, "STRANGER"));
     }
