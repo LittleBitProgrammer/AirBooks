@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
@@ -16,18 +17,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.PopupMenu;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Timer;
 
-import butterknife.BindView;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
+import it.corelab.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
+import it.corelab.airbooks.adapters.SnapLibraryAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Showcase;
@@ -37,11 +36,13 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
+   private RecyclerView recyclerViewLibrary;
    private RecyclerView cardReviewRecycleView;
    private SnappingRecyclerView recyclerCardExplore;
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
+   private ArrayList<Item> libraryCardItem;
    private ArrayList<Showcase> showcaseCardItem;
    private Button buttonAction;
 
@@ -74,6 +75,7 @@ public class FadeFragment extends Fragment {
            return view;
        }else if(getArguments().getInt("index", 0) == 2){
            View view = inflanter.inflate(R.layout.library_fragment, container, false);
+           initLibrary(view);
            return view;
        }else{
            View view = inflanter.inflate(R.layout.profile_fragment, container, false);
@@ -134,6 +136,7 @@ public class FadeFragment extends Fragment {
         rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
         rotationView.autoScroll(3, 2000);
     }
+
     /*
     explore init
      */
@@ -154,6 +157,31 @@ public class FadeFragment extends Fragment {
         SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
         recyclerCardExplore.setAdapter(adapter);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+    }
+
+    /*
+    library init
+     */
+    public void initLibrary(View view){
+
+        createLibraryCard();
+
+        fragmentContainer = view.findViewById(R.id.fragment_container);
+
+        recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
+        recyclerViewLibrary.setHasFixedSize(true);
+
+        recyclerViewLibrary.setItemViewCacheSize(20);
+        recyclerViewLibrary.setDrawingCacheEnabled(true);
+        recyclerViewLibrary.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        recyclerViewLibrary.setLayoutManager(new GridLayoutManager(getActivity(),3, GridLayout.VERTICAL,false));
+
+        SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), libraryCardItem );
+        recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+
+        OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
 
     }
 
@@ -191,7 +219,6 @@ public class FadeFragment extends Fragment {
        });
 
        recyclerView = view.findViewById(R.id.recycler_view);
-       recyclerView.setHasFixedSize(true);
 
        recyclerView.setItemViewCacheSize(20);
        recyclerView.setDrawingCacheEnabled(true);
@@ -262,6 +289,28 @@ public class FadeFragment extends Fragment {
         exploreCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
         exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
         exploreCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
+    }
+    private void createLibraryCard(){
+        libraryCardItem = new ArrayList<>();
+
+        libraryCardItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 93));
+        libraryCardItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco",25));
+        libraryCardItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale",801));
+        libraryCardItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer",1044));
+        libraryCardItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo",528));
+        libraryCardItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia",19));
+        libraryCardItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown",10246));
+        libraryCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
+        libraryCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
+        libraryCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
+        libraryCardItem.add(new Item("All this2", R.drawable.all_this, "Jojo Moyes", 93));
+        libraryCardItem.add(new Item("Titan2", R.drawable.titan, "Alessandro Baricco",25));
+        libraryCardItem.add(new Item("Spazio2", R.drawable.spazio, "Chiara Gamberale",801));
+        libraryCardItem.add(new Item("Bookcover2", R.drawable.art_bookcover, "Stephanie Meyer",1044));
+        libraryCardItem.add(new Item("Creative2", R.drawable.creative_bookcover, "Fabio Volo",528));
+        libraryCardItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia",19));
+        libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));;
+
     }
     public void createShowcaseCard() {
 

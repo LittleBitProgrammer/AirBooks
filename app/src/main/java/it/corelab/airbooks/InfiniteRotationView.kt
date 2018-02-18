@@ -6,13 +6,12 @@ import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
-import android.widget.LinearLayout.HORIZONTAL
 import android.widget.RelativeLayout
-import butterknife.BindView
 import butterknife.ButterKnife
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import it.corelab.airbooks.adapters.InfiniteRotationAdapter
 import java.util.concurrent.TimeUnit
 
 /**
