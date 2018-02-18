@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
                                    /*      on create finish       */
 //=================================================================================================
                                   /*      on create finish       */

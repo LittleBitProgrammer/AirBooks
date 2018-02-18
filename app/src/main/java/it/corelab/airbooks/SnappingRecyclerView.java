@@ -26,6 +26,7 @@ public class SnappingRecyclerView extends RecyclerView {
     private Handler mHandler = new Handler();
 
     private boolean _scaleViews = false;
+    private boolean _alphaViews = false;
     private Orientation _orientation = Orientation.HORIZONTAL;
 
     private ChildViewMetrics _childViewMetrics;
@@ -155,6 +156,9 @@ public class SnappingRecyclerView extends RecyclerView {
     public void enableViewScaling(boolean enabled) {
         this._scaleViews = enabled;
     }
+    public void enableAlphaScaling(boolean enabled){
+        this._alphaViews = enabled;
+    }
 
     private void updateViews() {
         for (int i = 0; i < getChildCount(); i++) {
@@ -167,6 +171,12 @@ public class SnappingRecyclerView extends RecyclerView {
 
                 child.setScaleX(scale);
                 child.setScaleY(scale);
+            }
+
+            if (_alphaViews){
+                float percentage = getPercentageFromCenter(child);
+                float alphaScale = 1.0f - (0.6f * percentage);
+                child.setAlpha(alphaScale);
             }
         }
     }

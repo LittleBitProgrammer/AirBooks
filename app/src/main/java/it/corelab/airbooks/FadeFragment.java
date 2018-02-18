@@ -144,6 +144,7 @@ public class FadeFragment extends Fragment {
 
         recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
         recyclerCardExplore.enableViewScaling(true);
+        //recyclerCardExplore.enableAlphaScaling(true);
 
         recyclerCardExplore.setItemViewCacheSize(20);
         recyclerCardExplore.setDrawingCacheEnabled(true);
