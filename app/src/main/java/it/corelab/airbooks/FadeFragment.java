@@ -116,11 +116,6 @@ public class FadeFragment extends Fragment {
             recyclerView.smoothScrollToPosition(0);
         }
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        rotationView.stopAutoScroll();
-    }
 
     /*
     home init
