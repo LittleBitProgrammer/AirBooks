@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.GravitySnapHelper;
 import it.corelab.airbooks.adapters.InfiniteRotationAdapter;
+import it.corelab.airbooks.adapters.SnapCategoriesAdapter;
+import it.corelab.airbooks.adapters.SnapContinueReadAdapter;
 import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.adapters.SnapLibraryAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
@@ -47,6 +49,13 @@ public class FadeFragment extends Fragment {
    private Button buttonAction;
 
    private InfiniteRotationView rotationView;
+
+   private RecyclerView rvContinueRead;
+   private RecyclerView rvCategories;
+
+
+    private ArrayList<Item> rvContinueReadItem;
+    private ArrayList<Item> rvCategoriesItem;
 
 
    /*
@@ -123,13 +132,43 @@ public class FadeFragment extends Fragment {
 
     public void initHome(View view){
         createShowcaseCard();
+        createRvContinueReadItem();
+        createRvCategoriesItem();
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
         rotationView = view.findViewById(R.id.rv_showcase);
+        rvContinueRead = view.findViewById(R.id.rv_continue_reading);
+        rvCategories = view.findViewById(R.id.rv_categories);
+
+        rvContinueRead.setItemViewCacheSize(20);
+        rvContinueRead.setDrawingCacheEnabled(true);
+        rvContinueRead.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        rvCategories.setItemViewCacheSize(20);
+        rvCategories.setDrawingCacheEnabled(true);
+        rvCategories.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
+        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        rvContinueRead.setHasFixedSize(true);
+
+        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
+        rvCategories.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        rvCategories.setHasFixedSize(true);
+
+        SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), rvContinueReadItem);
+        rvContinueRead.setAdapter(snapContinueReadAdapter);
+
+        SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
+        rvCategories.setAdapter(snapCategoriesAdapter);
+
 
         rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
-        rotationView.autoScroll(3, 2000);
+        rotationView.autoScroll(3, 3000);
+
+        OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
     }
 
     /*
@@ -305,7 +344,7 @@ public class FadeFragment extends Fragment {
         libraryCardItem.add(new Item("Bookcover2", R.drawable.art_bookcover, "Stephanie Meyer",1044));
         libraryCardItem.add(new Item("Creative2", R.drawable.creative_bookcover, "Fabio Volo",528));
         libraryCardItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia",19));
-        libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));;
+        libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));
 
     }
     public void createShowcaseCard() {
@@ -315,5 +354,41 @@ public class FadeFragment extends Fragment {
         showcaseCardItem.add( new Showcase(R.drawable.shota, "SHERLOCK"));
         showcaseCardItem.add(new Showcase(R.drawable.got, "GOT"));
         showcaseCardItem.add(new Showcase(R.drawable.stranger, "STRANGER"));
+    }
+
+    public void createRvContinueReadItem() {
+
+        rvContinueReadItem = new ArrayList<>();
+
+
+        rvContinueReadItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 327, 568));
+        rvContinueReadItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco", 113, 1024));
+        rvContinueReadItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale", 1056, 3643));
+        rvContinueReadItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer", 31, 11));
+        rvContinueReadItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo", 10234, 1264));
+        rvContinueReadItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia", 965, 342));
+        rvContinueReadItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown", 567, 654));
+        rvContinueReadItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 327, 568));
+        rvContinueReadItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell", 113, 1024));
+        rvContinueReadItem.add(new Item("Papera", R.drawable.papera,"Harper Lee", 1056, 3643));
+        rvContinueReadItem.add(new Item("All this2", R.drawable.all_this, "Jojo Moyes", 31, 11));
+        rvContinueReadItem.add(new Item("Titan2", R.drawable.titan, "Alessandro Baricco", 10234, 1254));
+        rvContinueReadItem.add(new Item("Spazio2", R.drawable.spazio, "Chiara Gamberale", 567, 654));
+        rvContinueReadItem.add(new Item("Bookcover2", R.drawable.art_bookcover, "Stephanie Meyer", 327, 568));
+        rvContinueReadItem.add(new Item("Creative2", R.drawable.creative_bookcover, "Fabio Volo", 876, 678));
+        rvContinueReadItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia", 234, 111));
+        rvContinueReadItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown", 1000, 100));
+    }
+    public void createRvCategoriesItem(){
+        rvCategoriesItem = new ArrayList<>();
+
+        rvCategoriesItem.add(new Item(R.drawable.horror));
+        rvCategoriesItem.add(new Item(R.drawable.comedy));
+        rvCategoriesItem.add(new Item(R.drawable.horror));
+        rvCategoriesItem.add(new Item(R.drawable.comedy));
+        rvCategoriesItem.add(new Item(R.drawable.horror));
+        rvCategoriesItem.add(new Item(R.drawable.comedy));
+        rvCategoriesItem.add(new Item(R.drawable.horror));
+        rvCategoriesItem.add(new Item(R.drawable.comedy));
     }
 }

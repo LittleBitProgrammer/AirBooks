@@ -14,6 +14,10 @@ public class Item {
     private int numbersLovers;
     private int genreColor;
 
+    public Item(int drawable){
+        this.drawable = drawable;
+    }
+
     public Item(String name, int drawable) {
         this.drawable = drawable;
         this.name = name;
@@ -40,6 +44,14 @@ public class Item {
         this.numberOfReaders = numberOfReaders;
         this.numbersLovers = numbersLovers;
         this.genreColor = genreColor;
+    }
+
+    public Item(String name, int drawable, String author, int numberOfReaders, int numbersLovers){
+        this.name = name;
+        this.drawable = drawable;
+        this.author = author;
+        this.numberOfReaders = numberOfReaders;
+        this.numbersLovers = numbersLovers;
     }
 
     public Item(String name){
