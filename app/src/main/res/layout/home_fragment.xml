@@ -28,21 +28,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/action_bar" />
-
-                <TextView
-                    android:id="@+id/home_action_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="145dp"
-                    android:layout_marginStart="145dp"
-                    android:layout_marginTop="26dp"
-                    android:text="HOME"
-                    android:textColor="#FFFFFF"
-                    android:textSize="22dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:srcCompat="@drawable/explore_actionbar" />
 
                 <ImageButton
                     android:id="@+id/search_button"
@@ -54,7 +40,8 @@
                     android:src="@drawable/icona_search"
                     android:tint="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginLeft="15dp" />
 
                 <ImageButton
                     android:id="@+id/add_button"
@@ -73,20 +60,21 @@
                     android:id="@+id/rv_showcase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/home_action_id" />
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/search_button" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="16dp"
                     android:text="Continue to read"
-                    android:textColor="#292D36"
+                    android:textColor="#FFF"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_showcase" />
+                    app:layout_constraintTop_toBottomOf="@id/rv_showcase"
+                    android:layout_marginLeft="10dp" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -97,7 +85,8 @@
                     android:textColor="#292D36"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_continue_reading" />
+                    app:layout_constraintTop_toBottomOf="@id/rv_continue_reading"
+                    android:layout_marginLeft="10dp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_categories"
@@ -113,7 +102,6 @@
                     android:id="@+id/rv_continue_reading"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />

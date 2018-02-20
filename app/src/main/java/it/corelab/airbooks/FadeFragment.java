@@ -351,9 +351,9 @@ public class FadeFragment extends Fragment {
 
         showcaseCardItem = new ArrayList<>();
 
-        showcaseCardItem.add( new Showcase(R.drawable.shota, "SHERLOCK"));
-        showcaseCardItem.add(new Showcase(R.drawable.got, "GOT"));
-        showcaseCardItem.add(new Showcase(R.drawable.stranger, "STRANGER"));
+        showcaseCardItem.add( new Showcase(R.drawable.large, "Large"));
+        showcaseCardItem.add(new Showcase(R.drawable.book_cover, "Colors"));
+        showcaseCardItem.add(new Showcase(R.drawable.moon_cover, "Moon"));
     }
 
     public void createRvContinueReadItem() {
