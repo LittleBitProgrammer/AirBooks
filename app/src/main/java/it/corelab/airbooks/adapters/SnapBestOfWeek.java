@@ -15,35 +15,36 @@ import it.corelab.airbooks.R;
 import it.corelab.airbooks.object.Item;
 
 /**
- * Created by Roberto_Vecchio on 18/02/18.
+ * Created by Roberto_Vecchio on 21/02/18.
  */
 
-public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueReadAdapter.ReyclerViewHolder> {
+public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>{
     private LayoutInflater layoutInflater;
     private Context context;
     private ArrayList<Item> items;
 
-    public SnapContinueReadAdapter(Context context, ArrayList<Item> items) {
+    public SnapBestOfWeek(Context context, ArrayList<Item> items) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.items = items;
     }
 
     @Override
-    public SnapContinueReadAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(R.layout.rv_continue_read, parent, false);
+    public SnapBestOfWeek.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
 
-        return new SnapContinueReadAdapter.ReyclerViewHolder(item);
+        return new SnapBestOfWeek.ReyclerViewHolder(item);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(final SnapContinueReadAdapter.ReyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, int position) {
         Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
-        holder.author.setText(item.getAuthor());
         holder.title.setText(item.getName());
+        holder.author.setText(item.getAuthor());
+
 
     }
 
@@ -58,12 +59,13 @@ public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueRe
         private TextView author;
 
 
+
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardReviewImage_comtinue_read);
-            title = (TextView) v.findViewById(R.id.title_continue_read);
-            author = (TextView) v.findViewById(R.id.author_continue_read);
+            image = (ImageView) v.findViewById(R.id.image_bestweek);
+            title = (TextView) v.findViewById(R.id.title_rv_bestweek);
+            author = (TextView) v.findViewById(R.id.author_bestweek);
         }
     }
 }

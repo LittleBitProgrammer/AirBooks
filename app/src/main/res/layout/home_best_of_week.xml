@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="138dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#FFFFFF"
+        app:cardElevation="7dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="-2dp"
+                android:src="#E9776F"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_bestweek"
+                android:layout_width="95dp"
+                android:layout_height="126dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/title_rv_bestweek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Title"
+                android:textColor="#5A5C63"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/image_bestweek"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/author_bestweek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/cookie"
+                android:text="author"
+                android:textColor="#A5A7AA"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/image_bestweek"
+                app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+
+            <TextView
+                android:id="@+id/description_bestweek"
+                android:layout_width="235dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="erat, eget gravida purus lectus sed augue cose a caso sc eget gravida purus lectus augue cose a caso sc eget… "
+                android:textColor="#8A939D"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/image_bestweek"
+                app:layout_constraintTop_toBottomOf="@+id/author_bestweek" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

@@ -20,15 +20,16 @@
 
         <TextView
             android:id="@+id/firstTextReview_continue_read"
-            android:layout_width="220dp"
+            android:layout_width="235dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_below="@+id/author_continue_read"
             android:layout_toEndOf="@+id/cardView_continue_read"
             android:layout_toRightOf="@+id/cardView_continue_read"
             android:fontFamily="sans-serif-condensed"
             android:paddingLeft="16dp"
             android:paddingTop="0dp"
-            android:text="Lorem ipsum dolor sit amet, elit consectetuer adipiscing elit. Elit aenean..."
+            android:text="Lorem ipsum dolor sit amet, elit alit consectetuer adipiscing elit. Elit alit aenean Lorem ipsum dolor sit amet, elit Elit aenean Lorem ipsum..."
             android:textColor="#8A939D"
             android:textSize="14sp" />
 
@@ -57,18 +58,35 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
+        <!-- uncomment to show "see full description" -->
+
+
+<!--
         <TextView
             android:id="@+id/see_full_continue_read"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/firstTextReview_continue_read"
-            android:layout_alignEnd="@+id/firstTextReview_continue_read"
-            android:layout_alignRight="@+id/firstTextReview_continue_read"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="8dp"
-            android:text="See full review"
+            android:layout_alignBottom="@+id/imageView4"
+            android:layout_marginBottom="-3dp"
+            android:layout_marginRight="4dp"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4"
+            android:text="See full description"
             android:textColor="#4B85AA"
             android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/firstTextReview_continue_read"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/firstTextReview_continue_read"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="37dp"
+            android:tint="#4B85AA"
+            app:srcCompat="@drawable/full_review"
+            android:layout_marginRight="37dp" /> -->
 
         <ImageView
             android:id="@+id/genre_color_continue_read"
@@ -154,65 +172,6 @@
             android:paddingBottom="9dp"
             android:paddingLeft="10dp"
             app:srcCompat="@drawable/stella_piena" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/firstTextReview_continue_read"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/firstTextReview_continue_read"
-            android:layout_marginBottom="27dp"
-            android:layout_marginEnd="42dp"
-            android:tint="#4B85AA"
-            app:srcCompat="@drawable/full_review" />
-
-        <ImageView
-            android:id="@+id/reader"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignBottom="@+id/readers_number_continue_read"
-            android:layout_marginRight="2dp"
-            android:layout_toLeftOf="@+id/readers_number_continue_read"
-            android:layout_toStartOf="@+id/readers_number_continue_read"
-            app:srcCompat="@drawable/reader" />
-
-        <TextView
-            android:id="@+id/readers_number_continue_read"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/firstTextReview_continue_read"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_toLeftOf="@+id/imageView5"
-            android:layout_toStartOf="@+id/imageView5"
-            android:text="239"
-            android:textColor="#4A91E3"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/lovers_text_continue_read"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/firstTextReview_continue_read"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginTop="2dp"
-            android:text="235"
-            android:textColor="#FE4D70"
-            android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_alignTop="@+id/reader"
-            android:layout_marginRight="2dp"
-            android:layout_toLeftOf="@+id/lovers_text_continue_read"
-            android:layout_toStartOf="@+id/lovers_text_continue_read"
-            app:srcCompat="@drawable/lovers" />
 
     </RelativeLayout>
 
