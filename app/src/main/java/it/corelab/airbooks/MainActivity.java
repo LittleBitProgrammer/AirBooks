@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     // UI
 
     private AHBottomNavigationViewPager viewPager;
-    private AHBottomNavigation bottomNavigation;
+    protected static AHBottomNavigation bottomNavigation;
     //private InfiniteRotationView rotationView;
 
 

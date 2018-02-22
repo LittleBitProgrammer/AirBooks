@@ -7,6 +7,7 @@
     android:background="#F5F5F8">
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

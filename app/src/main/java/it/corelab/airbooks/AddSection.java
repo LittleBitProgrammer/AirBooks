@@ -58,6 +58,11 @@ public class AddSection extends AppCompatActivity {
         centralCard.setOnClickListener(centralCardListener);
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

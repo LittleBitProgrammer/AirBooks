@@ -1,11 +1,14 @@
 package it.corelab.airbooks;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -65,6 +69,7 @@ public class FadeFragment extends Fragment {
     private ArrayList<Item> rvBestWeekItem;
 
     private ImageView add;
+    private NestedScrollView nestedScrollView;
 
 
    /*
@@ -156,6 +161,7 @@ public class FadeFragment extends Fragment {
         rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
         add = view.findViewById(R.id.add_button);
+        nestedScrollView = view.findViewById(R.id.nested_home);
 
 
         rvBestWeek.setItemViewCacheSize(20);
@@ -208,10 +214,26 @@ public class FadeFragment extends Fragment {
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
+        nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (nestedScrollView != null) {
+                    if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
+                        //scroll view is at bottom
+                        MainActivity.bottomNavigation.restoreBottomNavigation(true);
+                    } else {
+                        //scroll view is not at bottom
+                    }
+                }
+            }
+        });
+
         View.OnClickListener addListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intentAddSection);
+                assert ((Activity)getContext()) != null;
+                ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_bottom_in, R.anim.intent_from_bottom_out);
             }
         };
 
@@ -465,4 +487,5 @@ public class FadeFragment extends Fragment {
         rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer"));
         rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo"));
     }
+
 }
