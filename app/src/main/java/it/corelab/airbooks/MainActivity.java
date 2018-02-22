@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AHBottomNavigationViewPager viewPager;
     private AHBottomNavigation bottomNavigation;
-    private InfiniteRotationView rotationView;
+    //private InfiniteRotationView rotationView;
 
 
     //=============================
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        rotationView = findViewById(R.id.rv_showcase);
+        //rotationView = findViewById(R.id.rv_showcase);
         handler.removeCallbacksAndMessages(null);
-        rotationView.stopAutoScroll();
+        //rotationView.stopAutoScroll();
     }
 
 

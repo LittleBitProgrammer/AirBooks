@@ -1,9 +1,11 @@
 package it.corelab.airbooks;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 
 public class FadeFragment extends Fragment {
+
    private FrameLayout fragmentContainer;
    private RecyclerView recyclerView;
    private RecyclerView recyclerViewLibrary;
@@ -59,6 +63,8 @@ public class FadeFragment extends Fragment {
     private ArrayList<Item> rvContinueReadItem;
     private ArrayList<Item> rvCategoriesItem;
     private ArrayList<Item> rvBestWeekItem;
+
+    private ImageView add;
 
 
    /*
@@ -135,6 +141,8 @@ public class FadeFragment extends Fragment {
 
     public void initHome(View view){
 
+        final Intent intentAddSection = new Intent(getActivity(), AddSection.class);
+
         createShowcaseCard();
         createRvContinueReadItem();
         createRvCategoriesItem();
@@ -146,6 +154,8 @@ public class FadeFragment extends Fragment {
         rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         rvCategories = view.findViewById(R.id.rv_categories);
         rvBestWeek = view.findViewById(R.id.rv_bestweek);
+
+        add = view.findViewById(R.id.add_button);
 
 
         rvBestWeek.setItemViewCacheSize(20);
@@ -161,7 +171,7 @@ public class FadeFragment extends Fragment {
         rvCategories.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false){});
         rvContinueRead.setHasFixedSize(true);
 
         // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
@@ -169,8 +179,18 @@ public class FadeFragment extends Fragment {
         rvCategories.setHasFixedSize(true);
 
         //Horizontal for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvBestWeek.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        rvBestWeek.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         rvBestWeek.setHasFixedSize(true);
+
+        ViewCompat.setNestedScrollingEnabled(rotationView, false);
+        ViewCompat.setNestedScrollingEnabled(rvContinueRead, false);
+        ViewCompat.setNestedScrollingEnabled(rvCategories, false);
+        ViewCompat.setNestedScrollingEnabled(rvBestWeek, false);
 
         SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), rvContinueReadItem);
         rvContinueRead.setAdapter(snapContinueReadAdapter);
@@ -187,6 +207,15 @@ public class FadeFragment extends Fragment {
 
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+        View.OnClickListener addListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intentAddSection);
+            }
+        };
+
+        add.setOnClickListener(addListener);
     }
 
     /*
