@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

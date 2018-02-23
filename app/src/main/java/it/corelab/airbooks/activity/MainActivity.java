@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.activity;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +15,8 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.fragment.FadeFragment;
+import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // UI
 
     private AHBottomNavigationViewPager viewPager;
-    protected static AHBottomNavigation bottomNavigation;
-    //private InfiniteRotationView rotationView;
+    public static AHBottomNavigation bottomNavigation;
 
 
     //=============================
@@ -67,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //rotationView = findViewById(R.id.rv_showcase);
         handler.removeCallbacksAndMessages(null);
-        //rotationView.stopAutoScroll();
+        FadeFragment.rotationView.stopAutoScroll();
     }
 
 

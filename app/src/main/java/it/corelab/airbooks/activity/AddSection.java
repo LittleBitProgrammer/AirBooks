@@ -1,26 +1,20 @@
 package it.corelab.airbooks.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import it.corelab.airbooks.MainActivity;
 import it.corelab.airbooks.R;
 
 public class AddSection extends AppCompatActivity {
@@ -36,6 +30,9 @@ public class AddSection extends AppCompatActivity {
 
         centralCard = findViewById(R.id.placeholder_add);
         returnButton = findViewById(R.id.left_arrow_add);
+
+        final Intent returnButtonIntent = new Intent(getApplicationContext(), MainActivity.class);
+
 
 
         //==========================
@@ -61,10 +58,30 @@ public class AddSection extends AppCompatActivity {
             }
         };
 
+        View.OnClickListener returnButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnButtonIntent.setFlags(returnButtonIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(returnButtonIntent);
+            }
+        };
+
         centralCard.setOnClickListener(centralCardListener);
 
         returnButton.setOnClickListener(returnButtonListener);
 
+        final View parentReturn = (View) returnButton.getParent();  // button: the view you want to enlarge hit area
+        parentReturn.post( new Runnable() {
+            public void run() {
+                final Rect rect = new Rect();
+                returnButton.getHitRect(rect);
+                rect.top -= 100;    // increase top hit area
+                rect.left -= 100;   // increase left hit area
+                rect.bottom += 100; // increase bottom hit area
+                rect.right += 100;  // increase right hit area
+                parentReturn.setTouchDelegate( new TouchDelegate( rect , returnButton));
+            }
+        });
     }
     @Override
     public void onBackPressed() {
@@ -100,12 +117,4 @@ public class AddSection extends AppCompatActivity {
             cursor.close();
         }
     }
-
-    View.OnClickListener returnButtonListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent returnButton = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(returnButton);
-        }
-    };
 }

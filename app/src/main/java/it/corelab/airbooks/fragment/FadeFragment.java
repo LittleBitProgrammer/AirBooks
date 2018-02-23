@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,11 +23,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.AddSection;
 import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
@@ -60,7 +62,7 @@ public class FadeFragment extends Fragment {
    private ArrayList<Showcase> showcaseCardItem;
    private Button buttonAction;
 
-   private InfiniteRotationView rotationView;
+   public static InfiniteRotationView rotationView;
 
    private RecyclerView rvContinueRead;
    private RecyclerView rvCategories;
@@ -71,7 +73,8 @@ public class FadeFragment extends Fragment {
     private ArrayList<Item> rvCategoriesItem;
     private ArrayList<Item> rvBestWeekItem;
 
-    private ImageView add;
+    private ImageButton addButtonHome;
+    private ImageButton search;
     private NestedScrollView nestedScrollView;
 
 
@@ -163,7 +166,8 @@ public class FadeFragment extends Fragment {
         rvCategories = view.findViewById(R.id.rv_categories);
         rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
-        add = view.findViewById(R.id.add_button);
+        addButtonHome = view.findViewById(R.id.add_button_home);
+        search = view.findViewById(R.id.search_button_home);
         nestedScrollView = view.findViewById(R.id.nested_home);
 
 
@@ -217,6 +221,19 @@ public class FadeFragment extends Fragment {
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
+        final View parent = (View) addButtonHome.getParent();  // button: the view you want to enlarge hit area
+        parent.post( new Runnable() {
+            public void run() {
+                final Rect rect = new Rect();
+                addButtonHome.getHitRect(rect);
+                rect.top -= 200;    // increase top hit area
+                rect.left -= 200;   // increase left hit area
+                rect.bottom += 200; // increase bottom hit area
+                rect.right += 200;  // increase right hit area
+                parent.setTouchDelegate( new TouchDelegate( rect , addButtonHome));
+            }
+        });
+
         nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -234,13 +251,15 @@ public class FadeFragment extends Fragment {
         View.OnClickListener addListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intentAddSection.setFlags(intentAddSection.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intentAddSection);
                 assert ((Activity)getContext()) != null;
                 ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_bottom_in, R.anim.intent_from_bottom_out);
             }
         };
 
-        add.setOnClickListener(addListener);
+        addButtonHome.setOnClickListener(addListener);
+
     }
 
     /*
