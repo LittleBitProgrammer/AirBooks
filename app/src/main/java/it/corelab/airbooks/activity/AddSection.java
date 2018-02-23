@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.fragment.FadeFragment;
 
 public class AddSection extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class AddSection extends AppCompatActivity {
         centralCard = findViewById(R.id.placeholder_add);
         returnButton = findViewById(R.id.left_arrow_add);
 
-        final Intent returnButtonIntent = new Intent(getApplicationContext(), MainActivity.class);
+        final Intent returnButtonIntent = new Intent(AddSection.this, MainActivity.class);
 
 
 
@@ -63,6 +64,7 @@ public class AddSection extends AppCompatActivity {
             public void onClick(View v) {
                 returnButtonIntent.setFlags(returnButtonIntent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(returnButtonIntent);
+                overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
             }
         };
 
@@ -75,10 +77,10 @@ public class AddSection extends AppCompatActivity {
             public void run() {
                 final Rect rect = new Rect();
                 returnButton.getHitRect(rect);
-                rect.top -= 100;    // increase top hit area
-                rect.left -= 100;   // increase left hit area
-                rect.bottom += 100; // increase bottom hit area
-                rect.right += 100;  // increase right hit area
+                rect.top -= 200;    // increase top hit area
+                rect.left -= 200;   // increase left hit area
+                rect.bottom += 200; // increase bottom hit area
+                rect.right += 200;  // increase right hit area
                 parentReturn.setTouchDelegate( new TouchDelegate( rect , returnButton));
             }
         });

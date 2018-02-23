@@ -192,7 +192,7 @@ public class FadeFragment extends Fragment {
         rvCategories.setHasFixedSize(true);
 
         //Horizontal for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvBestWeek.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false){
+        rvBestWeek.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false){
             @Override
             public boolean canScrollVertically() {
                 return false;
