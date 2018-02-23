@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import it.corelab.airbooks.FadeFragment;
+import it.corelab.airbooks.fragment.FadeFragment;
 
 /**
  * Created by Roberto_Vecchio on 11/02/18.
