@@ -211,6 +211,8 @@ public class FadeFragment extends Fragment {
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
 
+        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
         SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(), rvBestWeekItem);
         rvBestWeek.setAdapter(snapBestOfWeek);
 
@@ -350,8 +352,10 @@ public class FadeFragment extends Fragment {
        recyclerView.setDrawingCacheEnabled(true);
        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-       SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
-       snapHelper.attachToRecyclerView(recyclerView);
+       //uncomment for gravity
+
+       //SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
+       //snapHelper.attachToRecyclerView(recyclerView);
 
        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -364,8 +368,11 @@ public class FadeFragment extends Fragment {
        //=================================================
 
        cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
-       SnapHelper snapCardHelper = new GravitySnapHelper(Gravity.START);
-       snapCardHelper.attachToRecyclerView(cardReviewRecycleView);
+
+       //uncomment for gravity
+
+       //SnapHelper snapCardHelper = new GravitySnapHelper(Gravity.START);
+       //snapCardHelper.attachToRecyclerView(cardReviewRecycleView);
 
        cardReviewRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
        cardReviewRecycleView.setHasFixedSize(true);

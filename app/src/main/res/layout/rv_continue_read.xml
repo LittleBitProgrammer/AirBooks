@@ -61,7 +61,7 @@
         <!-- uncomment to show "see full description" -->
 
 
-<!--
+        <!--
         <TextView
             android:id="@+id/see_full_continue_read"
             android:layout_width="wrap_content"

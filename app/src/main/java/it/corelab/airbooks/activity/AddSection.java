@@ -1,5 +1,6 @@
 package it.corelab.airbooks.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -7,11 +8,19 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -22,7 +31,11 @@ public class AddSection extends AppCompatActivity {
 
     private ImageView centralCard;
     private ImageButton returnButton;
+    private TextInputLayout textInputLayout;
+    private EditText editText;
+    private TextInputEditText editTextInput;
     public static final int PICK_IMAGE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +44,42 @@ public class AddSection extends AppCompatActivity {
 
         centralCard = findViewById(R.id.placeholder_add);
         returnButton = findViewById(R.id.left_arrow_add);
+        editTextInput = findViewById(R.id.edit_text);
+        editText = findViewById(R.id.edit_text3);
+        textInputLayout = findViewById(R.id.text_input_layout);
+
+        editText.setEnabled(false);
+
+        textInputLayout.setHint("Insert your title here");
+        editTextInput.addTextChangedListener(new TextWatcher(){
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int start, int before,
+                                      int count) {
+                if (arg0.length() == 0) {
+                    // No entered text so will show hint
+                    editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+                } else {
+                    editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+                }
+            }
+        });
 
         final Intent returnButtonIntent = new Intent(AddSection.this, MainActivity.class);
+
 
 
 
@@ -84,6 +131,23 @@ public class AddSection extends AppCompatActivity {
                 parentReturn.setTouchDelegate( new TouchDelegate( rect , returnButton));
             }
         });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof TextInputEditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    v.clearFocus();
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
     }
     @Override
     public void onBackPressed() {

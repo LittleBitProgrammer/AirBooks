@@ -7,6 +7,12 @@
         <item name="colorPrimaryDark">#FFFFFF</item>
         <item name="android:actionMenuTextColor">@color/blu_airbooks</item>
         <item name="colorControlHighlight">@color/white</item>
+
+        <item name="colorControlNormal">#969696</item>
+
+
+        <item name="colorControlActivated">#2280C5</item>
+
     </style>
     <!-- Splash Screen theme. -->
 
@@ -26,5 +32,12 @@
     <style name="AppTheme.TranslucentNavigation" parent="AppTheme">
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:fitsSystemWindows">true</item>
+    </style>
+    <style name="TextAppearence.App.TextInputLayout"  parent="@android:style/TextAppearance">
+        <item name="android:textColor">#2280C5</item>
+    </style>
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#6C7A8C</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>
