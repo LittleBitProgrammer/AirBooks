@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
     private LayoutInflater layoutInflater;
     private Context context;
     private ArrayList<Item> items;
+    private int lastPosition = -1;
 
     public CategoriesAddRv(Context context, ArrayList<Item> items) {
         this.layoutInflater = LayoutInflater.from(context);

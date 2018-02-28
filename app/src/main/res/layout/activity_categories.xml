@@ -69,6 +69,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_categories" />
+        app:layout_constraintTop_toBottomOf="@+id/selecteGenre_lab" />
+
+    <TextView
+        android:id="@+id/selecteGenre_lab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="18dp"
+        android:text="Selecte your genre"
+        android:textColor="#6C7A8C"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/categories_add_rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_categories" />
 
 </android.support.constraint.ConstraintLayout>

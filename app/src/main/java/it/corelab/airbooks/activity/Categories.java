@@ -11,6 +11,7 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,7 @@ public class Categories extends AppCompatActivity {
 
         CategoriesAddRv categoriesAdapter = new CategoriesAddRv(getApplicationContext(), categories);
         categoriesAddRv.setAdapter(categoriesAdapter);
+
 
         //==========================
         //      hide status bar
