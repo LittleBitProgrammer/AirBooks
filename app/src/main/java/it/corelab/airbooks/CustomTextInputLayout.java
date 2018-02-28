@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -74,5 +75,5 @@ public class CustomTextInputLayout extends TextInputLayout {
         mainHintTextSize = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_SP, size, getResources().getDisplayMetrics());
     }
-
+    //TODO: add unfocus on back pressed
 }

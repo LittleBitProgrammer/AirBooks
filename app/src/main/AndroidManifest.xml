@@ -35,6 +35,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".activity.AddSection" />
+        <activity android:name=".activity.Categories"></activity>
     </application>
 
 </manifest>

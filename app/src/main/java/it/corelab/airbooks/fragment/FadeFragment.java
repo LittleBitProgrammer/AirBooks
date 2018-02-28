@@ -184,7 +184,7 @@ public class FadeFragment extends Fragment {
         rvCategories.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false){});
+        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvContinueRead.setHasFixedSize(true);
 
         // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM

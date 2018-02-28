@@ -9,12 +9,18 @@ public class Item {
     private int drawable;
     private String name;
     private String author;
+    private String genreName;
     private int numberReviews;
     private int numberOfReaders;
     private int numbersLovers;
     private int genreColor;
 
     public Item(int drawable){
+        this.drawable = drawable;
+    }
+
+    public Item(int drawable, String genreName){
+        this.genreName = genreName;
         this.drawable = drawable;
     }
 
@@ -86,6 +92,10 @@ public class Item {
         return genreColor;
     }
 
+    public String getGenreName(){
+        return genreName;
+    }
+
     public void setDrawable(int drawable){
         this.drawable = drawable;
     }
@@ -112,5 +122,9 @@ public class Item {
 
     public void setGenreColor(int genreColor){
         this.genreColor = genreColor;
+    }
+
+    public void setGenreName(String genreName){
+        this.genreName = genreName;
     }
 }

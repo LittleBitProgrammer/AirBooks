@@ -12,25 +12,23 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.fragment.FadeFragment;
 
 public class AddSection extends AppCompatActivity {
 
     private ImageView centralCard;
     private ImageButton returnButton;
+    private Button nextButton;
     private TextInputLayout textInputLayout;
     private EditText editText;
     private TextInputEditText editTextInput;
@@ -42,8 +40,11 @@ public class AddSection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_section);
 
+        final Intent categoriesIntent = new Intent(getApplicationContext(),Categories.class);
+
         centralCard = findViewById(R.id.placeholder_add);
-        returnButton = findViewById(R.id.left_arrow_add);
+        returnButton = findViewById(R.id.left_arrow_add_categories);
+        nextButton = findViewById(R.id.color_button_next);
         editTextInput = findViewById(R.id.edit_text);
         editText = findViewById(R.id.edit_text3);
         textInputLayout = findViewById(R.id.text_input_layout);
@@ -51,32 +52,6 @@ public class AddSection extends AppCompatActivity {
         editText.setEnabled(false);
 
         textInputLayout.setHint("Insert your title here");
-        editTextInput.addTextChangedListener(new TextWatcher(){
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1,
-                                          int arg2, int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence arg0, int start, int before,
-                                      int count) {
-                if (arg0.length() == 0) {
-                    // No entered text so will show hint
-                    editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-                } else {
-                    editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
-                }
-            }
-        });
 
         final Intent returnButtonIntent = new Intent(AddSection.this, MainActivity.class);
 
@@ -106,6 +81,14 @@ public class AddSection extends AppCompatActivity {
             }
         };
 
+        View.OnClickListener nextCategoriesListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoriesIntent.setFlags(categoriesIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(categoriesIntent);
+            }
+        };
+
         View.OnClickListener returnButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,8 +99,8 @@ public class AddSection extends AppCompatActivity {
         };
 
         centralCard.setOnClickListener(centralCardListener);
-
         returnButton.setOnClickListener(returnButtonListener);
+        nextButton.setOnClickListener(nextCategoriesListener);
 
         final View parentReturn = (View) returnButton.getParent();  // button: the view you want to enlarge hit area
         parentReturn.post( new Runnable() {
