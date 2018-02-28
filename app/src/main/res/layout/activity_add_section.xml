@@ -105,14 +105,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/color_button_next"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="#458DE0" />
+                android:src="#458DE0" >
 
             <TextView
-                android:id="@+id/Ne"
+                android:id="@+id/Next_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NEXT"
@@ -123,6 +123,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            </ImageButton>
 
         </android.support.constraint.ConstraintLayout>
 
