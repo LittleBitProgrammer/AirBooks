@@ -74,4 +74,5 @@ public class CustomTextInputLayout extends TextInputLayout {
         mainHintTextSize = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_SP, size, getResources().getDisplayMetrics());
     }
+
 }
