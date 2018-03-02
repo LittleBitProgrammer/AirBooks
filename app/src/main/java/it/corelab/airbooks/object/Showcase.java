@@ -8,6 +8,10 @@ public class Showcase {
     private int drawable;
     private String title;
 
+    public Showcase (int drawable){
+        this.drawable = drawable;
+    }
+
     public Showcase(int drawable, String title){
         this.drawable = drawable;
         this.title = title;

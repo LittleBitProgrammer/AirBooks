@@ -1,6 +1,5 @@
 package it.corelab.airbooks.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +10,11 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.CategoriesAddRv;
-import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.object.Item;
 
 public class Categories extends AppCompatActivity {
@@ -121,30 +118,30 @@ public class Categories extends AppCompatActivity {
 
         categories = new ArrayList<>();
 
-        categories.add(new Item(R.drawable.romance, "Sci-fi"));
-        categories.add(new Item(R.drawable.fantasy, "adolescenti e ragazzi"));
-        categories.add(new Item(R.drawable.romance, "biografia"));
-        categories.add(new Item(R.drawable.fantasy, "fumetti e manga"));
-        categories.add(new Item(R.drawable.romance, "gialli e Thriller"));
+        categories.add(new Item(R.drawable.sci_fi, "Sci-fi"));
+        categories.add(new Item(R.drawable.for_children, "Adolescenti e Ragazzi"));
+        categories.add(new Item(R.drawable.biografy, "Biografia"));
+        categories.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
+        categories.add(new Item(R.drawable.yellow_thriller, "Gialli e Thriller"));
         categories.add(new Item(R.drawable.fantasy, "humor"));
-        categories.add(new Item(R.drawable.romance, "manuali"));
+        categories.add(new Item(R.drawable.manual, "Manuali"));
         categories.add(new Item(R.drawable.fantasy, "libri per bambini"));
-        categories.add(new Item(R.drawable.romance, "religione"));
-        categories.add(new Item(R.drawable.fantasy, "self help"));
-        categories.add(new Item(R.drawable.romance, "sport"));
+        categories.add(new Item(R.drawable.fantasy, "religione"));
+        categories.add(new Item(R.drawable.self_help, "Self help"));
+        categories.add(new Item(R.drawable.fantasy, "sport"));
         categories.add(new Item(R.drawable.fantasy, "storico"));
-        categories.add(new Item(R.drawable.romance, "avventura"));
+        categories.add(new Item(R.drawable.fantasy, "avventura"));
         categories.add(new Item(R.drawable.fantasy, "azione"));
-        categories.add(new Item(R.drawable.romance, "fan fiction"));
+        categories.add(new Item(R.drawable.fantasy, "fan fiction"));
         categories.add(new Item(R.drawable.fantasy, "fantasy"));
-        categories.add(new Item(R.drawable.romance, "horror"));
+        categories.add(new Item(R.drawable.fantasy, "horror"));
         categories.add(new Item(R.drawable.fantasy, "poesia"));
-        categories.add(new Item(R.drawable.romance, "saggistica"));
+        categories.add(new Item(R.drawable.wise, "saggistica"));
         categories.add(new Item(R.drawable.fantasy, "teen fiction"));
-        categories.add(new Item(R.drawable.romance, "erotica"));
+        categories.add(new Item(R.drawable.erotic, "Erotica"));
         categories.add(new Item(R.drawable.fantasy, "letteratura gastonomica"));
-        categories.add(new Item(R.drawable.romance, "drammatico"));
+        categories.add(new Item(R.drawable.fantasy, "drammatico"));
         categories.add(new Item(R.drawable.fantasy, "sentimentale"));
-        categories.add(new Item(R.drawable.romance, "altro"));
+        categories.add(new Item(R.drawable.fantasy, "altro"));
     }
 }

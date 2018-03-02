@@ -42,6 +42,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
+        holder.colorGenre.setImageResource(item.getGenreColor());
         holder.title.setText(item.getName());
         holder.author.setText(item.getAuthor());
 
@@ -57,6 +58,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         private ImageView image;
         private TextView title;
         private TextView author;
+        private ImageView colorGenre;
 
 
 
@@ -64,6 +66,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
             super(v);
 
             image = (ImageView) v.findViewById(R.id.image_bestweek);
+            colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
             title = (TextView) v.findViewById(R.id.title_rv_bestweek);
             author = (TextView) v.findViewById(R.id.author_bestweek);
         }

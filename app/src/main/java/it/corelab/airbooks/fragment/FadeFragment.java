@@ -192,7 +192,7 @@ public class FadeFragment extends Fragment {
         rvCategories.setHasFixedSize(true);
 
         //Horizontal for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvBestWeek.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false){
+        rvBestWeek.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false){
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -449,9 +449,9 @@ public class FadeFragment extends Fragment {
 
         showcaseCardItem = new ArrayList<>();
 
-        showcaseCardItem.add( new Showcase(R.drawable.large, "Large"));
-        showcaseCardItem.add(new Showcase(R.drawable.book_cover, "Colors"));
-        showcaseCardItem.add(new Showcase(R.drawable.moon_cover, "Moon"));
+        showcaseCardItem.add( new Showcase(R.drawable.place_holder_sinistra));
+        showcaseCardItem.add(new Showcase(R.drawable.place_holder_centro));
+        showcaseCardItem.add(new Showcase(R.drawable.place_holder_destra));
     }
 
     public void createRvContinueReadItem() {
@@ -459,35 +459,35 @@ public class FadeFragment extends Fragment {
         rvContinueReadItem = new ArrayList<>();
 
 
-        rvContinueReadItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes"));
-        rvContinueReadItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco"));
-        rvContinueReadItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale"));
-        rvContinueReadItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer"));
-        rvContinueReadItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo"));
-        rvContinueReadItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia"));
-        rvContinueReadItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown"));
-        rvContinueReadItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik"));
-        rvContinueReadItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell"));
-        rvContinueReadItem.add(new Item("Papera", R.drawable.papera,"Harper Lee"));
-        rvContinueReadItem.add(new Item("All this2", R.drawable.all_this, "Jojo Moyes"));
-        rvContinueReadItem.add(new Item("Titan2", R.drawable.titan, "Alessandro Baricco"));
-        rvContinueReadItem.add(new Item("Spazio2", R.drawable.spazio, "Chiara Gamberale"));
-        rvContinueReadItem.add(new Item("Bookcover2", R.drawable.art_bookcover, "Stephanie Meyer"));
-        rvContinueReadItem.add(new Item("Creative2", R.drawable.creative_bookcover, "Fabio Volo"));
-        rvContinueReadItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia"));
-        rvContinueReadItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown"));
+        rvContinueReadItem.add(new Item( R.drawable.all_this));
+        rvContinueReadItem.add(new Item( R.drawable.titan));
+        rvContinueReadItem.add(new Item(R.drawable.spazio));
+        rvContinueReadItem.add(new Item(R.drawable.art_bookcover));
+        rvContinueReadItem.add(new Item(R.drawable.creative_bookcover));
+        rvContinueReadItem.add(new Item(R.drawable.cupcake));
+        rvContinueReadItem.add(new Item( R.drawable.fiore));
+        rvContinueReadItem.add(new Item(R.drawable.gelato));
+        rvContinueReadItem.add(new Item(R.drawable.lampadina));
+        rvContinueReadItem.add(new Item(R.drawable.papera));
+        rvContinueReadItem.add(new Item(R.drawable.all_this));
+        rvContinueReadItem.add(new Item(R.drawable.titan));
+        rvContinueReadItem.add(new Item(R.drawable.spazio));
+        rvContinueReadItem.add(new Item(R.drawable.art_bookcover));
+        rvContinueReadItem.add(new Item(R.drawable.creative_bookcover));
+        rvContinueReadItem.add(new Item(R.drawable.cupcake));
+        rvContinueReadItem.add(new Item(R.drawable.fiore));
     }
     public void createRvCategoriesItem(){
         rvCategoriesItem = new ArrayList<>();
 
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
+        rvCategoriesItem.add(new Item(R.drawable.sci_fi, "Sci-fi"));
+        rvCategoriesItem.add(new Item(R.drawable.for_children, "Per bambini"));
+        rvCategoriesItem.add(new Item(R.drawable.biografy, "Biografia"));
+        rvCategoriesItem.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
+        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
+        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotico"));
+        rvCategoriesItem.add(new Item(R.drawable.self_help, "Self help"));
+        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e Thriller"));
         rvCategoriesItem.add(new Item(R.drawable.horror));
         rvCategoriesItem.add(new Item(R.drawable.comedy));
         rvCategoriesItem.add(new Item(R.drawable.horror));
@@ -510,11 +510,11 @@ public class FadeFragment extends Fragment {
     private void createRvBestOfWeek() {
         rvBestWeekItem = new ArrayList<>();
 
-        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes"));
-        rvBestWeekItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco"));
-        rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale"));
-        rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer"));
-        rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo"));
+        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "peppe"));
+        rvBestWeekItem.add(new Item("Titan", R.drawable.titan, R.drawable.biografy, "Alessandro Baricco"));
+        rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale"));
+        rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer"));
+        rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, R.drawable.comics_manga,"Fabio Volo"));
     }
 
 }

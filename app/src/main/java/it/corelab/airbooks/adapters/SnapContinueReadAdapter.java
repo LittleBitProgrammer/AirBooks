@@ -44,8 +44,6 @@ public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueRe
         Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
-        holder.author.setText(item.getAuthor());
-        holder.title.setText(item.getName());
 
     }
 
@@ -56,16 +54,12 @@ public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueRe
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
-        private TextView title;
-        private TextView author;
 
 
         private ReyclerViewHolder(final View v) {
             super(v);
 
             image = (ImageView) v.findViewById(R.id.cardReviewImage_comtinue_read);
-            title = (TextView) v.findViewById(R.id.title_continue_read);
-            author = (TextView) v.findViewById(R.id.author_continue_read);
         }
     }
 }

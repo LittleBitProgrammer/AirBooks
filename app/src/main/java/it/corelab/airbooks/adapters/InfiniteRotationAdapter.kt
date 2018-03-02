@@ -19,7 +19,7 @@ class InfiniteRotationAdapter(itemList: ArrayList<Showcase>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         (holder as? ItemViewHolder)?.let {
-            it.textShowCase.text = list[position % list.size].title
+
             it.imageShowCase.setBackgroundResource(list[position % list.size].drawable)
         }
     }
@@ -34,7 +34,6 @@ class InfiniteRotationAdapter(itemList: ArrayList<Showcase>) : RecyclerView.Adap
     override fun getItemCount() = list.size
 
     internal class ItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        var textShowCase: TextView = view.findViewById(R.id.text_showcase)
         var imageShowCase: ImageView = view.findViewById(R.id.cardImage_showcase)
 
         init {

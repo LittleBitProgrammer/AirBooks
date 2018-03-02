@@ -1,5 +1,7 @@
 package it.corelab.airbooks.object;
 
+import it.corelab.airbooks.R;
+
 /**
  * Created by Roberto_Vecchio on 05/02/18.
  */
@@ -18,6 +20,10 @@ public class Item {
     public Item(int drawable){
         this.drawable = drawable;
     }
+    public Item(int drawable, int genreColor){
+        this.drawable = drawable;
+        this.genreColor = genreColor;
+    }
 
     public Item(int drawable, String genreName){
         this.genreName = genreName;
@@ -29,11 +35,19 @@ public class Item {
         this.name = name;
     }
 
+    public Item(String name, int drawable, int genreColor, String author){
+        this.name = name;
+        this.drawable = drawable;
+        this.author = author;
+        this.genreColor = genreColor;
+    }
+
     public Item(String name, int drawable, String author){
         this.name = name;
         this.drawable = drawable;
         this.author = author;
     }
+
 
     public Item(String name, int drawable, String author, int numberReviews){
         this.name = name;

@@ -24,33 +24,6 @@
             android:layout_height="168dp"
             android:scaleType="fitXY" />
 
-        <ImageView
-            android:id="@+id/cardImage_showcase_gradient"
-            android:layout_width="340dp"
-            android:layout_height="168dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/showcase_gradient" />
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/text_showcase"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="13dp"
-                android:text="Text example"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:textSize="31sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </android.support.constraint.ConstraintLayout>
-
 
     </android.support.v7.widget.CardView>
 
