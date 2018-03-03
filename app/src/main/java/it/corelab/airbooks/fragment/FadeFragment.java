@@ -1,6 +1,7 @@
 package it.corelab.airbooks.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -20,7 +21,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -60,6 +63,7 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Item> libraryCardItem;
    private ArrayList<Showcase> showcaseCardItem;
+   private EditText editText;
    private Button buttonAction;
 
    public static InfiniteRotationView rotationView;
@@ -293,9 +297,22 @@ public class FadeFragment extends Fragment {
      */
     public void initLibrary(View view){
 
+       /* View.OnClickListener searchListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setFocusableInTouchMode(true);
+                editText.setFocusable(true);
+            }
+        };*/
+
+
+
         createLibraryCard();
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
+        editText = view.findViewById(R.id.ed_home_searchbar);
+
+        //editText.setOnClickListener(searchListener);
 
         recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
         recyclerViewLibrary.setHasFixedSize(true);
