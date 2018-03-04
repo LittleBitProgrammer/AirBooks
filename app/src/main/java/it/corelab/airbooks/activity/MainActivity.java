@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (currentFragment != null) {
-                    currentFragment.willBeHidden();
+                    //currentFragment.willBeHidden();
                 }
 
                 viewPager.setCurrentItem(position, false);
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 currentFragment = adapter.getCurrentFragment();
-                currentFragment.willBeDisplayed();
+                //currentFragment.willBeDisplayed();
 
                 return true;
             }

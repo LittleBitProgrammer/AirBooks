@@ -24,9 +24,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/explore_actionbar" />
 
-        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <it.corelab.airbooks.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profileImagePlaceHolder"
-            android:layout_width="105dp"
+            android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginEnd="126dp"
             android:layout_marginStart="126dp"
@@ -36,10 +36,7 @@
             android:src="@drawable/group_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="16dip"
-            app:riv_mutate_background="true"
-            app:riv_tile_mode="repeat" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/NameSurname"
@@ -67,7 +64,9 @@
             app:layout_constraintEnd_toStartOf="@+id/fromTo"
             app:layout_constraintStart_toEndOf="@+id/followNumber"
             app:layout_constraintTop_toBottomOf="@+id/NameSurname"
-            app:srcCompat="@drawable/pin_icona2" />
+            app:srcCompat="@drawable/pin_icona2"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="9dp" />
 
         <ImageView
             android:id="@+id/readerImage"
@@ -78,7 +77,8 @@
             android:src="@drawable/reader"
             android:tint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/NameSurname"
+            android:layout_marginLeft="121dp" />
 
         <TextView
             android:id="@+id/fromTo"
@@ -93,7 +93,9 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imagePin"
-            app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/NameSurname"
+            android:layout_marginRight="121dp"
+            android:layout_marginLeft="3dp" />
 
         <Button
             android:id="@+id/followButton"
@@ -111,7 +113,9 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/readerImage" />
+            app:layout_constraintTop_toBottomOf="@+id/readerImage"
+            android:layout_marginRight="105dp"
+            android:layout_marginLeft="106dp" />
 
 
         <TextView
@@ -125,7 +129,8 @@
             android:textColor="#C9D5E3"
             android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@+id/readerImage"
-            app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/NameSurname"
+            android:layout_marginLeft="3dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -141,13 +146,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
             android:text="All Books (27)"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/followButton" />
+            app:layout_constraintTop_toBottomOf="@+id/followButton"
+            android:layout_marginLeft="18dp" />
 
         <TextView
             android:id="@+id/allReviewsLabel"
@@ -167,23 +173,24 @@
             android:id="@+id/recycler_view_cardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="3dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="0dp"
+            android:paddingStart="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/allReviewsLabel"
-            app:layout_constraintVertical_bias="1.0"
-            android:paddingStart="0dp" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/buttonAction"
             android:layout_width="5dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/option_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="20dp" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

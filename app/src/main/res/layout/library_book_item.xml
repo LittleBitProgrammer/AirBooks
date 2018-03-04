@@ -15,7 +15,8 @@
         android:orientation="vertical"
         app:cardCornerRadius="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="15dp">
 
         <ImageView
             android:id="@+id/cardImage_library"

@@ -55,7 +55,8 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+                app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv"
+                android:layout_marginLeft="8dp" />
 
             <TextView
                 android:id="@+id/author_bestweek"
@@ -70,7 +71,8 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+                app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek"
+                android:layout_marginLeft="8dp" />
 
         </android.support.constraint.ConstraintLayout>
 

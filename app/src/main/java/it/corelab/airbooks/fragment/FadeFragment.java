@@ -63,7 +63,6 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Item> libraryCardItem;
    private ArrayList<Showcase> showcaseCardItem;
-   private EditText editText;
    private Button buttonAction;
 
    public static InfiniteRotationView rotationView;
@@ -310,8 +309,6 @@ public class FadeFragment extends Fragment {
         createLibraryCard();
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
-        editText = view.findViewById(R.id.ed_home_searchbar);
-
         //editText.setOnClickListener(searchListener);
 
         recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);

@@ -13,7 +13,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena5"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_vuota" />
+        app:srcCompat="@drawable/stella_vuota"
+        android:layout_marginLeft="4dp" />
 
     <ImageView
         android:id="@+id/stellaPiena5"
@@ -23,7 +24,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena4"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:layout_marginLeft="4dp" />
 
     <ImageView
         android:id="@+id/stellaPiena4"
@@ -33,7 +35,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena2"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:layout_marginLeft="4dp" />
 
     <ImageView
         android:id="@+id/stellaPiena2"
@@ -43,7 +46,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:layout_marginLeft="4dp" />
 
     <ImageView
         android:id="@+id/stellaPiena"
@@ -53,7 +57,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:layout_marginLeft="15dp" />
 
     <TextView
         android:id="@+id/author_id"
@@ -68,7 +73,9 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookName" />
+        app:layout_constraintTop_toBottomOf="@+id/bookName"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="9dp" />
 
     <TextView
         android:id="@+id/bookName"
@@ -113,5 +120,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena3"
-        app:layout_constraintTop_toBottomOf="@+id/author_id" />
+        app:layout_constraintTop_toBottomOf="@+id/author_id"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="6dp" />
 </android.support.constraint.ConstraintLayout>
