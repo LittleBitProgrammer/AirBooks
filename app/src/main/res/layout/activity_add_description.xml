@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="it.corelab.airbooks.activity.AddDescription">
+
+    <ImageView
+        android:id="@+id/top_bar_description"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/barra_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/top_bar_name_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ADD YOUR BOOK"
+        android:textColor="#FFF"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_description"
+        app:layout_constraintStart_toStartOf="@+id/top_bar_description"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_description" />
+
+    <ImageButton
+        android:id="@+id/left_arrow_add_description"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/left_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="18dp" />
+
+    <ImageButton
+        android:id="@+id/dismiss_button_description"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dismiss"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_description"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_description"
+        android:layout_marginRight="18dp" />
+
+    <TextView
+        android:id="@+id/add_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="22dp"
+        android:text="Description"
+        android:textColor="#6C7A8C"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_description" />
+
+    <EditText
+        android:id="@+id/editText_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/description_edit_text"
+        android:ems="10"
+        android:gravity="top|left"
+        android:hint="Insert your description here"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:padding="9dp"
+        android:textColor="#FFF"
+        android:textColorHint="#90FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/add_file_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_description_text" />
+
+    <Button
+        android:id="@+id/color_button_next"
+        android:layout_width="77dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button_next"
+        android:scaleType="fitXY"
+        android:text="NEXT"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/upload_arrow_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/transparent_selector"
+        android:src="@drawable/upload_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/color_button_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/add_file_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:layout_marginStart="9dp"
+        android:text="Select your file"
+        android:textColor="#6C7A8C"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/upload_arrow_id"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

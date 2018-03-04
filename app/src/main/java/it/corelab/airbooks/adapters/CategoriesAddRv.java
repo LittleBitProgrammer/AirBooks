@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.activity.AddDescription;
 import it.corelab.airbooks.activity.AddSection;
 import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.object.Item;
@@ -54,7 +55,7 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext() , AddSection.class);
+                Intent intent = new Intent(view.getContext() , AddDescription.class);
                 view.getContext().startActivity(intent);
             }
         });
