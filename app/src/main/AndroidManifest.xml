@@ -36,7 +36,7 @@
 
         <activity android:name=".activity.AddSection" />
         <activity android:name=".activity.Categories" />
-        <activity android:name=".activity.AddDescription"></activity>
+        <activity android:name=".activity.AddDescription"/>
     </application>
 
 </manifest>
