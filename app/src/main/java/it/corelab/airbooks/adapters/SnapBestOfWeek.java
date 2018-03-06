@@ -56,11 +56,16 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                     Intent sharedIntent = new Intent(context, BookDetail.class);
 
-                    Pair[] pairs = new Pair[1];
-                    pairs[0] = new Pair<View, String>(holder.image, "imageTransition");
+                    Pair[] pairs = new Pair[2];
+                    pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
+                    pairs[1] = new Pair<View, String>(holder.image, "imageTransition");
+
                     sharedIntent.putExtra("pos", item.getDrawable());
+                    sharedIntent.putExtra("title", item.getName());
+                    sharedIntent.putExtra("genre", item.getGenreColor());
 
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
                     context.startActivity(sharedIntent, options.toBundle());
