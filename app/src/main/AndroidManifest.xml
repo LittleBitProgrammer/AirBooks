@@ -36,7 +36,8 @@
 
         <activity android:name=".activity.AddSection" />
         <activity android:name=".activity.Categories" />
-        <activity android:name=".activity.AddDescription"/>
+        <activity android:name=".activity.AddDescription" />
+        <activity android:name=".activity.BookDetail"></activity>
     </application>
 
 </manifest>

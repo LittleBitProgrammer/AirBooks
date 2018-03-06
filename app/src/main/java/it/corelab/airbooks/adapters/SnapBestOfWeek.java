@@ -1,8 +1,12 @@
 package it.corelab.airbooks.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +16,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.activity.AddDescription;
+import it.corelab.airbooks.activity.BookDetail;
+import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.object.Item;
 
 /**
@@ -38,13 +45,27 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, int position) {
-        Item item = items.get(position);
+    public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, final int position) {
+        final Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
         holder.colorGenre.setImageResource(item.getGenreColor());
         holder.title.setText(item.getName());
         holder.author.setText(item.getAuthor());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent sharedIntent = new Intent(context, BookDetail.class);
+
+                    Pair[] pairs = new Pair[1];
+                    pairs[0] = new Pair<View, String>(holder.image, "imageTransition");
+                    sharedIntent.putExtra("pos", item.getDrawable());
+
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
+                    context.startActivity(sharedIntent, options.toBundle());
+            }
+        });
 
 
     }
