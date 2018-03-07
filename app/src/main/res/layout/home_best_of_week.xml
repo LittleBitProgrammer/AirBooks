@@ -29,6 +29,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/ghost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv"
+                android:layout_marginLeft="8dp" />
 
             <ImageView
                 android:id="@+id/rettangolo_smussato_rv"
@@ -73,6 +82,48 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek"
                 android:layout_marginLeft="8dp" />
+
+            <ImageView
+                android:id="@+id/lovers_best_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/lovers"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/numb_lovers_best_week" />
+
+            <TextView
+                android:id="@+id/numb_lovers_best_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="8dp"
+                android:text="123"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/color_bestweek" />
+
+            <TextView
+                android:id="@+id/numb_readers_best_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="3dp"
+                android:text="123"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+                app:layout_constraintEnd_toStartOf="@+id/lovers_best_week" />
+
+            <ImageView
+                android:id="@+id/readers_best_week"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/reader"
+                app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+                app:layout_constraintEnd_toStartOf="@+id/numb_readers_best_week" />
 
         </android.support.constraint.ConstraintLayout>
 

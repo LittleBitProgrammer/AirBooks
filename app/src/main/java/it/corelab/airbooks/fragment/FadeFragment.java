@@ -524,7 +524,7 @@ public class FadeFragment extends Fragment {
     private void createRvBestOfWeek() {
         rvBestWeekItem = new ArrayList<>();
 
-        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "peppe"));
+        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "Monica Sabolo"));
         rvBestWeekItem.add(new Item("Titan", R.drawable.titan, R.drawable.biografy, "Alessandro Baricco"));
         rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale"));
         rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer"));

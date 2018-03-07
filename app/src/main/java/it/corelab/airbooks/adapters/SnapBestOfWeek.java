@@ -66,6 +66,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                     sharedIntent.putExtra("pos", item.getDrawable());
                     sharedIntent.putExtra("title", item.getName());
                     sharedIntent.putExtra("genre", item.getGenreColor());
+                    sharedIntent.putExtra("author", item.getAuthor());
 
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
                     context.startActivity(sharedIntent, options.toBundle());

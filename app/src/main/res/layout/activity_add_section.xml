@@ -34,7 +34,7 @@
         android:layout_marginTop="8dp"
         android:text="ADD YOUR BOOK"
         android:textColor="#FFF"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="@+id/top_bar_categories"
