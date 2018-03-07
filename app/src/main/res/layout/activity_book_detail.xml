@@ -97,7 +97,8 @@
                 android:textSize="11sp"
                 android:textColor="#FFF"
                 app:layout_constraintEnd_toEndOf="@+id/genre_color_shared"
-                app:layout_constraintTop_toBottomOf="@+id/text_genre_label" />
+                app:layout_constraintTop_toBottomOf="@+id/text_genre_label"
+                android:layout_marginRight="20dp" />
 
             <TextView
                 android:id="@+id/numb_readers_book_detail"
@@ -109,7 +110,8 @@
                 android:textSize="11sp"
                 android:textColor="#FFF"
                 app:layout_constraintEnd_toStartOf="@+id/lovers_book_detail"
-                app:layout_constraintTop_toBottomOf="@+id/text_genre_label" />
+                app:layout_constraintTop_toBottomOf="@+id/text_genre_label"
+                android:layout_marginRight="8dp" />
 
             <ImageView
                 android:id="@+id/readers_book_detail"
@@ -119,7 +121,8 @@
                 android:src="@drawable/reader"
                 android:tint="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/numb_readers_book_detail"
-                app:layout_constraintTop_toTopOf="@+id/numb_readers_book_detail" />
+                app:layout_constraintTop_toTopOf="@+id/numb_readers_book_detail"
+                android:layout_marginRight="1dp" />
 
             <ImageView
                 android:id="@+id/lovers_book_detail"
@@ -130,7 +133,8 @@
                 android:src="@drawable/lovers"
                 android:tint="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/numb_lovers_book_detail"
-                app:layout_constraintTop_toBottomOf="@+id/text_genre_label" />
+                app:layout_constraintTop_toBottomOf="@+id/text_genre_label"
+                android:layout_marginRight="2dp" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -209,14 +213,29 @@
         android:id="@+id/description_book_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/color_button_read_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/author_bookDetail" />
+
+    <Button
+        android:id="@+id/color_button_read_now"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_read"
+        android:scaleType="fitXY"
+        android:text="READ NOW"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/description_book_detail"
+        app:layout_constraintStart_toStartOf="@+id/description_book_detail" />
 
 </android.support.constraint.ConstraintLayout>
