@@ -36,7 +36,7 @@
             android:textSize="24sp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <it.corelab.airbooks.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <it.corelab.airbooks.widget.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profileImagePlaceHolder"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/top_bar_description_popup" />
 
-        <it.corelab.airbooks.JustifyTextView
+        <it.corelab.airbooks.widget.JustifyTextView
             android:id="@+id/text_description_popup_event"
             android:layout_width="0dp"
             android:layout_height="0dp"

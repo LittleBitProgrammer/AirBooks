@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

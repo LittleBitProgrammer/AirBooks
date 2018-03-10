@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context="it.corelab.airbooks.activity.AllReviews">
 
+    <ImageView
+        android:id="@+id/top_bar_all_reviews"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/barra_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/top_bar_name_all_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ALL REVIEWS"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_all_reviews"
+        app:layout_constraintStart_toStartOf="@+id/top_bar_all_reviews"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews" />
+
+    <ImageButton
+        android:id="@+id/dismiss_button_all_reviews"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/dismiss"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_all_reviews"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews" />
+
+    <ListView
+        android:id="@+id/listView_all_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="#F0F2F4"
+        android:dividerHeight="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_all_reviews"
+        app:layout_constraintVertical_bias="1.0" />
+
 </android.support.constraint.ConstraintLayout>

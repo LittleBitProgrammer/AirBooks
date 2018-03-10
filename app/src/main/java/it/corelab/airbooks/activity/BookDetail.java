@@ -80,11 +80,12 @@ public class BookDetail extends AppCompatActivity {
         bookDetailgenreColor.setBackgroundResource(extras.getInt("genre"));
         bookDetailAuthor.setText(extras.getString("author"));
 
+        final Intent starIntent = new Intent(BookDetail.this,AllReviews.class);
+
 
         star.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent starIntent = new Intent(BookDetail.this,AddSection.class);
                 startActivity(starIntent);
             }
         });
