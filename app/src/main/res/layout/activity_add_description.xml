@@ -7,7 +7,7 @@
     tools:context="it.corelab.airbooks.activity.AddDescription">
 
     <ImageView
-        android:id="@+id/top_bar_description"
+        android:id="@+id/top_bar_description_popup"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:scaleType="fitXY"
@@ -27,10 +27,10 @@
         android:text="ADD YOUR BOOK"
         android:textColor="#FFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_description"
-        app:layout_constraintStart_toStartOf="@+id/top_bar_description"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_description" />
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
+        app:layout_constraintStart_toStartOf="@+id/top_bar_description_popup"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup" />
 
     <ImageButton
         android:id="@+id/left_arrow_add_description"
@@ -42,7 +42,7 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="18dp" />
@@ -57,9 +57,9 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/dismiss"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_description"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_description"
+        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
+        app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
+        app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup"
         android:layout_marginRight="18dp" />
 
     <TextView
@@ -73,7 +73,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_description" />
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_description_popup" />
 
     <EditText
         android:id="@+id/editText_description"

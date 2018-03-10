@@ -2,6 +2,7 @@ package it.corelab.airbooks.activity;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -27,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import it.corelab.airbooks.CustomDialogClass;
 import it.corelab.airbooks.MySpannable;
 import it.corelab.airbooks.OnSwipeTouchListener;
 import it.corelab.airbooks.R;
@@ -41,6 +43,7 @@ public class BookDetail extends AppCompatActivity {
     private CardView bookDetailCardView;
     private CardView bookDetailCardviewGenre;
     private ImageButton leftArrow;
+    private ImageButton star;
     private static double screenInches;
 
     private TextView tv;
@@ -50,6 +53,8 @@ public class BookDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
 
+
+
         bookDetailCover = findViewById(R.id.image_bestweek_shared);
         bookDetailTitle = findViewById(R.id.Title_bookDetail);
         bookDetailgenreColor = findViewById(R.id.genre_color_shared);
@@ -58,6 +63,7 @@ public class BookDetail extends AppCompatActivity {
         bookDetailGenreLabel = findViewById(R.id.text_genre_label);
         bookDetailAuthor = findViewById(R.id.author_bookDetail);
         leftArrow = findViewById(R.id.left_arrow_book_detail);
+        star = findViewById(R.id.reviews_button_bookDetail);
 
         tv = (TextView) findViewById(R.id.description_book_detail);
 
@@ -73,6 +79,15 @@ public class BookDetail extends AppCompatActivity {
         bookDetailTitle.setText(extras.getString("title"));
         bookDetailgenreColor.setBackgroundResource(extras.getInt("genre"));
         bookDetailAuthor.setText(extras.getString("author"));
+
+
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent starIntent = new Intent(BookDetail.this,AddSection.class);
+                startActivity(starIntent);
+            }
+        });
 
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +154,7 @@ public class BookDetail extends AppCompatActivity {
         });
     }
 
-    public static void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {
+    public void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {
 
         if (tv.getTag() == null) {
             tv.setTag(tv.getText());
@@ -173,7 +188,7 @@ public class BookDetail extends AppCompatActivity {
         });
 
     }
-    private static SpannableStringBuilder addClickablePartTextViewResizable(final Spanned strSpanned, final TextView tv,
+    private  SpannableStringBuilder addClickablePartTextViewResizable(final Spanned strSpanned, final TextView tv,
                                                                             final int maxLine, final String spanableText, final boolean viewMore) {
         String str = strSpanned.toString();
         SpannableStringBuilder ssb = new SpannableStringBuilder(strSpanned);
@@ -182,12 +197,20 @@ public class BookDetail extends AppCompatActivity {
 
 
             ssb.setSpan(new MySpannable(false){
+                CustomDialogClass cdd=new CustomDialogClass(BookDetail.this);
                 @Override
                 public void onClick(View widget) {
-                    Log.d("SHOWMORE", "testo di prova ahahahahahah");
+                    Log.d("SHOWMORE", "view more pressed");
+                    cdd.show();
+                    ImageButton dismissButton = (ImageButton) cdd.findViewById(R.id.dismiss_button_popup);
+                    dismissButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            cdd.dismiss();
+                        }
+                    });
                 }
             }, str.indexOf(spanableText), str.indexOf(spanableText) + spanableText.length(), 0);
-
         }
         return ssb;
 
@@ -234,5 +257,9 @@ public class BookDetail extends AppCompatActivity {
         double y = Math.pow(mHeightPixels/dm.ydpi,2);
         screenInches = Math.sqrt(x+y);
         Log.d("SCREENSIZE","Screen inches : " + screenInches);
+    }
+
+    public void openDialog(CustomDialogClass customDialogClass){
+        customDialogClass.show();
     }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView android:layout_width="321dp"
+    android:layout_height="451dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#FFF"
+    android:foreground="@drawable/transparent_selector"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_selector">
+
+            <ImageView
+                android:id="@+id/top_bar_description_popup"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/barra_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_description_popup_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_description_popup_event"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="32dp"
+                android:gravity="start"
+                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum"
+                android:textAlignment="viewStart"
+                android:textColor="#6C7A8C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_bar_description_popup" />
+
+            <ImageButton
+                android:id="@+id/dismiss_button_popup"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="17dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="18dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dismiss"
+                app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
+                app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
+                app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
