@@ -51,8 +51,7 @@
         android:id="@+id/listView_all_reviews"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:divider="#F0F2F4"
-        android:dividerHeight="1dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

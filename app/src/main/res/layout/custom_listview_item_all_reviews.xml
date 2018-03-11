@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView_allReviews"
         android:layout_width="70dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginStart="19dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -32,5 +33,84 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
         app:layout_constraintTop_toTopOf="@+id/cardView_allReviews" />
+
+    <TextView
+        android:id="@+id/description_all_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="11dp"
+        android:text="here is your description"
+        android:textColor="#9EA6B2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView_allReviews"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_allReviews" />
+
+    <ImageView
+        android:id="@+id/stella_1"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/stella_piena"
+        app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:layout_marginLeft="15dp" />
+
+    <ImageView
+        android:id="@+id/stella_2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/stella_piena"
+        app:layout_constraintStart_toEndOf="@+id/stella_1"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:layout_marginLeft="3dp" />
+
+    <ImageView
+        android:id="@+id/stella_3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/stella_piena"
+        app:layout_constraintStart_toEndOf="@+id/stella_2"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:layout_marginLeft="3dp" />
+
+    <ImageView
+        android:id="@+id/stella_4"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/stella_piena"
+        app:layout_constraintStart_toEndOf="@+id/stella_3"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:layout_marginLeft="3dp" />
+
+    <ImageView
+        android:id="@+id/stella_5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/stella_vuota"
+        app:layout_constraintStart_toEndOf="@+id/stella_4"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+
+    <TextView
+        android:id="@+id/time_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:text="1 hour ago"
+        android:textColor="#B6BCC5"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/stella_5"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
 
 </android.support.constraint.ConstraintLayout>
