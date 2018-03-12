@@ -8,12 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Review;
 
 /**
@@ -22,19 +20,19 @@ import it.corelab.airbooks.object.Review;
 
 public class CustomListViewAdapter extends ArrayAdapter<Review> {
 
-    public CustomListViewAdapter(Context context, int textViewResourceId,
-                                 List<Review> objects) {
+    public CustomListViewAdapter(Context context, int textViewResourceId, List<Review> objects) {
         super(context, textViewResourceId, objects);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, null);
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image_profile_all_reviews);
         TextView textView = (TextView) convertView.findViewById(R.id.name_surname);
-        TextView description = (TextView) convertView.findViewById(R.id.description_all_reviews);
+        TextView description = (TextView) convertView.findViewById(R.id.expandable_text);
 
         ImageView stella1 = (ImageView) convertView.findViewById(R.id.stella_1);
         ImageView stella2 = (ImageView) convertView.findViewById(R.id.stella_2);
@@ -97,5 +95,4 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
 
         return convertView;
     }
-
 }

@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -53,6 +55,31 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         holder.title.setText(item.getName());
         holder.author.setText(item.getAuthor());
 
+        int drawable = item.getGenreColor();
+
+        switch (drawable){
+            case R.drawable.for_children:
+                holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.forChildrenDark));
+                holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.forChildrenLight));
+                break;
+            case R.drawable.biografy:
+                holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.biografyDark));
+                holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.biografyLight));
+                break;
+            case R.drawable.erotic:
+                holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.eroticLight));
+                holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.eroticDark));
+                break;
+            case R.drawable.sci_fi:
+                holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.scifiDark));
+                holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.scifiLight));
+                break;
+            case R.drawable.comics_manga:
+                holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.comicsDark));
+                holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.comicsLight));
+                break;
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +113,8 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         private TextView title;
         private TextView author;
         private ImageView colorGenre;
+        private ImageView lovers;
+        private ImageView readers;
 
 
 
@@ -96,6 +125,8 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
             colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
             title = (TextView) v.findViewById(R.id.title_rv_bestweek);
             author = (TextView) v.findViewById(R.id.author_bestweek);
+            lovers = (ImageView) v.findViewById(R.id.lovers_best_week);
+            readers = (ImageView) v.findViewById(R.id.readers_best_week);
         }
     }
 }

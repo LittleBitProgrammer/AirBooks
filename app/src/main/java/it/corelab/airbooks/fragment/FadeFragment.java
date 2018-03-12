@@ -529,6 +529,7 @@ public class FadeFragment extends Fragment {
         rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale"));
         rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer"));
         rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, R.drawable.comics_manga,"Fabio Volo"));
+        rvBestWeekItem.add(new Item("Papera", R.drawable.papera, R.drawable.for_children,"Marco Polo"));
     }
 
 }

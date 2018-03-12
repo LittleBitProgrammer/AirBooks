@@ -1,10 +1,18 @@
 package it.corelab.airbooks.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,6 +21,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import it.corelab.airbooks.CustomDialogClass;
+import it.corelab.airbooks.MySpannable;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.CustomListViewAdapter;
 import it.corelab.airbooks.object.Item;
@@ -30,8 +40,6 @@ public class AllReviews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_reviews);
-
-        Review review = new Review();
 
         dismissButton = findViewById(R.id.dismiss_button_all_reviews);
         reviews = findViewById(R.id.top_bar_name_all_reviews);
