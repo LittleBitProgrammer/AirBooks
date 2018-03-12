@@ -524,12 +524,12 @@ public class FadeFragment extends Fragment {
     private void createRvBestOfWeek() {
         rvBestWeekItem = new ArrayList<>();
 
-        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "Monica Sabolo"));
-        rvBestWeekItem.add(new Item("Titan", R.drawable.titan, R.drawable.biografy, "Alessandro Baricco"));
-        rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale"));
-        rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer"));
-        rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, R.drawable.comics_manga,"Fabio Volo"));
-        rvBestWeekItem.add(new Item("Papera", R.drawable.papera, R.drawable.for_children,"Marco Polo"));
+        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "Monica Sabolo", 13, 54));
+        rvBestWeekItem.add(new Item("Titan", R.drawable.titan, R.drawable.biografy, "Alessandro Baricco", 154, 132));
+        rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale", 555, 676));
+        rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer",1024, 900));
+        rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, R.drawable.comics_manga,"Fabio Volo", 3204, 6032));
+        rvBestWeekItem.add(new Item("Papera", R.drawable.papera, R.drawable.for_children,"Marco Polo", 10000, 20000));
     }
 
 }

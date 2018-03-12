@@ -41,6 +41,14 @@ public class Item {
         this.author = author;
         this.genreColor = genreColor;
     }
+    public Item(String name, int drawable, int genreColor, String author, int numbersLovers, int numberOfReaders){
+        this.name = name;
+        this.drawable = drawable;
+        this.author = author;
+        this.genreColor = genreColor;
+        this.numbersLovers = numbersLovers;
+        this.numberOfReaders = numberOfReaders;
+    }
 
     public Item(String name, int drawable, String author){
         this.name = name;

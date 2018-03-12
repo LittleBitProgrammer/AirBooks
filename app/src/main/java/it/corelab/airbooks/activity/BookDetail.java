@@ -40,6 +40,8 @@ public class BookDetail extends AppCompatActivity {
     private TextView bookDetailTitle;
     private TextView bookDetailGenreLabel;
     private TextView bookDetailAuthor;
+    private TextView numbLovers;
+    private TextView numbReaders;
     private CardView bookDetailCardView;
     private CardView bookDetailCardviewGenre;
     private ImageButton leftArrow;
@@ -64,6 +66,8 @@ public class BookDetail extends AppCompatActivity {
         bookDetailAuthor = findViewById(R.id.author_bookDetail);
         leftArrow = findViewById(R.id.left_arrow_book_detail);
         star = findViewById(R.id.reviews_button_bookDetail);
+        numbLovers = findViewById(R.id.numb_lovers_book_detail);
+        numbReaders = findViewById(R.id.numb_readers_book_detail);
 
         tv = (TextView) findViewById(R.id.description_book_detail);
 
@@ -79,6 +83,8 @@ public class BookDetail extends AppCompatActivity {
         bookDetailTitle.setText(extras.getString("title"));
         bookDetailgenreColor.setBackgroundResource(extras.getInt("genre"));
         bookDetailAuthor.setText(extras.getString("author"));
+        numbLovers.setText("" + extras.getInt("loversNumb"));
+        numbReaders.setText("" + extras.getInt("readersNumb" ));
 
         final Intent starIntent = new Intent(BookDetail.this,AllReviews.class);
 
