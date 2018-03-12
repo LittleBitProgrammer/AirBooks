@@ -4,4 +4,7 @@
     <declare-styleable name="CustomTextInputLayout" >
         <attr name="mainHintTextSize" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="ExpandableTextView">
+        <attr name="animation_duration" format="integer"/>
+    </declare-styleable>
 </resources>

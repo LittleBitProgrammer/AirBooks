@@ -9,11 +9,9 @@
         android:id="@+id/cardView_allReviews"
         android:layout_width="70dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="11dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/expandable_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -102,17 +100,34 @@
         app:layout_constraintStart_toEndOf="@+id/stella_5"
         app:layout_constraintTop_toBottomOf="@+id/name_surname" />
 
-    <TextView
+    <it.corelab.airbooks.widget.ExpandableTextView
         android:id="@+id/expandable_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:paddingBottom="2dp"
         android:text="here is your description"
         android:textColor="#9EA6B2"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/read_all_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/cardView_allReviews" />
+        app:layout_constraintStart_toStartOf="@+id/cardView_allReviews"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_allReviews" />
+
+    <Button
+        android:id="@+id/read_all_button"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:text="Read all"
+        android:textAlignment="viewStart"
+        android:textColor="#4790E1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
