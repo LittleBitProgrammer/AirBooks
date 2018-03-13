@@ -27,6 +27,7 @@ import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.CustomListViewAdapter;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Review;
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 public class AllReviews extends AppCompatActivity {
 
@@ -49,6 +50,10 @@ public class AllReviews extends AppCompatActivity {
 
         CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(this, R.layout.custom_listview_item_all_reviews, listViewItem );
         listView.setAdapter(customListViewAdapter);
+
+        listView.setDrawingCacheEnabled(true);
+        listView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        listView.buildDrawingCache();
 
         reviews.setText("REVIEWS (" + listView.getAdapter().getCount() +" )");
         reviews.setTextSize(18);

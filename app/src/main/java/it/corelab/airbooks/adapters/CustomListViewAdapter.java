@@ -65,7 +65,9 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
 
         description.setAnimationDuration(450L);
 
-
+        description.setDrawingCacheEnabled(true);
+        description.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        description.buildDrawingCache();
 
          // or set them separately
         description.setExpandInterpolator(new OvershootInterpolator(1.0f));
@@ -144,10 +146,14 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
                 else
                 {
                     description.expand();
-                    buttonToggle.setText("Read less");
+                    buttonToggle.setText("Read more");
                 }
             }
         });
+
+        buttonToggle.setDrawingCacheEnabled(true);
+        buttonToggle.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        buttonToggle.buildDrawingCache();
 
         // listen for expand / collapse events
         description.setOnExpandListener(new ExpandableTextView.OnExpandListener()
