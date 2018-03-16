@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import it.corelab.airbooks.CustomDialogClass;
+import it.corelab.airbooks.GestureHelper;
 import it.corelab.airbooks.MySpannable;
 import it.corelab.airbooks.OnSwipeTouchListener;
 import it.corelab.airbooks.R;
@@ -47,6 +48,7 @@ public class BookDetail extends AppCompatActivity {
     private ImageButton leftArrow;
     private ImageButton star;
     private static double screenInches;
+    boolean isSwipedCenter = true;
 
     private TextView tv;
 
@@ -54,7 +56,6 @@ public class BookDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
-
 
 
         bookDetailCover = findViewById(R.id.image_bestweek_shared);
@@ -146,19 +147,53 @@ public class BookDetail extends AppCompatActivity {
         }
 
 
-        bookDetailCardView.setOnTouchListener(new OnSwipeTouchListener(BookDetail.this) {
+        bookDetailCardView.setOnTouchListener(new GestureHelper(BookDetail.this) {
+
             public void onSwipeTop() {
-                Log.d("swipe bookDetail", "swipe TOP");
-                bookDetailCardView.animate().translationY(0);
-                bookDetailCardviewGenre.animate().translationY(0);
+                swipeTopAnimation();
             }
 
             public void onSwipeBottom() {
-                Log.d("swipe bookDetail", "swipe BOTTOM");
-                bookDetailCardView.animate().translationY(20);
-                bookDetailCardviewGenre.animate().translationY(-30);
+                swipeDownAnimation();
+            }
+            public void onClick() {
+                if (isSwipedCenter){
+                    tapDownAnimation();
+                }
+                else if (!isSwipedCenter){
+                    tapTopAnimation();
+                }
+
             }
         });
+    }
+
+    public void swipeDownAnimation(){
+        Log.d("swipe bookDetail", "swipe BOTTOM");
+        bookDetailCardView.animate().translationY(20);
+        bookDetailCardviewGenre.animate().translationY(-30);
+        this.isSwipedCenter = false;
+    }
+
+    public void swipeTopAnimation(){
+        Log.d("swipe bookDetail", "swipe BOTTOM");
+        bookDetailCardView.animate().translationY(0);
+        bookDetailCardviewGenre.animate().translationY(0);
+        this.isSwipedCenter = true;
+    }
+
+    public void tapDownAnimation(){
+        Log.d("swipe bookDetail", "click to bottom");
+        bookDetailCardView.animate().translationY(20);
+        bookDetailCardviewGenre.animate().translationY(-30);
+        this.isSwipedCenter = false;
+    }
+
+    public void tapTopAnimation(){
+        Log.d("swipe bookDetail", "click to center");
+        bookDetailCardView.animate().translationY(0);
+        bookDetailCardviewGenre.animate().translationY(0);
+        this.isSwipedCenter = true;
     }
 
     public void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {

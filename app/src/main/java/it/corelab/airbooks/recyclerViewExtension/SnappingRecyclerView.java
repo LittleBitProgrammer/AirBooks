@@ -175,7 +175,7 @@ public class SnappingRecyclerView extends RecyclerView {
 
             if (_alphaViews){
                 float percentage = getPercentageFromCenter(child);
-                float alphaScale = 1.0f - (0.6f * percentage);
+                float alphaScale = 1.0f - (0.2f * percentage);
                 child.setAlpha(alphaScale);
             }
         }

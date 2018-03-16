@@ -18,7 +18,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'int', 'DEFAULT_ANIMATION_DURATION', '750'
+        buildConfigField 'int', 'DEFAULT_ANIMATION_DURATION', '450'
     }
     buildTypes {
         release {
