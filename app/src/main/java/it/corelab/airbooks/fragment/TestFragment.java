@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
-/**
- * Created by priyank on 4/1/16.
- */
 public class TestFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
     private static final String HTML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +

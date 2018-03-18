@@ -1,7 +1,6 @@
 package it.corelab.airbooks.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -12,8 +11,6 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.TouchDelegate;
 import android.view.View;
@@ -21,13 +18,10 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import java.util.ArrayList;
@@ -36,7 +30,6 @@ import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.AddSection;
 import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
-import it.corelab.airbooks.adapters.GravitySnapHelper;
 import it.corelab.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.airbooks.adapters.SnapBestOfWeek;
 import it.corelab.airbooks.adapters.SnapCategoriesAdapter;
@@ -63,6 +56,7 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Item> libraryCardItem;
    private ArrayList<Showcase> showcaseCardItem;
+
    private Button buttonAction;
 
    public static InfiniteRotationView rotationView;
@@ -116,6 +110,8 @@ public class FadeFragment extends Fragment {
        }
    }
 
+
+
    /*
    Called when a fragment will be displayed
     */
@@ -127,6 +123,8 @@ public class FadeFragment extends Fragment {
            fragmentContainer.startAnimation(fadeIn);
        }
    }
+
+
 
    /*
    called when a fragment will be hidden

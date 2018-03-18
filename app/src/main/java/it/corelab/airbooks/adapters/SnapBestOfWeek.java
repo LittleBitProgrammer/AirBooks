@@ -5,9 +5,6 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,9 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.activity.AddDescription;
 import it.corelab.airbooks.activity.BookDetail;
-import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.object.Item;
 
 /**

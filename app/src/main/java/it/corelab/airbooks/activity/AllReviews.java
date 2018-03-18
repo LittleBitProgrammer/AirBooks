@@ -1,33 +1,19 @@
 package it.corelab.airbooks.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-import it.corelab.airbooks.CustomDialogClass;
-import it.corelab.airbooks.MySpannable;
+
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.CustomListViewAdapter;
-import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Review;
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 public class AllReviews extends AppCompatActivity {
 
@@ -72,6 +58,17 @@ public class AllReviews extends AppCompatActivity {
             }
         });
     }
+
+
+
+    //==========================
+    //      other methods
+    //==========================
+
+    /*
+    * Creating as a placeholder the list of reviews
+    * Here we are using the class Review and his constructor
+     */
 
     private void createElementListView(){
 

@@ -1,6 +1,5 @@
 package it.corelab.airbooks.object;
 
-import it.corelab.airbooks.R;
 
 /**
  * Created by Roberto_Vecchio on 05/02/18.

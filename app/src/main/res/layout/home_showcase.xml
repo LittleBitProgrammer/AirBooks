@@ -10,8 +10,6 @@
         android:id="@+id/cardView2"
         android:layout_width="340dp"
         android:layout_height="168dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
         android:orientation="vertical"
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"

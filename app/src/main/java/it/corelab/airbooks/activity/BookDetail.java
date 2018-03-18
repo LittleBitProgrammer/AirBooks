@@ -1,8 +1,5 @@
 package it.corelab.airbooks.activity;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -16,22 +13,18 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Display;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import it.corelab.airbooks.CustomDialogClass;
 import it.corelab.airbooks.GestureHelper;
 import it.corelab.airbooks.MySpannable;
-import it.corelab.airbooks.OnSwipeTouchListener;
 import it.corelab.airbooks.R;
 
 public class BookDetail extends AppCompatActivity {
