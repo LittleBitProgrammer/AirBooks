@@ -19,7 +19,8 @@
             android:id="@+id/image_profile_all_reviews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:contentDescription="@string/profile_image_review"/>
     </android.support.v7.widget.CardView>
 
     <TextView
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="1dp"
-        android:text="Name Surname"
+        android:text="@string/name_surname_review"
         android:textColor="#8A93A2"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
@@ -43,7 +44,8 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/stella_piena"
         app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:contentDescription="@string/stella_1"/>
 
     <ImageView
         android:id="@+id/stella_2"
@@ -54,7 +56,8 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/stella_piena"
         app:layout_constraintStart_toEndOf="@+id/stella_1"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:contentDescription="@string/stella_2"/>
 
     <ImageView
         android:id="@+id/stella_3"
@@ -65,7 +68,8 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/stella_piena"
         app:layout_constraintStart_toEndOf="@+id/stella_2"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:contentDescription="@string/stella_3"/>
 
     <ImageView
         android:id="@+id/stella_4"
@@ -76,7 +80,8 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/stella_piena"
         app:layout_constraintStart_toEndOf="@+id/stella_3"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:contentDescription="@string/stella_4"/>
 
     <ImageView
         android:id="@+id/stella_5"
@@ -86,7 +91,8 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/stella_vuota"
         app:layout_constraintStart_toEndOf="@+id/stella_4"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/name_surname"
+        android:contentDescription="@string/stella_5"/>
 
     <TextView
         android:id="@+id/time_hour"
@@ -94,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
-        android:text="1 hour ago"
+        android:text="@string/time_ago_review"
         android:textColor="#B6BCC5"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/stella_5"
@@ -109,7 +115,7 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:paddingBottom="2dp"
-        android:text="here is your description"
+        android:text="@string/review_description"
         android:textColor="#9EA6B2"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/read_all_button"
@@ -124,7 +130,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginStart="16dp"
         android:background="@android:color/transparent"
-        android:text="Read all"
+        android:text="@string/button_read_all"
         android:textAlignment="viewStart"
         android:textColor="#4790E1"
         app:layout_constraintBottom_toBottomOf="parent"

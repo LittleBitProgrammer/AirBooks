@@ -39,7 +39,7 @@
         <activity android:name=".activity.AddDescription" />
         <activity android:name=".activity.BookDetail" />
         <activity android:name=".activity.ReadActivity" />
-        <activity android:name=".activity.AllReviews"></activity>
+        <activity android:name=".activity.AllReviews"/>
     </application>
 
 </manifest>

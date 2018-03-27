@@ -14,7 +14,8 @@
         android:src="@drawable/barra_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/topBar"/>
 
     <TextView
         android:id="@+id/top_bar_name_all_reviews"
@@ -24,7 +25,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="ALL REVIEWS"
+        android:text="@string/all_review_section"
         android:textColor="#FFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
@@ -45,7 +46,8 @@
         android:src="@drawable/dismiss"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_all_reviews"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews" />
+        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews"
+        android:contentDescription="@string/dismiss_button"/>
 
     <ListView
         android:id="@+id/listView_all_reviews"

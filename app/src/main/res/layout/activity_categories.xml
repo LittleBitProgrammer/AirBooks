@@ -14,7 +14,8 @@
         android:src="@drawable/barra_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/topBar"/>
 
     <TextView
         android:id="@+id/top_bar_name"
@@ -24,9 +25,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="ADD YOUR BOOK"
+        android:text="@string/section_add_your_book"
         android:textColor="#FFF"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="@+id/top_bar_categories"
@@ -45,7 +46,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="18dp" />
+        android:layout_marginLeft="18dp"
+        android:contentDescription="@string/back_button"/>
 
     <ImageButton
         android:id="@+id/dismiss_button"
@@ -60,7 +62,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_categories"
         app:layout_constraintTop_toTopOf="@+id/top_bar_categories"
-        android:layout_marginRight="18dp" />
+        android:layout_marginRight="18dp"
+        android:contentDescription="@string/dismiss_button"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/categories_add_rv"
@@ -77,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="18dp"
-        android:text="Selecte your genre"
+        android:text="@string/select_genre_add_book"
         android:textColor="#6C7A8C"
         android:textSize="33sp"
         android:textStyle="bold"

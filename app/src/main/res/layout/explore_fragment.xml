@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/explore_actionbar" />
+        app:srcCompat="@drawable/explore_actionbar"
+        android:contentDescription="@string/background_image"/>
 
     <it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView
         android:id="@+id/recycler_view_explore"

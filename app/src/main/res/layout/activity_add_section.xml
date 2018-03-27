@@ -22,7 +22,8 @@
         android:src="@drawable/barra_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/topBar"/>
 
     <TextView
         android:id="@+id/top_bar_name"
@@ -32,7 +33,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="ADD YOUR BOOK"
+        android:text="@string/section_add_your_book"
         android:textColor="#FFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
@@ -53,7 +54,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="18dp" />
+        android:layout_marginLeft="18dp"
+        android:contentDescription="@string/back_button"/>
     <it.corelab.airbooks.CustomTextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="0dp"
@@ -63,7 +65,7 @@
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         android:windowSoftInputMode="stateAlwaysVisible"
-        android:hint="Insert your title here"
+        android:hint="@string/editText_hint_add_book"
         android:textColorHint="#B6BCC5"
         app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
         app:hintEnabled="true"
@@ -94,7 +96,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/button_next"
         android:scaleType="fitXY"
-        android:text="NEXT"
+        android:text="@string/next_button_text"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -124,7 +126,8 @@
             android:src="@drawable/placeholder_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_bar_categories" />
+            app:layout_constraintTop_toBottomOf="@+id/top_bar_categories"
+            android:contentDescription="@string/insert_image_add_book"/>
 
     </android.support.v7.widget.CardView>
 

@@ -22,7 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/explore_actionbar" />
+            app:srcCompat="@drawable/explore_actionbar"
+            android:contentDescription="@string/background_image"/>
 
         <it.corelab.airbooks.widget.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profileImagePlaceHolder"
@@ -46,7 +47,7 @@
             android:layout_marginStart="98dp"
             android:layout_marginTop="7dp"
             android:fontFamily="sans-serif"
-            android:text="Marion Newton"
+            android:text="@string/name_surname_profile"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +67,8 @@
             app:layout_constraintTop_toBottomOf="@+id/NameSurname"
             app:srcCompat="@drawable/pin_icona2"
             android:layout_marginRight="3dp"
-            android:layout_marginLeft="9dp" />
+            android:layout_marginLeft="9dp"
+            android:contentDescription="@string/provenance_pin_profile"/>
 
         <ImageView
             android:id="@+id/readerImage"
@@ -78,7 +80,8 @@
             android:tint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NameSurname"
-            android:layout_marginLeft="121dp" />
+            android:layout_marginLeft="121dp"
+            android:contentDescription="@string/numbers_of_readers_image_contentDescription"/>
 
         <TextView
             android:id="@+id/fromTo"
@@ -88,7 +91,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="5dp"
             android:fontFamily="sans-serif"
-            android:text="Italy"
+            android:text="@string/provenance_text_placeHolder"
             android:textColor="#C9D5E3"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +110,7 @@
             android:layout_marginTop="6dp"
             android:background="@drawable/btn_click"
             android:elevation="0dp"
-            android:text="Follow"
+            android:text="@string/follow_button_profile"
             android:textAlignment="center"
             android:textColor="#4A89AC"
             android:textSize="16sp"
@@ -125,7 +128,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="6dp"
             android:fontFamily="sans-serif"
-            android:text="2178"
+            android:text="@string/numbers_readers_text_placeHolder"
             android:textColor="#C9D5E3"
             android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@+id/readerImage"
@@ -148,7 +151,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="All Books (27)"
+            android:text="@string/all_books_profile"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +166,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="9dp"
             android:fontFamily="sans-serif"
-            android:text="All reviews (220)"
+            android:text="@string/all_reviews_profile"
             android:textColor="#687688"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

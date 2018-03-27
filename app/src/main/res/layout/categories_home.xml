@@ -23,7 +23,8 @@
             android:padding="0dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/category_type"/>
 
         <TextView
             android:id="@+id/categories_home_id"

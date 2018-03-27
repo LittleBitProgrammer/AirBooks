@@ -13,7 +13,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/explore_actionbar" />
+        app:srcCompat="@drawable/explore_actionbar"
+        android:contentDescription="@string/background_image"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -44,7 +45,8 @@
                 android:layout_marginTop="5dp"
                 android:paddingLeft="8dp"
                 android:src="@drawable/icona_search"
-                android:tint="#6C798B" />
+                android:tint="#6C798B"
+                android:contentDescription="@string/search_icon"/>
 
             <EditText
                 android:id="@+id/ed_home_searchbar"
@@ -53,7 +55,7 @@
                 android:layout_toLeftOf="@+id/iv_search_icon"
                 android:layout_toRightOf="@+id/iv_search_mic"
                 android:background="@android:color/transparent"
-                android:hint="Search books..."
+                android:hint="@string/search_library_hint"
                 android:imeOptions="actionSearch"
                 android:lines="1"
                 android:maxLines="1"

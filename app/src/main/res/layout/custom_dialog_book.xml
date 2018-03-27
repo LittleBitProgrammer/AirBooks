@@ -23,14 +23,16 @@
             android:src="@drawable/barra_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/topBar_alert"
+            />
 
         <TextView
             android:id="@+id/title_description_popup_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Description"
+            android:text="@string/title_topBar_alert"
             android:textAlignment="center"
             android:textColor="#FFF"
             android:textSize="24sp"
@@ -61,7 +63,7 @@
             android:layout_marginTop="12dp"
             android:gravity="center|right"
 
-            android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum"
+            android:text="@string/placeholder_text_showMore_alert"
             android:textAlignment="center"
             android:textColor="#6C7A8C"
             android:textSize="16sp"
@@ -82,6 +84,7 @@
             android:src="@drawable/dismiss"
             app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
             app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
-            app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup" />
+            app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup"
+            android:contentDescription="@string/dismiss_button"/>
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

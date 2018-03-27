@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/background_image"/>
 
     <TextView
         android:id="@+id/top_bar_name"
@@ -24,7 +25,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="18dp"
-        android:text="BOOK DETAIL"
+        android:text="@string/book_detail_name_section"
         android:textColor="#FFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +44,8 @@
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_button"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView_categories_shared"
@@ -69,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/for_children"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:contentDescription="@string/image_colorGenre"/>
 
             <TextView
                 android:id="@+id/text_genre_label"
@@ -78,7 +81,7 @@
                 android:layout_marginBottom="49dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginStart="2dp"
-                android:text="Genre"
+                android:text="@string/drawable_card_genre"
                 android:textColor="#F9F9F9"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -93,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
-                android:text="123"
+                android:text="@string/numbers_lovers_text_placeHolder"
                 android:textColor="#FFF"
                 android:textSize="11sp"
                 app:layout_constraintStart_toEndOf="@+id/lovers_book_detail"
@@ -105,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="3dp"
                 android:layout_marginTop="1dp"
-                android:text="123"
+                android:text="@string/numbers_readers_text_placeHolder"
                 android:textColor="#FFF"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -119,7 +122,8 @@
                 android:src="@drawable/reader"
                 android:tint="#FFF"
                 app:layout_constraintEnd_toStartOf="@+id/numb_readers_book_detail"
-                app:layout_constraintTop_toTopOf="@+id/numb_readers_book_detail" />
+                app:layout_constraintTop_toTopOf="@+id/numb_readers_book_detail"
+                android:contentDescription="@string/numbers_of_readers_image_contentDescription"/>
 
             <ImageView
                 android:id="@+id/lovers_book_detail"
@@ -130,7 +134,8 @@
                 android:src="@drawable/lovers"
                 android:tint="#FFF"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/text_genre_label" />
+                app:layout_constraintTop_toBottomOf="@+id/text_genre_label"
+                android:contentDescription="@string/numbers_lovers_image"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline5"
@@ -166,7 +171,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/cover_book"/>
     </android.support.v7.widget.CardView>
 
     <TextView
@@ -176,7 +182,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="9dp"
-        android:text="This is a try"
+        android:text="@string/title_book_detail"
         android:textColor="#6C7A8C"
         android:textSize="27sp"
         android:textStyle="bold"
@@ -192,7 +198,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
         android:fontFamily="@font/didot"
-        android:text="author"
+        android:text="@string/author_book_detail"
         android:textColor="#4790E1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +216,8 @@
         android:scaleType="fitXY"
         android:src="@drawable/stella"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/reviews_button"/>
 
     <TextView
         android:id="@+id/description_book_detail"
@@ -220,7 +227,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
-        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum"
+        android:text="@string/placeholder_text_showMore_alert"
         app:layout_constraintBottom_toTopOf="@+id/color_button_read_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +240,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_read"
         android:scaleType="fitXY"
-        android:text="READ NOW"
+        android:text="@string/read_now_button"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

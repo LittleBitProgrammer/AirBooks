@@ -14,7 +14,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena5"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_vuota" />
+        app:srcCompat="@drawable/stella_vuota"
+        android:contentDescription="@string/stella_5"/>
 
     <ImageView
         android:id="@+id/stellaPiena5"
@@ -25,7 +26,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena4"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:contentDescription="@string/stella_4"/>
 
     <ImageView
         android:id="@+id/stellaPiena4"
@@ -36,7 +38,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena2"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:contentDescription="@string/stella_3"/>
 
     <ImageView
         android:id="@+id/stellaPiena2"
@@ -47,7 +50,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/stellaPiena"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:contentDescription="@string/stella_2"/>
 
     <ImageView
         android:id="@+id/stellaPiena"
@@ -57,7 +61,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena" />
+        app:srcCompat="@drawable/stella_piena"
+        android:contentDescription="@string/stella_1"/>
 
     <TextView
         android:id="@+id/author_id"
@@ -67,9 +72,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="serif"
-        android:text="by Gerard Woodward"
+        android:text="@string/author_name_explore"
         android:textColor="#4790E1"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookName" />
@@ -81,9 +86,9 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:text="All this has"
+        android:text="@string/book_title_explore"
         android:textColor="#6C7A8C"
-        android:textSize="33dp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +106,8 @@
             android:id="@+id/cardImage_explore"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:contentDescription="@string/cover_book"/>
 
     </android.support.v7.widget.CardView>
 
@@ -112,7 +118,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
-        android:text="97 Reviews"
+        android:text="@string/number_reviews_explore"
         android:textColor="#9EA6B2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +134,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/button_read_now"
         android:scaleType="fitXY"
-        android:text="READ NOW"
+        android:text="@string/read_now_button"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"

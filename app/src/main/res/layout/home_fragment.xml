@@ -30,7 +30,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/explore_actionbar" />
+                    app:srcCompat="@drawable/explore_actionbar"
+                    android:contentDescription="@string/background_image"/>
 
                 <ImageButton
                     android:id="@+id/search_button_home"
@@ -44,7 +45,8 @@
                     android:src="@drawable/icona_search"
                     android:tint="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/search_icon"/>
 
                 <ImageButton
                     android:id="@+id/add_button_home"
@@ -57,7 +59,8 @@
                     android:src="@drawable/add_icon"
                     android:tint="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/add_book_button"/>
 
                 <it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView
                     android:id="@+id/rv_showcase"
@@ -74,9 +77,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="24dp"
-                    android:text="Continue to read"
+                    android:text="@string/continue_read"
                     android:textColor="#FFF"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rv_showcase"
                     android:layout_marginLeft="10dp" />
@@ -86,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Categories"
+                    android:text="@string/categories_home"
                     android:textColor="#6E7071"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Best of Week"
+                    android:text="@string/best_weeek"
                     android:textColor="#6E7071"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +142,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="25dp"
                     android:fontFamily="@font/koliko"
-                    android:text="Airbooks"
+                    android:text="@string/main_section_appName"
                     android:textAlignment="center"
                     android:textColor="#FFF"
                     android:textSize="32sp"
