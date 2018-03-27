@@ -115,6 +115,7 @@ public class BookDetail extends AppCompatActivity {
 
         if (screenInches >= 5){
             makeTextViewResizable(tv, 8, "View More", true);
+        }else {makeTextViewResizable(tv, 7, "View More", true);
         }
 
 

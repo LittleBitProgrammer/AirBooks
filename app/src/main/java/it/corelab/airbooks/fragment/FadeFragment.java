@@ -4,20 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
@@ -43,41 +42,72 @@ import it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
+/*
+
+* This is official coded by © Roberto Vecchio and property of all member of: corelab
+* if you want to use this code send an email to: vecchioroberto93@gmail.com
+* Any uses without permission could be subject to legal action
+
+ */
 
 public class FadeFragment extends Fragment {
 
+    /*
+
+    * frame layout that contains all the section managed in the bottom bar
+    * @fragmentContainer is never accessed because
+    * we have commented @willBeHidden and @willBeDisplay
+
+     */
+
    private FrameLayout fragmentContainer;
+
+
+   /*
+
+   * Initialization of the @GLOBAL recyclerView
+   * The first recyclerView is used for the management of section in the refresh method
+
+    */
+
    private RecyclerView recyclerView;
-   private RecyclerView recyclerViewLibrary;
-   private RecyclerView cardReviewRecycleView;
-   private SnappingRecyclerView recyclerCardExplore;
+
+
+   /*
+
+   * This is the global variable of the autoScroll recyclerView
+   * Is declared as global because it is called by onDestroyMethod in MainActivity
+
+    */
+
+    public static InfiniteRotationView rotationView;
+
+
+   /*
+
+   * Initialization of the ArrayList
+   * These ArrayList are used to populate the cell of the recyclerView
+   * Modify the generics < > to change what type you would use
+
+    */
+
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
    private ArrayList<Item> exploreCardItem;
    private ArrayList<Item> libraryCardItem;
+   private ArrayList<Item> rvContinueReadItem;
+   private ArrayList<Item> rvCategoriesItem;
+   private ArrayList<Item> rvBestWeekItem;
    private ArrayList<Showcase> showcaseCardItem;
-
-   private Button buttonAction;
-
-   public static InfiniteRotationView rotationView;
-
-   private RecyclerView rvContinueRead;
-   private RecyclerView rvCategories;
-   private RecyclerView rvBestWeek;
-
-
-    private ArrayList<Item> rvContinueReadItem;
-    private ArrayList<Item> rvCategoriesItem;
-    private ArrayList<Item> rvBestWeekItem;
-
-    private ImageButton addButtonHome;
-    private ImageButton search;
-    private NestedScrollView nestedScrollView;
 
 
    /*
-   create a new istance of the fragment
+
+   * create a new istance of the fragment
+   * this istance of fragment is used by section to initialize different layout
+
     */
+
    public static FadeFragment newInstance(int index){
        FadeFragment fragment = new FadeFragment();
        Bundle b = new Bundle();
@@ -87,37 +117,62 @@ public class FadeFragment extends Fragment {
    }
 
 
+   /*=====================================================================
+                                onCreateView
+    ====================================================================*/
 
-   @Nullable
+   /*
+
+   * This is our onCreate method
+   * @onCreate call different layout
+   * based on the index that the bottomBar return in airbook's app
+   * after the index return the method to init our choosen @USER INTERFACE
+   * and finally return the @VIEW to the user
+
+   */
+
+
    @Override
-   public View onCreateView(LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
+   public View onCreateView(@NonNull LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
+
        if(getArguments().getInt("index", 0) == 0){
            View view = inflanter.inflate(R.layout.home_fragment, container, false);
            initHome(view);
            return view;
-       }else if(getArguments().getInt("index",0) == 1 ){
+       }
+
+       else if(getArguments().getInt("index",0) == 1 ){
            View view = inflanter.inflate(R.layout.explore_fragment, container, false);
            initExplore(view);
            return view;
-       }else if(getArguments().getInt("index", 0) == 2){
+       }
+
+       else if(getArguments().getInt("index", 0) == 2){
            View view = inflanter.inflate(R.layout.library_fragment, container, false);
            initLibrary(view);
            return view;
-       }else{
+       }
+
+       else{
            View view = inflanter.inflate(R.layout.profile_fragment, container, false);
            initProfile(view);
            return view;
        }
+
    }
 
 
 
    /*
-   Called when a fragment will be displayed
-    */
+
+   // USE THIS METHOD IF YOU NEED TO ANIMATE IN ENTRY A SECTION OF BOTTOM
+   * Called when a fragment will be displayed
+   * Do what you want here, for example animate the content
+
+   * ========================================================================================= *
+
 
    public void willBeDisplayed(){
-       // Do what you want here, for example animate the content
        if(fragmentContainer!= null){
            Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
            fragmentContainer.startAnimation(fadeIn);
@@ -125,10 +180,19 @@ public class FadeFragment extends Fragment {
    }
 
 
+   * ========================================================================================= *
 
-   /*
-   called when a fragment will be hidden
-    */
+
+
+
+
+   // USE THIS METHOD IF YOU NEED TO ANIMATE IN EXIT A SECTION OF BOTTOM
+   * called when a fragment will be hidden
+   * Do what you want here, for example animate the content
+
+
+   * ========================================================================================= *
+
 
    public void willBeHidden(){
        if (fragmentContainer != null){
@@ -137,8 +201,14 @@ public class FadeFragment extends Fragment {
        }
    }
 
-   /*
-   refresh
+
+   * ========================================================================================= *
+
+
+
+   * @refresh method
+   * used to smooth scroll to choosen section of bottomBar
+
     */
 
     public void refresh() {
@@ -147,34 +217,115 @@ public class FadeFragment extends Fragment {
         }
     }
 
+
+    /*=====================================================================
+                                initHome()
+    =====================================================================*/
+
     /*
-    home init
+
+    * home initialization
+    * this method is used by @onCreateView at @125 line
+    * to initialize the @USER INTERFACE of the home
+
      */
 
     public void initHome(View view){
 
+
+        /*
+
+         * This is the intent for the add section
+         * is declared final to access to inner method
+         * this is the biggest section initialization for now
+
+         */
+
         final Intent intentAddSection = new Intent(getActivity(), AddSection.class);
+
+
+        /*
+
+        * these method initialize and fill the empty recyclerView with the choosen elements
+        * @EMPTY RECYCLERVIEW FILLED:
+        *
+        * 1. rotationView
+        * 2. rvContinueRead
+        * 3. rvCategories
+        * 4. rvBestWeek
+
+         */
 
         createShowcaseCard();
         createRvContinueReadItem();
         createRvCategoriesItem();
         createRvBestOfWeek();
 
+
+        /*
+
+        Initialize the @fragmentContainer with the choosen layout
+
+         */
+
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
+
+        /*
+
+        * Initialization of different variables @GROUP
+        *
+        * @1. GROUP = declare final to access to inner method
+        * @2. GROUP = normal widget and view variables
+        * @3. GROUP = recyclerView @creation and @initialization
+        *
+        * @CREATION and @INITIALIZATION must be done in one line
+        * @rotationView is declared as global so it is an exception for guidelines
+
+         */
+
+        // 1. GROUP
+        final ImageButton addButtonHome = view.findViewById(R.id.add_button_home);
+        final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
+
+        // 2. GROUP
+        ImageButton search = view.findViewById(R.id.search_button_home);
+
+        // 3. GROUP
         rotationView = view.findViewById(R.id.rv_showcase);
-        rvContinueRead = view.findViewById(R.id.rv_continue_reading);
-        rvCategories = view.findViewById(R.id.rv_categories);
-        rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
-        addButtonHome = view.findViewById(R.id.add_button_home);
-        search = view.findViewById(R.id.search_button_home);
-        nestedScrollView = view.findViewById(R.id.nested_home);
+        RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
+        RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
+        RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
+
+        /*
+
+        * disabled nested scroll for the different @recyclerView in home
+        * add here same command if you want to add other recyclerView section
+
+         */
+
+        ViewCompat.setNestedScrollingEnabled(rotationView, false);
+        ViewCompat.setNestedScrollingEnabled(rvContinueRead, false);
+        ViewCompat.setNestedScrollingEnabled(rvCategories, false);
+        ViewCompat.setNestedScrollingEnabled(rvBestWeek, false);
+
+
+        /*
+
+        * optimization of the recyclerView with the use of the @CACHE
+        * we are:
+        *
+        * 1.Setting the cache size
+        * 2.Enabling drawing cache
+        * 3.Setting cache quality
+
+         */
 
         rvBestWeek.setItemViewCacheSize(20);
         rvBestWeek.setDrawingCacheEnabled(true);
-        rvBestWeek.setDrawingCacheQuality(view.DRAWING_CACHE_QUALITY_HIGH);
+        rvBestWeek.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         rvContinueRead.setItemViewCacheSize(20);
         rvContinueRead.setDrawingCacheEnabled(true);
@@ -184,15 +335,24 @@ public class FadeFragment extends Fragment {
         rvCategories.setDrawingCacheEnabled(true);
         rvCategories.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
+
+        /*
+
+        * Here we are setting the layout manager that manage the recyclerView
+        * Change it carefully, it could change completely your layout appearance
+        * we set also a commmand for each recyclerView to have a fixedSize
+        * @rvBestWeek has a particular method to block the scroll
+
+         */
+
         rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvContinueRead.setHasFixedSize(true);
 
-        // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
-        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayout.HORIZONTAL,false));
+
+        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
         rvCategories.setHasFixedSize(true);
 
-        //Horizontal for Gravity START/END and VERTICAL for TOP/BOTTOM
+
         rvBestWeek.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false){
             @Override
             public boolean canScrollVertically() {
@@ -201,10 +361,16 @@ public class FadeFragment extends Fragment {
         });
         rvBestWeek.setHasFixedSize(true);
 
-        ViewCompat.setNestedScrollingEnabled(rotationView, false);
-        ViewCompat.setNestedScrollingEnabled(rvContinueRead, false);
-        ViewCompat.setNestedScrollingEnabled(rvCategories, false);
-        ViewCompat.setNestedScrollingEnabled(rvBestWeek, false);
+
+        /*
+
+        * we can't use one adapter for all the recyclerView
+        * so here we are initializing and creating different adapter
+        * and then assigning to the different recyclerView
+        * different adapter initialization used only for @rotationView
+        * @FOLLOW the guidelines of the other
+
+         */
 
         SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), rvContinueReadItem);
         rvContinueRead.setAdapter(snapContinueReadAdapter);
@@ -212,17 +378,40 @@ public class FadeFragment extends Fragment {
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
 
-        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-
         SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(), rvBestWeekItem);
         rvBestWeek.setAdapter(snapBestOfWeek);
 
 
         rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
+
+
+        /*
+
+        * autoScroll customization
+
+         */
+
         rotationView.autoScroll(3, 3000);
+
+
+        /*
+
+        * This command is used for the bounce effect on @recyclerView
+        * if you want add effect add here
+
+         */
 
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+
+        /*
+
+        * This method is used to enlarge the hit area of @addButton
+        * for now the area is 200, to modify comunicate it to design team
+
+         */
 
         final View parent = (View) addButtonHome.getParent();  // button: the view you want to enlarge hit area
         parent.post( new Runnable() {
@@ -237,6 +426,15 @@ public class FadeFragment extends Fragment {
             }
         });
 
+
+        /*
+
+        * This method is used to show automatically the bottomNavigation at the end of the page
+        * this isn't scripted to a specifically height
+        * it is modular and adapted automatically to every height you choose for the main layout
+
+         */
+
         nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -246,107 +444,397 @@ public class FadeFragment extends Fragment {
                         MainActivity.bottomNavigation.restoreBottomNavigation(true);
                     } else {
                         //scroll view is not at bottom
+                        Log.i("SCROLL VIEW ERROR", "nested scrollView is empty ");
                     }
                 }
             }
         });
 
-        View.OnClickListener addListener = new View.OnClickListener() {
+
+        /*
+
+        * This method is used for action on tap of @addButton
+        * the setFlags is used to avoid multiple intent on multiple tap
+        * the pending transition override the animation of the intent
+
+         */
+
+        addButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentAddSection.setFlags(intentAddSection.FLAG_ACTIVITY_SINGLE_TOP);
+                intentAddSection.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intentAddSection);
-                assert ((Activity)getContext()) != null;
+                assert getContext() != null;
                 ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_bottom_in, R.anim.intent_from_bottom_out);
             }
-        };
-
-        addButtonHome.setOnClickListener(addListener);
+        });
 
     }
 
+
+    /*=====================================================================
+                                initExplore()
+    =====================================================================*/
+
     /*
-    explore init
+
+    * Explore initialization
+    * this method is used by @onCreateView at @125 line
+    * to initialize the @USER INTERFACE of the explore section
+
      */
 
     public void initExplore(View view){
 
+
+        /*
+
+        * these method initialize and fill the empty recyclerView with the choosen elements
+        * @EMPTY RECYCLERVIEW FILLED:
+        *
+        * 1. ExploreCard
+
+         */
+
         createExploreCard();
+
+
+        /*
+
+        Initialize the @fragmentContainer with the choosen layout
+
+         */
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
-        recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+
+        /*
+
+        * Initialization of different variables @GROUP
+        *
+        * @1. GROUP = declare final to access to inner method
+        * @2. GROUP = normal widget and view variables
+        * @3. GROUP = recyclerView @creation and @initialization
+        *
+        * @CREATION and @INITIALIZATION must be done in one line
+
+         */
+
+        //1. GROUP
+
+        //2. GROUP
+
+        //3.GROUP
+        SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+
+
+        /*
+
+        * The first command enable the @SCALING on horizontal scroll of @recyclerView
+        * The second command enable the @ALPHA SCALING on horizontal scroll of @recyclerView
+        * uncomment second command to alpha scaling
+
+         */
+
         recyclerCardExplore.enableViewScaling(true);
         //recyclerCardExplore.enableAlphaScaling(true);
+
+
+        /*
+
+        * optimization of the recyclerView with the use of the @CACHE
+        * we are:
+        *
+        * 1.Setting the cache size
+        * 2.Enabling drawing cache
+        * 3.Setting cache quality
+
+         */
 
         recyclerCardExplore.setItemViewCacheSize(20);
         recyclerCardExplore.setDrawingCacheEnabled(true);
         recyclerCardExplore.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
+
+        /*
+
+        * we can't use one adapter for all the recyclerView
+        * so here we are initializing and creating different adapter
+        * and then assigning to the different recyclerView
+        * @FOLLOW the guidelines of these
+
+         */
+
         SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
         recyclerCardExplore.setAdapter(adapter);
+
+
+        /*
+
+        * This command is used for the bounce effect on @recyclerView
+        * if you want add effect add here
+
+         */
+
         OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
     }
 
+
+    /*=====================================================================
+                                initLibrary()
+    =====================================================================*/
+
     /*
-    library init
+
+    * Library initialization
+    * this method is used by @onCreateView at @125 line
+    * to initialize the @USER INTERFACE of the library section
+
      */
+
     public void initLibrary(View view){
 
-       /* View.OnClickListener searchListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setFocusableInTouchMode(true);
-                editText.setFocusable(true);
-            }
-        };*/
 
+        /*
 
+        * these method initialize and fill the empty recyclerView with the choosen elements
+        * @EMPTY RECYCLERVIEW FILLED:
+        *
+        * 1. recyclerViewLibrary
+
+         */
 
         createLibraryCard();
 
-        fragmentContainer = view.findViewById(R.id.fragment_container);
-        //editText.setOnClickListener(searchListener);
 
-        recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
-        recyclerViewLibrary.setHasFixedSize(true);
+        /*
+
+        Initialize the @fragmentContainer with the choosen layout
+
+         */
+
+        fragmentContainer = view.findViewById(R.id.fragment_container);
+
+
+        /*
+
+        * Initialization of different variables @GROUP
+        *
+        * @1. GROUP = declare final to access to inner method
+        * @2. GROUP = normal widget and view variables
+        * @3. GROUP = recyclerView @creation and @initialization
+        *
+        * @CREATION and @INITIALIZATION must be done in one line
+
+         */
+
+        //1. GROUP
+
+        //2. GROUP
+
+        //3.GROUP
+        RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
+
+
+        /*
+
+        * optimization of the recyclerView with the use of the @CACHE
+        * we are:
+        *
+        * 1.Setting the cache size
+        * 2.Enabling drawing cache
+        * 3.Setting cache quality
+
+         */
 
         recyclerViewLibrary.setItemViewCacheSize(20);
         recyclerViewLibrary.setDrawingCacheEnabled(true);
         recyclerViewLibrary.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
+
+        /*
+
+        * Here we are setting the layout manager that manage the recyclerView
+        * Change it carefully, it could change completely your layout appearance
+        * we set also a commmand for each recyclerView to have a fixedSize
+
+         */
+
         recyclerViewLibrary.setLayoutManager(new GridLayoutManager(getActivity(),3, GridLayout.VERTICAL,false));
+        recyclerViewLibrary.setHasFixedSize(true);
+
+
+        /*
+
+        * we can't use one adapter for all the recyclerView
+        * so here we are initializing and creating different adapter
+        * and then assigning to the different recyclerView
+        * @FOLLOW the guidelines of these
+
+         */
 
         SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), libraryCardItem );
         recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+
+
+        /*
+
+        * This command is used for the bounce effect on @recyclerView
+        * if you want add effect add here
+
+         */
 
         OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
 
     }
 
-   /*
-   profile init
-    */
+
+    /*=====================================================================
+                                initProfile()
+    =====================================================================*/
+
+    /*
+
+    * Profile initialization
+    * this method is used by @onCreateView at @125 line
+    * to initialize the @USER INTERFACE of the profile section
+
+     */
 
    public void initProfile(View view){
+
+       /*
+
+        * these method initialize and fill the empty recyclerView with the choosen elements
+        * @EMPTY RECYCLERVIEW FILLED:
+        *
+        * 1. recyclerView
+        * 2. cardReviewRecycleView
+
+         */
+
        createApps();
        createReviewCard();
+
+
+       /*
+
+        Initialize the @fragmentContainer with the choosen layout
+
+         */
+
        fragmentContainer = view.findViewById(R.id.fragment_container);
 
-       buttonAction = view.findViewById(R.id.buttonAction);
+
+       /*
+
+        * Initialization of different variables @GROUP
+        *
+        * @1. GROUP = declare final to access to inner method
+        * @2. GROUP = normal widget and view variables
+        * @3. GROUP = recyclerView @creation and @initialization
+        *
+        * @CREATION and @INITIALIZATION must be done in one line
+
+         */
+
+       //1. GROUP
+       final Button buttonAction = view.findViewById(R.id.buttonAction);
+
+       //2. GROUP
+
+       //3.GROUP
+       RecyclerView cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
+       RecyclerView recyclerViewAllBooks = view.findViewById(R.id.recycler_view);
+
+
+       /*
+
+        * optimization of the recyclerView with the use of the @CACHE
+        * we are:
+        *
+        * 1.Setting the cache size
+        * 2.Enabling drawing cache
+        * 3.Setting cache quality
+
+         */
+
+       recyclerViewAllBooks.setItemViewCacheSize(20);
+       recyclerViewAllBooks.setDrawingCacheEnabled(true);
+       recyclerViewAllBooks.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+
+       /*
+
+        * Here we are setting the layout manager that manage the recyclerView
+        * Change it carefully, it could change completely your layout appearance
+        * we set also a commmand for each recyclerView to have a fixedSize
+
+         */
+
+       recyclerViewAllBooks.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+       recyclerViewAllBooks.setHasFixedSize(true);
+
+       cardReviewRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+       cardReviewRecycleView.setHasFixedSize(true);
+
+
+       /*
+
+        * we can't use one adapter for all the recyclerView
+        * so here we are initializing and creating different adapter
+        * and then assigning to the different recyclerView
+        * @FOLLOW the guidelines of these
+
+         */
+
+       SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
+       recyclerViewAllBooks.setAdapter(adapter);
+
+       CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(),reviewCard);
+       cardReviewRecycleView.setAdapter(reviewAdapter);
+
+
+       /*
+
+        * This command is used for the bounce effect on @recyclerView
+        * if you want add effect add here
+
+         */
+
+       OverScrollDecoratorHelper.setUpOverScroll(recyclerViewAllBooks, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+       OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+
+       /*
+
+        * This method is used to enlarge the hit area of @addButton
+        * for now the area is 200, to modify comunicate it to design team
+
+         */
+
        final View parent = (View) buttonAction.getParent();  // button: the view you want to enlarge hit area
        parent.post( new Runnable() {
            public void run() {
                final Rect rect = new Rect();
                buttonAction.getHitRect(rect);
-               rect.top -= 100;    // increase top hit area
-               rect.left -= 100;   // increase left hit area
-               rect.bottom += 100; // increase bottom hit area
-               rect.right += 100;  // increase right hit area
+               rect.top -= 200;    // increase top hit area
+               rect.left -= 200;   // increase left hit area
+               rect.bottom += 200; // increase bottom hit area
+               rect.right += 200;  // increase right hit area
                parent.setTouchDelegate( new TouchDelegate( rect , buttonAction));
            }
        });
+
+
+
+       /*
+
+        * This method is used for action on tap of @addButton
+        * In this case it set the popUp menu action
+
+         */
 
        buttonAction.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -358,41 +846,21 @@ public class FadeFragment extends Fragment {
            }
        });
 
-       recyclerView = view.findViewById(R.id.recycler_view);
-
-       recyclerView.setItemViewCacheSize(20);
-       recyclerView.setDrawingCacheEnabled(true);
-       recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
-       //uncomment for gravity
-
-       //SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
-       //snapHelper.attachToRecyclerView(recyclerView);
-
-       // HORIZONTAL for Gravity START/END and VERTICAL for TOP/BOTTOM
-       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-       recyclerView.setHasFixedSize(true);
-
-       SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
-       recyclerView.setAdapter(adapter);
-       OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-
-       //=================================================
-
-       cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
-
-       //uncomment for gravity
-
-       //SnapHelper snapCardHelper = new GravitySnapHelper(Gravity.START);
-       //snapCardHelper.attachToRecyclerView(cardReviewRecycleView);
-
-       cardReviewRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-       cardReviewRecycleView.setHasFixedSize(true);
-
-       CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(),reviewCard);
-       cardReviewRecycleView.setAdapter(reviewAdapter);
-       OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
    }
+
+
+   /*=====================================================================
+                           Filling recyclerView methods
+    =====================================================================*/
+
+    /*
+
+    * These methods is used to fill the elements of recyclerViews
+    * But for now are only for placeHolder
+    * @NEXT TODO:// collegue to dataBase
+
+     */
+
     private void createApps() {
         items = new ArrayList<>();
 
