@@ -16,14 +16,14 @@ class InfiniteRotationAdapter(itemList: ArrayList<Showcase>) : RecyclerView.Adap
 
     private val list: List<Showcase> = listOf(itemList.last()) + itemList + listOf(itemList.first())
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? ItemViewHolder)?.let {
 
             it.imageShowCase.setBackgroundResource(list[position % list.size].drawable)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater
                 .from(parent?.context)
                 .inflate(R.layout.home_showcase, parent, false)

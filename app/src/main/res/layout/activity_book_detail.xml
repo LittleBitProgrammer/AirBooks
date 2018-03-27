@@ -117,7 +117,7 @@
                 android:layout_height="12dp"
                 android:layout_marginEnd="1dp"
                 android:src="@drawable/reader"
-                android:tint="@color/white"
+                android:tint="#FFF"
                 app:layout_constraintEnd_toStartOf="@+id/numb_readers_book_detail"
                 app:layout_constraintTop_toTopOf="@+id/numb_readers_book_detail" />
 
@@ -128,7 +128,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/lovers"
-                android:tint="@color/white"
+                android:tint="#FFF"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintTop_toBottomOf="@+id/text_genre_label" />
 
@@ -206,7 +206,7 @@
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
         android:layout_marginTop="18dp"
-        android:background="@drawable/transparent_selector"
+        android:background="#00000000"
         android:scaleType="fitXY"
         android:src="@drawable/stella"
         app:layout_constraintEnd_toEndOf="parent"

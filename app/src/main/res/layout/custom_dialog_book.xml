@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="321dp"
     android:layout_height="451dp"
-    android:foreground="@drawable/transparent_selector"
+    android:foreground="#00000000"
     app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
@@ -13,7 +13,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/transparent_selector">
+        android:background="#00000000">
 
         <ImageView
             android:id="@+id/top_bar_description_popup"

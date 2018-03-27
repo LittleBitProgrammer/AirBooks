@@ -6,7 +6,7 @@
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#FFFFFF</item>
         <item name="android:actionMenuTextColor">@color/blu_airbooks</item>
-        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorControlHighlight">#FFF</item>
 
         <item name="colorControlNormal">#969696</item>
 
