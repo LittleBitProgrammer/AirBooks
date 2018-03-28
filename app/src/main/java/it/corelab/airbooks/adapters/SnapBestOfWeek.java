@@ -92,6 +92,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("LogConditional")
             @Override
             public void onClick(View view) {
 
@@ -106,7 +107,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                     sharedIntent.putExtra("genre", item.getGenreColor());
                     sharedIntent.putExtra("author", item.getAuthor());
                     sharedIntent.putExtra("loversNumb", item.getNumbersLovers());
-                Log.i("SHARED_INTENT", "number of lover = " + item.getNumbersLovers());
+                    Log.i("SHARED_INTENT", "number of lover = " + item.getNumbersLovers());
                     sharedIntent.putExtra("readersNumb", item.getNumberOfReaders());
 
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);

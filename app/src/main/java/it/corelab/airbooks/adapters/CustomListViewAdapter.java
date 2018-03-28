@@ -79,7 +79,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
         textView.setText(items.getName());
         description.setText(items.getDescription());
 
-        if (items.getDescription().toString().length() < 100){
+        if (items.getDescription().length() < 100){
             buttonToggle.setEnabled(false);
             buttonToggle.setVisibility(View.INVISIBLE);
         }

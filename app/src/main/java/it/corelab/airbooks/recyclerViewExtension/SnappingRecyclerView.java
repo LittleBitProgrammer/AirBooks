@@ -203,7 +203,7 @@ public class SnappingRecyclerView extends RecyclerView {
         }
 
         /** if sdk minimum level is 17, set RTL margins **/
-        if (_orientation == Orientation.HORIZONTAL && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (_orientation == Orientation.HORIZONTAL) {
             ((MarginLayoutParams) child.getLayoutParams()).setMarginStart(startMargin);
             ((MarginLayoutParams) child.getLayoutParams()).setMarginEnd(endMargin);
         }
@@ -215,11 +215,11 @@ public class SnappingRecyclerView extends RecyclerView {
             ((MarginLayoutParams) child.getLayoutParams()).setMargins(startMargin, topMargin, endMargin, bottomMargin);
         }
 
-        /** if sdk minimum level is 18, check if view isn't undergoing a layout pass (this improves the feel of the view by a lot) **/
+        /*if sdk minimum level is 18, check if view isn't undergoing a layout pass (this improves the feel of the view by a lot)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             if (!child.isInLayout())
                 child.requestLayout();
-        }
+        }*/
     }
 
     @Override

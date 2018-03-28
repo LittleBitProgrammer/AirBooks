@@ -1,5 +1,6 @@
 package it.corelab.airbooks.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -256,6 +257,7 @@ public class BookDetail extends AppCompatActivity {
     //how big is your screen size?
     // this is the method
 
+    @SuppressLint("LogConditional")
     private void setRealDeviceSizeInPixels() {
         WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
@@ -268,23 +270,12 @@ public class BookDetail extends AppCompatActivity {
         int mHeightPixels = displayMetrics.heightPixels;
 
         // includes window decorations (statusbar bar/menu bar)
-        if (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17) {
-            try {
-                mWidthPixels = (Integer) Display.class.getMethod("getRawWidth").invoke(display);
-                mHeightPixels = (Integer) Display.class.getMethod("getRawHeight").invoke(display);
-            } catch (Exception ignored) {
-            }
-        }
-
-        // includes window decorations (statusbar bar/menu bar)
-        if (Build.VERSION.SDK_INT >= 17) {
-            try {
-                Point realSize = new Point();
-                Display.class.getMethod("getRealSize", Point.class).invoke(display, realSize);
-                mWidthPixels = realSize.x;
-                mHeightPixels = realSize.y;
-            } catch (Exception ignored) {
-            }
+        try {
+            Point realSize = new Point();
+            Display.class.getMethod("getRealSize", Point.class).invoke(display, realSize);
+            mWidthPixels = realSize.x;
+            mHeightPixels = realSize.y;
+        } catch (Exception ignored) {
         }
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -292,7 +283,7 @@ public class BookDetail extends AppCompatActivity {
         double x = Math.pow(mWidthPixels/dm.xdpi,2);
         double y = Math.pow(mHeightPixels/dm.ydpi,2);
         screenInches = Math.sqrt(x+y);
-        Log.d("SCREENSIZE","Screen inches : " + screenInches);
+        Log.d("SCREEN SIZE","Screen inches : " + screenInches);
     }
 
     public void openDialog(CustomDialogClass customDialogClass){

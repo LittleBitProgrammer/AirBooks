@@ -67,27 +67,8 @@ public class ExpandableTextView extends android.support.v7.widget.AppCompatTextV
     @Override
     public int getMaxLines()
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-        {
-            return super.getMaxLines();
-        }
+        return super.getMaxLines();
 
-        try
-        {
-            final Field mMaxMode = TextView.class.getField("mMaxMode");
-            mMaxMode.setAccessible(true);
-            final Field mMaximum = TextView.class.getField("mMaximum");
-            mMaximum.setAccessible(true);
-
-            final int mMaxModeValue = (int) mMaxMode.get(this);
-            final int mMaximumValue = (int) mMaximum.get(this);
-
-            return mMaxModeValue == MAXMODE_LINES ? mMaximumValue : -1;
-        }
-        catch (final Exception e)
-        {
-            return -1;
-        }
     }
 
     /**

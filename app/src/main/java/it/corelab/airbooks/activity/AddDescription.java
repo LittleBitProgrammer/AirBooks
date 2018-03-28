@@ -1,5 +1,6 @@
 package it.corelab.airbooks.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -139,6 +140,7 @@ public class AddDescription extends AppCompatActivity {
         return super.onKeyUp(keyCode, event);
     }
 
+    @SuppressLint("LogConditional")
     private boolean isKeyboardShown(View rootView) {
     /* 128dp = 32dp * 4, minimum button height 32dp and generic 4 rows soft keyboard */
         final int SOFT_KEYBOARD_HEIGHT_DP_THRESHOLD = 128;
@@ -152,7 +154,7 @@ public class AddDescription extends AppCompatActivity {
     /* Threshold size: dp to pixels, multiply with display density */
         boolean isKeyboardShown = heightDiff > SOFT_KEYBOARD_HEIGHT_DP_THRESHOLD * dm.density;
 
-        Log.d("tastiera", "isKeyboardShown ? " + isKeyboardShown + ", heightDiff:" + heightDiff + ", density:" + dm.density
+        Log.i("tastiera", "isKeyboardShown ? " + isKeyboardShown + ", heightDiff:" + heightDiff + ", density:" + dm.density
                 + "root view height:" + rootView.getHeight() + ", rect:" + r);
 
         if (isKeyboardShown){

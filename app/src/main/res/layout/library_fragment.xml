@@ -43,7 +43,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="5dp"
-                android:paddingLeft="8dp"
+                android:paddingStart="8dp"
                 android:src="@drawable/icona_search"
                 android:tint="#6C798B"
                 android:contentDescription="@string/search_icon"/>
