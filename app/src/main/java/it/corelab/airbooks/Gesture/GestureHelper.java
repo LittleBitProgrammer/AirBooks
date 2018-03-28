@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.Gesture;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -17,22 +17,22 @@ public class GestureHelper implements View.OnTouchListener {
     }
 
     public void onSwipeRight() {
-    };
+    }
 
     public void onSwipeLeft() {
-    };
+    }
 
     public void onSwipeTop() {
-    };
+    }
 
     public void onSwipeBottom() {
-    };
+    }
 
     public void onDoubleTap() {
-    };
+    }
 
     public void onClick() {
-    };
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {

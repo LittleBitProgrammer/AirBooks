@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,34 +15,28 @@
         app:srcCompat="@drawable/explore_actionbar"
         android:contentDescription="@string/background_image"/>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
-        android:background="@drawable/search_bar_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:id="@+id/linear_library"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="27dp"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:background="@drawable/search_bar_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/iv_search_mic"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
                 android:layout_marginTop="5dp"
                 android:paddingStart="8dp"
+                android:paddingEnd="0dp"
                 android:src="@drawable/icona_search"
                 android:tint="#6C798B"
                 android:contentDescription="@string/search_icon"/>
@@ -52,30 +45,26 @@
                 android:id="@+id/ed_home_searchbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/iv_search_icon"
-                android:layout_toRightOf="@+id/iv_search_mic"
                 android:background="@android:color/transparent"
                 android:hint="@string/search_library_hint"
                 android:imeOptions="actionSearch"
                 android:lines="1"
                 android:maxLines="1"
-                android:paddingLeft="10dp"
                 android:paddingStart="10dp"
+                android:paddingEnd="0dp"
                 android:singleLine="true"
                 android:textColor="#B4BBC3"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:inputType="text"/>
         </LinearLayout>
-    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_cardView_library"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:paddingLeft="0dp"
-        android:paddingStart="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_library" />
 </android.support.constraint.ConstraintLayout>

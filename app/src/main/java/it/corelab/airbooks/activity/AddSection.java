@@ -86,7 +86,7 @@ public class AddSection extends AppCompatActivity {
         View.OnClickListener nextCategoriesListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categoriesIntent.setFlags(categoriesIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                categoriesIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(categoriesIntent);
             }
         };
@@ -94,7 +94,7 @@ public class AddSection extends AppCompatActivity {
         View.OnClickListener returnButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnButtonIntent.setFlags(returnButtonIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(returnButtonIntent);
                 overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
             }

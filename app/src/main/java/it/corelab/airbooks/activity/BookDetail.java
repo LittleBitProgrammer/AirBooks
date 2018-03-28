@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -24,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import it.corelab.airbooks.CustomDialogClass;
-import it.corelab.airbooks.GestureHelper;
+import it.corelab.airbooks.Gesture.GestureHelper;
 import it.corelab.airbooks.MySpannable;
 import it.corelab.airbooks.R;
 

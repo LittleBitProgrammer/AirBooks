@@ -76,7 +76,7 @@ public class AddDescription extends AppCompatActivity {
         View.OnClickListener returnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnIntent.setFlags(returnIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(returnIntent);
                 overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
             }
@@ -85,7 +85,7 @@ public class AddDescription extends AppCompatActivity {
         View.OnClickListener dismissListner = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismissIntent.setFlags(dismissIntent.FLAG_ACTIVITY_SINGLE_TOP);
+                dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(dismissIntent);
                 overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
             }
