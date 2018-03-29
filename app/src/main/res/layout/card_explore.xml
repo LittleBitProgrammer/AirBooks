@@ -1,67 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="234dp"
     android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/stellaPiena3"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/stellaPiena5"
-        app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_vuota"
-        android:contentDescription="@string/stella_5"/>
-
-    <ImageView
-        android:id="@+id/stellaPiena5"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/stellaPiena4"
-        app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena"
-        android:contentDescription="@string/stella_4"/>
-
-    <ImageView
-        android:id="@+id/stellaPiena4"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/stellaPiena2"
-        app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena"
-        android:contentDescription="@string/stella_3"/>
-
-    <ImageView
-        android:id="@+id/stellaPiena2"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/stellaPiena"
-        app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena"
-        android:contentDescription="@string/stella_2"/>
-
-    <ImageView
-        android:id="@+id/stellaPiena"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/author_id"
-        app:srcCompat="@drawable/stella_piena"
-        android:contentDescription="@string/stella_1"/>
 
     <TextView
         android:id="@+id/author_id"
@@ -105,8 +47,8 @@
             android:id="@+id/cardImage_explore"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:contentDescription="@string/cover_book"/>
+            android:contentDescription="@string/cover_book"
+            android:scaleType="fitXY" />
 
     </android.support.v7.widget.CardView>
 
@@ -114,14 +56,13 @@
         android:id="@+id/number_reviews_explore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
         android:text="@string/number_reviews_explore"
         android:textColor="#9EA6B2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stellaPiena3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toBottomOf="@+id/author_id" />
 
     <Button
@@ -130,7 +71,7 @@
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="39dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_read_now"
         android:scaleType="fitXY"
         android:text="@string/read_now_button"
@@ -146,12 +87,32 @@
         android:layout_width="51dp"
         android:layout_height="46dp"
         android:layout_marginEnd="41dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_read_now"
         android:foreground="@drawable/add_love_explore"
         android:foregroundGravity="center"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number_reviews_explore" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/RatingBarSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginStart="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="3.0"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/color_button_read_now"
+        app:layout_constraintEnd_toStartOf="@+id/number_reviews_explore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

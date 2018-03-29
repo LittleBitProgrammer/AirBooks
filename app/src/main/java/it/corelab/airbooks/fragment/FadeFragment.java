@@ -890,16 +890,16 @@ public class FadeFragment extends Fragment {
     private void createExploreCard(){
         exploreCardItem = new ArrayList<>();
 
-        exploreCardItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 93));
-        exploreCardItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco",25));
-        exploreCardItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale",801));
-        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer",1044));
-        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo",528));
-        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia",19));
-        exploreCardItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown",10246));
-        exploreCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
-        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
-        exploreCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
+        exploreCardItem.add(new Item("All this", R.drawable.all_this, 93, 3 , "Jojo Moyes"));
+        exploreCardItem.add(new Item("Titan", R.drawable.titan,25, 4, "Alessandro Baricco"));
+        exploreCardItem.add(new Item("Spazio", R.drawable.spazio,801,5, "Chiara Gamberale"));
+        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover,1044,2, "Stephanie Meyer"));
+        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover,528,1, "Fabio Volo"));
+        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake,19,5, "Federico Moccia"));
+        exploreCardItem.add(new Item("fiore", R.drawable.fiore,10246,4,"Dan Brown"));
+        exploreCardItem.add(new Item("gelato", R.drawable.gelato, 94,3, "Sam Pvnik"));
+        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina,621,1, "George Orwell"));
+        exploreCardItem.add(new Item("Papera", R.drawable.papera,67,2,"Harper Lee"));
     }
     private void createLibraryCard(){
         libraryCardItem = new ArrayList<>();

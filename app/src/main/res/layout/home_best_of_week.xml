@@ -1,136 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="226dp"
-    android:layout_marginTop="8dp">
+    android:layout_width="154dp"
+    android:layout_height="215dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="8dp"
+    android:animationCache="true"
+    android:background="#FFFFFF"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="7dp"
+    app:layout_constraintStart_toStartOf="parent">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="154dp"
-        android:layout_height="215dp"
-        android:layout_marginStart="10dp"
-        android:background="#FFFFFF"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="7dp"
-        app:layout_constraintStart_toStartOf="parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <ImageView
+            android:id="@+id/image_bestweek"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/cover_book"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ghost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+
+        <ImageView
+            android:id="@+id/rettangolo_smussato_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="59dp"
+            android:contentDescription="@string/image_colorGenre"
+            android:src="#000"
+            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek" />
 
-            <ImageView
-                android:id="@+id/image_bestweek"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/cover_book"/>
+        <ImageView
+            android:id="@+id/color_bestweek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/Image_background_colorGenre"
+            android:src="@drawable/rettangolo_taglio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/ghost_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+        <TextView
+            android:id="@+id/title_rv_bestweek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/book_title"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
 
-            <ImageView
-                android:id="@+id/rettangolo_smussato_rv"
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:src="#000"
-                app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
-                android:contentDescription="@string/image_colorGenre"/>
+        <TextView
+            android:id="@+id/author_bestweek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="8dp"
 
-            <ImageView
-                android:id="@+id/color_bestweek"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/rettangolo_taglio"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:contentDescription="@string/Image_background_colorGenre"/>
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/cookie"
+            android:text="@string/author_book_home_card"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
 
-            <TextView
-                android:id="@+id/title_rv_bestweek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:text="@string/book_title"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+        <ImageView
+            android:id="@+id/lovers_best_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:contentDescription="@string/numbers_lovers_image"
+            android:src="@drawable/lovers"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/numb_lovers_best_week" />
 
-            <TextView
-                android:id="@+id/author_bestweek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="8dp"
+        <TextView
+            android:id="@+id/numb_lovers_best_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/numbers_lovers_text_placeHolder"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/color_bestweek" />
 
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/cookie"
-                android:text="@string/author_book_home_card"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+        <TextView
+            android:id="@+id/numb_readers_best_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="3dp"
+            android:text="@string/numbers_readers_text_placeHolder_card_home"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+            app:layout_constraintEnd_toStartOf="@+id/lovers_best_week" />
 
-            <ImageView
-                android:id="@+id/lovers_best_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="2dp"
-                android:src="@drawable/lovers"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/numb_lovers_best_week"
-                android:contentDescription="@string/numbers_lovers_image"/>
+        <ImageView
+            android:id="@+id/readers_best_week"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:contentDescription="@string/numbers_of_readers_image_contentDescription"
+            android:src="@drawable/reader"
+            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+            app:layout_constraintEnd_toStartOf="@+id/numb_readers_best_week" />
 
-            <TextView
-                android:id="@+id/numb_lovers_best_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/numbers_lovers_text_placeHolder"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/color_bestweek" />
+    </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/numb_readers_best_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="3dp"
-                android:text="@string/numbers_readers_text_placeHolder_card_home"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
-                app:layout_constraintEnd_toStartOf="@+id/lovers_best_week" />
-
-            <ImageView
-                android:id="@+id/readers_best_week"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="2dp"
-                android:src="@drawable/reader"
-                app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
-                app:layout_constraintEnd_toStartOf="@+id/numb_readers_best_week"
-                android:contentDescription="@string/numbers_of_readers_image_contentDescription"/>
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

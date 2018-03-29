@@ -52,4 +52,9 @@
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
+    <style name="RatingBarSmall" parent="android:Widget.DeviceDefault.Light.RatingBar.Indicator">
+        <item name="android:progressDrawable">@drawable/rating_bar</item>
+        <item name="android:minHeight">36dp</item>
+        <item name="android:maxHeight">36dp</item>
+    </style>
 </resources>
