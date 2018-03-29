@@ -21,7 +21,6 @@ public class Categories extends AppCompatActivity {
 
     private ImageButton leftArrow;
     private ImageButton dismiss;
-    private RecyclerView categoriesAddRv;
     private ArrayList<Item> categories;
 
     @Override
@@ -37,7 +36,7 @@ public class Categories extends AppCompatActivity {
         leftArrow = findViewById(R.id.left_arrow_add_categories);
         dismiss = findViewById(R.id.dismiss_button);
 
-        categoriesAddRv = findViewById(R.id.categories_add_rv);
+        RecyclerView categoriesAddRv = findViewById(R.id.categories_add_rv);
 
         categoriesAddRv.setItemViewCacheSize(20);
         categoriesAddRv.setDrawingCacheEnabled(true);
@@ -71,7 +70,7 @@ public class Categories extends AppCompatActivity {
             public void onClick(View v) {
                 dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(dismissIntent);
-                overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
+                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
             }
         };
 

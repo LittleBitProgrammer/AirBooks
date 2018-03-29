@@ -87,15 +87,15 @@ public class SnappingRecyclerView extends RecyclerView {
                 super.onScrollStateChanged(recyclerView, newState);
 
 
-                /** if scroll is caused by a touch (scroll touch, not any touch) **/
+                /* if scroll is caused by a touch (scroll touch, not any touch) */
                 if (newState == SCROLL_STATE_TOUCH_SCROLL) {
-                    /** if scroll was initiated already, it would probably be a tap **/
-                    /** if scroll was not initiated before, this is probably a user scrolling **/
+                    /* if scroll was initiated already, it would probably be a tap */
+                    /* if scroll was not initiated before, this is probably a user scrolling */
                     if (!_scrolling) {
                         _userScrolling = true;
                     }
                 } else if (newState == SCROLL_STATE_IDLE) {
-                    /** if user is the one scrolling, snap to the view closest to center **/
+                    /* if user is the one scrolling, snap to the view closest to center */
                     if (_userScrolling) {
                         scrollToView(getCenterView());
                     }
@@ -103,12 +103,12 @@ public class SnappingRecyclerView extends RecyclerView {
                     _userScrolling = false;
                     _scrolling = false;
 
-                    /** if idle, always check location and correct it if necessary, this is just an extra check **/
+                    /* if idle, always check location and correct it if necessary, this is just an extra check */
                     if (getCenterView() != null && getPercentageFromCenter(getCenterView()) > 0) {
                         scrollToView(getCenterView());
                     }
 
-                    /** if idle, notify listeners of new selected view **/
+                    /* if idle, notify listeners of new selected view */
                     notifyListener();
                 } else if (newState == SCROLL_STATE_FLING) {
                     _scrolling = true;
@@ -123,7 +123,7 @@ public class SnappingRecyclerView extends RecyclerView {
         View view = getCenterView();
         int position = getChildAdapterPosition(view);
 
-        /** if there is a listener and the index is not the same as the currently selected position, notify listener **/
+        /* if there is a listener and the index is not the same as the currently selected position, notify listener */
         if (_listener != null && position != _selectedPosition) {
             _listener.onSelected(view, position);
         }
@@ -202,7 +202,7 @@ public class SnappingRecyclerView extends RecyclerView {
             endMargin = childIndex == lastItemIndex ? getCenterLocation() : 0;
         }
 
-        /** if sdk minimum level is 17, set RTL margins **/
+        /* if sdk minimum level is 17, set RTL margins */
         if (_orientation == Orientation.HORIZONTAL) {
             ((MarginLayoutParams) child.getLayoutParams()).setMarginStart(startMargin);
             ((MarginLayoutParams) child.getLayoutParams()).setMarginEnd(endMargin);
@@ -226,8 +226,8 @@ public class SnappingRecyclerView extends RecyclerView {
     public boolean dispatchTouchEvent(MotionEvent event) {
         long currentTime = System.currentTimeMillis();
 
-        /** if touch events are being spammed, this is due to user scrolling right after a tap,
-         * so set userScrolling to true **/
+        /* if touch events are being spammed, this is due to user scrolling right after a tap,
+         * so set userScrolling to true */
         if (_scrolling && _scrollState == SCROLL_STATE_TOUCH_SCROLL) {
             if ((currentTime - _lastScrollTime) < MINIMUM_SCROLL_EVENT_OFFSET_MS) {
                 _userScrolling = true;

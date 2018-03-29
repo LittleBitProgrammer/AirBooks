@@ -87,7 +87,7 @@ public class AddDescription extends AppCompatActivity {
             public void onClick(View v) {
                 dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(dismissIntent);
-                overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
+                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
             }
         };
 

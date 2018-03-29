@@ -438,14 +438,12 @@ public class FadeFragment extends Fragment {
         nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if (nestedScrollView != null) {
-                    if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
-                        //scroll view is at bottom
-                        MainActivity.bottomNavigation.restoreBottomNavigation(true);
-                    } else {
-                        //scroll view is not at bottom
-                        Log.i("SCROLL VIEW ERROR", "nested scrollView is empty ");
-                    }
+                if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
+                    //scroll view is at bottom
+                    MainActivity.bottomNavigation.restoreBottomNavigation(true);
+                } else {
+                    //scroll view is not at bottom
+                    Log.i("Bottom bar", "nested scrollView is not at bottom");
                 }
             }
         });
@@ -465,7 +463,7 @@ public class FadeFragment extends Fragment {
                 intentAddSection.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intentAddSection);
                 assert getContext() != null;
-                ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_bottom_in, R.anim.intent_from_bottom_out);
+                ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_left_in, R.anim.intent_from_left_out);
             }
         });
 

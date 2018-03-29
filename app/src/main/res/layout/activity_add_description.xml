@@ -7,7 +7,7 @@
     tools:context="it.corelab.airbooks.activity.AddDescription">
 
     <ImageView
-        android:id="@+id/top_bar_description_popup"
+        android:id="@id/top_bar_description_popup"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:scaleType="fitXY"
@@ -18,7 +18,7 @@
         android:contentDescription="@string/topBar"/>
 
     <TextView
-        android:id="@+id/top_bar_name_description"
+        android:id="@id/top_bar_name_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -28,13 +28,13 @@
         android:text="@string/section_add_your_book"
         android:textColor="#FFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
-        app:layout_constraintStart_toStartOf="@+id/top_bar_description_popup"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup" />
+        app:layout_constraintBottom_toBottomOf="@id/top_bar_description_popup"
+        app:layout_constraintEnd_toEndOf="@id/top_bar_description_popup"
+        app:layout_constraintStart_toStartOf="@id/top_bar_description_popup"
+        app:layout_constraintTop_toTopOf="@id/top_bar_description_popup" />
 
     <ImageButton
-        android:id="@+id/left_arrow_add_description"
+        android:id="@id/left_arrow_add_description"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginBottom="17dp"
@@ -43,14 +43,13 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
+        app:layout_constraintBottom_toBottomOf="@id/top_bar_description_popup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="18dp"
         android:contentDescription="@string/back_button"/>
 
     <ImageButton
-        android:id="@+id/dismiss_button_description"
+        android:id="@id/dismiss_button_description"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginBottom="17dp"
@@ -59,14 +58,13 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/dismiss"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_description_popup"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_description_popup"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_description_popup"
-        android:layout_marginRight="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/top_bar_description_popup"
+        app:layout_constraintEnd_toEndOf="@id/top_bar_description_popup"
+        app:layout_constraintTop_toTopOf="@id/top_bar_description_popup"
         android:contentDescription="@string/dismiss_button"/>
 
     <TextView
-        android:id="@+id/add_description_text"
+        android:id="@id/add_description_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -74,11 +72,11 @@
         android:textColor="#6C7A8C"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/editText_description"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_description_popup" />
+        app:layout_constraintStart_toStartOf="@id/editText_description"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_description_popup" />
 
     <EditText
-        android:id="@+id/editText_description"
+        android:id="@id/editText_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="18dp"
@@ -89,7 +87,7 @@
         android:descendantFocusability="beforeDescendants"
         android:ems="10"
         android:focusableInTouchMode="true"
-        android:gravity="top|left"
+        android:gravity="top|start"
         android:hint="@string/description_hint"
         android:inputType="textMultiLine|textNoSuggestions"
         android:maxLength="1200"
@@ -97,22 +95,22 @@
         android:singleLine="false"
         android:textColor="#FFF"
         android:textColorHint="#90FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/add_file_text"
+        app:layout_constraintBottom_toTopOf="@id/add_file_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_description_text" />
+        app:layout_constraintTop_toBottomOf="@id/add_description_text" />
 
     <TextView
-        android:id="@+id/text_counter"
+        android:id="@id/text_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/initial_character_count"
         android:textColor="#B7B7B7"
-        app:layout_constraintStart_toStartOf="@+id/editText_description"
-        app:layout_constraintTop_toBottomOf="@+id/editText_description" />
+        app:layout_constraintStart_toStartOf="@id/editText_description"
+        app:layout_constraintTop_toBottomOf="@id/editText_description" />
 
     <Button
-        android:id="@+id/color_button_next"
+        android:id="@id/color_button_next_add_book"
         android:layout_width="77dp"
         android:layout_height="41dp"
         android:layout_marginBottom="22dp"
@@ -129,19 +127,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/upload_arrow_id"
+        android:id="@id/upload_arrow_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:background="#00000000"
         android:src="@drawable/upload_arrow"
-        app:layout_constraintBottom_toTopOf="@+id/color_button_next"
+        app:layout_constraintBottom_toTopOf="@id/color_button_next_add_book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/upload_button"/>
 
     <TextView
-        android:id="@+id/add_file_text"
+        android:id="@id/add_file_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
@@ -150,7 +148,7 @@
         android:textColor="#6C7A8C"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/upload_arrow_id"
+        app:layout_constraintBottom_toTopOf="@id/upload_arrow_id"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

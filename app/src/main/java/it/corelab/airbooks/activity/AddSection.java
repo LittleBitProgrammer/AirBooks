@@ -46,9 +46,9 @@ public class AddSection extends AppCompatActivity {
 
         centralCard = findViewById(R.id.placeholder_add);
         returnButton = findViewById(R.id.left_arrow_add_categories);
-        nextButton = findViewById(R.id.color_button_next);
+        nextButton = findViewById(R.id.color_button_next_add_book);
         editTextInput = findViewById(R.id.edit_text);
-        editText = findViewById(R.id.edit_text3);
+        editText = findViewById(R.id.edit_text_hidden);
         textInputLayout = findViewById(R.id.text_input_layout);
 
         editText.setEnabled(false);
@@ -96,7 +96,7 @@ public class AddSection extends AppCompatActivity {
             public void onClick(View v) {
                 returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(returnButtonIntent);
-                overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
+                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
             }
         };
 
@@ -172,8 +172,7 @@ public class AddSection extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.intent_from_top_in, R.anim.intent_from_top_out);
-        Toast.makeText(getApplicationContext(),"prova",Toast.LENGTH_LONG).show();
+        overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
     }
 
     @Override

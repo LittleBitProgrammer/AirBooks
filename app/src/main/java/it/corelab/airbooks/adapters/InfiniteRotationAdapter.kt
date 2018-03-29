@@ -25,7 +25,7 @@ class InfiniteRotationAdapter(itemList: ArrayList<Showcase>) : RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater
-                .from(parent?.context)
+                .from(parent.context)
                 .inflate(R.layout.home_showcase, parent, false)
         return ItemViewHolder(view)
     }

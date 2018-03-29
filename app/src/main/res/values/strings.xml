@@ -30,7 +30,7 @@
     <string name="select_genre_add_book">Select your genre</string>
     <string name="background_image">background image</string>
     <string name="search_icon">search icon</string>
-    <string name="search_library_hint">Search books...</string>
+    <string name="search_library_hint">Search books…</string>
     <string name="author_name_explore">by Gerard Woodward</string>
     <string name="book_title_explore">All this has</string>
     <string name="cover_book">cover book</string>
