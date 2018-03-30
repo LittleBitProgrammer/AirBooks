@@ -28,7 +28,6 @@ public class Categories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
 
-        final Intent returnIntent = new Intent(getApplicationContext(),AddSection.class);
         final Intent dismissIntent = new Intent(getApplicationContext(),MainActivity.class);
 
         createCategioriesRvAdd();
@@ -59,9 +58,7 @@ public class Categories extends AppCompatActivity {
         View.OnClickListener returnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(returnIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
+               onBackPressed();
             }
         };
 
@@ -110,6 +107,9 @@ public class Categories extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        final Intent returnIntent = new Intent(getApplicationContext(),AddSection.class);
+        returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(returnIntent);
         overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
     }
 

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
@@ -14,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.TouchDelegate;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -22,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import it.corelab.airbooks.R;
 
@@ -54,9 +51,6 @@ public class AddSection extends AppCompatActivity {
         editText.setEnabled(false);
 
         textInputLayout.setHint("Insert your title here");
-
-        final Intent returnButtonIntent = new Intent(AddSection.this, MainActivity.class);
-
 
 
 
@@ -94,28 +88,16 @@ public class AddSection extends AppCompatActivity {
         View.OnClickListener returnButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+               /* returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(returnButtonIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
+                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);*/
+               onBackPressed();
             }
         };
 
         centralCard.setOnClickListener(centralCardListener);
         returnButton.setOnClickListener(returnButtonListener);
         nextButton.setOnClickListener(nextCategoriesListener);
-
-        final View parentReturn = (View) returnButton.getParent();  // button: the view you want to enlarge hit area
-        parentReturn.post( new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                returnButton.getHitRect(rect);
-                rect.top -= 200;    // increase top hit area
-                rect.left -= 200;   // increase left hit area
-                rect.bottom += 200; // increase bottom hit area
-                rect.right += 200;  // increase right hit area
-                parentReturn.setTouchDelegate( new TouchDelegate( rect , returnButton));
-            }
-        });
     }
 
     @Override
@@ -172,6 +154,9 @@ public class AddSection extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        final Intent returnButtonIntent = new Intent(AddSection.this, MainActivity.class);
+        returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(returnButtonIntent);
         overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
     }
 

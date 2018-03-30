@@ -37,7 +37,6 @@ public class AddDescription extends AppCompatActivity {
         editText = findViewById(R.id.editText_description);
         textView = findViewById(R.id.text_counter);
 
-        final Intent returnIntent = new Intent(getApplicationContext(),Categories.class);
         final Intent dismissIntent = new Intent(getApplicationContext(),MainActivity.class);
 
         leftArrow = findViewById(R.id.left_arrow_add_description);
@@ -76,9 +75,7 @@ public class AddDescription extends AppCompatActivity {
         View.OnClickListener returnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(returnIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
+                onBackPressed();
             }
         };
 
@@ -93,6 +90,14 @@ public class AddDescription extends AppCompatActivity {
 
         leftArrow.setOnClickListener(returnListener);
         dismiss.setOnClickListener(dismissListner);
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        final Intent returnIntent = new Intent(getApplicationContext(),Categories.class);
+        returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(returnIntent);
+        overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
     }
 
     @Override

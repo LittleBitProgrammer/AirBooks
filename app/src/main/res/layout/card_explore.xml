@@ -17,6 +17,7 @@
         android:textColor="#4790E1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookName" />
 
@@ -32,6 +33,7 @@
         android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
@@ -79,6 +81,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/color_button_love_book"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number_reviews_explore" />
 
@@ -93,6 +96,8 @@
         android:foregroundGravity="center"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/color_button_read_now"
         app:layout_constraintTop_toBottomOf="@+id/number_reviews_explore" />
 
     <RatingBar
