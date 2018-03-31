@@ -56,7 +56,7 @@ public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueRe
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardReviewImage_comtinue_read);
+            image = (ImageView) v.findViewById(R.id.review_cover_image);
         }
     }
 }

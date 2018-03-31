@@ -875,16 +875,17 @@ public class FadeFragment extends Fragment {
 }
     private void createReviewCard(){
         reviewCard = new ArrayList<>();
-        reviewCard.add(new Item("All this", R.drawable.all_this));
-        reviewCard.add(new Item("Titn", R.drawable.titan));
-        reviewCard.add(new Item("Spazio", R.drawable.spazio));
-        reviewCard.add(new Item("Bookcover", R.drawable.art_bookcover));
-        reviewCard.add(new Item("Creative", R.drawable.creative_bookcover));
-        reviewCard.add(new Item("Cupcake", R.drawable.cupcake));
-        reviewCard.add(new Item("fiore", R.drawable.fiore));
-        reviewCard.add(new Item("gelato", R.drawable.gelato));
-        reviewCard.add(new Item("Lampadina", R.drawable.lampadina));
-        reviewCard.add(new Item("Papera", R.drawable.papera));
+        reviewCard.add(new Item("All this has nothing",R.drawable.all_this, 5, "Jojo Moyes", "This book is very fantastic, no words !!!!",R.drawable.for_children));
+        reviewCard.add(new Item("Titan", R.drawable.titan,4,"Alessandro Baricco","“Oltre l’inverno” è l’opera letteraria di un’autrice che, negli ultimi anni, comincia a scrivere ogni suo libro l’8 di Gennaio.\n" +
+                "Si parla di una bufera di neve che coinvolge la città di Brooklyn e più nello specifico di tre persone le cui vite si intrecciano: Lucia Maraz, Richard Bowmaster e Evelyn Ortega",R.drawable.sci_fi));
+        reviewCard.add(new Item("Spazio", R.drawable.spazio,3,"Chiara Gamberale","Isabel Allende ci racconta una storia di amori, politica, dittature e fughe. Un romanzo ambientato in una Brooklyn paralizzata da una forte bufera di neve.",R.drawable.biografy));
+        reviewCard.add(new Item("Bookcover", R.drawable.art_bookcover,2,"Stephanie Meyer", "Tra tutti i libri di Allende che ho letto questo è quello che mi ha meno coinvolto, potrei definirlo il più ingenuo. Mi ha dato la sensazione di leggere una pagina di diario di una ragazzina degli anni '60",R.drawable.comics_manga));
+        reviewCard.add(new Item("Creative", R.drawable.creative_bookcover,1,"Fabio Volo","buon libro scritto molto bene",R.drawable.wise));
+        reviewCard.add(new Item("Cupcake", R.drawable.cupcake,5, "Federico Moccia","Libro particolare .....da' l'idea di un libro a spirale . Isabelle Allende descrive i personaggi e le situazioni da loro vissute in modo particolare",R.drawable.erotic));
+        reviewCard.add(new Item("fiore", R.drawable.fiore,4,"Dan Brown","Amo la Allende, ho letto quasi tutti i suoi libri. Questo romanzo l'ho letto nel giro di una settimana e devo dire che la storia scorre tranquillamente.",R.drawable.self_help));
+        reviewCard.add(new Item("gelato", R.drawable.gelato,3,"Sam Pvnik","Ho letto alcuni libri di Isabel Allende a partire dal suo primo grande successo. La sua narrativa scorrevole e appetitosa mi piace e m'invita alla lettura",R.drawable.yellow_thriller));
+        reviewCard.add(new Item("Lampadina", R.drawable.lampadina,2,"George Orwell","Bel libro, scorrevole emozionante anche se mi aspettavo di più da Isabel Allende.",R.drawable.for_children));
+        reviewCard.add(new Item("Papera", R.drawable.papera,1,"Harper Lee","This book is very fantastic, no words !!!!",R.drawable.sci_fi));
     }
 
     private void createExploreCard(){

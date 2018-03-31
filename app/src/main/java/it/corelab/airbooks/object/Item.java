@@ -16,6 +16,7 @@ public class Item {
     private int numbersLovers;
     private int genreColor;
     private int vote;
+    private String review;
 
     public Item(int drawable){
         this.drawable = drawable;
@@ -89,6 +90,15 @@ public class Item {
         this.numbersLovers = numbersLovers;
     }
 
+    public Item(String name, int drawable, int vote, String author, String review, int genreColor){
+        this.name = name;
+        this.drawable = drawable;
+        this.vote = vote;
+        this.author = author;
+        this.review = review;
+        this.genreColor = genreColor;
+    }
+
     public Item(String name){
         this.name = name;
     }
@@ -129,6 +139,10 @@ public class Item {
         return vote;
     }
 
+    public String getReview(){
+        return review;
+    }
+
     public void setDrawable(int drawable){
         this.drawable = drawable;
     }
@@ -163,5 +177,9 @@ public class Item {
 
     public void setVote(int vote){
         this.vote = vote;
+    }
+
+    public void setReview(String review){
+        this.review = review;
     }
 }

@@ -13,7 +13,7 @@
     app:cardPreventCornerOverlap="true">
 
     <ImageView
-        android:id="@+id/cardReviewImage_comtinue_read"
+        android:id="@+id/review_cover_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/cover_book"

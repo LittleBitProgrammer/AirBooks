@@ -77,6 +77,7 @@
     <string name="author_book_detail">author</string>
     <string name="all_review_section">ALL REVIEWS</string>
     <string name="reviews_button">reviews button</string>
+    <string name="simple_circle_background">proflie border</string>
 
 
     <!-- this is just a placeHolder remove when you put the ratingView-->
