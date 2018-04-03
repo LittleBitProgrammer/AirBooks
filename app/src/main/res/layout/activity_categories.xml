@@ -67,7 +67,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_categories"
         app:layout_constraintTop_toTopOf="@+id/top_bar_categories"
-        android:layout_marginRight="18dp"
         android:contentDescription="@string/dismiss_button"/>
 
     <android.support.v7.widget.RecyclerView

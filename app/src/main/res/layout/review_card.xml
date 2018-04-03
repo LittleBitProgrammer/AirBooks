@@ -27,7 +27,7 @@
             android:layout_below="@+id/author_continue_read"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="2dp"
-            android:layout_toEndOf="@+id/review_cover_image"
+            android:layout_toEndOf="@+id/card_cover_rview"
             android:ellipsize="end"
             android:fontFamily="sans-serif-condensed"
             android:maxLines="3"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_continue_read"
-            android:layout_toEndOf="@+id/review_cover_image"
+            android:layout_toEndOf="@+id/card_cover_rview"
             android:fontFamily="@font/cookie"
             android:text="@string/book_author_profile"
             android:textColor="#AFB1B5"
@@ -58,11 +58,11 @@
             android:layout_below="@+id/genre_color_continue_read"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:layout_toEndOf="@+id/review_cover_image"
+            android:layout_toEndOf="@+id/card_cover_rview"
             android:text="@string/book_title_profile"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/review_cover_image"
+            app:layout_constraintStart_toEndOf="@+id/card_cover_rview"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -75,15 +75,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@color/genereLibro" />
 
-        <ImageView
-            android:id="@+id/review_cover_image"
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_cover_rview"
             android:layout_width="91dp"
             android:layout_height="0dp"
+            app:cardCornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/review_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:contentDescription="@string/cover_book"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        </android.support.v7.widget.CardView>
 
 
         <RatingBar

@@ -31,9 +31,10 @@
             android:id="@+id/ghost_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:textIsSelectable="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
 
@@ -59,7 +60,6 @@
             android:id="@+id/title_rv_bestweek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/book_title"
             android:textColor="#FFFFFF"
@@ -72,8 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="8dp"
-
             android:layout_marginStart="8dp"
             android:fontFamily="@font/cookie"
             android:text="@string/author_book_home_card"

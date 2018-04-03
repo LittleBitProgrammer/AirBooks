@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -34,75 +35,16 @@
         app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
         app:layout_constraintTop_toTopOf="@+id/cardView_allReviews" />
 
-    <ImageView
-        android:id="@+id/stella_1"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="11dp"
-        android:src="@drawable/stella_piena"
-        app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname"
-        android:contentDescription="@string/stella_1"/>
-
-    <ImageView
-        android:id="@+id/stella_2"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="11dp"
-        android:src="@drawable/stella_piena"
-        app:layout_constraintStart_toEndOf="@+id/stella_1"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname"
-        android:contentDescription="@string/stella_2"/>
-
-    <ImageView
-        android:id="@+id/stella_3"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="11dp"
-        android:src="@drawable/stella_piena"
-        app:layout_constraintStart_toEndOf="@+id/stella_2"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname"
-        android:contentDescription="@string/stella_3"/>
-
-    <ImageView
-        android:id="@+id/stella_4"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="11dp"
-        android:src="@drawable/stella_piena"
-        app:layout_constraintStart_toEndOf="@+id/stella_3"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname"
-        android:contentDescription="@string/stella_4"/>
-
-    <ImageView
-        android:id="@+id/stella_5"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="11dp"
-        android:src="@drawable/stella_vuota"
-        app:layout_constraintStart_toEndOf="@+id/stella_4"
-        app:layout_constraintTop_toBottomOf="@+id/name_surname"
-        android:contentDescription="@string/stella_5"/>
-
     <TextView
         android:id="@+id/time_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="6dp"
         android:text="@string/time_ago_review"
         android:textColor="#B6BCC5"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/stella_5"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar_listView"
         app:layout_constraintTop_toBottomOf="@+id/name_surname" />
 
     <it.corelab.airbooks.widget.ExpandableTextView
@@ -134,5 +76,21 @@
         android:textColor="#4790E1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RatingBar
+        android:id="@+id/ratingBar_listView"
+        style="@style/RatingBarSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="14dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="3.0"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cardView_allReviews"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname" />
 
 </android.support.constraint.ConstraintLayout>

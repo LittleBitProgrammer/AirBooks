@@ -60,7 +60,7 @@
             android:layout_marginStart="16dp"
 
             android:layout_marginTop="12dp"
-            android:gravity="center|right"
+            android:gravity="center|end"
 
             android:text="@string/placeholder_text_showMore_alert"
             android:textAlignment="center"
