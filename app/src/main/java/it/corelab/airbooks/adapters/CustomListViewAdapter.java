@@ -12,6 +12,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -39,13 +40,8 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image_profile_all_reviews);
         TextView textView = (TextView) convertView.findViewById(R.id.name_surname);
+        RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar_listView);
         final ExpandableTextView description = (ExpandableTextView) convertView.findViewById(R.id.expandable_text);
-
-        ImageView stella1 = (ImageView) convertView.findViewById(R.id.stella_1);
-        ImageView stella2 = (ImageView) convertView.findViewById(R.id.stella_2);
-        ImageView stella3 = (ImageView) convertView.findViewById(R.id.stella_3);
-        ImageView stella4 = (ImageView) convertView.findViewById(R.id.stella_4);
-        ImageView stella5 = (ImageView) convertView.findViewById(R.id.stella_5);
 
         final Button buttonToggle = (Button) convertView.findViewById(R.id.read_all_button);
 
@@ -89,46 +85,22 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
 
         switch (vote){
             case 5:
-                stella1.setImageResource(R.drawable.stella_piena);
-                stella2.setImageResource(R.drawable.stella_piena);
-                stella3.setImageResource(R.drawable.stella_piena);
-                stella4.setImageResource(R.drawable.stella_piena);
-                stella5.setImageResource(R.drawable.stella_piena);
+                ratingBar.setRating(5);
                 break;
             case 4:
-                stella1.setImageResource(R.drawable.stella_piena);
-                stella2.setImageResource(R.drawable.stella_piena);
-                stella3.setImageResource(R.drawable.stella_piena);
-                stella4.setImageResource(R.drawable.stella_piena);
-                stella5.setImageResource(R.drawable.stella_vuota);
+                ratingBar.setRating(4);
                 break;
             case 3:
-                stella1.setImageResource(R.drawable.stella_piena);
-                stella2.setImageResource(R.drawable.stella_piena);
-                stella3.setImageResource(R.drawable.stella_piena);
-                stella4.setImageResource(R.drawable.stella_vuota);
-                stella5.setImageResource(R.drawable.stella_vuota);
+                ratingBar.setRating(3);
                 break;
             case 2:
-                stella1.setImageResource(R.drawable.stella_piena);
-                stella2.setImageResource(R.drawable.stella_piena);
-                stella3.setImageResource(R.drawable.stella_vuota);
-                stella4.setImageResource(R.drawable.stella_vuota);
-                stella5.setImageResource(R.drawable.stella_vuota);
+                ratingBar.setRating(2);
                 break;
             case 1:
-                stella1.setImageResource(R.drawable.stella_piena);
-                stella2.setImageResource(R.drawable.stella_vuota);
-                stella3.setImageResource(R.drawable.stella_vuota);
-                stella4.setImageResource(R.drawable.stella_vuota);
-                stella5.setImageResource(R.drawable.stella_vuota);
+                ratingBar.setRating(1);
                 break;
             default:
-                stella1.setImageResource(R.drawable.stella_vuota);
-                stella2.setImageResource(R.drawable.stella_vuota);
-                stella3.setImageResource(R.drawable.stella_vuota);
-                stella4.setImageResource(R.drawable.stella_vuota);
-                stella5.setImageResource(R.drawable.stella_vuota);
+                ratingBar.setRating(0);
 
         }
 
