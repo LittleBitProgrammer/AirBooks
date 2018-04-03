@@ -32,6 +32,8 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
         super(context, textViewResourceId, objects);
     }
 
+
+    //TODO: new branch
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
