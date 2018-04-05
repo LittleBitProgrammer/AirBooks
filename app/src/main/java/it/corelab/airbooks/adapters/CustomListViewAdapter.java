@@ -18,22 +18,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import it.corelab.airbooks.object.Reviews;
 import it.corelab.airbooks.widget.ExpandableTextView;
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.object.Review;
 
 /**
  * Created by Roberto_Vecchio on 10/03/18.
  */
 
-public class CustomListViewAdapter extends ArrayAdapter<Review> {
+public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
 
-    public CustomListViewAdapter(Context context, int textViewResourceId, List<Review> objects) {
+    public CustomListViewAdapter(Context context, int textViewResourceId, List<Reviews> objects) {
         super(context, textViewResourceId, objects);
     }
 
-
-    //TODO: new branch
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -71,7 +69,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
         description.setExpandInterpolator(new OvershootInterpolator(1.0f));
         description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
 
-        final Review items = getItem(position);
+        final Reviews items = getItem(position);
 
         image.setImageResource(items.getDrawable());
         textView.setText(items.getName());

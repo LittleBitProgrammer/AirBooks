@@ -1,75 +1,100 @@
 package it.corelab.airbooks.object;
 
-/**
- * Created by Roberto_Vecchio on 10/03/18.
- */
+import java.util.Date;
+import java.util.HashMap;
 
-public class Review {
+public class Review extends Entity {
 
-    private int drawable;
-    private String name;
-    private int hour;
+    private String bookID;
+    private String userID;
+    private String title;
     private String description;
-    private boolean isSegnaled;
-    private int vote;
+    private int rating;
+    private Date date;
 
-    public Review (int drawable, String name, int hour, String description,int vote, boolean isSegnaled){
-        this.drawable = drawable;
-        this.name = name;
-        this.hour = hour;
-        this.description = description;
-        this.vote = vote;
-        this.isSegnaled = isSegnaled;
-    }
-    public Review(){
+    private Book book;
+    private User author;
+
+    public Review(HashMap<String, Object> review){
+        super(review);
+
+        this.bookID = review.get("book_id").toString();
+        this.userID = review.get("user_id").toString();
+        this.title = review.get("title").toString();
+        this.description = review.get("description").toString();
+        this.rating = (int)review.get("rating");
+        this.date = (Date) review.get("date");
+
+        if ((this.book = (Book) review.get("book")) != null){
+            this.book = (Book) review.get("book");
+        }
+
+        if ((this.author = (User) review.get("author")) != null){
+            this.author= (User) review.get("author");
+        }
     }
 
-    public int getDrawable(){
-        return drawable;
+    public String getBookID() {
+        return bookID;
     }
 
-    public String getName(){
-        return name;
+    public String getUserID() {
+        return userID;
     }
 
-    public int getHour(){
-        return hour;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public int getVote(){
-        return vote;
+    public int getRating() {
+        return rating;
     }
 
-    public boolean getIsSegnaled(){
-        return isSegnaled;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDrawable(int drawable){
-        this.drawable = drawable;
+    public Book getBook() {
+        return book;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setHour(int hour){
-        this.hour = hour;
+    public void setBookID(String bookID) {
+        this.bookID = bookID;
     }
 
-    public void setDescription(String description){
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setIsSegnaled(boolean isSegnaled){
-        this.isSegnaled = isSegnaled;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
-    public void setVote(int vote){
-        this.vote = vote;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 }
