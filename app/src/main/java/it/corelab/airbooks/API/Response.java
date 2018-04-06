@@ -8,7 +8,7 @@ public class Response<T extends Entity> {
 
     private APIError error;
     private T result;
-    
+
     public Response(){
         //default constructor
     }

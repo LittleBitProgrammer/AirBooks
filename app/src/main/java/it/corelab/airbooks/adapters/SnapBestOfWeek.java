@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.BookDetail;
+import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
 
 /**
@@ -28,12 +31,12 @@ import it.corelab.airbooks.object.Item;
 public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>{
     private LayoutInflater layoutInflater;
     private Context context;
-    private ArrayList<Item> items;
+    private ArrayList<Book> books;
 
-    public SnapBestOfWeek(Context context, ArrayList<Item> items) {
+    public SnapBestOfWeek(Context context, ArrayList<Book> books) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
-        this.items = items;
+        this.books = books;
     }
 
     @Override
@@ -46,16 +49,17 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, final int position) {
-        final Item item = items.get(position);
+        final Book book = books.get(position);
 
-        holder.image.setImageResource(item.getDrawable());
-        holder.colorGenre.setImageResource(item.getGenreColor());
-        holder.title.setText(item.getName());
-        holder.author.setText(item.getAuthor());
-        holder.numbLovers.setText("" + item.getNumbersLovers());
-        holder.numbReaders.setText("" + item.getNumberOfReaders());
+        Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        //holder.image.setImageResource(item.getDrawable());
+        //holder.colorGenre.setImageResource(item.getGenreColor());
+        holder.title.setText(book.getTitle());
+        //holder.author.setText(item.getAuthor());
+        holder.numbLovers.setText("" + book.getLovers());
+        holder.numbReaders.setText("" + book.getReadings());
 
-        int drawable = item.getGenreColor();
+        /*int drawable = item.getGenreColor();
 
 
         switch (drawable){
@@ -89,9 +93,9 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.comicsLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.comicsDark));
                 break;
-        }
+        }*/
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("LogConditional")
             @Override
             public void onClick(View view) {
@@ -115,21 +119,21 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
             }
         });
 
-
+*/
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return books.size();
     }
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
         private TextView title;
-        private TextView author;
-        private ImageView colorGenre;
-        private ImageView lovers;
-        private ImageView readers;
+        //private TextView author;
+        //private ImageView colorGenre;
+        //private ImageView lovers;
+        //private ImageView readers;
         private TextView numbLovers;
         private TextView numbReaders;
 
@@ -139,11 +143,11 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
             super(v);
 
             image = (ImageView) v.findViewById(R.id.image_bestweek);
-            colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
+            //colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
             title = (TextView) v.findViewById(R.id.title_rv_bestweek);
-            author = (TextView) v.findViewById(R.id.author_bestweek);
-            lovers = (ImageView) v.findViewById(R.id.lovers_best_week);
-            readers = (ImageView) v.findViewById(R.id.readers_best_week);
+            //author = (TextView) v.findViewById(R.id.author_bestweek);
+            //lovers = (ImageView) v.findViewById(R.id.lovers_best_week);
+            //readers = (ImageView) v.findViewById(R.id.readers_best_week);
             numbLovers = (TextView) v.findViewById(R.id.numb_lovers_best_week);
             numbReaders = (TextView) v.findViewById(R.id.numb_readers_best_week);
         }

@@ -28,7 +28,7 @@ public class Book extends Entity {
     private String description;
     private String genreID;
     private String language;
-    private Date uploadDate;
+    private String uploadDate;
     private String coverUrl;
     private String bookUrl;
 
@@ -44,19 +44,20 @@ public class Book extends Entity {
     @SuppressWarnings (value="unchecked")
     public Book(HashMap<String, Object> books){
         super(books);
-        this.ID = books.get("ID").toString();
+
+        this.ID = books.get("id").toString();
         this.userID = books.get("user_id").toString();
         this.title = books.get("title").toString();
         this.description = books.get("description").toString();
         this.genreID = books.get("genre_id").toString();
         this.language = books.get("language").toString();
-        this.uploadDate = (Date) books.get("upload_date");
+        this.uploadDate = books.get("upload_date").toString();
         this.coverUrl = books.get("cover_url").toString();
         this.bookUrl = books.get("book_url").toString();
         this.readings = (int) books.get("readings");
         this.lovers = (int) books.get("lovers");
         this.avarageRating = (double) books.get("average_rating");
-        this.isSaved = (boolean) books.get("is_saved");
+        //this.isSaved = (boolean) books.get("is_saved");
 
         if ((this.reviews = (Page<Review>) books.get("reviews")) != null){
             this.reviews = (Page<Review>) books.get("reviews");
@@ -91,7 +92,7 @@ public class Book extends Entity {
         return language;
     }
 
-    public Date getUploadDate() {
+    public String getUploadDate() {
         return uploadDate;
     }
 
@@ -115,9 +116,9 @@ public class Book extends Entity {
         return avarageRating;
     }
 
-    public boolean getIsSaved() {
+   /* public boolean getIsSaved() {
         return isSaved;
-    }
+    }*/
 
     public Page<Review> getReviews() {
         return reviews;
@@ -151,7 +152,7 @@ public class Book extends Entity {
         this.language = language;
     }
 
-    public void setUploadDate(Date uploadDate) {
+    public void setUploadDate(String uploadDate) {
         this.uploadDate = uploadDate;
     }
 
@@ -175,9 +176,9 @@ public class Book extends Entity {
         this.avarageRating = avarageRating;
     }
 
-    public void setSaved(boolean saved) {
+   /* public void setSaved(boolean saved) {
         isSaved = saved;
-    }
+    }*/
 
     public void setReviews(Page<Review> reviews) {
         this.reviews = reviews;
