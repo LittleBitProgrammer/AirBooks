@@ -1,6 +1,5 @@
 package it.corelab.airbooks.object;
 
-import java.util.Date;
 import java.util.HashMap;
 
 

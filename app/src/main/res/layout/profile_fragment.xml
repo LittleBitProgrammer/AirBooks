@@ -13,7 +13,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -24,7 +23,6 @@
             android:contentDescription="@string/background_image"/>
 
         <ImageView
-            android:id="@+id/simple_circ"
             android:contentDescription="@string/simple_circle_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +43,6 @@
             android:layout_marginTop="18dp"
             android:cropToPadding="false"
             android:scaleType="fitXY"
-            android:src="@drawable/profile_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

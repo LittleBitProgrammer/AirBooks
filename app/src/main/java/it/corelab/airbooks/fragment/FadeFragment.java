@@ -24,12 +24,16 @@ import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -49,8 +53,10 @@ import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
 import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Showcase;
+import it.corelab.airbooks.object.User;
 import it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView;
+import it.corelab.airbooks.widget.RoundedImageView;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 /*
@@ -74,10 +80,6 @@ public class FadeFragment extends Fragment {
    private FrameLayout fragmentContainer;
 
 
-   private ProgressDialog pDialog;
-   private static String url ="http://airbooks.altervista.org/API/v2/books/";
-
-
    /*
 
    * Initialization of the @GLOBAL recyclerView
@@ -86,10 +88,17 @@ public class FadeFragment extends Fragment {
     */
 
    private RecyclerView recyclerView;
-   private RecyclerView rvBestWeek;
+   private GetBestOfWeek asyncTask;
+   private GetCurrentUser userAsync;
+   private static User userclass;
+   private TextView nameSurname;
+   private TextView fromTo;
+   private TextView followers;
+   private RoundedImageView profileImage;
+   private static ProgressDialog pDialog;
 
 
-   /*
+    /*
 
    * This is the global variable of the autoScroll recyclerView
    * Is declared as global because it is called by onDestroyMethod in MainActivity
@@ -114,16 +123,7 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> rvContinueReadItem;
    private ArrayList<Item> rvCategoriesItem;
    private ArrayList<Showcase> showcaseCardItem;
-   private ArrayList<Book> bookArrayList;
-
-
-   /*
-
-   * initialization for the TAG of this activity
-
-    */
-
-   private String TAG = FadeFragment.class.getSimpleName();
+   private static ArrayList<Book> bookArrayList;
 
 
    /*
@@ -140,6 +140,13 @@ public class FadeFragment extends Fragment {
        fragment.setArguments(b);
        return fragment;
    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        asyncTask.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        userAsync.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+    }
 
 
    /*=====================================================================
@@ -160,28 +167,32 @@ public class FadeFragment extends Fragment {
    @Override
    public View onCreateView(@NonNull LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
 
-       if(getArguments().getInt("index", 0) == 0){
-           View view = inflanter.inflate(R.layout.home_fragment, container, false);
-           initHome(view);
-           return view;
-       }
-
-       else if(getArguments().getInt("index",0) == 1 ){
-           View view = inflanter.inflate(R.layout.explore_fragment, container, false);
-           initExplore(view);
-           return view;
-       }
-
-       else if(getArguments().getInt("index", 0) == 2){
-           View view = inflanter.inflate(R.layout.library_fragment, container, false);
-           initLibrary(view);
-           return view;
-       }
-
-       else{
-           View view = inflanter.inflate(R.layout.profile_fragment, container, false);
-           initProfile(view);
-           return view;
+       switch (getArguments().getInt("index", 0)) {
+           case 0: {
+               View view = inflanter.inflate(R.layout.home_fragment, container, false);
+               initHome(view);
+               return view;
+           }
+           case 1: {
+               View view = inflanter.inflate(R.layout.explore_fragment, container, false);
+               initExplore(view);
+               return view;
+           }
+           case 2: {
+               View view = inflanter.inflate(R.layout.library_fragment, container, false);
+               initLibrary(view);
+               return view;
+           }
+           case 3: {
+               View view = inflanter.inflate(R.layout.profile_fragment, container, false);
+               initProfile(view);
+               return view;
+           }
+           default: {
+               View view = inflanter.inflate(R.layout.profile_fragment, container, false);
+               initProfile(view);
+               return view;
+           }
        }
 
    }
@@ -321,7 +332,7 @@ public class FadeFragment extends Fragment {
 
         RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-        rvBestWeek = view.findViewById(R.id.rv_bestweek);
+        final RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
 
         /*
@@ -424,10 +435,23 @@ public class FadeFragment extends Fragment {
 
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
-        new GetBestOfWeek().execute();
+        asyncTask = new GetBestOfWeek(this);
+        asyncTask.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+                if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }
+
+                SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(),bookArrayList);
+                rvBestWeek.setAdapter(snapBestOfWeek);
+            }
+        });
+        asyncTask.execute();
 
         /*
 
@@ -762,13 +786,29 @@ public class FadeFragment extends Fragment {
 
        //1. GROUP
        final Button buttonAction = view.findViewById(R.id.buttonAction);
+       final TextView nameSurname = view.findViewById(R.id.NameSurname);
+       final TextView fromTo = view.findViewById(R.id.fromTo);
+       final TextView followers = view.findViewById(R.id.followNumber);
+       final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
+
+       userAsync = new GetCurrentUser(this);
+       userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
+           @Override
+           public void onExampleAsyncTaskFinished(Integer value) {
+               // update UI in Activity here
+               nameSurname.setText(userclass.getFirstName() + " " + userclass.getLastName());
+               fromTo.setText(userclass.getNationality());
+               followers.setText(userclass.getFollower() + "");
+               Picasso.get().load(userclass.getProfilePictureUrl()).into(profileImage);
+           }
+       });
+       userAsync.execute();
 
        //2. GROUP
 
        //3.GROUP
        RecyclerView cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
        RecyclerView recyclerViewAllBooks = view.findViewById(R.id.recycler_view);
-
 
        /*
 
@@ -1008,29 +1048,33 @@ public class FadeFragment extends Fragment {
         rvCategoriesItem.add(new Item(R.drawable.other, "Altro"));
     }
 
+    public static class GetBestOfWeek extends AsyncTask<Void,Void,Integer> {
 
-    /*
+        private WeakReference<FadeFragment> activityReference;
 
-    * This is  a class for the asynchronous calls
-    * of the recyclerView (best of the week)
+        private String TAG = FadeFragment.class.getSimpleName();
+        private String url ="http://airbooks.altervista.org/API/v2/books/";
+        private GetBestOfWeek.BestOfWekkAsyncTaskLinestener listener;
 
-     */
-
-    private class GetBestOfWeek extends AsyncTask<Void,Void,Void>{
+        GetBestOfWeek(FadeFragment context){
+            activityReference = new WeakReference<>(context);
+        }
 
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
 
+            FadeFragment activity = activityReference.get();
             //showing progress dialog
-            pDialog = new ProgressDialog(getActivity());
+            pDialog = new ProgressDialog(activity.getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
         }
 
         @Override
-        protected Void doInBackground(Void... arg0){
+        protected Integer doInBackground(Void... arg0){
+            final FadeFragment activity = activityReference.get();
 
             HttpHandler sh = new HttpHandler();
 
@@ -1081,7 +1125,7 @@ public class FadeFragment extends Fragment {
                         bookItem.put("readings", readings);
                         bookItem.put("lovers", lovers);
                         bookItem.put("average_rating", averageRatings);
-                       // bookItem.put("is_saved", isSaved);
+                        // bookItem.put("is_saved", isSaved);
 
                         Book bookClass = new Book(bookItem);
 
@@ -1089,19 +1133,19 @@ public class FadeFragment extends Fragment {
                     }
                 }catch (final JSONException e){
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
-                    ((Activity) Objects.requireNonNull(getActivity())).runOnUiThread(new Runnable() {
+                    (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(),"JSon parsing error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity.getActivity(),"JSon parsing error", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
             } else{
                 Log.e(TAG,"Couldn't get json from server");
-                ((Activity) Objects.requireNonNull(getActivity())).runOnUiThread(new Runnable() {
+                (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(),"Couldn't get json from server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity.getActivity(),"Couldn't get json from server", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -1109,17 +1153,116 @@ public class FadeFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void result){
-            super.onPostExecute(result);
+        protected void onPostExecute(Integer value){
+            super.onPostExecute(value);
 
-            //dismiss the progress dialog
-            if (pDialog.isShowing()){
-                pDialog.dismiss();
+            if (listener != null) {
+                listener.onExampleAsyncTaskFinished(value);
             }
+        }
 
-            SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(), bookArrayList);
-            rvBestWeek.setAdapter(snapBestOfWeek);
+        void setListener(GetBestOfWeek.BestOfWekkAsyncTaskLinestener listener) {
+            this.listener = listener;
+        }
+
+        public interface BestOfWekkAsyncTaskLinestener {
+            void onExampleAsyncTaskFinished(Integer value);
         }
     }
 
+    public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
+
+        private String TAG = FadeFragment.class.getSimpleName();
+        private String urlUser = "http://airbooks.altervista.org/API/v2/users/1/all";
+        private GetCurrentUser.userAsyncTaskLinestener listener;
+        private WeakReference<FadeFragment> activityReference;
+
+
+        GetCurrentUser(FadeFragment context){
+            activityReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+
+            Log.e(TAG, "please wait");
+        }
+
+        @Override
+        protected Integer doInBackground(Void... arg0){
+            final FadeFragment activity = activityReference.get();
+            HttpHandler sh = new HttpHandler();
+
+            //Making a request to url and getting a response
+            String jsonStr = sh.makeServiceCall(urlUser);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+
+            if (jsonStr != null) {
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(jsonStr);
+                    JSONObject userObj = jsonObject.getJSONObject("result");
+
+                    String ID = userObj.getString("id");
+                    String firstName = userObj.getString("first_name");
+                    String lastName = userObj.getString("last_name");
+                    String profilePictureUrl = userObj.getString("profile_picture_url");
+                    String nationality = userObj.getString("nationality");
+                    String email = userObj.getString("email");
+                    int followers = Integer.parseInt(userObj.getString("followers_count"));
+
+                    //temp hash map for single book
+                    HashMap<String, Object> userItem = new HashMap<>();
+
+                    userItem.put("id",ID);
+                    userItem.put("first_name", firstName);
+                    userItem.put("last_name", lastName);
+                    userItem.put("profile_picture_url", profilePictureUrl);
+                    userItem.put("nationality", nationality);
+                    userItem.put("followers_count", followers);
+                    userItem.put("email",email);
+
+                    userclass = new User(userItem);
+
+                }catch (final JSONException e){
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(activity.getActivity(),"JSon parsing error", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }else{
+                Log.e(TAG,"Couldn't get json from server");
+                ((Objects.requireNonNull(activity.getActivity()))).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity.getActivity(),"Couldn't get json from server", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer value){
+            super.onPostExecute(value);
+
+            if (listener != null) {
+                listener.onExampleAsyncTaskFinished(value);
+            }
+        }
+
+        void setListener(GetCurrentUser.userAsyncTaskLinestener listener) {
+            this.listener = listener;
+        }
+
+        public interface userAsyncTaskLinestener {
+            void onExampleAsyncTaskFinished(Integer value);
+        }
+    }
 }

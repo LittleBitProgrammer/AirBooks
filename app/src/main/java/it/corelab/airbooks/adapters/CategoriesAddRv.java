@@ -70,8 +70,8 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardImage_categories_add);
-            categoriesName = (TextView) v.findViewById(R.id.nameCategories);
+            image = v.findViewById(R.id.cardImage_categories_add);
+            categoriesName = v.findViewById(R.id.nameCategories);
         }
     }
 }

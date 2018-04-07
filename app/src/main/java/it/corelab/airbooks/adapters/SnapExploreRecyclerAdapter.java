@@ -64,11 +64,11 @@ public class SnapExploreRecyclerAdapter extends RecyclerView.Adapter<SnapExplore
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardImage_explore);
-            bookName = (TextView) v.findViewById(R.id.bookName);
-            authorName = (TextView) v.findViewById(R.id.author_id);
-            numberReviews = (TextView) v.findViewById(R.id.number_reviews_explore);
-            ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
+            image = v.findViewById(R.id.cardImage_explore);
+            bookName = v.findViewById(R.id.bookName);
+            authorName = v.findViewById(R.id.author_id);
+            numberReviews = v.findViewById(R.id.number_reviews_explore);
+            ratingBar = v.findViewById(R.id.ratingBar);
         }
     }
 }

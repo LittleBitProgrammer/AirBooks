@@ -7,7 +7,6 @@
     tools:context=".activity.ReviewDetail">
 
     <ImageView
-        android:id="@+id/background_bookDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -18,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/background_image"/>
     <TextView
-        android:id="@+id/top_bar_name_review_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -31,7 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
-        android:id="@+id/left_arrow_review_detail"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginBottom="17dp"
@@ -44,7 +41,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/back_button"/>
     <ImageButton
-        android:id="@+id/reviews_button_reviewDetail"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="18dp"

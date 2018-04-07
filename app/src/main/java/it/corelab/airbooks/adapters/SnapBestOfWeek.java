@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.BookDetail;
 import it.corelab.airbooks.object.Book;
-import it.corelab.airbooks.object.Item;
 
 /**
  * Created by Roberto_Vecchio on 21/02/18.
@@ -145,14 +144,14 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.image_bestweek);
-            colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
-            title = (TextView) v.findViewById(R.id.title_rv_bestweek);
+            image = v.findViewById(R.id.image_bestweek);
+            colorGenre = v.findViewById(R.id.rettangolo_smussato_rv);
+            title = v.findViewById(R.id.title_rv_bestweek);
             //author = (TextView) v.findViewById(R.id.author_bestweek);
-            lovers = (ImageView) v.findViewById(R.id.lovers_best_week);
-            readers = (ImageView) v.findViewById(R.id.readers_best_week);
-            numbLovers = (TextView) v.findViewById(R.id.numb_lovers_best_week);
-            numbReaders = (TextView) v.findViewById(R.id.numb_readers_best_week);
+            lovers = v.findViewById(R.id.lovers_best_week);
+            readers = v.findViewById(R.id.readers_best_week);
+            numbLovers = v.findViewById(R.id.numb_lovers_best_week);
+            numbReaders = v.findViewById(R.id.numb_readers_best_week);
         }
     }
 }

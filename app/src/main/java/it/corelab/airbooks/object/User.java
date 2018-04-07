@@ -38,7 +38,7 @@ public class User extends Entity {
         this.subscriptionDate = (Date) user.get("subscription_date");
         this.email = user.get("email").toString();
         this.follower = (int) user.get("followers_count");
-        this.isFollowed = (boolean) user.get("is_followed");
+       // this.isFollowed = (boolean) user.get("is_followed");
 
         if ((this.favouriteGenres = (ArrayList<Genre>) user.get("favourite_genres")) != null) {
             this.favouriteGenres = (ArrayList<Genre>) user.get("favourite_genres");

@@ -65,7 +65,7 @@ public class BookDetail extends AppCompatActivity {
         numbLovers = findViewById(R.id.numb_lovers_book_detail);
         numbReaders = findViewById(R.id.numb_readers_book_detail);
 
-        tv = (TextView) findViewById(R.id.description_book_detail);
+        tv = findViewById(R.id.description_book_detail);
 
         //==========================
         //      hide status bar
@@ -247,7 +247,7 @@ public class BookDetail extends AppCompatActivity {
                 public void onClick(View widget) {
                     Log.d("SHOWMORE", "view more pressed");
                     cdd.show();
-                    ImageButton dismissButton = (ImageButton) cdd.findViewById(R.id.dismiss_button_popup);
+                    ImageButton dismissButton = cdd.findViewById(R.id.dismiss_button_popup);
                     dismissButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

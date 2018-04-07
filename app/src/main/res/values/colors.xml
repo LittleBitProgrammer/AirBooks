@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
     <color name="blu_airbooks">#4990e2</color>
-    <color name="celeste_airbooks">#9ECDFF</color>
-    <color name="viola_airbooks">#A3A8F8</color>
-    <color name="dark_text">#6E7B8C</color>
-    <color name="light_text">#8895A3</color>
-    <color name="dark_background">#F5F7FA</color>
     <color name="inactive_color">#E1E4E9</color>
     <color name="accent_color">#6e7b8c</color>
-    <color name="intestazioni">#6D7B8B</color>
     <color name="genereLibro">#4B85AA</color>
     <color name="forChildrenDark">#FF8993</color>
     <color name="forChildrenLight">#FEC180</color>

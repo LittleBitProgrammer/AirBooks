@@ -38,12 +38,12 @@ public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, null);
 
-        ImageView image = (ImageView) convertView.findViewById(R.id.image_profile_all_reviews);
-        TextView textView = (TextView) convertView.findViewById(R.id.name_surname);
-        RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar_listView);
-        final ExpandableTextView description = (ExpandableTextView) convertView.findViewById(R.id.expandable_text);
+        ImageView image = convertView.findViewById(R.id.image_profile_all_reviews);
+        TextView textView = convertView.findViewById(R.id.name_surname);
+        RatingBar ratingBar = convertView.findViewById(R.id.ratingBar_listView);
+        final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
 
-        final Button buttonToggle = (Button) convertView.findViewById(R.id.read_all_button);
+        final Button buttonToggle = convertView.findViewById(R.id.read_all_button);
 
         final View parentReturn = (View) buttonToggle.getParent();  // button: the view you want to enlarge hit area
 

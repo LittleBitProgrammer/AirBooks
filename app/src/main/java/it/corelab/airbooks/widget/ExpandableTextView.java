@@ -6,14 +6,10 @@ import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.TextView;
-
-import java.lang.reflect.Field;
 
 import it.corelab.airbooks.BuildConfig;
 import it.corelab.airbooks.R;

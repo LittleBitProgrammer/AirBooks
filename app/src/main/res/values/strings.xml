@@ -4,12 +4,7 @@
     <string name="tab2">Explore</string>
     <string name="tab3">Library</string>
     <string name="tab4">Profile</string>
-    <string name="homeSection">HOME</string>
-    <string name="exploreSection">EXPLORE</string>
-    <string name="librarySection">LIBRARY</string>
-    <string name="ProfileSection">PROFILE</string>
     <string name="section_add_your_book">ADD YOUR BOOK</string>
-    <string name="more">..See more</string>
     <string name="popUp_tab_one">Change image</string>
     <string name="popUp_tab_two">Change email</string>
     <string name="popUp_tab_three">Change password</string>
@@ -60,9 +55,7 @@
     <string name="text_review_profile">Lorem ipsum dolor sit amet, elit consectetuer adipiscing elit. Elit aenean…</string>
     <string name="book_author_profile">By Roberto Vecchio</string>
     <string name="book_title_profile">All this has nothing</string>
-    <string name="read_all_profile">See full review</string>
     <string name="genre_color_profile">genre color</string>
-    <string name="image_see_full_review_profile">image see full review</string>
     <string name="editText_hint_add_book">Insert your title here</string>
     <string name="insert_image_add_book">insert here your image</string>
     <string name="bookshelf">bookshelf</string>
@@ -80,15 +73,4 @@
     <string name="simple_circle_background">proflie border</string>
     <string name="review_detail_name">REVIEW DETAIL</string>
 
-
-    <!-- this is just a placeHolder remove when you put the ratingView-->
-    <string name="stella_1">stella 1</string>
-    <string name="stella_2">stella 2</string>
-    <string name="stella_3">stella 3</string>
-    <string name="stella_4">stella 4</string>
-    <string name="stella_5">stella 5</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hint"><font color="#B6BCC5" size="14">Insert your title here</font></string>
 </resources>

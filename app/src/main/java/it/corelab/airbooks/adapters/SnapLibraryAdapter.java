@@ -62,8 +62,8 @@ public class SnapLibraryAdapter  extends RecyclerView.Adapter<SnapLibraryAdapter
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardImage_library);
-            scaffale = (ImageView) v.findViewById(R.id.scaffale_id);
+            image = v.findViewById(R.id.cardImage_library);
+            scaffale = v.findViewById(R.id.scaffale_id);
         }
     }
 }
