@@ -1,6 +1,5 @@
 package it.corelab.airbooks.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -31,9 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -51,10 +48,7 @@ import it.corelab.airbooks.adapters.SnapLibraryAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
 import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
-import it.corelab.airbooks.object.Page;
-import it.corelab.airbooks.object.Review;
 import it.corelab.airbooks.object.Showcase;
-import it.corelab.airbooks.object.User;
 import it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
@@ -992,28 +986,26 @@ public class FadeFragment extends Fragment {
         rvCategoriesItem.add(new Item(R.drawable.for_children, "Per bambini"));
         rvCategoriesItem.add(new Item(R.drawable.biografy, "Biografia"));
         rvCategoriesItem.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
-        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
-        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotico"));
+        rvCategoriesItem.add(new Item(R.drawable.teen_fiction, "Teen fiction"));
+        rvCategoriesItem.add(new Item(R.drawable.teenagers, "Adolescenti e ragazzi"));
         rvCategoriesItem.add(new Item(R.drawable.self_help, "Self help"));
-        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e Thriller"));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
+        rvCategoriesItem.add(new Item(R.drawable.gastronomy, "Gastronomia"));
+        rvCategoriesItem.add(new Item(R.drawable.religion, "Religione"));
+        rvCategoriesItem.add(new Item(R.drawable.fan_fiction,"Fan fiction"));
+        rvCategoriesItem.add(new Item(R.drawable.dramatic,"Drammatico"));
+        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
+        rvCategoriesItem.add(new Item(R.drawable.humor,"Humor"));
+        rvCategoriesItem.add(new Item(R.drawable.fantasy_gradient, "Fantasy"));
+        rvCategoriesItem.add(new Item(R.drawable.adventure, "Avventura"));
+        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotic"));
+        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e thriller"));
+        rvCategoriesItem.add(new Item(R.drawable.manual, "Manuali"));
+        rvCategoriesItem.add(new Item(R.drawable.horror_gradient, "Horror"));
+        rvCategoriesItem.add(new Item(R.drawable.action, "Azione"));
+        rvCategoriesItem.add(new Item(R.drawable.sport,"Sport"));
+        rvCategoriesItem.add(new Item(R.drawable.poetry, "Poesia"));
+        rvCategoriesItem.add(new Item(R.drawable.story,"Storia"));
+        rvCategoriesItem.add(new Item(R.drawable.other, "Altro"));
     }
 
 
