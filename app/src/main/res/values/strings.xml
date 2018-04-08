@@ -20,6 +20,7 @@
     <string name="description_hint">Insert your description here</string>
     <string name="initial_character_count">Character left 600</string>
     <string name="next_button_text">NEXT</string>
+    <string name="add_button_text">ADD</string>
     <string name="upload_button">upload button</string>
     <string name="select_file_add_book">Select your file</string>
     <string name="select_genre_add_book">Select your genre</string>

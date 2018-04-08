@@ -126,12 +126,12 @@
             android:id="@id/placeholder_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
+            android:contentDescription="@string/insert_image_add_book"
+            android:scaleType="centerCrop"
             android:src="@drawable/placeholder_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top_bar_categories"
-            android:contentDescription="@string/insert_image_add_book"/>
+            app:layout_constraintTop_toBottomOf="@id/top_bar_categories" />
 
     </android.support.v7.widget.CardView>
 

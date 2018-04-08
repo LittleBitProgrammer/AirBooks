@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import it.corelab.airbooks.R;
 
@@ -29,6 +32,7 @@ public class AddSection extends AppCompatActivity {
     private ImageButton returnButton;
     private Button nextButton;
     private TextInputLayout textInputLayout;
+    private Uri pickedImage;
     private EditText editText;
     private TextInputEditText editTextInput;
     public static final int PICK_IMAGE = 1;
@@ -64,6 +68,7 @@ public class AddSection extends AppCompatActivity {
         View.OnClickListener centralCardListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 getIntent.setType("image/*");
 
@@ -80,8 +85,19 @@ public class AddSection extends AppCompatActivity {
         View.OnClickListener nextCategoriesListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categoriesIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(categoriesIntent);
+
+                if ( pickedImage != null && !(isEditTextEmpty(editTextInput))) {
+
+                    String title = editTextInput.getText().toString();
+
+                    categoriesIntent.putExtra("image", pickedImage.toString());
+                    categoriesIntent.putExtra("title", title);
+                    categoriesIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(categoriesIntent);
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Add image and Title to continue",Toast.LENGTH_LONG).show();
+                }
             }
         };
 
@@ -98,6 +114,10 @@ public class AddSection extends AppCompatActivity {
         centralCard.setOnClickListener(centralCardListener);
         returnButton.setOnClickListener(returnButtonListener);
         nextButton.setOnClickListener(nextCategoriesListener);
+    }
+
+    public boolean isEditTextEmpty(EditText editText){
+        return  editText.length() == 0;
     }
 
     @Override
@@ -169,7 +189,7 @@ public class AddSection extends AppCompatActivity {
         // If the resultCode is RESULT_OK and there is some data we know that an image was picked.
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             // Let's read picked image data - its URI
-            Uri pickedImage = data.getData();
+            pickedImage = data.getData();
             // Let's read picked image path using content resolver
             String[] filePath = { MediaStore.Images.Media.DATA };
             Cursor cursor = getContentResolver().query(pickedImage, filePath, null, null, null);

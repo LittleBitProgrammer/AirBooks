@@ -2,6 +2,7 @@ package it.corelab.airbooks.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.AddDescription;
+import it.corelab.airbooks.activity.Categories;
 import it.corelab.airbooks.object.Item;
 
 
@@ -24,13 +26,17 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
 
     private LayoutInflater layoutInflater;
     private Context context;
+    private String uri;
+    private String title;
     private ArrayList<Item> items;
     private int lastPosition = -1;
 
-    public CategoriesAddRv(Context context, ArrayList<Item> items) {
+    public CategoriesAddRv(Context context, ArrayList<Item> items, String uri, String title) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.items = items;
+        this.uri = uri;
+        this.title = title;
     }
 
     @Override
@@ -42,7 +48,7 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
 
     @Override
     public void onBindViewHolder(final it.corelab.airbooks.adapters.CategoriesAddRv.ReyclerViewHolder holder, int position) {
-        Item item = items.get(position);
+        final Item item = items.get(position);
 
         holder.image.setImageResource(item.getDrawable());
         holder.categoriesName.setText(item.getGenreName());
@@ -51,10 +57,13 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.airbooks.ad
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext() , AddDescription.class);
+                intent.putExtra("image", uri);
+                intent.putExtra("categories", item.getDrawable());
+                intent.putExtra("nameCat", item.getGenreName());
+                intent.putExtra("title", title);
                 view.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override

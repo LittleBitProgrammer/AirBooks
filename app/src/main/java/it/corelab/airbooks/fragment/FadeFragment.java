@@ -144,8 +144,14 @@ public class FadeFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        asyncTask.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
-        userAsync.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+
+        if (asyncTask != null) {
+            asyncTask.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }else if (userAsync != null) {
+            userAsync.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }
+
+        rotationView.stopAutoScroll();
     }
 
 

@@ -1,7 +1,9 @@
 package it.corelab.airbooks.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -40,6 +43,15 @@ public class Categories extends AppCompatActivity {
         leftArrow = findViewById(R.id.left_arrow_add_categories);
         dismiss = findViewById(R.id.dismiss_button);
 
+        Intent intent = getIntent();
+        Bundle extra = intent.getExtras();
+        String uriString = extra.getString("image");
+        String title = extra.getString("title");
+
+        //take and set @URI image
+       /* Uri uri = Uri.parse(extra.getString("image"));
+        imageView.setImageURI(uri);*/
+
         RecyclerView categoriesAddRv = findViewById(R.id.categories_add_rv);
 
         categoriesAddRv.setItemViewCacheSize(20);
@@ -50,7 +62,7 @@ public class Categories extends AppCompatActivity {
         categoriesAddRv.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         categoriesAddRv.setHasFixedSize(true);
 
-        CategoriesAddRv categoriesAdapter = new CategoriesAddRv(getApplicationContext(), categories);
+        CategoriesAddRv categoriesAdapter = new CategoriesAddRv(getApplicationContext(), categories, uriString, title);
         categoriesAddRv.setAdapter(categoriesAdapter);
 
 
