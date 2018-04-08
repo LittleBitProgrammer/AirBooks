@@ -2,14 +2,19 @@ package it.corelab.airbooks.activity;
 
 import android.content.Intent;
 import android.graphics.Rect;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.TouchDelegate;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Adapter;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -55,6 +60,8 @@ public class Categories extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ViewCompat.setNestedScrollingEnabled(categoriesAddRv,false);
+
         View.OnClickListener returnListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,28 +84,15 @@ public class Categories extends AppCompatActivity {
 
         // range button
 
-        final View parentReturn = (View) leftArrow.getParent();  // button: the view you want to enlarge hit area
-        parentReturn.post( new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                leftArrow.getHitRect(rect);
-                rect.top -= 200;    // increase top hit area
-                rect.left -= 200;   // increase left hit area
-                rect.bottom += 200; // increase bottom hit area
-                rect.right += 200;  // increase right hit area
-                parentReturn.setTouchDelegate( new TouchDelegate( rect , leftArrow));
-            }
-        });
-
         final View parentDismiss = (View) dismiss.getParent();  // button: the view you want to enlarge hit area
-        parentReturn.post( new Runnable() {
+        parentDismiss.post( new Runnable() {
             public void run() {
                 final Rect rect = new Rect();
                 dismiss.getHitRect(rect);
-                rect.top -= 200;    // increase top hit area
-                rect.left -= 200;   // increase left hit area
-                rect.bottom += 200; // increase bottom hit area
-                rect.right += 200;  // increase right hit area
+                rect.top -= 150;    // increase top hit area
+                rect.left -= 150;   // increase left hit area
+                rect.bottom += 150; // increase bottom hit area
+                rect.right += 150;  // increase right hit area
                 parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
             }
         });
@@ -118,29 +112,30 @@ public class Categories extends AppCompatActivity {
         categories = new ArrayList<>();
 
         categories.add(new Item(R.drawable.sci_fi, "Sci-fi"));
-        categories.add(new Item(R.drawable.for_children, "Adolescenti e Ragazzi"));
+        categories.add(new Item(R.drawable.for_children, "Per bambini"));
         categories.add(new Item(R.drawable.biografy, "Biografia"));
         categories.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
-        categories.add(new Item(R.drawable.yellow_thriller, "Gialli e Thriller"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "humor"));
-        categories.add(new Item(R.drawable.manual, "Manuali"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "libri per bambini"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "religione"));
+        categories.add(new Item(R.drawable.teen_fiction, "Teen fiction"));
+        categories.add(new Item(R.drawable.teenagers, "Adolescenti e ragazzi"));
         categories.add(new Item(R.drawable.self_help, "Self help"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "sport"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "storico"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "avventura"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "azione"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "fan fiction"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "fantasy_gradient"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "horror_gradient"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "poesia"));
-        categories.add(new Item(R.drawable.wise, "saggistica"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "teen fiction"));
-        categories.add(new Item(R.drawable.erotic, "Erotica"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "letteratura gastonomica"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "drammatico"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "sentimentale"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "altro"));
+        categories.add(new Item(R.drawable.gastronomy, "Gastronomia"));
+        categories.add(new Item(R.drawable.religion, "Religione"));
+        categories.add(new Item(R.drawable.fan_fiction,"Fan fiction"));
+        categories.add(new Item(R.drawable.dramatic,"Drammatico"));
+        categories.add(new Item(R.drawable.wise, "Saggistica"));
+        categories.add(new Item(R.drawable.humor,"Humor"));
+        categories.add(new Item(R.drawable.fantasy_gradient, "Fantasy"));
+        categories.add(new Item(R.drawable.adventure, "Avventura"));
+        categories.add(new Item(R.drawable.erotic, "Erotic"));
+        categories.add(new Item(R.drawable.yellow_thriller, "Gialli e thriller"));
+        categories.add(new Item(R.drawable.manual, "Manuali"));
+        categories.add(new Item(R.drawable.horror_gradient, "Horror"));
+        categories.add(new Item(R.drawable.action, "Azione"));
+        categories.add(new Item(R.drawable.sport,"Sport"));
+        categories.add(new Item(R.drawable.poetry, "Poesia"));
+        categories.add(new Item(R.drawable.story,"Storia"));
+        categories.add(new Item(R.drawable.other, "Altro"));
     }
+
+
 }

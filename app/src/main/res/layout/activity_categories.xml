@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="it.corelab.airbooks.activity.Categories">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/top_bar_categories"
         android:layout_width="0dp"
         android:layout_height="55dp"
+        android:contentDescription="@string/topBar"
         android:scaleType="fitXY"
         android:src="@drawable/barra_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/topBar"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/top_bar_name"
@@ -40,19 +38,19 @@
         android:layout_marginBottom="0dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="20dp"
+        android:background="#00000000"
+        android:contentDescription="@string/back_button"
         android:paddingBottom="17dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="16dp"
         android:paddingTop="20dp"
+        android:scaleType="fitCenter"
         android:scaleX="0.8"
         android:scaleY="0.8"
-        android:background="#00000000"
-        android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/back_button"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/dismiss_button"
@@ -62,35 +60,49 @@
         android:layout_marginEnd="18dp"
         android:layout_marginTop="18dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/dismiss_button"
         android:scaleType="fitCenter"
         android:src="@drawable/dismiss"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintEnd_toEndOf="@+id/top_bar_categories"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_categories"
-        android:contentDescription="@string/dismiss_button"/>
+        app:layout_constraintTop_toTopOf="@+id/top_bar_categories" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/categories_add_rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selecteGenre_lab" />
-
-    <TextView
-        android:id="@+id/selecteGenre_lab"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/Scroll_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/select_genre_add_book"
-        android:textColor="#6C7A8C"
-        android:textSize="33sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/categories_add_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar_categories" />
+        app:layout_constraintTop_toBottomOf="@+id/top_bar_categories">
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/contraints_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/categories_add_rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/selecteGenre_lab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/select_genre_add_book"
+                android:textColor="#6C7A8C"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/categories_add_rv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>
