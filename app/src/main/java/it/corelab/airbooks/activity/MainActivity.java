@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         //nothing
-        Log.i("BACK", "you have pressed back");
-
+        Log.i("BACK", "you have pressed back, i'm minimazing AirBooks");
+        minimizeApp();
     }
 
     @Override
@@ -96,7 +96,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+    }
 
+    public void minimizeApp(){
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(startMain);
+        this.finish();
     }
 
 

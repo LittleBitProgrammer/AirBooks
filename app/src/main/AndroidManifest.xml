@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +42,7 @@
         <activity android:name=".activity.ReadActivity" />
         <activity android:name=".activity.AllReviews" />
         <activity android:name=".activity.ReviewDetail" />
-        <activity android:name=".activity.AddRecap"></activity>
+        <activity android:name=".activity.AddRecap"/>
     </application>
 
 </manifest>
