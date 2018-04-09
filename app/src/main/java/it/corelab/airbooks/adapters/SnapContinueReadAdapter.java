@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
 
 /**
@@ -20,33 +23,33 @@ import it.corelab.airbooks.object.Item;
 public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueReadAdapter.ReyclerViewHolder> {
     private LayoutInflater layoutInflater;
     private Context context;
-    private ArrayList<Item> items;
+    private ArrayList<Book> books;
 
-    public SnapContinueReadAdapter(Context context, ArrayList<Item> items) {
+    public SnapContinueReadAdapter(Context context, ArrayList<Book> books) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
-        this.items = items;
+        this.books = books;
     }
 
     @Override
     public SnapContinueReadAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(R.layout.rv_continue_read, parent, false);
+        View book = layoutInflater.inflate(R.layout.rv_continue_read, parent, false);
 
-        return new SnapContinueReadAdapter.ReyclerViewHolder(item);
+        return new SnapContinueReadAdapter.ReyclerViewHolder(book);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final SnapContinueReadAdapter.ReyclerViewHolder holder, int position) {
-        Item item = items.get(position);
+        Book book = books.get(position);
 
-        holder.image.setImageResource(item.getDrawable());
+        Picasso.get().load(book.getCoverUrl()).into(holder.image);
 
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return books.size();
     }
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {

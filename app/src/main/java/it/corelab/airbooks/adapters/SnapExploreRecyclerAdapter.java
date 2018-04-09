@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.R;
 
@@ -21,36 +24,36 @@ import it.corelab.airbooks.R;
 public class SnapExploreRecyclerAdapter extends RecyclerView.Adapter<SnapExploreRecyclerAdapter.ReyclerViewHolder>  {
     private LayoutInflater layoutInflater;
     private Context context;
-    private ArrayList<Item> items;
+    private ArrayList<Book> books;
 
-    public SnapExploreRecyclerAdapter(Context context, ArrayList<Item> items) {
+    public SnapExploreRecyclerAdapter(Context context, ArrayList<Book> books) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
-        this.items = items;
+        this.books = books;
     }
 
     @Override
     public SnapExploreRecyclerAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(R.layout.card_explore, parent, false);
+        View book = layoutInflater.inflate(R.layout.card_explore, parent, false);
 
-        return new SnapExploreRecyclerAdapter.ReyclerViewHolder(item);
+        return new SnapExploreRecyclerAdapter.ReyclerViewHolder(book);
     }
 
     @Override
     public void onBindViewHolder(final SnapExploreRecyclerAdapter.ReyclerViewHolder holder, int position) {
-        Item item = items.get(position);
+        Book book = books.get(position);
 
-        holder.image.setImageResource(item.getDrawable());
-        holder.bookName.setText(item.getName());
-        holder.authorName.setText(item.getAuthor());
-        holder.numberReviews.setText("" + item.getNumberReviews() + " Reviews");
-        holder.ratingBar.setRating(item.getVote());
+        Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        holder.bookName.setText(book.getTitle());
+        holder.authorName.setText(book.getAuthorFirstName() + " " + book.getAuthorLastNAme());
+        holder.numberReviews.setText("93 Reviews");
+        holder.ratingBar.setRating((float)book.getAvarageRating());
 
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return books.size();
     }
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {

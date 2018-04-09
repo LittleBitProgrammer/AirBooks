@@ -30,6 +30,8 @@ public class Book extends Entity {
     private String uploadDate;
     private String coverUrl;
     private String bookUrl;
+    private String authorFirstName;
+    private String authorLastNAme;
 
     private int readings;
     private int lovers;
@@ -56,6 +58,8 @@ public class Book extends Entity {
         this.readings = (int) books.get("readings");
         this.lovers = (int) books.get("lovers");
         this.avarageRating = (double) books.get("average_rating");
+        this.authorFirstName = books.get("author_first_name").toString();
+        this.authorLastNAme = books.get("author_last_name").toString();
         //this.isSaved = (boolean) books.get("is_saved");
 
         if ((this.reviews = (Page<Review>) books.get("reviews")) != null){
@@ -101,6 +105,14 @@ public class Book extends Entity {
 
     public String getBookUrl() {
         return bookUrl;
+    }
+
+    public String getAuthorFirstName() {
+        return authorFirstName;
+    }
+
+    public String getAuthorLastNAme() {
+        return authorLastNAme;
     }
 
     public int getReadings() {
@@ -161,6 +173,14 @@ public class Book extends Entity {
 
     public void setBookUrl(String bookUrl) {
         this.bookUrl = bookUrl;
+    }
+
+    public void setAuthorFirstName(String authorFirstName) {
+        this.authorFirstName = authorFirstName;
+    }
+
+    public void setAuthorLastNAme(String authorLastNAme) {
+        this.authorLastNAme = authorLastNAme;
     }
 
     public void setReadings(int readings) {

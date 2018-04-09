@@ -55,6 +55,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         //holder.author.setText(item.getAuthor());
         holder.numbLovers.setText("" + book.getLovers());
         holder.numbReaders.setText("" + book.getReadings());
+        holder.author.setText(book.getAuthorFirstName() + " " + book.getAuthorLastNAme());
 
         int genreID = Integer.parseInt(book.getGenreID());
 
@@ -132,7 +133,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
         private TextView title;
-        //private TextView author;
+        private TextView author;
         private ImageView colorGenre;
         private ImageView lovers;
         private ImageView readers;
@@ -147,7 +148,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
             image = v.findViewById(R.id.image_bestweek);
             colorGenre = v.findViewById(R.id.rettangolo_smussato_rv);
             title = v.findViewById(R.id.title_rv_bestweek);
-            //author = (TextView) v.findViewById(R.id.author_bestweek);
+            author = v.findViewById(R.id.author_bestweek);
             lovers = v.findViewById(R.id.lovers_best_week);
             readers = v.findViewById(R.id.readers_best_week);
             numbLovers = v.findViewById(R.id.numb_lovers_best_week);

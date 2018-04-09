@@ -66,6 +66,7 @@
             app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
 
         <TextView
+            android:id="@+id/author_bestweek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

@@ -89,6 +89,8 @@ public class FadeFragment extends Fragment {
 
    private RecyclerView recyclerView;
    private GetBestOfWeek asyncTask;
+   private GetBestOfWeek asyncTaskExplorer;
+    private GetBestOfWeek asyncTaskLib;
    private GetCurrentUser userAsync;
    private static User userclass;
    private TextView nameSurname;
@@ -149,6 +151,8 @@ public class FadeFragment extends Fragment {
             asyncTask.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
         }else if (userAsync != null) {
             userAsync.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }else if (asyncTaskExplorer != null){
+            asyncTaskExplorer.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
         }
 
         rotationView.stopAutoScroll();
@@ -336,7 +340,7 @@ public class FadeFragment extends Fragment {
         // 3. GROUP
         rotationView = view.findViewById(R.id.rv_showcase);
 
-        RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
+        final RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
         final RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
@@ -414,9 +418,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), rvContinueReadItem);
-        rvContinueRead.setAdapter(snapContinueReadAdapter);
-
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
 
@@ -449,9 +450,12 @@ public class FadeFragment extends Fragment {
             public void onExampleAsyncTaskFinished(Integer value) {
                 // update UI in Activity here
                 //dismiss the progress dialog
-                if (pDialog.isShowing()){
+               /* if (pDialog.isShowing()){
                     pDialog.dismiss();
-                }
+                }*/
+
+                SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), bookArrayList);
+                rvContinueRead.setAdapter(snapContinueReadAdapter);
 
                 SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(),bookArrayList);
                 rvBestWeek.setAdapter(snapBestOfWeek);
@@ -494,10 +498,8 @@ public class FadeFragment extends Fragment {
                 if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
                     //scroll view is at bottom
                     MainActivity.bottomNavigation.restoreBottomNavigation(true);
-                } else {
-                    //scroll view is not at bottom
-                    Log.i("Bottom bar", "nested scrollView is not at bottom");
-                }
+                }  //@ELSE scroll view is not at bottom
+
             }
         });
 
@@ -536,6 +538,7 @@ public class FadeFragment extends Fragment {
      */
 
     public void initExplore(View view){
+        bookArrayList = new ArrayList<>();
 
 
         /*
@@ -576,7 +579,7 @@ public class FadeFragment extends Fragment {
         //2. GROUP
 
         //3.GROUP
-        SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+        final SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
 
 
         /*
@@ -616,9 +619,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
-        recyclerCardExplore.setAdapter(adapter);
-
 
         /*
 
@@ -628,6 +628,22 @@ public class FadeFragment extends Fragment {
          */
 
         OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+        asyncTaskExplorer = new GetBestOfWeek(this);
+        asyncTaskExplorer.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+              /*  if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }*/
+
+                SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), bookArrayList);
+                recyclerCardExplore.setAdapter(adapter);
+            }
+        });
+        asyncTaskExplorer.execute();
 
     }
 
@@ -685,7 +701,7 @@ public class FadeFragment extends Fragment {
         //2. GROUP
 
         //3.GROUP
-        RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
+        final RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
 
 
         /*
@@ -725,8 +741,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), libraryCardItem );
-        recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+
 
 
         /*
@@ -737,6 +752,22 @@ public class FadeFragment extends Fragment {
          */
 
         OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
+
+        asyncTaskLib = new GetBestOfWeek(this);
+        asyncTaskLib.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+              /*  if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }*/
+
+                SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), bookArrayList );
+                recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+            }
+        });
+        asyncTaskLib.execute();
 
     }
 
@@ -1072,10 +1103,10 @@ public class FadeFragment extends Fragment {
 
             FadeFragment activity = activityReference.get();
             //showing progress dialog
-            pDialog = new ProgressDialog(activity.getActivity());
+           /* pDialog = new ProgressDialog(activity.getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
-            pDialog.show();
+            pDialog.show();*/
         }
 
         @Override
@@ -1110,6 +1141,8 @@ public class FadeFragment extends Fragment {
                         String uploadDate = c.getString("upload_date");
                         String coverUrl = c.getString("cover_url");
                         String bookUrl = c.getString("book_url");
+                        String authorName = c.getString("author_first_name");
+                        String authorLastName = c.getString("author_last_name");
                         int readings = c.getInt("readings");
                         int lovers = c.getInt("lovers");
                         double averageRatings = c.getDouble("average_rating");
@@ -1131,6 +1164,8 @@ public class FadeFragment extends Fragment {
                         bookItem.put("readings", readings);
                         bookItem.put("lovers", lovers);
                         bookItem.put("average_rating", averageRatings);
+                        bookItem.put("author_first_name",authorName);
+                        bookItem.put("author_last_name", authorLastName);
                         // bookItem.put("is_saved", isSaved);
 
                         Book bookClass = new Book(bookItem);
