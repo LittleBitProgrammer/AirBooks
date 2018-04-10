@@ -41,12 +41,22 @@ public class IntroFragment extends android.support.v4.app.Fragment {
         //Select a layout based on the current page
         int layoutResId;
         switch(mPage){
+
             case 0:
                 layoutResId = R.layout.intro_part_one;
                 break;
+            case 1:
+                layoutResId = R.layout.intro_part_two;
+                break;
+            case 2:
+                layoutResId = R.layout.intro_part_three;
+                break;
+            case 3:
+                layoutResId = R.layout.intro_part_four;
+                break;
 
                 default:
-                    layoutResId = R.layout.intro_part_two;
+                    layoutResId = R.layout.intro_part_5;
         }
 
         //Inflante the layout resource file
