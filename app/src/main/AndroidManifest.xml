@@ -43,6 +43,7 @@
         <activity android:name=".activity.AllReviews" />
         <activity android:name=".activity.ReviewDetail" />
         <activity android:name=".activity.AddRecap"/>
+        <activity android:name=".IntroActivity"/>
     </application>
 
 </manifest>
