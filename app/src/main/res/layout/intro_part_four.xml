@@ -4,8 +4,56 @@
     android:id="@+id/intro_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tablet_four"
+                android:layout_width="166dp"
+                android:layout_height="235dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="99dp"
+                android:src="@drawable/ipad_cupcake"
+                app:layout_constraintStart_toStartOf="@+id/cellular_four"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/cellular_four"
+                android:layout_width="125dp"
+                android:layout_height="222dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="132dp"
+                android:src="@drawable/cellulare_cupcake"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_intro_part_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Enjoy your time"
+                android:textColor="#697A89"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/description_four"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/description_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="98dp"
+                android:text="All set and get started"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
 </FrameLayout>

@@ -26,6 +26,7 @@ public class IntroActivity extends AppCompatActivity {
 
         //Set an adapter on the ViewPager
         mViewPager.setAdapter(new IntroAdapter(getSupportFragmentManager()));
+        mViewPager.setOffscreenPageLimit(5);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager,true);

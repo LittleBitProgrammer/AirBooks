@@ -6,7 +6,7 @@
             android:shape="rectangle"
             android:thickness="8dp"
             android:useLevel="false">
-            <solid android:color="@color/comicsDark"/>
+            <solid android:color="#6C7B8B"/>
         </shape>
     </item>
 </layer-list>
