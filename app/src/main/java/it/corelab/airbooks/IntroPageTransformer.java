@@ -1,12 +1,15 @@
 package it.corelab.airbooks;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import it.corelab.airbooks.activity.Login;
 
 public class IntroPageTransformer implements ViewPager.PageTransformer {
 
     @Override
-    public void transformPage(View page, float position){
+    public void transformPage(final View page, float position){
 
         /*
 
@@ -53,6 +56,18 @@ public class IntroPageTransformer implements ViewPager.PageTransformer {
             * callbacks to match up perfectly
 
             */
+            if (pagePosition == 4){
+                View button = page.findViewById(R.id.color_button_next_add_book);
+
+                final Intent intent = new Intent(page.getContext(), Login.class);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        page.getContext().startActivity(intent);
+                    }
+                });
+            }
 
         }else{
 

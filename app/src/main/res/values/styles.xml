@@ -35,6 +35,11 @@
     <style name="TextAppearence.App.TextInputLayout"  parent="@android:style/TextAppearance">
         <item name="android:textColor">#2280C5</item>
     </style>
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">#00000000</item>
+        <item name="colorControlActivated">#00000000</item>
+        <item name="colorControlHighlight">#00000000</item>
+    </style>
     <style name="CustomDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
         <item name="android:windowBackground">@android:color/transparent</item>
