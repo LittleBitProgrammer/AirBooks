@@ -69,7 +69,12 @@
             android:name=".activity.Login"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.Base" />
-        <activity android:name=".activity.SignUp"></activity>
+        <activity
+            android:name=".activity.SignUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.App.Base" />
+        <activity android:name=".activity.Countries"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
