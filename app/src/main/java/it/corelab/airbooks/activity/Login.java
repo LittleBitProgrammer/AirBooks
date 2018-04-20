@@ -2,29 +2,73 @@ package it.corelab.airbooks.activity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 
 import it.corelab.airbooks.R;
 
 public class Login extends AppCompatActivity {
 
+    private Button loginButton;
+    private Button forgotButton;
+    private Button facebookButton;
+    private Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final Intent signUpIntent = new Intent(this, SignUp.class);
+
         //==========================
         //      hide status bar
         //==========================
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        loginButton = findViewById(R.id.button);
+        forgotButton = findViewById(R.id.button2);
+        facebookButton = findViewById(R.id.button4);
+        signUpButton = findViewById(R.id.sign_up);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BUTTON PRESSED", "login button pressed");
+            }
+        });
+
+        forgotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BUTTON PRESSED", "forgot password button pressed");
+            }
+        });
+
+        facebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BUTTON PRESSED", "facebook button pressed");
+            }
+        });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("BUTTON PRESSED", "sign up button pressed");
+                signUpIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(signUpIntent);
+            }
+        });
 
     }
 

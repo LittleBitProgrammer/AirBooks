@@ -73,5 +73,7 @@
     <string name="reviews_button">reviews button</string>
     <string name="simple_circle_background">proflie border</string>
     <string name="review_detail_name">REVIEW DETAIL</string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+    <string name="sign_up">Not have an account? <u>Sign up</u></string>
 
 </resources>
