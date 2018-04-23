@@ -16,4 +16,10 @@
     <color name="comicsDark">#679fe4</color>
     <color name="comicsLight">#a7bfe8</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="GradientAppBackground">
+        <item name="android:startColor">#586BA4</item>
+        <item name="android:endColor">#4299B0</item>
+        <item name="android:angle">-90</item>
+    </color>
 </resources>

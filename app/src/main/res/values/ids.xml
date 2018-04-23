@@ -18,4 +18,5 @@
     <item type="id" name="color_button_next_add_book"/>
     <item type="id" name="cardView"/>
     <item type="id" name="placeholder_add"/>
+
 </resources>

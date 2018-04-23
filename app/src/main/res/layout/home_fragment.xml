@@ -1,155 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nested_home"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F5F5F8">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="60dp">
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="70dp" />
 
-        <ImageView
-            android:layout_width="0dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="368dp" />
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nested_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/background_image"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/explore_actionbar" />
+            android:paddingBottom="60dp">
 
-        <ImageButton
-            android:id="@+id/search_button_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:contentDescription="@string/search_icon"
-            android:paddingBottom="20dp"
-            android:paddingEnd="35dp"
-            android:paddingStart="15dp"
-            android:paddingTop="26dp"
-            android:src="@drawable/icona_search"
-            android:tint="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/trapezoid"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/background_image"
+                android:scaleType="fitXY"
+                android:src="@drawable/trapezoid"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/add_button_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="26dp"
-            android:background="#00000000"
-            android:contentDescription="@string/add_book_button"
-            android:src="@drawable/add_icon"
-            android:tint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView
+                android:id="@+id/rv_showcase"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_showcase"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-        <it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView
-            android:id="@+id/rv_showcase"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="9dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_showcase"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_button_home" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/continue_read"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_showcase" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/continue_read"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline_showcase" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/categories_home"
+                android:textColor="#6E7071"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_bestweek" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/categories_home"
-            android:textColor="#6E7071"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_bestweek" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_categories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_categories"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_bestweek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/section_title" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_bestweek"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/section_title" />
+            <TextView
+                android:id="@+id/section_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="1dp"
+                android:text="@string/best_weeek"
+                android:textColor="#6E7071"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_continue_reading" />
 
-        <TextView
-            android:id="@+id/section_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            android:text="@string/best_weeek"
-            android:textColor="#6E7071"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_continue_reading" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_continue_reading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_continue_reading"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_showcase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="255dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/koliko"
-            android:text="@string/main_section_appName"
-            android:textAlignment="center"
-            android:textColor="#FFF"
-            android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="367dp" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline_showcase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="255dp" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="79dp" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="367dp" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-    </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+    <ImageView
+        android:id="@+id/topbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/top_bar"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/add_button_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="26dp"
+        android:background="#00000000"
+        android:contentDescription="@string/add_book_button"
+        android:src="@drawable/add_icon"
+        android:tint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/koliko"
+        android:text="@string/main_section_appName"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/search_button_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:contentDescription="@string/search_icon"
+        android:paddingBottom="20dp"
+        android:paddingEnd="35dp"
+        android:paddingStart="15dp"
+        android:paddingTop="26dp"
+        android:src="@drawable/icona_search"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

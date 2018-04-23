@@ -27,10 +27,13 @@ import it.corelab.airbooks.object.Book;
  * Created by Roberto_Vecchio on 21/02/18.
  */
 
-public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>{
+public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>  {
+
     private LayoutInflater layoutInflater;
     private Context context;
     private ArrayList<Book> books;
+    private View item;
+
 
     public SnapBestOfWeek(Context context, ArrayList<Book> books) {
         this.layoutInflater = LayoutInflater.from(context);
@@ -40,7 +43,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
     @Override
     public SnapBestOfWeek.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
+        item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
 
         return new SnapBestOfWeek.ReyclerViewHolder(item);
     }
@@ -98,6 +101,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                 break;
         }
 
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("LogConditional")
             @Override
@@ -106,29 +110,30 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                     Intent sharedIntent = new Intent(context, BookDetail.class);
 
                     Pair[] pairs = new Pair[2];
-                    pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
-                    pairs[1] = new Pair<View, String>(holder.image, "imageTransition");
+                   //pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
 
                     sharedIntent.putExtra("pos", book.getCoverUrl());
                     sharedIntent.putExtra("title", book.getTitle());
                     sharedIntent.putExtra("genre", Integer.parseInt(book.getGenreID()));
-                    //sharedIntent.putExtra("author", item.getAuthor());
+                    //sharedIntent.putExtra("author", book.getAuthor());
                     sharedIntent.putExtra("loversNumb", book.getLovers());
-                    Log.i("SHARED_INTENT", "number of lover = " + book.getLovers());
                     sharedIntent.putExtra("readersNumb", book.getReadings());
+                    //sharedIntent.putExtra("colorGenre",)
+                    sharedIntent.putExtra("coverImage", book.getCoverUrl());
 
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
-                    context.startActivity(sharedIntent, options.toBundle());
+
+                    context.startActivity(sharedIntent);
             }
         });
-
 
     }
 
     @Override
     public int getItemCount() {
-        return books.size();
+        return 8;
     }
+
+
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;

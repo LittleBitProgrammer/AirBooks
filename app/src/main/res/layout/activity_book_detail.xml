@@ -153,7 +153,6 @@
         android:layout_marginStart="98dp"
         android:layout_marginTop="126dp"
         android:background="#FFFFFF"
-        android:transitionName="imageTransition"
         app:cardCornerRadius="4dp"
         app:cardElevation="7dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package it.corelab.airbooks.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -276,7 +278,8 @@ public class FadeFragment extends Fragment {
 
      */
 
-    public void initHome(View view){
+    @SuppressLint("ClickableViewAccessibility")
+    public void initHome(final View view){
 
 
         /*
@@ -459,9 +462,11 @@ public class FadeFragment extends Fragment {
 
                 SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(),bookArrayList);
                 rvBestWeek.setAdapter(snapBestOfWeek);
+
             }
         });
         asyncTask.execute();
+
 
         /*
 
@@ -492,13 +497,18 @@ public class FadeFragment extends Fragment {
 
          */
 
+        final ImageView trapezoid = view.findViewById(R.id.trapezoid);
         nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
                 if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
                     //scroll view is at bottom
                     MainActivity.bottomNavigation.restoreBottomNavigation(true);
-                }  //@ELSE scroll view is not at bottom
+                }
+                   /* trapezoid.setPivotY(0);
+                    trapezoid.animate().scaleY(1.0f - ((float)(nestedScrollView.getChildAt(0).getBottom() - (nestedScrollView.getHeight() + nestedScrollView.getScrollY())))/10000.f);
+                    Log.i("SCALE: ", "" + ((float)(nestedScrollView.getChildAt(0).getBottom() - (nestedScrollView.getHeight() + nestedScrollView.getScrollY())))/10000.f);*/
+                //@ELSE scroll view is not at bottom
 
             }
         });
@@ -1214,7 +1224,7 @@ public class FadeFragment extends Fragment {
     public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
 
         private String TAG = FadeFragment.class.getSimpleName();
-        private String urlUser = "http://airbooks.altervista.org/API/v2/users/1/all";
+        private String urlUser = "http://airbooks.altervista.org/API/v2/users/5acb8298b1d467.49059072/all";
         private GetCurrentUser.userAsyncTaskLinestener listener;
         private WeakReference<FadeFragment> activityReference;
 

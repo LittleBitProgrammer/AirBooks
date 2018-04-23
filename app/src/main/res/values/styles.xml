@@ -13,8 +13,6 @@
 
 
         <item name="colorControlActivated">#2280C5</item>
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowContentTransitions">true</item>
 
     </style>
     <!-- Splash Screen theme. -->
