@@ -13,24 +13,25 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/background_image"
             android:scaleType="fitXY"
+            android:src="@drawable/trapezoid"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/explore_actionbar"
-            android:contentDescription="@string/background_image"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/simple_circ"
-            android:contentDescription="@string/simple_circle_background"
+            android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/simple_circle_background"
             android:src="@drawable/simple_circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,6 @@
             android:layout_marginTop="18dp"
             android:cropToPadding="false"
             android:scaleType="fitXY"
-            android:src="@drawable/profile_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,12 +72,12 @@
             android:layout_marginEnd="3dp"
             android:layout_marginStart="9dp"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/provenance_pin_profile"
             android:tint="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/fromTo"
             app:layout_constraintStart_toEndOf="@+id/followNumber"
             app:layout_constraintTop_toBottomOf="@+id/NameSurname"
-            app:srcCompat="@drawable/pin_icona2"
-            android:contentDescription="@string/provenance_pin_profile"/>
+            app:srcCompat="@drawable/pin_icona2" />
 
         <ImageView
             android:id="@+id/readerImage"
@@ -85,11 +85,11 @@
             android:layout_height="17dp"
             android:layout_marginStart="121dp"
             android:layout_marginTop="9dp"
+            android:contentDescription="@string/numbers_of_readers_image_contentDescription"
             android:src="@drawable/reader"
             android:tint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NameSurname"
-            android:contentDescription="@string/numbers_of_readers_image_contentDescription"/>
+            app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
 
         <TextView
             android:id="@+id/fromTo"
@@ -121,7 +121,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/readerImage"/>
+            app:layout_constraintTop_toBottomOf="@+id/readerImage" />
 
 
         <TextView
@@ -195,5 +195,12 @@
             android:background="@drawable/option_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="367dp" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

@@ -1,8 +1,11 @@
 package it.corelab.airbooks.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -21,10 +24,24 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
+import it.corelab.airbooks.CustomNested;
+import it.corelab.airbooks.Http.HttpHandler;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.AddSection;
 import it.corelab.airbooks.activity.MainActivity;
@@ -36,10 +53,13 @@ import it.corelab.airbooks.adapters.SnapContinueReadAdapter;
 import it.corelab.airbooks.adapters.SnapExploreRecyclerAdapter;
 import it.corelab.airbooks.adapters.SnapLibraryAdapter;
 import it.corelab.airbooks.adapters.SnapRecyclerAdapter;
+import it.corelab.airbooks.object.Book;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.object.Showcase;
+import it.corelab.airbooks.object.User;
 import it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView;
+import it.corelab.airbooks.widget.RoundedImageView;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 /*
@@ -71,9 +91,22 @@ public class FadeFragment extends Fragment {
     */
 
    private RecyclerView recyclerView;
+   private GetBestOfWeek asyncTask;
+   private GetBestOfWeek asyncTaskExplorer;
+    private GetBestOfWeek asyncTaskLib;
+   private GetCurrentUser userAsync;
+   private static User userclass;
+   private TextView nameSurname;
+   private TextView fromTo;
+   private TextView followers;
+   private RoundedImageView profileImage;
+   private static ProgressDialog pDialog;
+   private CustomNested customNested;
+   public static ImageView trapezoid;
+   //public static ImageView topBar;
 
 
-   /*
+    /*
 
    * This is the global variable of the autoScroll recyclerView
    * Is declared as global because it is called by onDestroyMethod in MainActivity
@@ -97,14 +130,14 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> libraryCardItem;
    private ArrayList<Item> rvContinueReadItem;
    private ArrayList<Item> rvCategoriesItem;
-   private ArrayList<Item> rvBestWeekItem;
    private ArrayList<Showcase> showcaseCardItem;
+   private static ArrayList<Book> bookArrayList;
 
 
    /*
 
-   * create a new istance of the fragment
-   * this istance of fragment is used by section to initialize different layout
+   * create a new instance of the fragment
+   * this instance of fragment is used by section to initialize different layout
 
     */
 
@@ -115,6 +148,21 @@ public class FadeFragment extends Fragment {
        fragment.setArguments(b);
        return fragment;
    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (asyncTask != null) {
+            asyncTask.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }else if (userAsync != null) {
+            userAsync.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }else if (asyncTaskExplorer != null){
+            asyncTaskExplorer.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
+        }
+
+        rotationView.stopAutoScroll();
+    }
 
 
    /*=====================================================================
@@ -135,28 +183,32 @@ public class FadeFragment extends Fragment {
    @Override
    public View onCreateView(@NonNull LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
 
-       if(getArguments().getInt("index", 0) == 0){
-           View view = inflanter.inflate(R.layout.home_fragment, container, false);
-           initHome(view);
-           return view;
-       }
-
-       else if(getArguments().getInt("index",0) == 1 ){
-           View view = inflanter.inflate(R.layout.explore_fragment, container, false);
-           initExplore(view);
-           return view;
-       }
-
-       else if(getArguments().getInt("index", 0) == 2){
-           View view = inflanter.inflate(R.layout.library_fragment, container, false);
-           initLibrary(view);
-           return view;
-       }
-
-       else{
-           View view = inflanter.inflate(R.layout.profile_fragment, container, false);
-           initProfile(view);
-           return view;
+       switch (getArguments().getInt("index", 0)) {
+           case 0: {
+               View view = inflanter.inflate(R.layout.home_fragment, container, false);
+               initHome(view);
+               return view;
+           }
+           case 1: {
+               View view = inflanter.inflate(R.layout.explore_fragment, container, false);
+               initExplore(view);
+               return view;
+           }
+           case 2: {
+               View view = inflanter.inflate(R.layout.library_fragment, container, false);
+               initLibrary(view);
+               return view;
+           }
+           case 3: {
+               View view = inflanter.inflate(R.layout.profile_fragment, container, false);
+               initProfile(view);
+               return view;
+           }
+           default: {
+               View view = inflanter.inflate(R.layout.profile_fragment, container, false);
+               initProfile(view);
+               return view;
+           }
        }
 
    }
@@ -230,7 +282,15 @@ public class FadeFragment extends Fragment {
 
      */
 
-    public void initHome(View view){
+    @SuppressLint("ClickableViewAccessibility")
+    public void initHome(final View view){
+
+        customNested = view.findViewById(R.id.nested_home);
+        trapezoid = view.findViewById(R.id.trapezoid);
+        //topBar = view.findViewById(R.id.topbar);
+
+        //customNested.snap();
+
 
 
         /*
@@ -259,7 +319,7 @@ public class FadeFragment extends Fragment {
         createShowcaseCard();
         createRvContinueReadItem();
         createRvCategoriesItem();
-        createRvBestOfWeek();
+        bookArrayList = new ArrayList<>();
 
 
         /*
@@ -286,7 +346,7 @@ public class FadeFragment extends Fragment {
 
         // 1. GROUP
         final ImageButton addButtonHome = view.findViewById(R.id.add_button_home);
-        final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
+        //final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
 
         // 2. GROUP
         ImageButton search = view.findViewById(R.id.search_button_home);
@@ -294,9 +354,9 @@ public class FadeFragment extends Fragment {
         // 3. GROUP
         rotationView = view.findViewById(R.id.rv_showcase);
 
-        RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
+        final RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-        RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
+        final RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
 
 
         /*
@@ -347,12 +407,6 @@ public class FadeFragment extends Fragment {
 
         rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvContinueRead.setHasFixedSize(true);
-
-
-        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
-        rvCategories.setHasFixedSize(true);
-
-
         rvBestWeek.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false){
             @Override
             public boolean canScrollVertically() {
@@ -360,6 +414,13 @@ public class FadeFragment extends Fragment {
             }
         });
         rvBestWeek.setHasFixedSize(true);
+
+
+        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
+        rvCategories.setHasFixedSize(true);
+
+
+
 
 
         /*
@@ -372,14 +433,8 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), rvContinueReadItem);
-        rvContinueRead.setAdapter(snapContinueReadAdapter);
-
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
-
-        SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(), rvBestWeekItem);
-        rvBestWeek.setAdapter(snapBestOfWeek);
 
 
         rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
@@ -403,7 +458,27 @@ public class FadeFragment extends Fragment {
 
         OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+
+        asyncTask = new GetBestOfWeek(this);
+        asyncTask.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+               /* if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }*/
+
+                SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), bookArrayList);
+                rvContinueRead.setAdapter(snapContinueReadAdapter);
+
+                SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(),bookArrayList);
+                rvBestWeek.setAdapter(snapBestOfWeek);
+
+            }
+        });
+        asyncTask.execute();
 
 
         /*
@@ -435,16 +510,16 @@ public class FadeFragment extends Fragment {
 
          */
 
-        nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+        //final ImageView trapezoid = view.findViewById(R.id.trapezoid);
+       customNested.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
+                if (customNested.getChildAt(0).getBottom() <= (customNested.getHeight() + customNested.getScrollY())) {
                     //scroll view is at bottom
                     MainActivity.bottomNavigation.restoreBottomNavigation(true);
-                } else {
-                    //scroll view is not at bottom
-                    Log.i("Bottom bar", "nested scrollView is not at bottom");
                 }
+                //@ELSE scroll view is not at bottom
+
             }
         });
 
@@ -483,6 +558,7 @@ public class FadeFragment extends Fragment {
      */
 
     public void initExplore(View view){
+        bookArrayList = new ArrayList<>();
 
 
         /*
@@ -523,7 +599,7 @@ public class FadeFragment extends Fragment {
         //2. GROUP
 
         //3.GROUP
-        SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
+        final SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
 
 
         /*
@@ -563,9 +639,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), exploreCardItem);
-        recyclerCardExplore.setAdapter(adapter);
-
 
         /*
 
@@ -575,6 +648,22 @@ public class FadeFragment extends Fragment {
          */
 
         OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+
+        asyncTaskExplorer = new GetBestOfWeek(this);
+        asyncTaskExplorer.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+              /*  if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }*/
+
+                SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), bookArrayList);
+                recyclerCardExplore.setAdapter(adapter);
+            }
+        });
+        asyncTaskExplorer.execute();
 
     }
 
@@ -632,7 +721,7 @@ public class FadeFragment extends Fragment {
         //2. GROUP
 
         //3.GROUP
-        RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
+        final RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
 
 
         /*
@@ -672,8 +761,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), libraryCardItem );
-        recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+
 
 
         /*
@@ -684,6 +772,22 @@ public class FadeFragment extends Fragment {
          */
 
         OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
+
+        asyncTaskLib = new GetBestOfWeek(this);
+        asyncTaskLib.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
+            @Override
+            public void onExampleAsyncTaskFinished(Integer value) {
+                // update UI in Activity here
+                //dismiss the progress dialog
+              /*  if (pDialog.isShowing()){
+                    pDialog.dismiss();
+                }*/
+
+                SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), bookArrayList );
+                recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+            }
+        });
+        asyncTaskLib.execute();
 
     }
 
@@ -739,13 +843,29 @@ public class FadeFragment extends Fragment {
 
        //1. GROUP
        final Button buttonAction = view.findViewById(R.id.buttonAction);
+       final TextView nameSurname = view.findViewById(R.id.NameSurname);
+       final TextView fromTo = view.findViewById(R.id.fromTo);
+       final TextView followers = view.findViewById(R.id.followNumber);
+       final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
+
+       userAsync = new GetCurrentUser(this);
+       userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
+           @Override
+           public void onExampleAsyncTaskFinished(Integer value) {
+               // update UI in Activity here
+               nameSurname.setText(userclass.getFirstName() + " " + userclass.getLastName());
+               fromTo.setText(userclass.getNationality());
+               followers.setText(userclass.getFollower() + "");
+               Picasso.get().load(userclass.getProfilePictureUrl()).into(profileImage);
+           }
+       });
+       userAsync.execute();
 
        //2. GROUP
 
        //3.GROUP
        RecyclerView cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
        RecyclerView recyclerViewAllBooks = view.findViewById(R.id.recycler_view);
-
 
        /*
 
@@ -963,38 +1083,247 @@ public class FadeFragment extends Fragment {
         rvCategoriesItem.add(new Item(R.drawable.for_children, "Per bambini"));
         rvCategoriesItem.add(new Item(R.drawable.biografy, "Biografia"));
         rvCategoriesItem.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
-        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
-        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotico"));
+        rvCategoriesItem.add(new Item(R.drawable.teen_fiction, "Teen fiction"));
+        rvCategoriesItem.add(new Item(R.drawable.teenagers, "Adolescenti e ragazzi"));
         rvCategoriesItem.add(new Item(R.drawable.self_help, "Self help"));
-        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e Thriller"));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-        rvCategoriesItem.add(new Item(R.drawable.horror));
-        rvCategoriesItem.add(new Item(R.drawable.comedy));
-    }
-    private void createRvBestOfWeek() {
-        rvBestWeekItem = new ArrayList<>();
-
-        rvBestWeekItem.add(new Item("All this", R.drawable.all_this, R.drawable.for_children, "Monica Sabolo", 13, 54));
-        rvBestWeekItem.add(new Item("Titan", R.drawable.titan, R.drawable.biografy, "Alessandro Baricco", 154, 132));
-        rvBestWeekItem.add(new Item("Spazio", R.drawable.spazio, R.drawable.erotic,"Chiara Gamberale", 555, 676));
-        rvBestWeekItem.add(new Item("Bookcover", R.drawable.art_bookcover, R.drawable.sci_fi,"Stephanie Meyer",1024, 900));
-        rvBestWeekItem.add(new Item("Creative", R.drawable.creative_bookcover, R.drawable.comics_manga,"Fabio Volo", 3204, 6032));
-        rvBestWeekItem.add(new Item("Papera", R.drawable.papera, R.drawable.for_children,"Marco Polo", 10000, 20000));
+        rvCategoriesItem.add(new Item(R.drawable.gastronomy, "Gastronomia"));
+        rvCategoriesItem.add(new Item(R.drawable.religion, "Religione"));
+        rvCategoriesItem.add(new Item(R.drawable.fan_fiction,"Fan fiction"));
+        rvCategoriesItem.add(new Item(R.drawable.dramatic,"Drammatico"));
+        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
+        rvCategoriesItem.add(new Item(R.drawable.humor,"Humor"));
+        rvCategoriesItem.add(new Item(R.drawable.fantasy_gradient, "Fantasy"));
+        rvCategoriesItem.add(new Item(R.drawable.adventure, "Avventura"));
+        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotic"));
+        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e thriller"));
+        rvCategoriesItem.add(new Item(R.drawable.manual, "Manuali"));
+        rvCategoriesItem.add(new Item(R.drawable.horror_gradient, "Horror"));
+        rvCategoriesItem.add(new Item(R.drawable.action, "Azione"));
+        rvCategoriesItem.add(new Item(R.drawable.sport,"Sport"));
+        rvCategoriesItem.add(new Item(R.drawable.poetry, "Poesia"));
+        rvCategoriesItem.add(new Item(R.drawable.story,"Storia"));
+        rvCategoriesItem.add(new Item(R.drawable.other, "Altro"));
     }
 
+    public static class GetBestOfWeek extends AsyncTask<Void,Void,Integer> {
+
+        private WeakReference<FadeFragment> activityReference;
+
+        private String TAG = FadeFragment.class.getSimpleName();
+        private String url ="http://airbooks.altervista.org/API/v2/books/";
+        private GetBestOfWeek.BestOfWekkAsyncTaskLinestener listener;
+
+        GetBestOfWeek(FadeFragment context){
+            activityReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+
+            FadeFragment activity = activityReference.get();
+            //showing progress dialog
+           /* pDialog = new ProgressDialog(activity.getActivity());
+            pDialog.setMessage("Please wait...");
+            pDialog.setCancelable(false);
+            pDialog.show();*/
+        }
+
+        @Override
+        protected Integer doInBackground(Void... arg0){
+            final FadeFragment activity = activityReference.get();
+
+            HttpHandler sh = new HttpHandler();
+
+            //Making a request to url and getting a response
+            String jsonStr = sh.makeServiceCall(url);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+
+            if (jsonStr != null){
+                try{
+                    JSONObject jsonObject = new JSONObject(jsonStr);
+                    JSONObject result = jsonObject.getJSONObject("result");
+
+                    //Getting JSON Array node
+                    JSONArray books = result.getJSONArray("items");
+
+                    //looping through all books
+                    for (int i = 0; i < books.length(); i++){
+                        JSONObject c = books.getJSONObject(i);
+
+                        String id = c.getString("id");
+                        String userID = c.getString("user_id");
+                        String title = c.getString("title");
+                        String description = c.getString("description");
+                        String genreID = c.getString("genre_id");
+                        String language = c.getString("language");
+                        String uploadDate = c.getString("upload_date");
+                        String coverUrl = c.getString("cover_url");
+                        String bookUrl = c.getString("book_url");
+                        String authorName = c.getString("author_first_name");
+                        String authorLastName = c.getString("author_last_name");
+                        int readings = c.getInt("readings");
+                        int lovers = c.getInt("lovers");
+                        double averageRatings = c.getDouble("average_rating");
+                        //boolean isSaved = c.getBoolean("is_saved");
+
+                        //temp hash map for single book
+                        HashMap<String,Object> bookItem = new HashMap<>();
+
+                        //adding each child node to HashMap key => value
+                        bookItem.put("id",id);
+                        bookItem.put("user_id", userID);
+                        bookItem.put("title", title);
+                        bookItem.put("description", description);
+                        bookItem.put("genre_id", genreID);
+                        bookItem.put("language", language);
+                        bookItem.put("upload_date", uploadDate);
+                        bookItem.put("cover_url",coverUrl);
+                        bookItem.put("book_url", bookUrl);
+                        bookItem.put("readings", readings);
+                        bookItem.put("lovers", lovers);
+                        bookItem.put("average_rating", averageRatings);
+                        bookItem.put("author_first_name",authorName);
+                        bookItem.put("author_last_name", authorLastName);
+                        // bookItem.put("is_saved", isSaved);
+
+                        Book bookClass = new Book(bookItem);
+
+                        bookArrayList.add(bookClass);
+                    }
+                }catch (final JSONException e){
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(activity.getActivity(),"JSon parsing error", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            } else{
+                Log.e(TAG,"Couldn't get json from server");
+                (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity.getActivity(),"Couldn't get json from server", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer value){
+            super.onPostExecute(value);
+
+            if (listener != null) {
+                listener.onExampleAsyncTaskFinished(value);
+            }
+        }
+
+        void setListener(GetBestOfWeek.BestOfWekkAsyncTaskLinestener listener) {
+            this.listener = listener;
+        }
+
+        public interface BestOfWekkAsyncTaskLinestener {
+            void onExampleAsyncTaskFinished(Integer value);
+        }
+    }
+
+    public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
+
+        private String TAG = FadeFragment.class.getSimpleName();
+        private String urlUser = "http://airbooks.altervista.org/API/v2/users/5acb8298b1d467.49059072/all";
+        private GetCurrentUser.userAsyncTaskLinestener listener;
+        private WeakReference<FadeFragment> activityReference;
+
+
+        GetCurrentUser(FadeFragment context){
+            activityReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+
+            Log.e(TAG, "please wait");
+        }
+
+        @Override
+        protected Integer doInBackground(Void... arg0){
+            final FadeFragment activity = activityReference.get();
+            HttpHandler sh = new HttpHandler();
+
+            //Making a request to url and getting a response
+            String jsonStr = sh.makeServiceCall(urlUser);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+
+            if (jsonStr != null) {
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(jsonStr);
+                    JSONObject userObj = jsonObject.getJSONObject("result");
+
+                    String ID = userObj.getString("id");
+                    String firstName = userObj.getString("first_name");
+                    String lastName = userObj.getString("last_name");
+                    String profilePictureUrl = userObj.getString("profile_picture_url");
+                    String nationality = userObj.getString("nationality");
+                    String email = userObj.getString("email");
+                    int followers = Integer.parseInt(userObj.getString("followers_count"));
+
+                    //temp hash map for single book
+                    HashMap<String, Object> userItem = new HashMap<>();
+
+                    userItem.put("id",ID);
+                    userItem.put("first_name", firstName);
+                    userItem.put("last_name", lastName);
+                    userItem.put("profile_picture_url", profilePictureUrl);
+                    userItem.put("nationality", nationality);
+                    userItem.put("followers_count", followers);
+                    userItem.put("email",email);
+
+                    userclass = new User(userItem);
+
+                }catch (final JSONException e){
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    (Objects.requireNonNull(activity.getActivity())).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(activity.getActivity(),"JSon parsing error", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }else{
+                Log.e(TAG,"Couldn't get json from server");
+                ((Objects.requireNonNull(activity.getActivity()))).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity.getActivity(),"Couldn't get json from server", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer value){
+            super.onPostExecute(value);
+
+            if (listener != null) {
+                listener.onExampleAsyncTaskFinished(value);
+            }
+        }
+
+        void setListener(GetCurrentUser.userAsyncTaskLinestener listener) {
+            this.listener = listener;
+        }
+
+        public interface userAsyncTaskLinestener {
+            void onExampleAsyncTaskFinished(Integer value);
+        }
+    }
 }

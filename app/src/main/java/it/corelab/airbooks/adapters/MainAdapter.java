@@ -46,7 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public ImageView mImageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            mImageView = (ImageView) itemView.findViewById(R.id.cardImage);
+            mImageView = itemView.findViewById(R.id.cardImage);
         }
     }
 }

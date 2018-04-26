@@ -3,7 +3,11 @@ package it.corelab.airbooks.activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,22 +16,31 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.fragment.FadeFragment;
 
 public class AddDescription extends AppCompatActivity {
 
-    private ImageButton leftArrow;
-    private ImageButton dismiss;
     private EditText editText;
     private TextView textView;
+    private TextView filePathLabel;
+    private Button nextButton;
+    private static final int PICKFILE_RESULT_CODE = 1;
+    private File myFile;
+    private String fileNameString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +49,23 @@ public class AddDescription extends AppCompatActivity {
 
         editText = findViewById(R.id.editText_description);
         textView = findViewById(R.id.text_counter);
+        filePathLabel = findViewById(R.id.filePath);
+        nextButton = findViewById(R.id.color_button_next_add_book);
+
 
         final Intent dismissIntent = new Intent(getApplicationContext(),MainActivity.class);
+        final Intent nextIntent = new Intent(getApplicationContext(),AddRecap.class);
 
-        leftArrow = findViewById(R.id.left_arrow_add_description);
-        dismiss = findViewById(R.id.dismiss_button_description);
+        ImageButton leftArrow = findViewById(R.id.left_arrow_add_description);
+        final ImageButton dismiss = findViewById(R.id.dismiss_button_description);
+        ImageButton uploadButton = findViewById(R.id.upload_arrow_id);
+
+        Intent intent = getIntent();
+        Bundle extra = intent.getExtras();
+        final String uri = extra.getString("image");
+        final int drawable = extra.getInt("categories");
+        final String genreName = extra.getString("nameCat");
+        final String title = extra.getString("title");
 
         final TextWatcher txwatcher = new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -54,6 +79,32 @@ public class AddDescription extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         };
+
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(intent,PICKFILE_RESULT_CODE);
+            }
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String description = editText.getText().toString().trim();
+
+                nextIntent.putExtra("image",uri);
+                nextIntent.putExtra("categories",drawable);
+                nextIntent.putExtra("nameCat",genreName);
+                nextIntent.putExtra("description", description);
+                nextIntent.putExtra("title", title);
+                nextIntent.putExtra("path", fileNameString);
+                Toast.makeText(getApplicationContext(),description,Toast.LENGTH_LONG).show();
+                nextIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(nextIntent);
+            }
+        });
 
         editText.addTextChangedListener(txwatcher);
 
@@ -90,8 +141,61 @@ public class AddDescription extends AppCompatActivity {
 
         leftArrow.setOnClickListener(returnListener);
         dismiss.setOnClickListener(dismissListner);
+
+        final View parentDismiss = (View) dismiss.getParent();  // button: the view you want to enlarge hit area
+        parentDismiss.post( new Runnable() {
+            public void run() {
+                final Rect rect = new Rect();
+                dismiss.getHitRect(rect);
+                rect.top -= 150;    // increase top hit area
+                rect.left -= 150;   // increase left hit area
+                rect.bottom += 100; // increase bottom hit area
+                rect.right += 150;  // increase right hit area
+                parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
+            }
+        });
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch(requestCode){
+            case PICKFILE_RESULT_CODE:
+                if (resultCode==RESULT_OK){
+                    Uri uri = data.getData();
+                    assert uri != null;
+                    String uriString = uri.toString();
+                    myFile = new File(uriString);
+                    String path = myFile.getAbsolutePath();
+                    String displayName;
+
+                    if (uriString.startsWith("content://")){
+                        Cursor cursor = null;
+                        try{
+                            cursor = this.getContentResolver().query(uri, null, null, null, null);
+                            if (cursor != null && cursor.moveToFirst()){
+                                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                                fileNameString = displayName;
+                                filePathLabel.setText(displayName);
+                                Log.e("upload file with name: ", displayName );
+                            }
+                        }finally {
+                            assert cursor != null;
+                            cursor.close();
+                        }
+                    }else if (uriString.startsWith("file://")){
+                        displayName = myFile.getName();
+                        fileNameString = displayName;
+                        filePathLabel.setText(displayName);
+                        Log.e("upload file with name: ", displayName );
+                    }
+                }
+                break;
+        }
+        super.onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         final Intent returnIntent = new Intent(getApplicationContext(),Categories.class);

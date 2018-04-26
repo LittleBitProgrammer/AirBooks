@@ -18,17 +18,17 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import it.corelab.airbooks.object.Reviews;
 import it.corelab.airbooks.widget.ExpandableTextView;
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.object.Review;
 
 /**
  * Created by Roberto_Vecchio on 10/03/18.
  */
 
-public class CustomListViewAdapter extends ArrayAdapter<Review> {
+public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
 
-    public CustomListViewAdapter(Context context, int textViewResourceId, List<Review> objects) {
+    public CustomListViewAdapter(Context context, int textViewResourceId, List<Reviews> objects) {
         super(context, textViewResourceId, objects);
     }
 
@@ -38,12 +38,12 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, null);
 
-        ImageView image = (ImageView) convertView.findViewById(R.id.image_profile_all_reviews);
-        TextView textView = (TextView) convertView.findViewById(R.id.name_surname);
-        RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar_listView);
-        final ExpandableTextView description = (ExpandableTextView) convertView.findViewById(R.id.expandable_text);
+        ImageView image = convertView.findViewById(R.id.image_profile_all_reviews);
+        TextView textView = convertView.findViewById(R.id.name_surname);
+        RatingBar ratingBar = convertView.findViewById(R.id.ratingBar_listView);
+        final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
 
-        final Button buttonToggle = (Button) convertView.findViewById(R.id.read_all_button);
+        final Button buttonToggle = convertView.findViewById(R.id.read_all_button);
 
         final View parentReturn = (View) buttonToggle.getParent();  // button: the view you want to enlarge hit area
 
@@ -69,7 +69,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Review> {
         description.setExpandInterpolator(new OvershootInterpolator(1.0f));
         description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
 
-        final Review items = getItem(position);
+        final Reviews items = getItem(position);
 
         image.setImageResource(items.getDrawable());
         textView.setText(items.getName());

@@ -7,7 +7,6 @@
     <item type="id" name="add_description_text"/>
     <item type="id" name="editText_description"/>
     <item type="id" name="text_counter"/>
-    <item type="id" name="color_button_next"/>
     <item type="id" name="upload_arrow_id"/>
     <item type="id" name="add_file_text"/>
     <item type="id" name="edit_text_hidden"/>
@@ -19,4 +18,5 @@
     <item type="id" name="color_button_next_add_book"/>
     <item type="id" name="cardView"/>
     <item type="id" name="placeholder_add"/>
+
 </resources>

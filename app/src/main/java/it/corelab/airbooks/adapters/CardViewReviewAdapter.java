@@ -94,12 +94,12 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.review_cover_image);
-            categories = (ImageView) v.findViewById(R.id.genre_color_continue_read);
-            textView = (TextView)v.findViewById(R.id.firstTextReview);
-            author = (TextView) v.findViewById(R.id.author_continue_read);
-            title = (TextView) v.findViewById(R.id.title_continue_read);
-            ratingBar = (RatingBar) v.findViewById(R.id.ratingBar_profile);
+            image = v.findViewById(R.id.review_cover_image);
+            categories = v.findViewById(R.id.genre_color_continue_read);
+            textView = v.findViewById(R.id.firstTextReview);
+            author = v.findViewById(R.id.author_continue_read);
+            title = v.findViewById(R.id.title_continue_read);
+            ratingBar = v.findViewById(R.id.ratingBar_profile);
         }
     }
 }

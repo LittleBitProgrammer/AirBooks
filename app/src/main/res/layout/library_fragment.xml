@@ -5,58 +5,57 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView_library"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/background_image"
         android:scaleType="fitXY"
+        android:src="@drawable/trapezoid"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/explore_actionbar"
-        android:contentDescription="@string/background_image"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/linear_library"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="27dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@drawable/search_bar_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:id="@+id/linear_library"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/search_bar_background"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_search_mic"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="5dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="0dp"
-                android:src="@drawable/icona_search"
-                android:tint="#6C798B"
-                android:contentDescription="@string/search_icon"/>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/search_icon"
+            android:paddingEnd="0dp"
+            android:paddingStart="8dp"
+            android:src="@drawable/icona_search"
+            android:tint="#6C798B" />
 
-            <EditText
-                android:id="@+id/ed_home_searchbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="@string/search_library_hint"
-                android:imeOptions="actionSearch"
-                android:lines="1"
-                android:maxLines="1"
-                android:paddingStart="10dp"
-                android:paddingEnd="0dp"
-                android:singleLine="true"
-                android:textColor="#B4BBC3"
-                android:textSize="16sp"
-                android:inputType="text"/>
-        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="@string/search_library_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingEnd="0dp"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:textColor="#B4BBC3"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_cardView_library"
@@ -67,4 +66,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_library" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="367dp" />
 </android.support.constraint.ConstraintLayout>

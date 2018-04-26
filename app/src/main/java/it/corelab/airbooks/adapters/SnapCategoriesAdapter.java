@@ -61,8 +61,8 @@ public class SnapCategoriesAdapter  extends RecyclerView.Adapter<SnapCategoriesA
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.cardImage_categories_home);
-            textView = (TextView) v.findViewById(R.id.categories_home_id);
+            image = v.findViewById(R.id.cardImage_categories_home);
+            textView = v.findViewById(R.id.categories_home_id);
         }
     }
 }

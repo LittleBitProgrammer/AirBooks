@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,13 +38,43 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activity.AddSection" />
-        <activity android:name=".activity.Categories" />
-        <activity android:name=".activity.AddDescription" />
-        <activity android:name=".activity.BookDetail" />
-        <activity android:name=".activity.ReadActivity" />
-        <activity android:name=".activity.AllReviews" />
-        <activity android:name=".activity.ReviewDetail"></activity>
+        <activity
+            android:name=".activity.AddSection"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Categories"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddDescription"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BookDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AllReviews"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReviewDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddRecap"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".IntroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.App.Base" />
+        <activity
+            android:name=".activity.SignUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.App.Base" />
+        <activity android:name=".activity.Countries"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -96,7 +96,7 @@
         android:gravity="top|start"
         android:hint="@string/description_hint"
         android:inputType="textMultiLine|textNoSuggestions"
-        android:maxLength="1200"
+        android:maxLength="600"
         android:padding="9dp"
         android:singleLine="false"
         android:textColor="#FFF"
@@ -156,5 +156,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/upload_arrow_id"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/filePath"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="9dp"
+        android:textColor="#458DE0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_file_text" />
 
 </android.support.constraint.ConstraintLayout>

@@ -15,30 +15,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.BookDetail;
-import it.corelab.airbooks.object.Item;
+import it.corelab.airbooks.object.Book;
 
 /**
  * Created by Roberto_Vecchio on 21/02/18.
  */
 
-public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>{
+public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerViewHolder>  {
+
     private LayoutInflater layoutInflater;
     private Context context;
-    private ArrayList<Item> items;
+    private ArrayList<Book> books;
+    private View item;
 
-    public SnapBestOfWeek(Context context, ArrayList<Item> items) {
+
+    public SnapBestOfWeek(Context context, ArrayList<Book> books) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
-        this.items = items;
+        this.books = books;
     }
 
     @Override
     public SnapBestOfWeek.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
+        item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
 
         return new SnapBestOfWeek.ReyclerViewHolder(item);
     }
@@ -46,50 +51,56 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, final int position) {
-        final Item item = items.get(position);
+        final Book book = books.get(position);
 
-        holder.image.setImageResource(item.getDrawable());
-        holder.colorGenre.setImageResource(item.getGenreColor());
-        holder.title.setText(item.getName());
-        holder.author.setText(item.getAuthor());
-        holder.numbLovers.setText("" + item.getNumbersLovers());
-        holder.numbReaders.setText("" + item.getNumberOfReaders());
+        Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        holder.title.setText(book.getTitle());
+        //holder.author.setText(item.getAuthor());
+        holder.numbLovers.setText("" + book.getLovers());
+        holder.numbReaders.setText("" + book.getReadings());
+        holder.author.setText(book.getAuthorFirstName() + " " + book.getAuthorLastNAme());
 
-        int drawable = item.getGenreColor();
+        int genreID = Integer.parseInt(book.getGenreID());
 
 
-        switch (drawable){
-            case R.drawable.for_children:
+        switch (genreID){
+            case 1:
+                holder.colorGenre.setImageResource(R.drawable.for_children);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.forChildrenDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.forChildrenDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.forChildrenLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context,R.color.forChildrenLight));
                 break;
-            case R.drawable.biografy:
+            case 2:
+                holder.colorGenre.setImageResource(R.drawable.biografy);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.biografyDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.biografyDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.biografyLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.biografyLight));
                 break;
-            case R.drawable.erotic:
+            case 3:
+                holder.colorGenre.setImageResource(R.drawable.erotic);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.eroticLight));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.eroticLight));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.eroticDark));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.eroticDark));
                 break;
-            case R.drawable.sci_fi:
+            case 4:
+                holder.colorGenre.setImageResource(R.drawable.sci_fi);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.scifiDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.scifiDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.scifiLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context,R.color.scifiLight));
                 break;
-            case R.drawable.comics_manga:
+            case 5:
+                holder.colorGenre.setImageResource(R.drawable.comics_manga);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.comicsDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.comicsDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.comicsLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.comicsDark));
                 break;
         }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("LogConditional")
@@ -99,29 +110,43 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
                     Intent sharedIntent = new Intent(context, BookDetail.class);
 
                     Pair[] pairs = new Pair[2];
-                    pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
-                    pairs[1] = new Pair<View, String>(holder.image, "imageTransition");
+                   //pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
 
-                    sharedIntent.putExtra("pos", item.getDrawable());
-                    sharedIntent.putExtra("title", item.getName());
-                    sharedIntent.putExtra("genre", item.getGenreColor());
-                    sharedIntent.putExtra("author", item.getAuthor());
-                    sharedIntent.putExtra("loversNumb", item.getNumbersLovers());
-                    Log.i("SHARED_INTENT", "number of lover = " + item.getNumbersLovers());
-                    sharedIntent.putExtra("readersNumb", item.getNumberOfReaders());
+                    sharedIntent.putExtra("pos", book.getCoverUrl());
+                    sharedIntent.putExtra("title", book.getTitle());
+                    sharedIntent.putExtra("genre", Integer.parseInt(book.getGenreID()));
+                    //sharedIntent.putExtra("author", book.getAuthor());
+                    sharedIntent.putExtra("loversNumb", book.getLovers());
+                    sharedIntent.putExtra("readersNumb", book.getReadings());
+                    //sharedIntent.putExtra("colorGenre",)
+                    sharedIntent.putExtra("coverImage", book.getCoverUrl());
 
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
-                    context.startActivity(sharedIntent, options.toBundle());
+
+                    context.startActivity(sharedIntent);
             }
         });
-
 
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        int a;
+
+        if(books != null && !books.isEmpty()) {
+
+            a = 8;
+
+        }
+        else {
+
+            a = 0;
+
+        }
+
+        return a;
     }
+
+
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
@@ -138,14 +163,14 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         private ReyclerViewHolder(final View v) {
             super(v);
 
-            image = (ImageView) v.findViewById(R.id.image_bestweek);
-            colorGenre = (ImageView) v.findViewById(R.id.rettangolo_smussato_rv);
-            title = (TextView) v.findViewById(R.id.title_rv_bestweek);
-            author = (TextView) v.findViewById(R.id.author_bestweek);
-            lovers = (ImageView) v.findViewById(R.id.lovers_best_week);
-            readers = (ImageView) v.findViewById(R.id.readers_best_week);
-            numbLovers = (TextView) v.findViewById(R.id.numb_lovers_best_week);
-            numbReaders = (TextView) v.findViewById(R.id.numb_readers_best_week);
+            image = v.findViewById(R.id.image_bestweek);
+            colorGenre = v.findViewById(R.id.rettangolo_smussato_rv);
+            title = v.findViewById(R.id.title_rv_bestweek);
+            author = v.findViewById(R.id.author_bestweek);
+            lovers = v.findViewById(R.id.lovers_best_week);
+            readers = v.findViewById(R.id.readers_best_week);
+            numbLovers = v.findViewById(R.id.numb_lovers_best_week);
+            numbReaders = v.findViewById(R.id.numb_readers_best_week);
         }
     }
 }

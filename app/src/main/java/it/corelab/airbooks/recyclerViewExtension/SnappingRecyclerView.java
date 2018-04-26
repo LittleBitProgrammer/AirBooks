@@ -4,7 +4,6 @@ package it.corelab.airbooks.recyclerViewExtension;
  * Created by Roberto_Vecchio on 14/02/18.
  */
 import android.content.Context;
-import android.os.Build;
 import android.os.Handler;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;

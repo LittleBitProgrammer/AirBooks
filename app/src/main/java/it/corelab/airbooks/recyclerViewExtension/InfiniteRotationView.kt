@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Roberto_Vecchio on 16/02/18.
  */
-public class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
+class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
     : RelativeLayout(context, attributeSet) {
 
     private val layoutManager: LinearLayoutManager
@@ -33,7 +33,7 @@ public class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
     }
 
     fun setAdapter(adapter: InfiniteRotationAdapter) {
-        var recyclerView: RecyclerView = findViewById(R.id.recyclerView_horizontalList)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView_horizontalList)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         val snapHelper = PagerSnapHelper()
@@ -60,7 +60,7 @@ public class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
     }
 
     fun autoScroll(listSize: Int, intervalInMillis: Long) {
-        var recyclerView: RecyclerView = findViewById(R.id.recyclerView_horizontalList)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView_horizontalList)
         dispose?.let {
             if(!it.isDisposed) return
         }
@@ -77,9 +77,9 @@ public class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
     }
 
     class OnScrollListener(
-            val itemCount: Int,
+            private val itemCount: Int,
             val layoutManager: LinearLayoutManager,
-            val stateChanged: (Int) -> Unit) : RecyclerView.OnScrollListener() {
+            private val stateChanged: (Int) -> Unit) : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             val firstItemVisible = layoutManager.findFirstVisibleItemPosition()

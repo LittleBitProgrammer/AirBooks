@@ -2,13 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/changeImage"
         android:title="@string/popUp_tab_one" />
     <item
-        android:id="@+id/changeEmail"
         android:title="@string/popUp_tab_two" />
     <item
-        android:id="@+id/changePassword"
         android:title="@string/popUp_tab_three" />
 
 </menu>
