@@ -7,7 +7,8 @@
     android:viewportHeight="100">
 
     <path
-        android:pathData="M 0,0 L 100,0 L 0,100 M100,70 L 0,100 L 100,0 Z" >
+        android:pathData="M 0,0 L 100,0 L 0,100 M100,70 L 0,100 L 100,0 Z"
+        android:name="trapezoid">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:endX="100"

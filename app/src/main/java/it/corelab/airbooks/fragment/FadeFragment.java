@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+import it.corelab.airbooks.CustomNested;
 import it.corelab.airbooks.Http.HttpHandler;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.AddSection;
@@ -100,6 +101,9 @@ public class FadeFragment extends Fragment {
    private TextView followers;
    private RoundedImageView profileImage;
    private static ProgressDialog pDialog;
+   private CustomNested customNested;
+   public static ImageView trapezoid;
+   //public static ImageView topBar;
 
 
     /*
@@ -281,6 +285,13 @@ public class FadeFragment extends Fragment {
     @SuppressLint("ClickableViewAccessibility")
     public void initHome(final View view){
 
+        customNested = view.findViewById(R.id.nested_home);
+        trapezoid = view.findViewById(R.id.trapezoid);
+        //topBar = view.findViewById(R.id.topbar);
+
+        //customNested.snap();
+
+
 
         /*
 
@@ -335,7 +346,7 @@ public class FadeFragment extends Fragment {
 
         // 1. GROUP
         final ImageButton addButtonHome = view.findViewById(R.id.add_button_home);
-        final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
+        //final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
 
         // 2. GROUP
         ImageButton search = view.findViewById(R.id.search_button_home);
@@ -497,17 +508,14 @@ public class FadeFragment extends Fragment {
 
          */
 
-        final ImageView trapezoid = view.findViewById(R.id.trapezoid);
-        nestedScrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+        //final ImageView trapezoid = view.findViewById(R.id.trapezoid);
+       customNested.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
-                if (nestedScrollView.getChildAt(0).getBottom() <= (nestedScrollView.getHeight() + nestedScrollView.getScrollY())) {
+                if (customNested.getChildAt(0).getBottom() <= (customNested.getHeight() + customNested.getScrollY())) {
                     //scroll view is at bottom
                     MainActivity.bottomNavigation.restoreBottomNavigation(true);
                 }
-                   /* trapezoid.setPivotY(0);
-                    trapezoid.animate().scaleY(1.0f - ((float)(nestedScrollView.getChildAt(0).getBottom() - (nestedScrollView.getHeight() + nestedScrollView.getScrollY())))/10000.f);
-                    Log.i("SCALE: ", "" + ((float)(nestedScrollView.getChildAt(0).getBottom() - (nestedScrollView.getHeight() + nestedScrollView.getScrollY())))/10000.f);*/
                 //@ELSE scroll view is not at bottom
 
             }
