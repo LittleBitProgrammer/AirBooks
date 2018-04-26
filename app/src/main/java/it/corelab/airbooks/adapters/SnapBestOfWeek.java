@@ -130,7 +130,20 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
     @Override
     public int getItemCount() {
-        return 8;
+        int a;
+
+        if(books != null && !books.isEmpty()) {
+
+            a = 8;
+
+        }
+        else {
+
+            a = 0;
+
+        }
+
+        return a;
     }
 
 

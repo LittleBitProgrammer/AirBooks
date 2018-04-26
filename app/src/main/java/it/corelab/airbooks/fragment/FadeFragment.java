@@ -407,12 +407,6 @@ public class FadeFragment extends Fragment {
 
         rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvContinueRead.setHasFixedSize(true);
-
-
-        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
-        rvCategories.setHasFixedSize(true);
-
-
         rvBestWeek.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false){
             @Override
             public boolean canScrollVertically() {
@@ -420,6 +414,13 @@ public class FadeFragment extends Fragment {
             }
         });
         rvBestWeek.setHasFixedSize(true);
+
+
+        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
+        rvCategories.setHasFixedSize(true);
+
+
+
 
 
         /*
@@ -434,6 +435,7 @@ public class FadeFragment extends Fragment {
 
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
+
 
         rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
 
