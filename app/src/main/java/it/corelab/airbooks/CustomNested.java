@@ -35,21 +35,38 @@ public class CustomNested extends NestedScrollView {
            @Override
            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
-               FadeFragment.trapezoid.setPivotY(0);
+              // FadeFragment.trapezoid.setPivotY(0);
 
 
 
-               float scrollValue = oldScrollY - scrollY;
+               //float scrollValue = oldScrollY - scrollY;
 
                //Log.i("AIRBOOKS > 500", ""+ (1.0f - (0.0010f * ( oldScrollY))));
 
                //ImageView topBar = FadeFragment.topBar;
                //topBar.setPivotY(0);
-               if (oldScrollY >= 800){
+
+
+
+
+               int diff = ( (v.getHeight() + v.getScrollY()) - v.getBottom());
+               Log.i("AIRBOOKS >= 600:-----> ", "" + diff);
+               if (diff == 0){
+                   FadeFragment.diagonalView.setAngle(14.0f);
+               }else if ( diff >= 600 && diff <= 920){
                    //topBar.animate().scaleY(0.8f);
-               }else {
-                   //topBar.animate().scaleY(1.0f);
+                   FadeFragment.diagonalView.setAngle(38.0f - (diff * 0.04f));
+                   Log.i("AIRBOOKS >= 61000:---> ", "" + (38.0f - (diff * 0.04f)));
                }
+
+
+
+
+
+
+               //else {
+                   //topBar.animate().scaleY(1.0f);
+               //}
                //if (oldScrollY >= 0.0 || oldScrollY <= 10.0){
                    //FadeFragment.trapezoid.setScaleY(1.0f);
                //}

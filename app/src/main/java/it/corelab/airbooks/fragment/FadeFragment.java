@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+import developer.shivam.library.DiagonalView;
 import it.corelab.airbooks.CustomNested;
 import it.corelab.airbooks.Http.HttpHandler;
 import it.corelab.airbooks.R;
@@ -103,6 +104,7 @@ public class FadeFragment extends Fragment {
    private static ProgressDialog pDialog;
    private CustomNested customNested;
    public static ImageView trapezoid;
+   public static DiagonalView diagonalView;
    //public static ImageView topBar;
 
 
@@ -286,10 +288,11 @@ public class FadeFragment extends Fragment {
     public void initHome(final View view){
 
         customNested = view.findViewById(R.id.nested_home);
-        trapezoid = view.findViewById(R.id.trapezoid);
+        diagonalView = view.findViewById(R.id.diagonal_view);
+        //trapezoid = view.findViewById(R.id.trapezoid);
         //topBar = view.findViewById(R.id.topbar);
 
-        //customNested.snap();
+        customNested.snap();
 
 
 

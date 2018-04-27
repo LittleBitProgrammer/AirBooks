@@ -24,6 +24,7 @@
 
     <it.corelab.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:diagonal="http://schemas.android.com/apk/res-auto"
         android:id="@+id/nested_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,15 +36,17 @@
             android:paddingBottom="60dp">
 
 
-            <ImageView
-                android:id="@+id/trapezoid"
+            <developer.shivam.library.DiagonalView
+                android:id="@+id/diagonal_view"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:contentDescription="@string/background_image"
-                android:scaleType="fitXY"
-                android:src="@drawable/avd_trapezoid"
+                android:layout_height="357dp"
+                android:layout_marginBottom="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_color"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_background"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
+                diagonal:angle="14"
+                diagonal:diagonalColor="#fafafa"
+                diagonal:diagonalGravity="left" />
 
             <it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView
                 android:id="@+id/rv_showcase"
