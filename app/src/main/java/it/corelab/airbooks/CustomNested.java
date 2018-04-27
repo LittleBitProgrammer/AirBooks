@@ -34,50 +34,16 @@ public class CustomNested extends NestedScrollView {
        setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
            @Override
            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-              // FadeFragment.trapezoid.setPivotY(0);
-
-
-
-               //float scrollValue = oldScrollY - scrollY;
-
-               //Log.i("AIRBOOKS > 500", ""+ (1.0f - (0.0010f * ( oldScrollY))));
-
-               //ImageView topBar = FadeFragment.topBar;
-               //topBar.setPivotY(0);
-
-
-
-
+               
                int diff = ( (v.getHeight() + v.getScrollY()) - v.getBottom());
-               Log.i("AIRBOOKS >= 600:-----> ", "" + diff);
-               if (diff == 0){
-                   FadeFragment.diagonalView.setAngle(14.0f);
-               }else if ( diff >= 600 && diff <= 920){
+               //Log.i("AIRBOOKS >= 600:-----> ", "" + diff);
+               if (diff <= 600){
+                   FadeFragment.diagonalView.setAngle(16.0f);
+               }else if ( diff <= 900 && (46.0f - (diff * 0.05f)) <= 16.0f){
                    //topBar.animate().scaleY(0.8f);
-                   FadeFragment.diagonalView.setAngle(38.0f - (diff * 0.04f));
-                   Log.i("AIRBOOKS >= 61000:---> ", "" + (38.0f - (diff * 0.04f)));
+                   FadeFragment.diagonalView.setAngle(46.0f - (diff * 0.05f));
+                  // Log.i("AIRBOOKS >= 61000:---> ", "" + (46.0f - (diff * 0.05f)));
                }
-
-
-
-
-
-
-               //else {
-                   //topBar.animate().scaleY(1.0f);
-               //}
-               //if (oldScrollY >= 0.0 || oldScrollY <= 10.0){
-                   //FadeFragment.trapezoid.setScaleY(1.0f);
-               //}
-
-               //if (oldScrollY > 500 && oldScrollY< 900) {
-
-                   //Log.i("AIRBOOKS > 500", ""+ (1.5f - (0.0010f * ( oldScrollY))));
-                   //FadeFragment.trapezoid.setScaleY(1.5f - (0.0010f * (oldScrollY)));
-                   //((Animatable)FadeFragment.trapezoid.getDrawable()).start();
-               //}
-
            }
        });
    }

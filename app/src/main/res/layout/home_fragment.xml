@@ -44,7 +44,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/background_color"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_background"
-                diagonal:angle="14"
+                diagonal:angle="16"
                 diagonal:diagonalColor="#fafafa"
                 diagonal:diagonalGravity="left" />
 
