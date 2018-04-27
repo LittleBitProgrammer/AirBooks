@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import developer.shivam.library.DiagonalView;
 import it.corelab.airbooks.CustomDialogClass;
 import it.corelab.airbooks.Gesture.GestureHelper;
 import it.corelab.airbooks.MySpannable;
@@ -43,6 +44,7 @@ public class BookDetail extends AppCompatActivity {
     private ImageButton leftArrow;
     private ImageButton star;
     private static double screenInches;
+    private DiagonalView backgroundBookDetail;
     boolean isSwipedCenter = true;
 
     private TextView tv;
@@ -64,6 +66,7 @@ public class BookDetail extends AppCompatActivity {
         star = findViewById(R.id.reviews_button_bookDetail);
         numbLovers = findViewById(R.id.numb_lovers_book_detail);
         numbReaders = findViewById(R.id.numb_readers_book_detail);
+        backgroundBookDetail = findViewById(R.id.diagonal_view_bookDetail);
 
         tv = findViewById(R.id.description_book_detail);
 
@@ -124,22 +127,27 @@ public class BookDetail extends AppCompatActivity {
 
         switch (genreID) {
             case 1:
+                backgroundBookDetail.setImageResource(R.drawable.for_children);
                 bookDetailgenreColor.setBackgroundResource(R.drawable.for_children);
                 bookDetailGenreLabel.setText("For children");
                 break;
             case 2:
+                backgroundBookDetail.setImageResource(R.drawable.biografy);
                 bookDetailgenreColor.setBackgroundResource(R.drawable.biografy);
                 bookDetailGenreLabel.setText("Biografy");
                 break;
             case 3:
+                backgroundBookDetail.setImageResource(R.drawable.erotic);
                 bookDetailgenreColor.setBackgroundResource(R.drawable.erotic);
                 bookDetailGenreLabel.setText("Erotic");
                 break;
             case 4:
+                backgroundBookDetail.setImageResource(R.drawable.sci_fi);
                 bookDetailgenreColor.setBackgroundResource(R.drawable.sci_fi);
                 bookDetailGenreLabel.setText("Sci-fi");
                 break;
             case 5:
+                backgroundBookDetail.setImageResource(R.drawable.comics_manga);
                 bookDetailgenreColor.setBackgroundResource(R.drawable.comics_manga);
                 bookDetailGenreLabel.setText("Comics");
                 break;

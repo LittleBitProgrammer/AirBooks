@@ -109,7 +109,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
                     Intent sharedIntent = new Intent(context, BookDetail.class);
 
-                    Pair[] pairs = new Pair[2];
+                    //Pair[] pairs = new Pair[2];
                    //pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
 
                     sharedIntent.putExtra("pos", book.getCoverUrl());

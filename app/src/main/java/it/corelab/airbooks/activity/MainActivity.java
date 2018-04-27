@@ -23,10 +23,16 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 
 import java.util.ArrayList;
 
+import it.corelab.airbooks.CustomNested;
 import it.corelab.airbooks.IntroActivity;
 import it.corelab.airbooks.fragment.FadeFragment;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.ViewPagerAdapter;
+
+import static it.corelab.airbooks.fragment.FadeFragment.angleVariation;
+import static it.corelab.airbooks.fragment.FadeFragment.exploreDiagonal;
+import static it.corelab.airbooks.fragment.FadeFragment.libDiagonal;
+import static it.corelab.airbooks.fragment.FadeFragment.profileDiagonal;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -184,7 +190,35 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (currentFragment != null) {
-                    //currentFragment.willBeHidden();
+                    currentFragment.willBeHidden();
+
+
+
+
+                    if (angleVariation <= 16.0){
+                        for ( float i = angleVariation; i <= 16.0f; i += 0.1){
+                            if (i <= 16.0) {
+                                exploreDiagonal.setAngle(i);
+                                libDiagonal.setAngle(i);
+                                profileDiagonal.setAngle(i);
+                                Log.i("ANGLE", "" + i );
+                            }
+                        }
+                    }
+
+
+                    if (FadeFragment.yPosition <= 0) {
+                        exploreDiagonal.setY(FadeFragment.yPosition);
+                        exploreDiagonal.animate().translationY(0);
+                        libDiagonal.setY(FadeFragment.yPosition);
+                        libDiagonal.animate().translationY(0);
+                        profileDiagonal.setY(FadeFragment.yPosition);
+                        profileDiagonal.animate().translationY(0);
+                    }
+
+                    FadeFragment.diagonalView.setY(8);
+                    FadeFragment.diagonalView.animate().translationY(FadeFragment.yPosition * -1);
+
                     Log.i("FRAGMENT", "fragment will be hidden");
                 }
 
@@ -195,7 +229,34 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 currentFragment = adapter.getCurrentFragment();
-                //currentFragment.willBeDisplayed();
+                currentFragment.willBeDisplayed();
+
+
+
+
+                if (angleVariation <= 16.0){
+                    for ( float i = angleVariation; i <= 16.0f; i += 0.1){
+                        if (i <= 16.0) {
+                            exploreDiagonal.setAngle(i);
+                            libDiagonal.setAngle(i);
+                            profileDiagonal.setAngle(i);
+                            Log.i("ANGLE", "" + i );
+                        }
+                    }
+                }
+
+
+                if (FadeFragment.yPosition <= 0) {
+                    exploreDiagonal.setY(FadeFragment.yPosition);
+                    exploreDiagonal.animate().translationY(0);
+                    libDiagonal.setY(FadeFragment.yPosition);
+                    libDiagonal.animate().translationY(0);
+                    profileDiagonal.setY(FadeFragment.yPosition);
+                    profileDiagonal.animate().translationY(0);
+                }
+
+                FadeFragment.diagonalView.setY(FadeFragment.yPosition * -1);
+                FadeFragment.diagonalView.animate().translationY(8);
 
                 return true;
             }

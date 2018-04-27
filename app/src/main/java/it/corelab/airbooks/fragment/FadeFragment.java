@@ -105,6 +105,11 @@ public class FadeFragment extends Fragment {
    private CustomNested customNested;
    public static ImageView trapezoid;
    public static DiagonalView diagonalView;
+   public static float angleVariation;
+   public static int yPosition;
+   public static DiagonalView exploreDiagonal;
+    public static DiagonalView libDiagonal;
+    public static DiagonalView profileDiagonal;
    //public static ImageView topBar;
 
 
@@ -224,16 +229,16 @@ public class FadeFragment extends Fragment {
    * Do what you want here, for example animate the content
 
    * ========================================================================================= *
-
+ */
 
    public void willBeDisplayed(){
        if(fragmentContainer!= null){
-           Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
-           fragmentContainer.startAnimation(fadeIn);
+           exploreDiagonal.setAngle(angleVariation);
+           Log.i("HIDDEN", "" + angleVariation);
        }
    }
 
-
+/*
    * ========================================================================================= *
 
 
@@ -246,16 +251,15 @@ public class FadeFragment extends Fragment {
 
 
    * ========================================================================================= *
-
+ */
 
    public void willBeHidden(){
        if (fragmentContainer != null){
-           Animation fadeOut= AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
-           fragmentContainer.startAnimation(fadeOut);
+           exploreDiagonal.setAngle(angleVariation);
        }
    }
 
-
+ /*
    * ========================================================================================= *
 
 
@@ -293,6 +297,7 @@ public class FadeFragment extends Fragment {
         //topBar = view.findViewById(R.id.topbar);
 
         customNested.snap();
+        angleVariation = 16.0f;
 
 
 
@@ -583,6 +588,9 @@ public class FadeFragment extends Fragment {
          */
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
+        exploreDiagonal = view.findViewById(R.id.diagonal_view_explore);
+
+
 
 
         /*
@@ -705,6 +713,8 @@ public class FadeFragment extends Fragment {
          */
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
+
+        libDiagonal = view.findViewById(R.id.diagonal_view_library);
 
 
         /*
@@ -830,6 +840,7 @@ public class FadeFragment extends Fragment {
          */
 
        fragmentContainer = view.findViewById(R.id.fragment_container);
+       profileDiagonal = view.findViewById(R.id.diagonal_view_profile);
 
 
        /*
