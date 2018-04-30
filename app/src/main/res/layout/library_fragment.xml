@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:diagonal="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="0dp"
+    <developer.shivam.library.DiagonalView
+        android:id="@+id/diagonal_view_library"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/background_image"
-        android:scaleType="fitXY"
-        android:src="@drawable/trapezoid"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_color"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_background"
+        app:layout_constraintTop_toTopOf="parent"
+        diagonal:angle="16"
+        diagonal:diagonalColor="#fafafa"
+        diagonal:diagonalGravity="left" />
 
     <LinearLayout
         android:id="@+id/linear_library"
@@ -68,9 +69,9 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_library" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/guideline_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="367dp" />
+        app:layout_constraintGuide_begin="358dp" />
 </android.support.constraint.ConstraintLayout>
