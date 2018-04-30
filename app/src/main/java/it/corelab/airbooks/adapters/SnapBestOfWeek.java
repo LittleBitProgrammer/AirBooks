@@ -134,7 +134,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
         if(books != null && !books.isEmpty()) {
 
-            a = 8;
+            a = 6;
 
         }
         else {

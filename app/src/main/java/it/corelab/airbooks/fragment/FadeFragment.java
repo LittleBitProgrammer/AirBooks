@@ -102,7 +102,7 @@ public class FadeFragment extends Fragment {
    private TextView followers;
    private RoundedImageView profileImage;
    private static ProgressDialog pDialog;
-   private CustomNested customNested;
+   public static CustomNested customNested;
    public static ImageView trapezoid;
    public static DiagonalView diagonalView;
    public static float angleVariation;
@@ -1248,7 +1248,7 @@ public class FadeFragment extends Fragment {
     public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
 
         private String TAG = FadeFragment.class.getSimpleName();
-        private String urlUser = "http://airbooks.altervista.org/API/v2/users/5acb8298b1d467.49059072/all";
+        private String urlUser = "http://airbooks.altervista.org/API/v2/users/5ae64d9f3d1570.58512716/all";
         private GetCurrentUser.userAsyncTaskLinestener listener;
         private WeakReference<FadeFragment> activityReference;
 

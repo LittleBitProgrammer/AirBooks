@@ -9,8 +9,6 @@ import android.view.View;
 import it.corelab.airbooks.fragment.FadeFragment;
 
 public class CustomNested extends NestedScrollView {
-    private static final int INVALID_POINTER = -1;
-    private int mLastMotionY;
     public static float yHomePosition;
 
     public CustomNested(Context context) {
@@ -51,10 +49,12 @@ public class CustomNested extends NestedScrollView {
        });
    }
 
-    public void takeYPosition(final View view) {
+    private void takeYPosition(final View view) {
         int[] xy = new int[2];
         view.getLocationOnScreen(xy);
+        yHomePosition = xy[1];
         FadeFragment.yPosition = xy[1];
+        Log.i("CUSTOMNESTED Y: ", "" + yHomePosition);
     }
 }
 
