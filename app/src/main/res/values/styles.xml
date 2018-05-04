@@ -37,6 +37,7 @@
         <item name="colorControlNormal">#00000000</item>
         <item name="colorControlActivated">#00000000</item>
         <item name="colorControlHighlight">#00000000</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
     <style name="CustomDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>

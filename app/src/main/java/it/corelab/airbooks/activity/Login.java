@@ -1,19 +1,29 @@
 package it.corelab.airbooks.activity;
 
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.widget.RoundedImageView;
 
 public class Login extends AppCompatActivity {
 
@@ -21,6 +31,12 @@ public class Login extends AppCompatActivity {
     private Button forgotButton;
     private Button facebookButton;
     private Button signUpButton;
+    protected TextInputEditText email;
+    protected TextInputEditText password;
+    protected TextInputLayout passwordLayout;
+    protected ImageView background;
+    protected ImageView owl;
+    protected ImageView editBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +55,23 @@ public class Login extends AppCompatActivity {
         forgotButton = findViewById(R.id.button2);
         facebookButton = findViewById(R.id.button4);
         signUpButton = findViewById(R.id.sign_up);
+        email = findViewById(R.id.edit_text);
+        password = findViewById(R.id.password_edit_password);
+        passwordLayout = findViewById(R.id.text_input_password);
+        background = findViewById(R.id.owlBackground);
+        owl = findViewById(R.id.imageView3);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isEmailValid(getString(email))){
+                    email.setError("you've to insert an email");
+                }
+                if(isEditTextEmpty(password)){
+                    //passwordLayout.setPasswordVisibilityToggleEnabled(false);
+                    password.setError("Please insert a password");
+                }
+
                 Log.i("BUTTON PRESSED", "login button pressed");
             }
         });
@@ -66,6 +95,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("BUTTON PRESSED", "sign up button pressed");
                 signUpIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
                 startActivity(signUpIntent);
             }
         });
@@ -109,5 +139,18 @@ public class Login extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
+    }
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public String getString(TextInputEditText textInputEditText){
+        String stringa = textInputEditText.getText().toString();
+        return stringa;
+    }
+
+    public boolean isEditTextEmpty(EditText editText){
+        return  editText.length() == 0;
     }
 }
