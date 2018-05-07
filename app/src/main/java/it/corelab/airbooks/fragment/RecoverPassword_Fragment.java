@@ -1,5 +1,7 @@
 package it.corelab.airbooks.fragment;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
 
     protected View view;
     private FragmentManager fragmentManager;
+    private TextInputEditText email;
+    private Button recover;
 
     public RecoverPassword_Fragment() {
         // Required empty public constructor
@@ -37,6 +42,8 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
 
     public void initViews(){
         fragmentManager = getActivity().getSupportFragmentManager();
+        email = view.findViewById(R.id.edit_text);
+        recover = view.findViewById(R.id.recover_btn);
     }
 
     public void setListeners(){
@@ -51,11 +58,18 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
                 setOffLeftArrow();
             }
         });
+        recover.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.recover_btn:
+                verifyCredential();
+                if (isValidCredential()){
+                    //TODO://notification
+                }
+        }
     }
 
     public void setOffLeftArrow(){
@@ -72,7 +86,12 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
         return stringa;
     }
 
-    public boolean isEditTextEmpty(EditText editText){
-        return  editText.length() == 0;
+    public void verifyCredential(){
+        if (!isEmailValid(getString(email))){
+            email.setError("you've to insert an email");
+        }
+    }
+    public boolean isValidCredential(){
+        return isEmailValid(getString(email));
     }
 }

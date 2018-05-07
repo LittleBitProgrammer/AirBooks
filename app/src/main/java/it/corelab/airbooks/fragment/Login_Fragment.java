@@ -1,5 +1,6 @@
 package it.corelab.airbooks.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import butterknife.internal.Utils;
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.activity.MainActivity;
 
 import static it.corelab.airbooks.activity.Login.leftArrow;
 
@@ -71,13 +72,11 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
             case R.id.login_btn:
 
                 //login action
-                if (!isEmailValid(getString(email))){
-                    email.setError("you've to insert an email");
-                }
-                if(isEditTextEmpty(password)){
-                    //passwordLayout.setPasswordVisibilityToggleEnabled(false);
-                    password.setError("Please insert a password");
-                }
+               verifyCredentials();
+               if (isCredentialValid()){
+                   doIntentToHome();
+               }
+
                 break;
 
             case R.id.forgot_psw:
@@ -111,5 +110,27 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     public void setOnLeftArrow(){
         leftArrow.setEnabled(true);
         leftArrow.setVisibility(View.VISIBLE);
+    }
+
+    public void verifyCredentials(){
+
+        if (!isEmailValid(getString(email))){
+            email.setError("you've to insert an email");
+        }
+        if(isEditTextEmpty(password)){
+            //passwordLayout.setPasswordVisibilityToggleEnabled(false);
+            password.setError("Please insert a password");
+        }
+    }
+
+    public boolean isCredentialValid(){
+        return isEmailValid(getString(email)) && !isEditTextEmpty(password);
+    }
+
+    public void doIntentToHome(){
+        Intent homeIntent = new Intent(getActivity(), MainActivity.class);
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(homeIntent);
+        getActivity().overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 }
