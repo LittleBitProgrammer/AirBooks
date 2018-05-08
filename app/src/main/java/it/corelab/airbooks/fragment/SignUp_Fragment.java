@@ -1,19 +1,32 @@
 package it.corelab.airbooks.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import it.corelab.airbooks.CountryCodes;
 import it.corelab.airbooks.CountryDialog;
 import it.corelab.airbooks.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static it.corelab.airbooks.activity.Login.leftArrow;
 
@@ -30,6 +43,8 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     public static CountryDialog countryDialog;
     public static TextInputEditText nation;
     private Button signUp;
+    private String urlAddress = "http://airbooks.altervista.org/API/v2/users/";
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     public SignUp_Fragment() {
     }
@@ -86,13 +101,22 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.button_signup:
                 verifyCredential();
+
+                //IF CREDENTIALS ARE OK
+                //1. SEND INFORMATION TO SIGN UP
+                //2. GO TO LOGIN
+
+                if (!isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && isEditTextEmpty(nation) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw)){
+                    Toast.makeText(getActivity(),"Please insert also the nationality",Toast.LENGTH_LONG).show();
+                }
+
                 if (isCredentialValid()){
-                    fragmentManager
-                            .beginTransaction()
-                            .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                            .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
-                            .commit();
-                    setOffLeftArrow();
+                    try {
+                        postRequest(urlAddress,createjson().toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    doAnimationToLogin();
                 }
                 break;
         }
@@ -138,9 +162,65 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         }if (!isPasswordConfirmed(password,confirmPsw)){
             confirmPsw.setError("the password doesn't correspond");
         }
+        Log.i("NATION", nation.getText().toString());
     }
 
     public boolean isCredentialValid(){
-        return !isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw);
+        return !isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && !isEditTextEmpty(nation) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw);
+    }
+
+    private JSONObject createjson(){
+
+        CountryCodes countryCodes = new CountryCodes();
+
+        JSONObject object = new JSONObject();
+        try {
+
+            object.put("email", email.getText().toString());
+            object.put("password", password.getText().toString());
+            object.put("first_name", name.getText().toString());
+            object.put("last_name", surname.getText().toString());
+            object.put("nationality", countryCodes.getCode(nation.getText().toString()));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return object;
+    }
+
+    void postRequest(String postUrl, String postBody)throws IOException{
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody requestBody = RequestBody.create(JSON,postBody);
+
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(requestBody)
+                .header("Lang", "it")
+                .header("Os", "android")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d("TAG",response.body().string());
+            }
+        });
+    }
+
+    private void doAnimationToLogin(){
+        fragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
+                .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
+                .commit();
+        setOffLeftArrow();
     }
 }
