@@ -16,7 +16,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import it.corelab.airbooks.CountryCodes;
 import it.corelab.airbooks.CountryDialog;
 import it.corelab.airbooks.R;
@@ -45,6 +49,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     private Button signUp;
     private String urlAddress = "http://airbooks.altervista.org/API/v2/users/";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    int errorString;
 
     public SignUp_Fragment() {
     }
@@ -100,23 +105,22 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_signup:
+
                 verifyCredential();
 
                 //IF CREDENTIALS ARE OK
                 //1. SEND INFORMATION TO SIGN UP
                 //2. GO TO LOGIN
 
-                if (!isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && isEditTextEmpty(nation) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw)){
-                    Toast.makeText(getActivity(),"Please insert also the nationality",Toast.LENGTH_LONG).show();
-                }
-
                 if (isCredentialValid()){
+
                     try {
-                        postRequest(urlAddress,createjson().toString());
+                        postRequest(urlAddress, createjson().toString());
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    doAnimationToLogin();
+
                 }
                 break;
         }
@@ -171,8 +175,6 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
 
     private JSONObject createjson(){
 
-        CountryCodes countryCodes = new CountryCodes();
-
         JSONObject object = new JSONObject();
         try {
 
@@ -180,7 +182,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
             object.put("password", password.getText().toString());
             object.put("first_name", name.getText().toString());
             object.put("last_name", surname.getText().toString());
-            object.put("nationality", countryCodes.getCode(nation.getText().toString()));
+            object.put("nationality", takeIsoNation(nation));
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -198,7 +200,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         Request request = new Request.Builder()
                 .url(postUrl)
                 .post(requestBody)
-                .header("Lang", "it")
+                .header("Lang", Locale.getDefault().getLanguage())
                 .header("Os", "android")
                 .build();
 
@@ -210,9 +212,40 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("TAG",response.body().string());
+
+               try {
+
+                    String jsonData = response.body().string();
+                    JSONObject object = new JSONObject(jsonData);
+                    JSONObject userObj = object.getJSONObject("error");
+
+                    errorString = userObj.getInt("code");
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            verifyTypeAnimation();
+                        }
+                    });
+
+
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
             }
         });
+    }
+
+    private void verifyTypeAnimation(){
+        if (errorString != 703) {
+
+            showSuccessDialog();
+            doAnimationToLogin();
+
+        } else {
+            showErrorDialog();
+        }
     }
 
     private void doAnimationToLogin(){
@@ -222,5 +255,29 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
                 .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
                 .commit();
         setOffLeftArrow();
+    }
+
+    private String takeIsoNation(EditText editText){
+        Map<String, String> countries = new HashMap<>();
+        for (String iso : Locale.getISOCountries()) {
+            Locale l = new Locale("", iso);
+            countries.put(l.getDisplayCountry(), iso);
+        }
+
+        return (countries.get(editText.getText().toString()));
+    }
+
+    public void showSuccessDialog(){
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Benvenuto in airbooks")
+                .setContentText("Riceverai una mail di conferma al tuo indirizzo di posta")
+                .show();
+    }
+
+    public void showErrorDialog(){
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Email esistente")
+                .setContentText("hai inserito una mail già esistente")
+                .show();
     }
 }

@@ -1,20 +1,17 @@
 package it.corelab.airbooks.fragment;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import it.corelab.airbooks.R;
 
 import static it.corelab.airbooks.activity.Login.leftArrow;
@@ -67,7 +64,8 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
             case R.id.recover_btn:
                 verifyCredential();
                 if (isValidCredential()){
-                    //TODO://notification
+                    Log.i("Credentials", "OK");
+                    createDialog();
                 }
         }
     }
@@ -93,5 +91,27 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
     }
     public boolean isValidCredential(){
         return isEmailValid(getString(email));
+    }
+
+    public void createDialog(){
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Recupero password")
+                .setContentText("È stata inviata una mail per il recupero password al tuo indirizzo di posta elettronica")
+                .setConfirmText("Ho capito")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                        fragmentManager
+                                .beginTransaction()
+                                .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
+                                .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
+                                .commit();
+                        setOffLeftArrow();
+
+                        sweetAlertDialog.dismiss();
+                    }
+                })
+                .show();
     }
 }

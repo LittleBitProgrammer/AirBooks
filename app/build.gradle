@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.developer-shivam:Diagonalify:1.1'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.github.f0ris.sweetalert:library:1.5.3'
 }
 repositories {
     mavenCentral()
