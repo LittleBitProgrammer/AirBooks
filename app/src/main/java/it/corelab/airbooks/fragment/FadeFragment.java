@@ -3,7 +3,9 @@ package it.corelab.airbooks.fragment;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -298,6 +300,10 @@ public class FadeFragment extends Fragment {
 
         customNested.snap();
         angleVariation = 16.0f;
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getActivity().getPackageName(), getActivity().MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "default");
+        Log.i("token", token );
 
 
 

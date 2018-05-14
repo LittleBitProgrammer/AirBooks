@@ -10,9 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import it.corelab.airbooks.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static it.corelab.airbooks.activity.Login.leftArrow;
 
@@ -23,6 +37,9 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
     private FragmentManager fragmentManager;
     private TextInputEditText email;
     private Button recover;
+    private String urlString;
+    private int errorString;
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     public RecoverPassword_Fragment() {
         // Required empty public constructor
@@ -62,10 +79,18 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.recover_btn:
+
                 verifyCredential();
+
                 if (isValidCredential()){
+
                     Log.i("Credentials", "OK");
-                    createDialog();
+
+                    try {
+                        postRequest(getUrlAddress(email), createjson().toString());
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
                 }
         }
     }
@@ -114,4 +139,90 @@ public class RecoverPassword_Fragment extends Fragment implements View.OnClickLi
                 })
                 .show();
     }
+
+    void postRequest(final String postUrl, String postBody)throws IOException{
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody requestBody = RequestBody.create(JSON,postBody);
+
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(requestBody)
+                .header("Lang", Locale.getDefault().getLanguage())
+                .header("Os", "android")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("RESPONSE", response.code() + "");
+                try {
+
+                    String jsonData = response.body().string();
+                    JSONObject object = new JSONObject(jsonData);
+                    JSONObject userObj = object.getJSONObject("error");
+
+                    errorString = userObj.getInt("code");
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            verifyTypeAnimation();
+                        }
+                    });
+
+
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private JSONObject createjson(){
+
+        JSONObject object = new JSONObject();
+
+        try {
+
+            object.put("email", email.getText().toString());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return object;
+    }
+
+    public String getUrlAddress(EditText editText){
+
+        urlString = "http://airbooks.altervista.org/API/v2/recover.php?email=" + editText.getText().toString();
+
+        return urlString;
+    }
+
+    public void showErrorDialog(){
+        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Errore")
+                .setContentText("Mail non esistente")
+                .show();
+    }
+
+    private void verifyTypeAnimation(){
+        if (errorString != 714) {
+
+            createDialog();
+
+        } else {
+            showErrorDialog();
+        }
+    }
+
 }
