@@ -2,6 +2,7 @@ package it.corelab.airbooks.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -20,8 +21,16 @@ import java.io.IOException;
 import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.MainActivity;
+import it.corelab.airbooks.data.model.PostRecoverResponse;
+import it.corelab.airbooks.data.model.PostSignInResponse;
+import it.corelab.airbooks.data.model.remote.APIService;
+import it.corelab.airbooks.data.model.remote.ApiUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -30,6 +39,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static android.content.ContentValues.TAG;
 import static it.corelab.airbooks.activity.Login.leftArrow;
 
 public class Login_Fragment extends Fragment implements View.OnClickListener {
@@ -44,6 +54,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     private int errorString;
     private String urlAddress = "http://airbooks.altervista.org/API/v2/auth/";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private APIService mAPIService;
 
     public  Login_Fragment(){
 
@@ -52,6 +63,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.signin, container, false);
+        mAPIService = ApiUtils.getAPIService();
         initViews();
         setListeners();
         return view;
@@ -93,11 +105,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
                 //login action
                verifyCredentials();
                if (isCredentialValid()){
-                   try {
-                       postRequest(urlAddress, createjson().toString());
-                   }catch (IOException e){
-                       e.printStackTrace();
-                   }
+                   signInPost(email.getText().toString(),password.getText().toString(),"http://airbooks.altervista.org/API/v2/auth/",Locale.getDefault().getLanguage(),"android");
                }
 
                 break;
@@ -157,67 +165,42 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
         getActivity().overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 
-    void postRequest(final String postUrl, String postBody)throws IOException {
+    public void signInPost(String email, String password, String url, String lang, String os){
 
-        OkHttpClient client = new OkHttpClient();
+        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#4990e2"));
+        pDialog.setTitleText("Loading");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
-        RequestBody requestBody = RequestBody.create(JSON,postBody);
-
-        Request request = new Request.Builder()
-                .url(postUrl)
-                .post(requestBody)
-                .header("Lang", Locale.getDefault().getLanguage())
-                .header("Os", "android")
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+        mAPIService.signInPost(email,password,url, lang, os).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignInResponse>() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
+            public void onSubscribe(Disposable d) {
+
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-
-                    String jsonData = response.body().string();
-                    JSONObject object = new JSONObject(jsonData);
-
-
-                    JSONObject userObj = object.getJSONObject("error");
-                    errorString = userObj.getInt("code");
-
-
-
-
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            verifyTypeAnimation();
-                        }
-                    });
-
-
-
-
-
-
-                }catch (JSONException e){
-                    e.printStackTrace();
+            public void onNext(PostSignInResponse postSignInResponse) {
+                pDialog.dismiss();
+                if (postSignInResponse.getError() != null){
+                    Log.i(TAG, "post submitted to API. " + postSignInResponse.getError().getCode().toString());
+                    showErrorDialog();
+                }else {
+                    doIntentToHome();
                 }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
             }
         });
-    }
-
-    private void verifyTypeAnimation(){
-        if (errorString == 701) {
-
-            showErrorDialog();
-
-        } else {
-
-            doIntentToHome();
-        }
     }
 
     private JSONObject createjson(){

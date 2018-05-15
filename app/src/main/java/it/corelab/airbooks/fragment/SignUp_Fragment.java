@@ -1,5 +1,6 @@
 package it.corelab.airbooks.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -10,28 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import it.corelab.airbooks.CountryCodes;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import it.corelab.airbooks.CountryDialog;
 import it.corelab.airbooks.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import it.corelab.airbooks.data.model.PostSignUpResponse;
+import it.corelab.airbooks.data.model.remote.APIService;
+import it.corelab.airbooks.data.model.remote.ApiUtils;
 
+import static android.content.ContentValues.TAG;
 import static it.corelab.airbooks.activity.Login.leftArrow;
 
 
@@ -47,9 +45,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     public static CountryDialog countryDialog;
     public static TextInputEditText nation;
     private Button signUp;
-    private String urlAddress = "http://airbooks.altervista.org/API/v2/users/";
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    int errorString;
+    private APIService mAPIService;
 
     public SignUp_Fragment() {
     }
@@ -58,6 +54,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.signup,container,false);
+        mAPIService = ApiUtils.getAPIService();
         initViews();
         setListeners();
         return view;
@@ -114,13 +111,20 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
 
                 if (isCredentialValid()){
 
-                    try {
-                        postRequest(urlAddress, createjson().toString());
+                    Log.i("FEED:", email.getText().toString() + " " +
+                            password.getText().toString() + " " +
+                            name.getText().toString()+ " " +
+                            surname.getText().toString()+ " " +
+                            takeIsoNation(nation));
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+                    signUpPost(email.getText().toString(),
+                            password.getText().toString(),
+                            name.getText().toString(),
+                            surname.getText().toString(),
+                            takeIsoNation(nation),
+                            "http://airbooks.altervista.org/API/v2/users/",
+                            Locale.getDefault().getLanguage(),
+                            "android");
                 }
                 break;
         }
@@ -166,86 +170,53 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         }if (!isPasswordConfirmed(password,confirmPsw)){
             confirmPsw.setError("the password doesn't correspond");
         }
-        Log.i("NATION", nation.getText().toString());
     }
 
     public boolean isCredentialValid(){
         return !isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && !isEditTextEmpty(nation) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw);
     }
 
-    private JSONObject createjson(){
+    public void signUpPost(final String email, final String password, final String first_name, final String last_name, final String nationality, String url, String lang, String os){
 
-        JSONObject object = new JSONObject();
-        try {
+        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#4990e2"));
+        pDialog.setTitleText("Loading");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
-            object.put("email", email.getText().toString());
-            object.put("password", password.getText().toString());
-            object.put("first_name", name.getText().toString());
-            object.put("last_name", surname.getText().toString());
-            object.put("nationality", takeIsoNation(nation));
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return object;
-    }
-
-    void postRequest(String postUrl, String postBody)throws IOException{
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = RequestBody.create(JSON,postBody);
-
-        Request request = new Request.Builder()
-                .url(postUrl)
-                .post(requestBody)
-                .header("Lang", Locale.getDefault().getLanguage())
-                .header("Os", "android")
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+        mAPIService.signUpPost( email, password, first_name, last_name, nationality, url, lang, os ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignUpResponse>() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
+            public void onSubscribe(Disposable d) {
+
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onNext(PostSignUpResponse postSignUpResponse) {
 
-               try {
+                pDialog.dismiss();
 
-                    String jsonData = response.body().string();
-                    JSONObject object = new JSONObject(jsonData);
-                    JSONObject userObj = object.getJSONObject("error");
-
-                    errorString = userObj.getInt("code");
-
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            verifyTypeAnimation();
-                        }
-                    });
-
-
-
-                }catch (JSONException e){
-                    e.printStackTrace();
+                if (postSignUpResponse.getError() != null){
+                    Log.i(TAG, "post submitted to API. " + postSignUpResponse.getError().getCode().toString());
+                    Log.i(TAG, "post submitted to API. " + postSignUpResponse.getError().getDescription().toString());
+                    Log.i(TAG, email + " " + password + "  " + first_name + " " + last_name + " " + nationality);
+                    Log.w("2.0 getFeed > retrofi", new Gson().toJson(postSignUpResponse));//DONT WORK
+                    showErrorDialog();
+                }else {
+                    showSuccessDialog();
+                    doAnimationToLogin();
                 }
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
         });
-    }
-
-    private void verifyTypeAnimation(){
-        if (errorString != 703) {
-
-            showSuccessDialog();
-            doAnimationToLogin();
-
-        } else {
-            showErrorDialog();
-        }
     }
 
     private void doAnimationToLogin(){
