@@ -82,38 +82,7 @@ public class AddSection extends AppCompatActivity {
             }
         };
 
-        View.OnClickListener nextCategoriesListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if ( pickedImage != null && !(isEditTextEmpty(editTextInput))) {
-
-                    String title = editTextInput.getText().toString();
-
-                    categoriesIntent.putExtra("image", pickedImage.toString());
-                    categoriesIntent.putExtra("title", title);
-                    categoriesIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(categoriesIntent);
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Add image and Title to continue",Toast.LENGTH_LONG).show();
-                }
-            }
-        };
-
-        View.OnClickListener returnButtonListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /* returnButtonIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(returnButtonIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);*/
-               onBackPressed();
-            }
-        };
-
         centralCard.setOnClickListener(centralCardListener);
-        returnButton.setOnClickListener(returnButtonListener);
-        nextButton.setOnClickListener(nextCategoriesListener);
     }
 
     public boolean isEditTextEmpty(EditText editText){

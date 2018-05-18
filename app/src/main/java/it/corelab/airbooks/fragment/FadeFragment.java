@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
@@ -112,6 +113,7 @@ public class FadeFragment extends Fragment {
    public static DiagonalView exploreDiagonal;
     public static DiagonalView libDiagonal;
     public static DiagonalView profileDiagonal;
+    private FragmentManager fragmentManager;
    //public static ImageView topBar;
 
 
@@ -295,6 +297,7 @@ public class FadeFragment extends Fragment {
 
         customNested = view.findViewById(R.id.nested_home);
         diagonalView = view.findViewById(R.id.diagonal_view);
+        fragmentManager = getActivity().getSupportFragmentManager();
         //trapezoid = view.findViewById(R.id.trapezoid);
         //topBar = view.findViewById(R.id.topbar);
 
@@ -543,10 +546,11 @@ public class FadeFragment extends Fragment {
         addButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentAddSection.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intentAddSection);
-                assert getContext() != null;
-                ((Activity)getContext()).overridePendingTransition(R.anim.intent_from_left_in, R.anim.intent_from_left_out);
+                fragmentManager
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.right_enter_animation,R.anim.left_exit_animation)
+                        .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
+                        .commit();
             }
         });
 
