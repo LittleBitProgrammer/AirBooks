@@ -25,6 +25,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import it.corelab.airbooks.CountryDialog;
 import it.corelab.airbooks.R;
+import it.corelab.airbooks.data.model.PostSignUp;
 import it.corelab.airbooks.data.model.PostSignUpResponse;
 import it.corelab.airbooks.data.model.remote.APIService;
 import it.corelab.airbooks.data.model.remote.ApiUtils;
@@ -117,11 +118,9 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
                             surname.getText().toString()+ " " +
                             takeIsoNation(nation));
 
-                    signUpPost(email.getText().toString(),
-                            password.getText().toString(),
-                            name.getText().toString(),
-                            surname.getText().toString(),
-                            takeIsoNation(nation),
+                    PostSignUp postSignUp = new PostSignUp(email.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString(), takeIsoNation(nation));
+
+                    signUpPost(postSignUp,
                             "http://airbooks.altervista.org/API/v2/users/",
                             Locale.getDefault().getLanguage(),
                             "android");
@@ -176,7 +175,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         return !isEditTextEmpty(name) && !isEditTextEmpty(surname) && isEmailValid(getString(email)) && !isEditTextEmpty(nation) && !isPswTooShort(password) && isPasswordConfirmed(password,confirmPsw);
     }
 
-    public void signUpPost(final String email, final String password, final String first_name, final String last_name, final String nationality, String url, String lang, String os){
+    public void signUpPost(PostSignUp postSignUp, String url, String lang, String os){
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#4990e2"));
@@ -184,7 +183,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         pDialog.setCancelable(false);
         pDialog.show();
 
-        mAPIService.signUpPost( email, password, first_name, last_name, nationality, url, lang, os ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignUpResponse>() {
+        mAPIService.signUpPost( postSignUp, url, lang, os ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignUpResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
 
@@ -198,7 +197,6 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
                 if (postSignUpResponse.getError() != null){
                     Log.i(TAG, "post submitted to API. " + postSignUpResponse.getError().getCode().toString());
                     Log.i(TAG, "post submitted to API. " + postSignUpResponse.getError().getDescription().toString());
-                    Log.i(TAG, email + " " + password + "  " + first_name + " " + last_name + " " + nationality);
                     Log.w("2.0 getFeed > retrofi", new Gson().toJson(postSignUpResponse));//DONT WORK
                     showErrorDialog();
                 }else {

@@ -301,12 +301,6 @@ public class FadeFragment extends Fragment {
         customNested.snap();
         angleVariation = 16.0f;
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getActivity().getPackageName(), getActivity().MODE_PRIVATE);
-        String token = sharedPreferences.getString("token", "default");
-        Log.i("token", token );
-
-
-
         /*
 
          * This is the intent for the add section
@@ -868,8 +862,8 @@ public class FadeFragment extends Fragment {
        final TextView followers = view.findViewById(R.id.followNumber);
        final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
 
-       userAsync = new GetCurrentUser(this);
-       userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
+       //userAsync = new GetCurrentUser(this);
+      /* userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
            @Override
            public void onExampleAsyncTaskFinished(Integer value) {
                // update UI in Activity here
@@ -879,7 +873,7 @@ public class FadeFragment extends Fragment {
                Picasso.get().load(userclass.getProfilePictureUrl()).into(profileImage);
            }
        });
-       userAsync.execute();
+       userAsync.execute();*/
 
        //2. GROUP
 

@@ -21,6 +21,14 @@ public class PostSignUp {
     @Expose
     private String nationality;
 
+    public PostSignUp(String email, String password, String firstName, String lastName, String nationality){
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+    }
+
     public String getEmail() {
         return email;
     }

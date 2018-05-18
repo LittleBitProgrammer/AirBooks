@@ -28,6 +28,7 @@ import io.reactivex.schedulers.Schedulers;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.MainActivity;
 import it.corelab.airbooks.data.model.PostRecoverResponse;
+import it.corelab.airbooks.data.model.PostSignIn;
 import it.corelab.airbooks.data.model.PostSignInResponse;
 import it.corelab.airbooks.data.model.remote.APIService;
 import it.corelab.airbooks.data.model.remote.ApiUtils;
@@ -51,9 +52,6 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
     private Button signUp;
     protected TextInputEditText email;
     protected TextInputEditText password;
-    private int errorString;
-    private String urlAddress = "http://airbooks.altervista.org/API/v2/auth/";
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private APIService mAPIService;
 
     public  Login_Fragment(){
@@ -105,7 +103,8 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
                 //login action
                verifyCredentials();
                if (isCredentialValid()){
-                   signInPost(email.getText().toString(),password.getText().toString(),"http://airbooks.altervista.org/API/v2/auth/",Locale.getDefault().getLanguage(),"android");
+                   PostSignIn postSignIn = new PostSignIn(email.getText().toString(), password.getText().toString());
+                   signInPost(postSignIn,"http://airbooks.altervista.org/API/v2/auth/",Locale.getDefault().getLanguage(),"android");
                }
 
                 break;
@@ -165,7 +164,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
         getActivity().overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 
-    public void signInPost(String email, String password, String url, String lang, String os){
+    public void signInPost(final PostSignIn postSignIn, String url, String lang, String os){
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#4990e2"));
@@ -173,7 +172,7 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
         pDialog.setCancelable(false);
         pDialog.show();
 
-        mAPIService.signInPost(email,password,url, lang, os).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignInResponse>() {
+        mAPIService.signInPost(postSignIn,url, lang, os).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<PostSignInResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
 
@@ -186,6 +185,8 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
                     Log.i(TAG, "post submitted to API. " + postSignInResponse.getError().getCode().toString());
                     showErrorDialog();
                 }else {
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getActivity().getPackageName(), getActivity().MODE_PRIVATE);
+                    sharedPreferences.edit().putString("token",postSignInResponse.getResult().getValue()).apply();
                     doIntentToHome();
                 }
 
@@ -201,21 +202,6 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
 
             }
         });
-    }
-
-    private JSONObject createjson(){
-
-        JSONObject object = new JSONObject();
-        try {
-
-            object.put("email", email.getText().toString());
-            object.put("password", password.getText().toString());
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return object;
     }
 
     public void showErrorDialog(){
