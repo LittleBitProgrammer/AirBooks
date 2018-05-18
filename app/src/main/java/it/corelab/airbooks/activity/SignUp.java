@@ -1,5 +1,7 @@
 package it.corelab.airbooks.activity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -7,18 +9,26 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import it.corelab.airbooks.R;
 
 public class SignUp extends AppCompatActivity {
 
-    private TextInputEditText textInputEditText;
-    private TextInputEditText mail;
-    public static String mailText;
+    protected TextInputEditText textInputEditText;
+    protected TextInputEditText mail;
+    protected Button signUp;
+    protected TextInputEditText password;
+    protected TextInputEditText email;
+    protected TextInputEditText nation;
+    protected TextInputEditText surname;
+    protected TextInputEditText namePerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +37,19 @@ public class SignUp extends AppCompatActivity {
 
         final Intent nationIntent = new Intent(this, Countries.class);
 
-        textInputEditText = findViewById(R.id.password_edit_nation);
-        mail = findViewById(R.id.password_edit_email);
+
+        signUp = findViewById(R.id.button_signup);
+        password = findViewById(R.id.password_edit_password);
+        email = findViewById(R.id.password_edit_email);
+        nation = findViewById(R.id.password_edit_nation);
+        surname = findViewById(R.id.password_edit_surname);
+        namePerson = findViewById(R.id.password_edit_name);
 
         if (getIntent().getExtras() != null) {
             Log.i("NATION", getIntent().getStringExtra("nation"));
             textInputEditText.setText(getIntent().getStringExtra("nation"));
         }
 
-        if (mailText != null){
-            mail.setText(mailText);
-            mailText = mail.getText().toString();
-        }
 
         //==========================
         //      hide status bar
@@ -46,7 +57,24 @@ public class SignUp extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        textInputEditText.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isEditTextEmpty(password)){
+                    password.setError("insert a password");
+                }if (isEmailValid(getString(email)) || isEditTextEmpty(email)){
+                    email.setError("you've to insert an email");
+                }if (isEditTextEmpty(nation)){
+                    nation.setError("please insert a nation");
+                }if (isEditTextEmpty(surname)){
+                    surname.setError("please insert your surname");
+                }if (isEditTextEmpty(namePerson)){
+                    namePerson.setError("please insert you name");
+                }
+            }
+        });
+
+        nation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -86,5 +114,21 @@ public class SignUp extends AppCompatActivity {
         // point is inside view bounds
         return ((x > viewX && x < (viewX + view.getWidth())) &&
                 (y > viewY && y < (viewY + view.getHeight())));
+    }
+
+
+    // utility
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public String getString(TextInputEditText textInputEditText){
+        String stringa = textInputEditText.getText().toString();
+        return stringa;
+    }
+
+    public boolean isEditTextEmpty(EditText editText){
+        return  editText.length() == 0;
     }
 }

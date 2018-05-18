@@ -15,6 +15,9 @@ import java.util.Locale;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.activity.SignUp;
 
+import static it.corelab.airbooks.fragment.SignUp_Fragment.countryDialog;
+import static it.corelab.airbooks.fragment.SignUp_Fragment.nation;
+
 public class CountriesListAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] values;
@@ -39,14 +42,10 @@ public class CountriesListAdapter extends ArrayAdapter<String> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nation = textView.getText().toString();
-                adpterIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                adpterIntent.putExtra("nation", nation);
-                context.startActivity(adpterIntent);
-                Log.i("NATION", nation);
+                nation.setText(textView.getText().toString());
+                countryDialog.dismiss();
             }
         });
-
         return rowView;
     }
 

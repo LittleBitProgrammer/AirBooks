@@ -2,6 +2,7 @@ package it.corelab.airbooks.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
@@ -24,13 +25,24 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import it.corelab.airbooks.IntroActivity;
+import it.corelab.airbooks.data.model.PostSignIn;
+import it.corelab.airbooks.data.model.PostSignInResponse;
+import it.corelab.airbooks.data.model.remote.APIService;
+import it.corelab.airbooks.data.model.remote.ApiUtils;
 import it.corelab.airbooks.fragment.FadeFragment;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.ViewPagerAdapter;
 
+import static android.content.ContentValues.TAG;
 import static it.corelab.airbooks.CustomNested.yHomePosition;
 import static it.corelab.airbooks.fragment.FadeFragment.angleVariation;
 import static it.corelab.airbooks.fragment.FadeFragment.customNested;
@@ -66,16 +78,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if is the first time launch app initialize tutorial view
-       boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-        if (isFirstRun){
-            //show start activity
-
-            startActivity(new Intent(MainActivity.this, IntroActivity.class));
-            Toast.makeText(this, "First Run", Toast.LENGTH_SHORT).show();
-        }
-
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
         boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
                 .getBoolean("translucentNavigation", false);
         setTheme(enabledTranslucentNavigation ? R.style.AppTheme_TranslucentNavigation : R.style.AppTheme);
@@ -308,5 +310,12 @@ public class MainActivity extends AppCompatActivity {
         view.getLocationOnScreen(xy);
         yPosition = xy[1];
         Log.i("YPOSITION: ", "" + yPosition);
+    }
+
+    public void showErrorDialog(){
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Errore")
+                .setContentText("Credenziali sbagliate")
+                .show();
     }
 }

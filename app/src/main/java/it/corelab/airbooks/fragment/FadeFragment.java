@@ -3,7 +3,9 @@ package it.corelab.airbooks.fragment;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -298,8 +300,6 @@ public class FadeFragment extends Fragment {
 
         customNested.snap();
         angleVariation = 16.0f;
-
-
 
         /*
 
@@ -862,8 +862,8 @@ public class FadeFragment extends Fragment {
        final TextView followers = view.findViewById(R.id.followNumber);
        final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
 
-       userAsync = new GetCurrentUser(this);
-       userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
+       //userAsync = new GetCurrentUser(this);
+      /* userAsync.setListener(new GetCurrentUser.userAsyncTaskLinestener() {
            @Override
            public void onExampleAsyncTaskFinished(Integer value) {
                // update UI in Activity here
@@ -873,7 +873,7 @@ public class FadeFragment extends Fragment {
                Picasso.get().load(userclass.getProfilePictureUrl()).into(profileImage);
            }
        });
-       userAsync.execute();
+       userAsync.execute();*/
 
        //2. GROUP
 
