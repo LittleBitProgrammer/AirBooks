@@ -3,9 +3,7 @@ package it.corelab.airbooks.Intro
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.WindowManager
-import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
 import it.corelab.airbooks.IntroMethod
@@ -72,7 +70,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
 
                         if (!isAnimatedPageTwo){
                             isAnimatedPageTwo = true
-                            animaterPageTwo()
+                            animatePageTwo()
                         }
 
                     }
@@ -112,7 +110,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
         }
     }
 
-    override fun animaterPageTwo() {
+    override fun animatePageTwo() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

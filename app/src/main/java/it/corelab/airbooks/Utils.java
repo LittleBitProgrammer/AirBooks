@@ -8,6 +8,16 @@ import android.widget.ImageView;
 
 public class Utils {
 
+    /**
+     * This method help easily to animate an imageView on X axi, you can also set a duration, delay and the interpolator with a tension value
+     * @author Roberto Vecchio
+     * @param imageView image that you want to animate
+     * @param xPosition initial X position of the imageView
+     * @param finalXPosition final X position of the imageView
+     * @param delay if you want to put a delay of time on the animation start
+     * @param duration duration of the animation
+     * @param interpolator type of interpolator
+     */
     public static void animateIntroX(ImageView imageView, Float xPosition, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setX(xPosition);
@@ -21,6 +31,16 @@ public class Utils {
         anims.start();
     }
 
+    /**
+     * This method help easily to animate an imageView on y axi, you can also set a duration, delay and the interpolator with a tension value
+     * @author Roberto Vecchio
+     * @param imageView image that you want to animate
+     * @param yPosition initial Y position of the imageView
+     * @param finalYPosition final Y position of the imageView
+     * @param delay if you want to put a delay of time on the animation start
+     * @param duration duration of the animation
+     * @param interpolator type of interpolator
+     */
     public static void animateIntro(ImageView imageView,  Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setY(yPosition);
@@ -34,6 +54,18 @@ public class Utils {
         anims.start();
     }
 
+    /**
+     *  This method help easily to animate an imageView on x/y axis, you can also set a duration, delay and the interpolator with a tension value
+     * @author Roberto Vecchio
+     * @param imageView image that you want to animate
+     * @param xPosition initial X position of the imageView
+     * @param yPosition initial Y position of the imageView
+     * @param finalXPosition final X position of the imageView
+     * @param finalYPosition final Y position of the imageView
+     * @param delay if you want to put a delay of time on the animation start
+     * @param duration duration of the animation
+     * @param interpolator type of interpolator
+     */
     public static void animateIntro(ImageView imageView, Float xPosition, Float yPosition, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setX(xPosition);

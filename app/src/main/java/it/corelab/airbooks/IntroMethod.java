@@ -1,7 +1,7 @@
 package it.corelab.airbooks;
 
 public interface IntroMethod {
-    void animaterPageTwo();
+    void animatePageTwo();
     void animatePageThree();
     void animatePageFour();
 }
