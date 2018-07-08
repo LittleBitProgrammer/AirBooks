@@ -2,7 +2,6 @@ package it.corelab.airbooks.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
@@ -16,38 +15,24 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import it.corelab.airbooks.IntroActivity;
-import it.corelab.airbooks.data.model.PostSignIn;
-import it.corelab.airbooks.data.model.PostSignInResponse;
-import it.corelab.airbooks.data.model.remote.APIService;
-import it.corelab.airbooks.data.model.remote.ApiUtils;
 import it.corelab.airbooks.fragment.FadeFragment;
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.adapters.ViewPagerAdapter;
 
-import static android.content.ContentValues.TAG;
 import static it.corelab.airbooks.CustomNested.yHomePosition;
 import static it.corelab.airbooks.fragment.FadeFragment.angleVariation;
-import static it.corelab.airbooks.fragment.FadeFragment.customNested;
 import static it.corelab.airbooks.fragment.FadeFragment.diagonalView;
 import static it.corelab.airbooks.fragment.FadeFragment.exploreDiagonal;
 import static it.corelab.airbooks.fragment.FadeFragment.libDiagonal;

@@ -64,7 +64,6 @@ import it.corelab.airbooks.object.User;
 import it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView;
 import it.corelab.airbooks.widget.RoundedImageView;
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 /*
 
@@ -467,8 +466,8 @@ public class FadeFragment extends Fragment {
 
          */
 
-        OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-        OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+        //OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+        //OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
         asyncTask = new GetBestOfWeek(this);
@@ -662,7 +661,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+        //OverScrollDecoratorHelper.setUpOverScroll(recyclerCardExplore, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
         asyncTaskExplorer = new GetBestOfWeek(this);
         asyncTaskExplorer.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
@@ -788,7 +787,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
+        //OverScrollDecoratorHelper.setUpOverScroll(recyclerViewLibrary, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
 
         asyncTaskLib = new GetBestOfWeek(this);
         asyncTaskLib.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
@@ -939,8 +938,8 @@ public class FadeFragment extends Fragment {
 
          */
 
-       OverScrollDecoratorHelper.setUpOverScroll(recyclerViewAllBooks, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-       OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+       //OverScrollDecoratorHelper.setUpOverScroll(recyclerViewAllBooks, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+       //OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
        /*

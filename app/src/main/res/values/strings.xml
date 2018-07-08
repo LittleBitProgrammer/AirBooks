@@ -76,6 +76,9 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="sign_up">Not have an account? <u>Sign up</u></string>
 
+    <string name="onboarding_one_description">Tutti amano leggere. Airbooks è il luogo ideale per leggere tanti fantastici libri. Ma tu puoi anche esperimere te stesso e pubblicare i tuoi capolavori. Siamo sicuri che tutti ameranno il tuo stile.</string>
+    <string name="onboarding_one_title">Ha tutto a che fare con leggere e scrivere</string>
+
 
     <string-array name="CountryCodes">
         <item>93,AF</item>

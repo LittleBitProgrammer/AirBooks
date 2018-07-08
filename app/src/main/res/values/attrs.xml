@@ -3,7 +3,14 @@
     <declare-styleable name="CustomTextInputLayout" >
         <attr name="mainHintTextSize" format="dimension" />
     </declare-styleable>
+
     <declare-styleable name="ExpandableTextView">
         <attr name="animation_duration" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="ElevationImageView">
+        <attr name="compatEvelation" format="dimension"/>
+        <attr name="clipShadow" format="boolean"/>
+        <attr name="isTranslucent" format="boolean"/>
     </declare-styleable>
 </resources>

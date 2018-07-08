@@ -1,14 +1,49 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.31'
+
+    //group ONE -------> 1 <-------- Basics
+    ext.android_support_version = '27.1.1'
+    ext.constraint_layout = '2.0.0-alpha1'
+    ext.j_unit = '4.12'
+    ext.test_run = '1.0.2'
+    ext.test_espresso = '3.0.2'
+
+    //group TWO -------> 2 <-------- Kotlin
+    ext.kotlin_version = '1.2.50'
+
+    //group THREE -------> 3 <-------- Navigation
+    ext.bottom_navigation = '2.2.0'
+
+    //group FOUR -------> 4 <-------- Decor
+    ext.diagonal_view = '1.1'
+    ext.sweet_alert = '1.5.3'
+    ext.transformer = '1.2.32@aar'
+
+    //group FIVE -------> 5 <-------- Utility
+    ext.butter_knife = '8.8.1'
+    ext.picasso = '2.71828'
+
+    //group SIX -------> 6 <-------- Reactive
+    ext.rx_java = '2.1.12'
+    ext.rx_android = '2.0.2'
+
+    //group SEVEN -------> 7 <-------- Client
+    ext.okhttp = '3.10.0'
+    ext.retrofit2 = '2.4.0'
+    ext.gson = '2.8.2'
+    ext.gson_converter = '2.3.0'
+    ext.retrofit2_rx_javva = '2.2.0'
+
+    //anko version
+    ext.anko_version='0.10.5'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha02'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

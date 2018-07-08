@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <item type="id" name="top_bar_description_popup"/>
     <item type="id" name="top_bar_name_description"/>
     <item type="id" name="left_arrow_add_description"/>
@@ -19,4 +20,32 @@
     <item type="id" name="cardView"/>
     <item type="id" name="placeholder_add"/>
 
+
+    //ID_LAYOUT_INTRO_BASE
+    <item name="ONBOARDING_LAYOUT_BASE" type="id"/>
+    <item name="ONBOARDING_VIEWPAGER_BASE" type="id"/>
+    <item name="FRAME_LAYOUT_BASE" type="id"/>
+    <item name="LINEAR_LAYOUT_BASE" type="id"/>
+    <item name="INDICATOR_ONE" type="id"/>
+    <item name="INDICATOR_TWO" type="id"/>
+    <item name="INDICATOR_THREE" type="id"/>
+    <item name="INDICATOR_FOUR" type="id"/>
+
+    //ID_LAYOUT_INTRO_ONE
+    <item name="LINEAR_LAYOUT_TOTAL_EXTERN" type="id"/>
+    <item name="HIGH_LEFT_IMAGE" type="id"/>
+    <item name="DOWN_LEFT_IMAGE" type="id"/>
+    <item name="CENTER_LEFT_IMAGE" type="id"/>
+    <item name="DOWN_CENTER_IMAGE" type="id"/>
+    <item name="TOP_CENTER_IMAGE" type="id"/>
+    <item name="DOWN_RIGHT_IMAGE" type="id"/>
+    <item name="CENTER_RIGHT_IMAGE" type="id"/>
+    <item name="TOP_RIGHT_IMAGE" type="id"/>
+    <item name="ONBOARDING_TEXT_DESCRIPTION" type="id"/>
+    <item name="ONBOARDING_TEXT_TITLE" type="id"/>
+    <item name="LINEAR_LAYOUT_BOTTOM" type="id"/>
+    <item name="LINEAR_LAYOUT_TOP" type="id"/>
+    <item name="LINEAR_LAYOUT_TOP_COLUMN_ONE" type="id"/>
+    <item name="LINEAR_LAYOUT_TOP_COLUMN_TWO" type="id"/>
+    <item name="LINEAR_LAYOUT_TOP_COLUMN_THREE" type="id"/>
 </resources>
