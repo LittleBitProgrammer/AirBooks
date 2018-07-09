@@ -76,9 +76,18 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="sign_up">Not have an account? <u>Sign up</u></string>
 
+    //INTRO PAGE ONE
     <string name="onboarding_one_description">Tutti amano leggere. Airbooks è il luogo ideale per leggere tanti fantastici libri. Ma tu puoi anche esperimere te stesso e pubblicare i tuoi capolavori. Siamo sicuri che tutti ameranno il tuo stile.</string>
     <string name="onboarding_one_title">Ha tutto a che fare con leggere e scrivere</string>
 
+    //INTRO PAGE TWO
+
+    //INTRO PAGE THREE
+
+    //INTRO PAGE FOUR
+    <string name="title_page_four">Che fare adesso?</string>
+    <string name="description_page_four">Una tazza di tè, un comodo divano, e un buon libro da leggere. La giornata perfetta.</string>
+    <string name="button_text_page_four">CONTINUA</string>
 
     <string-array name="CountryCodes">
         <item>93,AF</item>

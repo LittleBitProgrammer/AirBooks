@@ -17,8 +17,12 @@
     <color name="comicsLight">#a7bfe8</color>
     <color name="white">#FFFFFF</color>
 
+    //INTRO COLOR
     <color name="textColor">#585860</color>
     <color name="textDesc">#858586</color>
+    <color name="plusButtonColor">#50535C</color>
+    <color name="blu_button">#586BA5</color>
+    <color name="blu_button_check">#6377B3</color>
 
     <color name="GradientAppBackground">
         <item name="android:startColor">#586BA4</item>

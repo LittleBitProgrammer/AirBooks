@@ -3,14 +3,20 @@ package it.corelab.airbooks.Intro
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.TextView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
+import it.corelab.airbooks.AnimationPageFour
 import it.corelab.airbooks.IntroMethod
+import it.corelab.airbooks.PageFourInitialization
 import it.corelab.airbooks.R
 import org.jetbrains.anko.setContentView
+import it.corelab.airbooks.Utils.*
+import org.jetbrains.anko.find
 
-class IntroActivity : AppCompatActivity(), IntroMethod {
+class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageFourInitialization {
 
     //CLASS VARIABLES
     private var isAnimatedPageTwo :Boolean = false
@@ -25,6 +31,18 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
     private lateinit var indicator03: ImageView
     private lateinit var indicator04: ImageView
 
+    //VARIABLES OF THE FOURTH PAGE
+    private lateinit var teacup: ImageView
+    private lateinit var sofa: ImageView
+    private lateinit var bookOne: ImageView
+    private lateinit var bookTwo: ImageView
+    private lateinit var bookThree: ImageView
+    private lateinit var emojiFace: ImageView
+    private lateinit var emojiHeart: ImageView
+    private lateinit var plusUnderTea: TextView
+    private lateinit var plusUnderSofa: TextView
+    private lateinit var equalSign: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +53,10 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val pager = findViewById<ViewPager>(R.id.ONBOARDING_VIEWPAGER_BASE)
-        indicator01 = findViewById<ImageView>(R.id.INDICATOR_ONE)
-        indicator02 = findViewById<ImageView>(R.id.INDICATOR_TWO)
-        indicator03 = findViewById<ImageView>(R.id.INDICATOR_THREE)
-        indicator04 = findViewById<ImageView>(R.id.INDICATOR_FOUR)
+        indicator01 = findViewById(R.id.INDICATOR_ONE)
+        indicator02 = findViewById(R.id.INDICATOR_TWO)
+        indicator03 = findViewById(R.id.INDICATOR_THREE)
+        indicator04 = findViewById(R.id.INDICATOR_FOUR)
         indicators = arrayOf(indicator01, indicator02, indicator03, indicator04)
 
         updateIndicator(pagePosition)
@@ -86,6 +104,8 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
 
                     3->{
 
+                        initializePageFourVariables()
+
                         if (!isAnimatedPageFour){
                             isAnimatedPageFour = true
                             animatePageFour()
@@ -110,16 +130,79 @@ class IntroActivity : AppCompatActivity(), IntroMethod {
         }
     }
 
+
+
+    //INTRO METHOD INTERFACE
     override fun animatePageTwo() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i("TAG", "nt")
     }
 
     override fun animatePageThree() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i("TAG", "nt")
     }
 
     override fun animatePageFour() {
+        Log.i("TAG", "nt")
+    }
+
+
+
+    //ANIMATION PAGE FOUR INTERFACE
+
+    override fun animateTeaCup() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun animatePlusTea() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateSofa() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animatePlusSofa() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateBookOne() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateBookTwo() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateBookThree() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateEqual() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateEmojiFace() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun animateEmojiHeart() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+
+    //PAGEFOURINITIALIZATION INTERFACE
+
+    override fun initializePageFourVariables() {
+        teacup = findViewById(R.id.TEACUP)
+        sofa = findViewById(R.id.SOFA)
+        bookOne = findViewById(R.id.LEFT_BOOK_PAGE_FOUR)
+        bookTwo = findViewById(R.id.CENTER_BOOK_PAGE_FOUR)
+        bookThree = findViewById(R.id.RIGHT_BOOK_PAGE_FOUR)
+        emojiFace = findViewById(R.id.FACE_HEART)
+        emojiHeart = findViewById(R.id.HEART_EMOJI)
+        plusUnderTea = findViewById(R.id.PLUS_UNDER_TEACUP)
+        plusUnderSofa = findViewById(R.id.PLUS_UNDER_SOFA)
+        equalSign = findViewById(R.id.EQUAL_PAGE_FOUR)
+    }
 }

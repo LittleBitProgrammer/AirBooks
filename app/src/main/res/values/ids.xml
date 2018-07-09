@@ -48,4 +48,27 @@
     <item name="LINEAR_LAYOUT_TOP_COLUMN_ONE" type="id"/>
     <item name="LINEAR_LAYOUT_TOP_COLUMN_TWO" type="id"/>
     <item name="LINEAR_LAYOUT_TOP_COLUMN_THREE" type="id"/>
+
+    //ID_LAYOUT_INTRO_TWO
+
+    //ID_LAYOUT_INTRO_THREE
+
+    //ID_LAYOUT_INTRO_FOUR
+    <item name="EXTERNAL_LINEARLAYOUT_PAGE_FOUR" type="id"/>
+    <item name="TEACUP" type="id"/>
+    <item name ="PLUS_UNDER_TEACUP" type="id"/>
+    <item name="SOFA" type="id"/>
+    <item name="PLUS_UNDER_SOFA" type="id"/>
+    <item name="LINEAR_BOOKS_PAGE_FOUR" type="id"/>
+    <item name="LEFT_BOOK_PAGE_FOUR" type="id"/>
+    <item name="CENTER_BOOK_PAGE_FOUR" type="id"/>
+    <item name="RIGHT_BOOK_PAGE_FOUR" type="id"/>
+    <item name ="EQUAL_PAGE_FOUR" type="id"/>
+    <item name="FACE_HEART" type="id"/>
+    <item name="HEART_EMOJI" type="id"/>
+    <item name="LINEAR_EMOJI" type="id"/>
+    <item name="TITLE_PAGE_FOUR" type="id"/>
+    <item name="DESCRIPTION_PAGE_FOUR" type="id"/>
+    <item name="BUTTON_PAGE_FOUR" type="id"/>
+
 </resources>
