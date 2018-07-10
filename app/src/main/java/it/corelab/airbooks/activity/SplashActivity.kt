@@ -2,7 +2,6 @@ package it.corelab.airbooks.activity
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,7 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.corelab.airbooks.Intro.IntroActivity
+import it.corelab.airbooks.intro.activity.IntroActivity
 import it.corelab.airbooks.data.model.AutomaticSignInResponse
 import it.corelab.airbooks.data.model.remote.APIService
 import it.corelab.airbooks.data.model.remote.ApiUtils

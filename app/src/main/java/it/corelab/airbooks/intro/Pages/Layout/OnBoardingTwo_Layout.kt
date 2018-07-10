@@ -1,15 +1,13 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.Pages.Layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
-import android.view.ViewManager
 import android.widget.ImageView
+import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
-import it.corelab.airbooks.widget.JustifyTextView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.constraint.layout.matchConstraint
-import org.jetbrains.anko.custom.ankoView
 
 class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 

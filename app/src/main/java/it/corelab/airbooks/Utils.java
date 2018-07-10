@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Utils {
 
@@ -18,7 +19,7 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateIntroX(ImageView imageView, Float xPosition, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageX(ImageView imageView, Float xPosition, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setX(xPosition);
         AnimatorSet anims = new AnimatorSet();
@@ -41,7 +42,7 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateIntro(ImageView imageView,  Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageY(ImageView imageView,  Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setY(yPosition);
         AnimatorSet anims = new AnimatorSet();
@@ -66,7 +67,7 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateIntro(ImageView imageView, Float xPosition, Float yPosition, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImage(ImageView imageView, Float xPosition, Float yPosition, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
 
         imageView.setX(xPosition);
         imageView.setY(yPosition);
@@ -77,6 +78,19 @@ public class Utils {
         sY.setStartDelay(delay);
         anims.setDuration(duration);
         anims.playTogether(sX, sY);
+        anims.setInterpolator(interpolator);
+
+        anims.start();
+    }
+
+    public static void animateTextY(TextView text, Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        text.setY(yPosition);
+        AnimatorSet anims = new AnimatorSet();
+        ObjectAnimator sY = ObjectAnimator.ofFloat(text, View.TRANSLATION_Y, yPosition, finalYPosition);
+        sY.setStartDelay(delay);
+        anims.setDuration(duration);
+        anims.play(sY);
         anims.setInterpolator(interpolator);
 
         anims.start();

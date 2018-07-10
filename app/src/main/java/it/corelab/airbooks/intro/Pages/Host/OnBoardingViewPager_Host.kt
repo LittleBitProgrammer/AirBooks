@@ -1,7 +1,8 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.Pages.Host
 
 import android.view.Gravity
 import android.widget.LinearLayout
+import it.corelab.airbooks.intro.activity.IntroActivity
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout

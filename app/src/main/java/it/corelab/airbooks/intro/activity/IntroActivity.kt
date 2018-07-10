@@ -13,8 +13,7 @@ import it.corelab.airbooks.IntroMethod
 import it.corelab.airbooks.PageFourInitialization
 import it.corelab.airbooks.R
 import org.jetbrains.anko.setContentView
-import it.corelab.airbooks.Utils.*
-import org.jetbrains.anko.find
+import it.corelab.airbooks.Constants.*
 
 class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageFourInitialization {
 
@@ -142,7 +141,17 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
     }
 
     override fun animatePageFour() {
-        Log.i("TAG", "nt")
+        Log.i(INTRO, "created page four, animation starting...")
+        animateTeaCup()
+        animatePlusTea()
+        animateSofa()
+        animatePlusSofa()
+        animateBookOne()
+        animateBookTwo()
+        animateBookThree()
+        animateEqual()
+        animateEmojiFace()
+        animateEmojiHeart()
     }
 
 
@@ -150,43 +159,43 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
     //ANIMATION PAGE FOUR INTERFACE
 
     override fun animateTeaCup() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Tea cup animated")
     }
 
     override fun animatePlusTea() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Plus under tea cup animated")
     }
 
     override fun animateSofa() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Sofa cup animated")
     }
 
     override fun animatePlusSofa() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Plus under sofa cup animated")
     }
 
     override fun animateBookOne() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Book one animated")
     }
 
     override fun animateBookTwo() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Book two animated")
     }
 
     override fun animateBookThree() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Book three animated")
     }
 
     override fun animateEqual() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Equal sign animated")
     }
 
     override fun animateEmojiFace() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Emoji face animated")
     }
 
     override fun animateEmojiHeart() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.i(ANIMATION, "Emoji heart animated")
     }
 
 

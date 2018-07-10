@@ -1,4 +1,4 @@
-package it.corelab.airbooks;
+package it.corelab.airbooks.intro.Interface;
 
 public interface IntroMethod {
     void animatePageTwo();

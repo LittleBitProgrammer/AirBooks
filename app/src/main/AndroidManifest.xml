@@ -67,7 +67,7 @@
             android:name=".activity.AddRecap"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Intro.IntroActivity"
+            android:name=".intro.activity.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Login"
