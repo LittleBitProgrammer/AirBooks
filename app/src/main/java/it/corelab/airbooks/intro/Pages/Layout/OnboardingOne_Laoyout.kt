@@ -1,4 +1,4 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.Pages.Layout
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -11,6 +11,7 @@ import android.widget.TextView
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import android.support.v4.content.res.ResourcesCompat
+import it.corelab.airbooks.intro.Handler.OnboardingFragment
 
 
 class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {

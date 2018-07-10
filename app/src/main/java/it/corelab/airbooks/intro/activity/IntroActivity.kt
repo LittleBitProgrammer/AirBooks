@@ -1,19 +1,23 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.activity
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.WindowManager
+import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
-import it.corelab.airbooks.AnimationPageFour
-import it.corelab.airbooks.IntroMethod
-import it.corelab.airbooks.PageFourInitialization
 import it.corelab.airbooks.R
 import org.jetbrains.anko.setContentView
+import it.corelab.airbooks.Utils.*
 import it.corelab.airbooks.Constants.*
+import it.corelab.airbooks.intro.Handler.OnboardingAdapter
+import it.corelab.airbooks.intro.Interface.AnimationPageFour
+import it.corelab.airbooks.intro.Interface.IntroMethod
+import it.corelab.airbooks.intro.Interface.PageFourInitialization
+import it.corelab.airbooks.intro.Pages.Host.OnBoardingViewPager_Host
 
 class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageFourInitialization {
 
@@ -146,9 +150,9 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
         animatePlusTea()
         animateSofa()
         animatePlusSofa()
-        animateBookOne()
-        animateBookTwo()
         animateBookThree()
+        animateBookTwo()
+        animateBookOne()
         animateEqual()
         animateEmojiFace()
         animateEmojiHeart()
@@ -159,42 +163,52 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
     //ANIMATION PAGE FOUR INTERFACE
 
     override fun animateTeaCup() {
+        animateImageY(teacup,2200F,0F,100,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Tea cup animated")
     }
 
     override fun animatePlusTea() {
+        animateTextY(plusUnderTea,2200F,0F,450,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Plus under tea cup animated")
     }
 
     override fun animateSofa() {
+        animateImageY(sofa,2200F,0F,800,850,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Sofa cup animated")
     }
 
     override fun animatePlusSofa() {
+        animateTextY(plusUnderSofa,2200F,0F,950,850,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Plus under sofa cup animated")
     }
 
     override fun animateBookOne() {
+        animateImageX(bookOne,-1000F,0F,2300,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book one animated")
     }
 
     override fun animateBookTwo() {
+        animateImageX(bookTwo,-1000F,0F,2000,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book two animated")
     }
 
     override fun animateBookThree() {
+        animateImageX(bookThree,-1000F,0F,1700,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book three animated")
     }
 
     override fun animateEqual() {
+        animateTextY(equalSign,2200F,0F,2450,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Equal sign animated")
     }
 
     override fun animateEmojiFace() {
+        animateImageY(emojiFace,2200F,0F,2500,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji face animated")
     }
 
     override fun animateEmojiHeart() {
+        animateImageY(emojiHeart,2200F,0F,2500,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji heart animated")
     }
 

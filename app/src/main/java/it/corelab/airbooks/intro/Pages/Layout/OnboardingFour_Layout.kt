@@ -1,11 +1,11 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.Pages.Layout
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
-import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 

@@ -1,6 +1,6 @@
-package it.corelab.airbooks.Intro
+package it.corelab.airbooks.intro.Pages.Layout
 
-import android.view.View
+import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.linearLayout
