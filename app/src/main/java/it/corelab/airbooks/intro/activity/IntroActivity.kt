@@ -14,12 +14,11 @@ import org.jetbrains.anko.setContentView
 import it.corelab.airbooks.Utils.*
 import it.corelab.airbooks.Constants.*
 import it.corelab.airbooks.intro.Handler.OnboardingAdapter
-import it.corelab.airbooks.intro.Interface.AnimationPageFour
-import it.corelab.airbooks.intro.Interface.IntroMethod
-import it.corelab.airbooks.intro.Interface.PageFourInitialization
+import it.corelab.airbooks.intro.Interface.*
 import it.corelab.airbooks.intro.Pages.Host.OnBoardingViewPager_Host
+import org.jetbrains.anko.find
 
-class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageFourInitialization {
+class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, AnimationPageTwo, PageFourInitialization, PageTwoInitialization {
 
     //CLASS VARIABLES
     private var isAnimatedPageTwo :Boolean = false
@@ -33,6 +32,17 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
     private lateinit var indicator02: ImageView
     private lateinit var indicator03: ImageView
     private lateinit var indicator04: ImageView
+
+    //VARIABLES OF THE SECOND PAGE
+    private lateinit var shelfOne: ImageView
+    private lateinit var shelfTwo: ImageView
+    private lateinit var shelfThree: ImageView
+    private lateinit var firstBook: ImageView
+    private lateinit var secondBook: ImageView
+    private lateinit var thirdBook: ImageView
+    private lateinit var fourthBook: ImageView
+    private lateinit var fifthBook: ImageView
+    private lateinit var sixthBook: ImageView
 
     //VARIABLES OF THE FOURTH PAGE
     private lateinit var teacup: ImageView
@@ -89,6 +99,8 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
 
                     1->{
 
+                        initializePageTwoVariables()
+                        
                         if (!isAnimatedPageTwo){
                             isAnimatedPageTwo = true
                             animatePageTwo()
@@ -137,7 +149,17 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
 
     //INTRO METHOD INTERFACE
     override fun animatePageTwo() {
-        Log.i("TAG", "nt")
+        Log.i(INTRO, "Created page two, animation starting")
+        animateShelfThree()
+        animateShelfTwo()
+        animateShelfOne()
+        animateBookTwo()
+        animateSecondShelfBook()
+        animateFirstShelfBook()
+        animateFourthShelfBook()
+        animateThirdShelfBook()
+        animateSixthShelfBook()
+        animateFifthShelfBook()
     }
 
     override fun animatePageThree() {
@@ -213,8 +235,63 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, PageF
     }
 
 
+    //ANIMATION PAGE TWO INTERFACE
 
-    //PAGEFOURINITIALIZATION INTERFACE
+    override fun animateFirstShelfBook() {
+        Log.i(ANIMATION, "First book animated")
+    }
+
+    override fun animateSecondShelfBook() {
+        Log.i(ANIMATION, "Second book animated")
+    }
+
+    override fun animateThirdShelfBook() {
+        Log.i(ANIMATION, "Third book animated")
+    }
+
+    override fun animateFourthShelfBook() {
+        Log.i(ANIMATION, "Fourth book animated")
+    }
+
+    override fun animateFifthShelfBook() {
+        Log.i(ANIMATION, "Fifth book animated")
+    }
+
+    override fun animateSixthShelfBook() {
+        Log.i(ANIMATION, "Sixth book animated")
+    }
+
+    override fun animateShelfOne() {
+        Log.i(ANIMATION, "Shelf book animated")
+    }
+
+    override fun animateShelfTwo() {
+        Log.i(ANIMATION, "First book two animated")
+    }
+
+    override fun animateShelfThree() {
+        Log.i(ANIMATION, "Shelf book three animated")
+    }
+
+
+    //PAGE TWO INITIALIZATION INTERFACE
+
+    override fun initializePageTwoVariables() {
+
+        shelfOne = findViewById(R.id.SHELF_ONE)
+        shelfTwo = findViewById(R.id.SHELF_TWO)
+        shelfThree = findViewById(R.id.SHELF_THREE)
+        firstBook = findViewById(R.id.FIRST_FIRST_IMAGE)
+        secondBook = findViewById(R.id.FIRST_SECOND_IMAGE)
+        thirdBook = findViewById(R.id.FIRST_THIRD_IMAGE)
+        fourthBook = findViewById(R.id.SECOND_FIRST_IMAGE)
+        fifthBook = findViewById(R.id.SECOND_SECOND_IMAGE)
+        sixthBook = findViewById(R.id.SECOND_THIRD_IMAGE)
+
+    }
+
+
+    //PAGE FOUR INITIALIZATION INTERFACE
 
     override fun initializePageFourVariables() {
         teacup = findViewById(R.id.TEACUP)

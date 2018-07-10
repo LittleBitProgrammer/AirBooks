@@ -50,6 +50,18 @@
     <item name="LINEAR_LAYOUT_TOP_COLUMN_THREE" type="id"/>
 
     //ID_LAYOUT_INTRO_TWO
+    <item name="CONST_LAYOUT_TWO" type="id"/>
+    <item name="SHELF_ONE" type="id"/>
+    <item name="SHELF_TWO" type="id"/>
+    <item name="SHELF_THREE" type="id"/>
+    <item name="FIRST_FIRST_IMAGE" type="id"/>
+    <item name="FIRST_SECOND_IMAGE" type="id"/>
+    <item name="FIRST_THIRD_IMAGE" type="id"/>
+    <item name="SECOND_FIRST_IMAGE" type="id"/>
+    <item name="SECOND_SECOND_IMAGE" type="id"/>
+    <item name="SECOND_THIRD_IMAGE" type="id"/>
+    <item name="TITLE_PAGE_TWO" type="id"/>
+    <item name="DESC_PAGE_TWO" type="id"/>
 
     //ID_LAYOUT_INTRO_THREE
 

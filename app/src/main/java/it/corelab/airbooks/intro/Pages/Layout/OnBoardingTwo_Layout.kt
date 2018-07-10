@@ -1,7 +1,9 @@
 package it.corelab.airbooks.intro.Pages.Layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
+import android.support.v4.content.res.ResourcesCompat
 import android.widget.ImageView
+import android.widget.TextView
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
@@ -22,9 +24,9 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
                 topToTop = PARENT_ID
-                topMargin = dip(110)
-                marginStart = dip(8)
-                marginStart = dip(8)
+                topMargin = dip(120)
+                marginStart = dip(20)
+                marginEnd = dip(20)
             }
 
             imageView(R.drawable.scaffale) {
@@ -33,9 +35,9 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
                 topToBottom = Ids.SHELF_ONE
-                topMargin = dip(102)
-                marginStart = dip(8)
-                marginStart = dip(8)
+                topMargin = dip(110)
+                marginStart = dip(20)
+                marginEnd = dip(20)
             }
 
             imageView(R.drawable.scaffale) {
@@ -44,80 +46,121 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
                 topToBottom = Ids.SHELF_TWO
-                topMargin = dip(102)
-                marginStart = dip(8)
-                marginStart = dip(8)
+                topMargin = dip(110)
+                marginStart = dip(20)
+                marginEnd = dip(20)
             }
 
-            cardView {
-                clipToPadding = false
-                cardElevation = dip(7).toFloat()
-                id = Ids.FIRST_TOP_CARD
-
-                imageView(R.drawable.book2) {
-                    id = Ids.FIRST_TOP_IMAGE
-                    scaleType = ImageView.ScaleType.FIT_XY
-
-                }.lparams(width = matchParent, height = matchParent)
+            imageView(R.drawable.book2) {
+                id = Ids.FIRST_FIRST_IMAGE
 
 
-            }.lparams(width = dip(74), height = dip(106)) {
+            }.lparams(width = dip(84), height = dip(106)) {
                 leftToLeft = PARENT_ID
                 bottomToBottom = Ids.SHELF_ONE
-                marginStart = dip(75)
-                bottomMargin = dip(26)
+                marginStart = dip(85)
+                bottomMargin = dip(24)
             }
 
 
 
-            cardView {
-                clipToPadding = false
-                cardElevation = dip(7).toFloat()
-                id = Ids.FIRST_TOP_CARD
+            imageView(R.drawable.book3) {
+                id = Ids.FIRST_SECOND_IMAGE
 
-                imageView(R.drawable.book3) {
-                    id = Ids.FIRST_TOP_IMAGE
-                    scaleType = ImageView.ScaleType.FIT_XY
-
-                }.lparams(width = matchParent, height = matchParent)
-
-
-            }.lparams(width = dip(74), height = dip(106)) {
+            }.lparams(width = dip(84), height = dip(106)) {
                 leftToLeft = PARENT_ID
                 bottomToBottom = Ids.SHELF_TWO
-                marginStart = dip(75)
-                bottomMargin = dip(26)
+                marginStart = dip(85)
+                bottomMargin = dip(24)
             }
 
 
 
-            cardView {
-                clipToPadding = false
-                cardElevation = dip(7).toFloat()
-                id = Ids.FIRST_TOP_CARD
+            imageView (R.drawable.book5) {
+                id = Ids.FIRST_THIRD_IMAGE
 
-                imageView (R.drawable.book5){
-                    id = Ids.FIRST_TOP_IMAGE
-                    scaleType = ImageView.ScaleType.FIT_XY
-
-                }.lparams(width = matchParent, height = matchParent)
-
-
-            }.lparams(width = dip(74), height = dip(106)){
+            }.lparams(width = dip(84), height = dip(106)){
                 leftToLeft = PARENT_ID
                 bottomToBottom = Ids.SHELF_THREE
-                marginStart = dip(75)
-                bottomMargin = dip(26)
+                marginStart = dip(85)
+                bottomMargin = dip(24)
+            }
+
+            imageView(R.drawable.book1) {
+                id = Ids.SECOND_FIRST_IMAGE
+
+
+            }.lparams(width = dip(84), height = dip(106)) {
+                leftToRight = Ids.FIRST_FIRST_IMAGE
+                bottomToBottom = Ids.SHELF_ONE
+                leftMargin = dip(20)
+                bottomMargin = dip(24)
+            }
+
+            imageView(R.drawable.book4) {
+                id = Ids.SECOND_SECOND_IMAGE
+
+
+            }.lparams(width = dip(84), height = dip(106)) {
+                leftToRight = Ids.FIRST_SECOND_IMAGE
+                bottomToBottom = Ids.SHELF_TWO
+                leftMargin = dip(20)
+                bottomMargin = dip(24)
+            }
+
+            imageView(R.drawable.book7) {
+                id = Ids.SECOND_THIRD_IMAGE
+
+
+            }.lparams(width = dip(84), height = dip(106)) {
+                leftToRight = Ids.FIRST_THIRD_IMAGE
+                bottomToBottom = Ids.SHELF_THREE
+                leftMargin = dip(20)
+                bottomMargin = dip(24)
+            }
+
+            textView(R.string.title_page_two){
+                id = Ids.TITLE_PAGE_TWO
+
+                textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+                textColor = ResourcesCompat.getColor(resources,R.color.textColor,null)
+                textSize = sp(7).toFloat()
+
+            }.lparams(width = matchParent, height = wrapContent){
+                topToBottom = Ids.SHELF_THREE
+                topMargin = dip(35)
+                marginStart = dip(15)
+                marginEnd = dip(15)
+            }
+
+            textView(R.string.description_page_two){
+                id = Ids.DESC_PAGE_TWO
+
+                textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+                textColor = ResourcesCompat.getColor(resources,R.color.textDesc,null)
+                textSize = sp(5).toFloat()
+
+            }.lparams(width = matchParent, height = wrapContent){
+                topToBottom = Ids.TITLE_PAGE_TWO
+                topMargin = dip(8)
+                marginStart = dip(15)
+                marginEnd = dip(15)
             }
         }
     }
 
     private object Ids{
-        const val CONST_LAYOUT_TWO = 1
-        const val SHELF_ONE = 2
-        const val SHELF_TWO = 3
-        const val SHELF_THREE = 4
-        const val FIRST_TOP_CARD = 5
-        const val FIRST_TOP_IMAGE = 6
+        const val CONST_LAYOUT_TWO = R.id.CONST_LAYOUT_TWO
+        const val SHELF_ONE = R.id.SHELF_ONE
+        const val SHELF_TWO = R.id.SHELF_TWO
+        const val SHELF_THREE = R.id.SHELF_THREE
+        const val FIRST_FIRST_IMAGE = R.id.FIRST_FIRST_IMAGE
+        const val FIRST_SECOND_IMAGE = R.id.FIRST_SECOND_IMAGE
+        const val FIRST_THIRD_IMAGE = R.id.FIRST_THIRD_IMAGE
+        const val SECOND_FIRST_IMAGE = R.id.SECOND_FIRST_IMAGE
+        const val SECOND_SECOND_IMAGE = R.id.SECOND_SECOND_IMAGE
+        const val SECOND_THIRD_IMAGE = R.id.SECOND_THIRD_IMAGE
+        const val TITLE_PAGE_TWO = R.id.TITLE_PAGE_TWO
+        const val DESC_PAGE_TWO = R.id.DESC_PAGE_TWO
     }
 }

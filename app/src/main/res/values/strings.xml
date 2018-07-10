@@ -81,7 +81,8 @@
     <string name="onboarding_one_title">Ha tutto a che fare con leggere e scrivere</string>
 
     //INTRO PAGE TWO
-
+    <string name="title_page_two">Colleziona i tuoi libri preferiti</string>
+    <string name="description_page_two">Riempi la libreria con i tuoi libri preferiti.\nSaranno sempre a portata di mano</string>
     //INTRO PAGE THREE
 
     //INTRO PAGE FOUR
