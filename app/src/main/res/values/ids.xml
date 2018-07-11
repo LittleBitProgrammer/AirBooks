@@ -64,6 +64,20 @@
     <item name="DESC_PAGE_TWO" type="id"/>
 
     //ID_LAYOUT_INTRO_THREE
+    <item name="EXTERNAL_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
+    <item name="TOP_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
+    <item name="BOTTOM_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
+    <item name="ROUNDED_IMAGE_INTRO" type="id"/>
+    <item name="LINEAR_STAR_RATING_INTRO" type="id"/>
+    <item name="STAR_ONE_INTRO" type="id"/>
+    <item name="STAR_TWO_INTRO" type="id"/>
+    <item name="STAR_THREE_INTRO" type="id"/>
+    <item name="STAR_FOUR_INTRO" type="id"/>
+    <item name="STAR_FIVE_INTRO" type="id"/>
+    <item name="SPOT_BOOK_INTRO" type="id"/>
+    <item name="BOKK_INTRO_PAGE_THREE" type="id"/>
+    <item name="TITLE_INTRO_PAGE_THREE" type="id"/>
+    <item name="DESCRIPTION_INTRO_PAGE_THREE" type="id"/>
 
     //ID_LAYOUT_INTRO_FOUR
     <item name="EXTERNAL_LINEARLAYOUT_PAGE_FOUR" type="id"/>

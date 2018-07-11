@@ -857,7 +857,7 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                         textSize = sp(7).toFloat()
                     }.lparams(width = matchParent, height = wrapContent){
 
-                        topMargin = dip(35)
+                        topMargin = dip(83)
                         marginStart = dip(15)
                         marginEnd = dip(15)
 

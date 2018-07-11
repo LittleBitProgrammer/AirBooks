@@ -16,7 +16,6 @@ import it.corelab.airbooks.Constants.*
 import it.corelab.airbooks.intro.Handler.OnboardingAdapter
 import it.corelab.airbooks.intro.Interface.*
 import it.corelab.airbooks.intro.Pages.Host.OnBoardingViewPager_Host
-import org.jetbrains.anko.find
 
 class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, AnimationPageTwo, PageFourInitialization, PageTwoInitialization {
 
@@ -100,10 +99,10 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
                     1->{
 
                         initializePageTwoVariables()
-                        
+
                         if (!isAnimatedPageTwo){
                             isAnimatedPageTwo = true
-                            animatePageTwo()
+                            //animatePageTwo()
                         }
 
                     }

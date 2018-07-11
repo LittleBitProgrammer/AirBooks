@@ -77,13 +77,17 @@
     <string name="sign_up">Not have an account? <u>Sign up</u></string>
 
     //INTRO PAGE ONE
-    <string name="onboarding_one_description">Tutti amano leggere. Airbooks è il luogo ideale per leggere tanti fantastici libri. Ma tu puoi anche esperimere te stesso e pubblicare i tuoi capolavori. Siamo sicuri che tutti ameranno il tuo stile.</string>
-    <string name="onboarding_one_title">Ha tutto a che fare con leggere e scrivere</string>
+    <string name="onboarding_one_description">Tutti amano leggere. Airbooks è il luogo ideale per leggere tanti fantastici libri, crearli e condividerli</string>
+    <string name="onboarding_one_title">Leggi, crea, condividi</string>
 
     //INTRO PAGE TWO
     <string name="title_page_two">Colleziona i tuoi libri preferiti</string>
     <string name="description_page_two">Riempi la libreria con i tuoi libri preferiti.\nSaranno sempre a portata di mano</string>
+
     //INTRO PAGE THREE
+    <string name="book_spot_page_trhee_intro"><i>\"Che libro straordinario!\"</i></string>
+    <string name="title_intro_page_three">Fai sentire la tua voce</string>
+    <string name="description_intro_page_three">Lascia una recensione ai libri di altri autori ed esprimi i tuoi pensieri su di loro. Gli autori apprezzeranno senz\'altro</string>
 
     //INTRO PAGE FOUR
     <string name="title_page_four">Che fare adesso?</string>
