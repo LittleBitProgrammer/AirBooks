@@ -49,6 +49,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                 imageView(R.drawable.teacup){
                     id = Ids.TEACUP
 
+                    y = 2200F
                 }.lparams(width = wrapContent, height = wrapContent){
                     marginEnd = dip(100)
                     marginStart = dip(100)
@@ -58,6 +59,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                 textView("+"){
                     id = Ids.PLUS_UNDER_TEACUP
 
+                    y = 2200F
                     textSize = sp(13).toFloat()
                     textAlignment = TextView.TEXT_ALIGNMENT_CENTER
 
@@ -68,6 +70,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                 imageView(R.drawable.sofa){
                     id = Ids.SOFA
 
+                    y = 2200F
                 }.lparams(width = wrapContent, height = wrapContent){
                     marginStart = dip(80)
                     marginEnd = dip(80)
@@ -77,6 +80,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                 textView("+"){
                     id = Ids.PLUS_UNDER_SOFA
 
+                    y = 2200F
                     textSize = sp(13).toFloat()
                     textAlignment = TextView.TEXT_ALIGNMENT_CENTER
 
@@ -92,6 +96,8 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                     imageView(R.drawable.book2){
                         id = Ids.LEFT_BOOK_PAGE_FOUR
 
+                        x = -1000F
+
                     }.lparams(width = dip(75), height = dip(107)){
                         marginStart = dip(60)
                     }
@@ -99,6 +105,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                     imageView(R.drawable.book3){
                         id = Ids.CENTER_BOOK_PAGE_FOUR
 
+                        x = -1000F
                     }.lparams(width = dip(75), height = dip(107)){
                         marginStart = dip(10)
                     }
@@ -106,6 +113,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                     imageView(R.drawable.book5){
                         id = Ids.RIGHT_BOOK_PAGE_FOUR
 
+                        x =-1000F
                     }.lparams(width = dip(75), height = dip(107)){
                         marginStart = dip(10)
                     }
@@ -114,6 +122,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                 textView("="){
                     id = Ids.EQUAL_PAGE_FOUR
 
+                    y = 2200F
                     textSize = sp(13).toFloat()
                     textAlignment = TextView.TEXT_ALIGNMENT_CENTER
 
@@ -127,6 +136,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                     imageView(R.drawable.emoji_heart_face){
                         id = Ids.FACE_HEART
 
+                        y = 2200F
                     }.lparams(width = dip(30), height = dip(30)){
                         topMargin = dip(20)
                         marginStart = dip(145)
@@ -135,6 +145,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                     imageView(R.drawable.heart){
                         id = Ids.HEART_EMOJI
 
+                        y = 2200F
                     }.lparams(width = dip(30), height = dip(30)){
                         topMargin = dip(20)
                         marginStart = dip(10)

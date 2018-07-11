@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
 import it.corelab.airbooks.R
@@ -42,6 +43,12 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
     private lateinit var fourthBook: ImageView
     private lateinit var fifthBook: ImageView
     private lateinit var sixthBook: ImageView
+
+    //VARIABLES OF THE THIRD PAGE
+    private lateinit var bookSpot: ImageView
+    private lateinit var textSpot: TextView
+    private lateinit var linearRating: LinearLayout
+    private lateinit var userImage: ImageView
 
     //VARIABLES OF THE FOURTH PAGE
     private lateinit var teacup: ImageView
@@ -102,7 +109,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
 
                         if (!isAnimatedPageTwo){
                             isAnimatedPageTwo = true
-                            //animatePageTwo()
+                            animatePageTwo()
                         }
 
                     }
@@ -152,7 +159,6 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
         animateShelfThree()
         animateShelfTwo()
         animateShelfOne()
-        animateBookTwo()
         animateSecondShelfBook()
         animateFirstShelfBook()
         animateFourthShelfBook()
@@ -184,52 +190,52 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
     //ANIMATION PAGE FOUR INTERFACE
 
     override fun animateTeaCup() {
-        animateImageY(teacup,2200F,0F,100,850,OvershootInterpolator(0.8F))
+        animateImageY(teacup,0F,100,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Tea cup animated")
     }
 
     override fun animatePlusTea() {
-        animateTextY(plusUnderTea,2200F,0F,450,850,OvershootInterpolator(0.8F))
+        animateTextY(plusUnderTea,0F,450,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Plus under tea cup animated")
     }
 
     override fun animateSofa() {
-        animateImageY(sofa,2200F,0F,800,850,OvershootInterpolator(0.6F))
+        animateImageY(sofa,0F,800,850,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Sofa cup animated")
     }
 
     override fun animatePlusSofa() {
-        animateTextY(plusUnderSofa,2200F,0F,950,850,OvershootInterpolator(0.6F))
+        animateTextY(plusUnderSofa,0F,950,850,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Plus under sofa cup animated")
     }
 
     override fun animateBookOne() {
-        animateImageX(bookOne,-1000F,0F,2300,850,OvershootInterpolator(0.8F))
+        animateImageX(bookOne,0F,2300,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book one animated")
     }
 
     override fun animateBookTwo() {
-        animateImageX(bookTwo,-1000F,0F,2000,850,OvershootInterpolator(0.8F))
+        animateImageX(bookTwo,0F,2000,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book two animated")
     }
 
     override fun animateBookThree() {
-        animateImageX(bookThree,-1000F,0F,1700,850,OvershootInterpolator(0.8F))
+        animateImageX(bookThree,0F,1700,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book three animated")
     }
 
     override fun animateEqual() {
-        animateTextY(equalSign,2200F,0F,2450,850,OvershootInterpolator(0.8F))
+        animateTextY(equalSign,0F,2450,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Equal sign animated")
     }
 
     override fun animateEmojiFace() {
-        animateImageY(emojiFace,2200F,0F,2500,850,OvershootInterpolator(0.8F))
+        animateImageY(emojiFace,0F,2500,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji face animated")
     }
 
     override fun animateEmojiHeart() {
-        animateImageY(emojiHeart,2200F,0F,2500,850,OvershootInterpolator(0.8F))
+        animateImageY(emojiHeart,0F,2500,850,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji heart animated")
     }
 
@@ -237,38 +243,47 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
     //ANIMATION PAGE TWO INTERFACE
 
     override fun animateFirstShelfBook() {
+        animateImage(firstBook,0F,0F,750,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "First book animated")
     }
 
     override fun animateSecondShelfBook() {
+        animateImage(fourthBook,0F,0F,650,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Second book animated")
     }
 
     override fun animateThirdShelfBook() {
+        animateImage(secondBook,0F,0F,950,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Third book animated")
     }
 
     override fun animateFourthShelfBook() {
+        animateImage(fifthBook,0F,0F,850,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Fourth book animated")
     }
 
     override fun animateFifthShelfBook() {
+        animateImage(thirdBook,0F,0F,1251,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Fifth book animated")
     }
 
     override fun animateSixthShelfBook() {
+        animateImage(sixthBook,0F,0F,1150,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Sixth book animated")
     }
 
     override fun animateShelfOne() {
+        animateImage(shelfOne,0F,0F,450,650,OvershootInterpolator(1F))
         Log.i(ANIMATION, "Shelf book animated")
     }
 
     override fun animateShelfTwo() {
+        animateImageY(shelfTwo,0F,350,650,OvershootInterpolator(1F))
         Log.i(ANIMATION, "First book two animated")
     }
 
     override fun animateShelfThree() {
+        animateImageY(shelfThree,0F,250,650,OvershootInterpolator(1F))
         Log.i(ANIMATION, "Shelf book three animated")
     }
 

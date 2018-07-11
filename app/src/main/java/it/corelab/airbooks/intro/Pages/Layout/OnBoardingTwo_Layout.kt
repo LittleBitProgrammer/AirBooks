@@ -2,14 +2,13 @@ package it.corelab.airbooks.intro.Pages.Layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
-import android.widget.ImageView
 import android.widget.TextView
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
-import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.constraint.layout.matchConstraint
+import it.corelab.airbooks.Utils.*
 
 class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
@@ -20,6 +19,8 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
             imageView(R.drawable.scaffale) {
                 id = Ids.SHELF_ONE
+
+                y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
@@ -31,6 +32,8 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
             imageView(R.drawable.scaffale) {
                 id = Ids.SHELF_TWO
+
+                y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
@@ -42,6 +45,8 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
             imageView(R.drawable.scaffale) {
                 id = Ids.SHELF_THREE
+
+                y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
                 leftToLeft = PARENT_ID
@@ -54,6 +59,7 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView(R.drawable.book2) {
                 id = Ids.FIRST_FIRST_IMAGE
 
+                x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
                 leftToLeft = PARENT_ID
@@ -67,6 +73,8 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView(R.drawable.book3) {
                 id = Ids.FIRST_SECOND_IMAGE
 
+                x = -800F
+
             }.lparams(width = dip(84), height = dip(106)) {
                 leftToLeft = PARENT_ID
                 bottomToBottom = Ids.SHELF_TWO
@@ -79,6 +87,7 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView (R.drawable.book5) {
                 id = Ids.FIRST_THIRD_IMAGE
 
+                x = -800F
             }.lparams(width = dip(84), height = dip(106)){
                 leftToLeft = PARENT_ID
                 bottomToBottom = Ids.SHELF_THREE
@@ -89,6 +98,7 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView(R.drawable.book1) {
                 id = Ids.SECOND_FIRST_IMAGE
 
+                x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
                 leftToRight = Ids.FIRST_FIRST_IMAGE
@@ -100,6 +110,7 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView(R.drawable.book4) {
                 id = Ids.SECOND_SECOND_IMAGE
 
+                x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
                 leftToRight = Ids.FIRST_SECOND_IMAGE
@@ -111,6 +122,7 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
             imageView(R.drawable.book7) {
                 id = Ids.SECOND_THIRD_IMAGE
 
+                x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
                 leftToRight = Ids.FIRST_THIRD_IMAGE

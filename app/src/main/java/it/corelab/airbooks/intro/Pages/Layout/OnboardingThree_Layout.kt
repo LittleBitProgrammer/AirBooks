@@ -35,6 +35,8 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                     imageResource = R.drawable.profile_picture
                     gravity = Gravity.CENTER_HORIZONTAL
 
+                    y = -1500F
+
                 }.lparams(width = dip(60),height = dip(60)){
                     topMargin =dip(30)
                 }
@@ -43,6 +45,7 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                     id = Ids.LINEAR_STAR_RATING_INTRO
                     orientation = LinearLayout.HORIZONTAL
 
+                    y = -1500F
                     //this.setBackgroundColor(resources.getColor(R.color.forChildrenLight))
 
                     imageView(R.drawable.star){
@@ -78,6 +81,7 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                 textView(R.string.book_spot_page_trhee_intro){
                     id = Ids.SPOT_BOOK_INTRO
 
+                    y = -1500F
                     textAlignment = TextView.TEXT_ALIGNMENT_CENTER
                     textSize = sp(6).toFloat()
 
@@ -88,6 +92,7 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                 imageView(R.drawable.book2){
                     id = Ids.BOOK_INTRO_PAGE_THREE
 
+                    y = -1500F
                     scaleType = ImageView.ScaleType.FIT_XY
 
                 }.lparams(width = dip(200), height = dip(280)){
