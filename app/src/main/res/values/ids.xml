@@ -81,6 +81,9 @@
 
     //ID_LAYOUT_INTRO_FOUR
     <item name="EXTERNAL_LINEARLAYOUT_PAGE_FOUR" type="id"/>
+    <item name="TOP_LINEAR_LAYOUT_PAGE_FOUR" type="id"/>
+    <item name="BOTTOM_LINEAR_LAYOUT_PAGE_FOUR" type="id"/>
+    <item name="END_LINEAR_LAYOUT_PAGE_FOUR" type ="id"/>
     <item name="TEACUP" type="id"/>
     <item name ="PLUS_UNDER_TEACUP" type="id"/>
     <item name="SOFA" type="id"/>
