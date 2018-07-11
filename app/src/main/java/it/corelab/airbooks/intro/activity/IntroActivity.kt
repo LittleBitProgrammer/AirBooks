@@ -17,8 +17,9 @@ import it.corelab.airbooks.Constants.*
 import it.corelab.airbooks.intro.Handler.OnboardingAdapter
 import it.corelab.airbooks.intro.Interface.*
 import it.corelab.airbooks.intro.Pages.Host.OnBoardingViewPager_Host
+import it.corelab.airbooks.widget.RoundedImageView
 
-class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, AnimationPageTwo, PageFourInitialization, PageTwoInitialization {
+class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, AnimationPageThree, AnimationPageFour, PageTwoInitialization, PageThreeInitialization, PageFourInitialization {
 
     //CLASS VARIABLES
     private var isAnimatedPageTwo :Boolean = false
@@ -47,8 +48,12 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
     //VARIABLES OF THE THIRD PAGE
     private lateinit var bookSpot: ImageView
     private lateinit var textSpot: TextView
-    private lateinit var linearRating: LinearLayout
-    private lateinit var userImage: ImageView
+    private lateinit var starOne: ImageView
+    private lateinit var starTwo: ImageView
+    private lateinit var starThree: ImageView
+    private lateinit var starFour: ImageView
+    private lateinit var starFive: ImageView
+    private lateinit var userImage: RoundedImageView
 
     //VARIABLES OF THE FOURTH PAGE
     private lateinit var teacup: ImageView
@@ -116,6 +121,8 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
 
                     2->{
 
+                        initializePageThreeVariables()
+
                         if (!isAnimatedPageThree){
                             isAnimatedPageThree = true
                             animatePageThree()
@@ -169,6 +176,10 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
 
     override fun animatePageThree() {
         Log.i("TAG", "nt")
+        animateSpotBook()
+        animateSpotText()
+        animateRating()
+        animateUserImage()
     }
 
     override fun animatePageFour() {
@@ -273,7 +284,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
     }
 
     override fun animateShelfOne() {
-        animateImage(shelfOne,0F,0F,450,650,OvershootInterpolator(1F))
+        animateImageY(shelfOne,0F,450,650,OvershootInterpolator(1F))
         Log.i(ANIMATION, "Shelf book animated")
     }
 
@@ -287,6 +298,70 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageFour, Anima
         Log.i(ANIMATION, "Shelf book three animated")
     }
 
+
+    //ANIMATION PAGE THREE
+    override fun animateSpotBook() {
+        animateImageY(bookSpot,0F,250,550,OvershootInterpolator(0.7F))
+        Log.i(ANIMATION, "Spot book animated")
+    }
+
+    override fun animateSpotText() {
+        animateTextY(textSpot,0F,500,550,OvershootInterpolator(0.7F))
+        Log.i(ANIMATION, "Spot text animated")
+    }
+
+    override fun animateRating() {
+        animateStarOne()
+        animateStarTwo()
+        animateStarThree()
+        animateStarOneFour()
+        animateStarOneFive()
+
+        Log.i(ANIMATION, "RatingBar animated")
+    }
+
+    override fun animateUserImage() {
+        animateImageY(userImage,0F,1000,550,OvershootInterpolator(0.81F))
+        Log.i(ANIMATION, "User image animated")
+    }
+
+    override fun animateStarOne() {
+        animateImageY(starOne,0F,750,550,OvershootInterpolator(0.5F))
+        Log.i(ANIMATION, "Star One animated")
+    }
+
+    override fun animateStarTwo() {
+        animateImageY(starTwo,0F,750,550,OvershootInterpolator(0.5F))
+        Log.i(ANIMATION, "Star Two animated")
+    }
+
+    override fun animateStarThree() {
+        animateImageY(starThree,0F,750,550,OvershootInterpolator(0.5F))
+        Log.i(ANIMATION, "Star Three animated")
+    }
+
+    override fun animateStarOneFour() {
+        animateImageY(starFour,0F,750,550,OvershootInterpolator(0.5F))
+        Log.i(ANIMATION, "Star Four animated")
+    }
+
+    override fun animateStarOneFive() {
+        animateImageY(starFive,0F,750,550,OvershootInterpolator(0.51F))
+        Log.i(ANIMATION, "Star Five animated")
+    }
+
+    //PAGE THREE INITIALIZATION
+    override fun initializePageThreeVariables() {
+
+        bookSpot = findViewById(R.id.BOKK_INTRO_PAGE_THREE)
+        textSpot = findViewById(R.id.SPOT_BOOK_INTRO)
+        starOne = findViewById(R.id.STAR_ONE_INTRO)
+        starTwo = findViewById(R.id.STAR_TWO_INTRO)
+        starThree = findViewById(R.id.STAR_THREE_INTRO)
+        starFour = findViewById(R.id.STAR_FOUR_INTRO)
+        starFive = findViewById(R.id.STAR_FIVE_INTRO)
+        userImage = findViewById(R.id.ROUNDED_IMAGE_INTRO)
+    }
 
     //PAGE TWO INITIALIZATION INTERFACE
 

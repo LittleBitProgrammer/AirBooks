@@ -45,31 +45,40 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                     id = Ids.LINEAR_STAR_RATING_INTRO
                     orientation = LinearLayout.HORIZONTAL
 
-                    y = -1500F
                     //this.setBackgroundColor(resources.getColor(R.color.forChildrenLight))
 
                     imageView(R.drawable.star){
                         id = Ids.STAR_ONE_INTRO
+
+                        y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
                     imageView(R.drawable.star){
                         id = Ids.STAR_TWO_INTRO
 
+                        y = -1500F
+
                     }.lparams(width = dip(25), height = dip(25))
 
                     imageView(R.drawable.star){
                         id = Ids.STAR_THREE_INTRO
+
+                        y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
                     imageView(R.drawable.star){
                         id = Ids.STAR_FOUR_INTRO
 
+                        y = -1500F
+
                     }.lparams(width = dip(25), height = dip(25))
 
                     imageView(R.drawable.star){
                         id = Ids.STAR_FIVE_INTRO
+
+                        y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
