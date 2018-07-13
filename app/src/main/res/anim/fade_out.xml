@@ -4,13 +4,9 @@
     android:fillAfter="true">
 
     <alpha
-        android:duration="130"
-        android:fromAlpha="1"
-        android:toAlpha="0"/>
-    <translate
-        android:duration="130"
-        android:fromYDelta="0"
-        android:toYDelta="16" />
+        android:duration="300"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0"/>
 
 
 </set>

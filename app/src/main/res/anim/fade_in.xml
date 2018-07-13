@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillBefore="true"
-    android:fillAfter="true"
-    android:startOffset="50">
+    android:fillAfter="true">
 
     <alpha
-        android:duration="130"
-        android:fromAlpha="0"
-        android:toAlpha="1"/>
+        android:duration="300"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"/>
 
-    <translate
-        android:duration="130"
-        android:fromYDelta="16"
-        android:toYDelta="0" />
 
 </set>

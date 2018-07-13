@@ -73,7 +73,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
 
         OnBoardingViewPagerHost().setContentView(this)
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val pager = findViewById<ViewPager>(R.id.ONBOARDING_VIEWPAGER_BASE)
         indicator01 = findViewById(R.id.INDICATOR_ONE)

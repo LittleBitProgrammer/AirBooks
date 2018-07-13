@@ -100,4 +100,9 @@
     <item name="DESCRIPTION_PAGE_FOUR" type="id"/>
     <item name="BUTTON_PAGE_FOUR" type="id"/>
 
+    //ID_LAYOUT_SPLASH_SCREEN
+    <item name="CONSTRAINT_LAYOUT_SPLASH_SCREEN" type="id"/>
+    <item name="CENTRAL_LOGO" type="id"/>
+    <item name="PROGRESS_BAR_SPLASH_SCREEN" type="id"/>
+
 </resources>
