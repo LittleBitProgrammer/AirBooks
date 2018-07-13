@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import it.corelab.airbooks.intro.Pages.Layout.OnBoardingTwo_Layout
-import it.corelab.airbooks.intro.Pages.Layout.OnboardingFour_Layout
-import it.corelab.airbooks.intro.Pages.Layout.OnboardingOne_Laoyout
-import it.corelab.airbooks.intro.Pages.Layout.OnboardingThree_Layout
+import it.corelab.airbooks.intro.pages.Layout.OnBoardingTwo_Layout
+import it.corelab.airbooks.intro.pages.Layout.OnboardingFour_Layout
+import it.corelab.airbooks.intro.pages.Layout.OnboardingOne_Laoyout
+import it.corelab.airbooks.intro.pages.Layout.OnboardingThree_Layout
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 import java.util.*

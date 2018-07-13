@@ -1,7 +1,9 @@
 package it.corelab.airbooks.intro.Pages.Host
 
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.OverScroller
 import it.corelab.airbooks.intro.activity.IntroActivity
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
@@ -18,6 +20,7 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
             viewPager {
                 id = Ids.ONBOARDING_VIEWPAGER
                 clipToPadding = false
+                overScrollMode = View.OVER_SCROLL_NEVER
 
             }.lparams(width = matchParent, height = matchParent)
 

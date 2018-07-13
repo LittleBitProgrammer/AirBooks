@@ -1,14 +1,14 @@
-package it.corelab.airbooks.intro.Pages.Layout
+package it.corelab.airbooks.intro.pages.Layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.constraint.layout.matchConstraint
-import it.corelab.airbooks.Utils.*
 
 class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
@@ -17,9 +17,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
         constraintLayout {
             id = Ids.CONST_LAYOUT_TWO
 
-            imageView(R.drawable.scaffale) {
+            imageView {
                 id = Ids.SHELF_ONE
 
+                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -30,9 +31,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 marginEnd = dip(20)
             }
 
-            imageView(R.drawable.scaffale) {
+            imageView {
                 id = Ids.SHELF_TWO
 
+                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -43,9 +45,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 marginEnd = dip(20)
             }
 
-            imageView(R.drawable.scaffale) {
+            imageView{
                 id = Ids.SHELF_THREE
 
+                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -56,9 +59,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 marginEnd = dip(20)
             }
 
-            imageView(R.drawable.book2) {
+            imageView {
                 id = Ids.FIRST_FIRST_IMAGE
 
+                Picasso.get().load(R.drawable.book2).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -70,9 +74,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
 
 
-            imageView(R.drawable.book3) {
+            imageView {
                 id = Ids.FIRST_SECOND_IMAGE
 
+                Picasso.get().load(R.drawable.book3).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -84,9 +89,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
 
 
 
-            imageView (R.drawable.book5) {
+            imageView  {
                 id = Ids.FIRST_THIRD_IMAGE
 
+                Picasso.get().load(R.drawable.book5).into(this@imageView)
                 x = -800F
             }.lparams(width = dip(84), height = dip(106)){
                 leftToLeft = PARENT_ID
@@ -95,9 +101,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 bottomMargin = dip(24)
             }
 
-            imageView(R.drawable.book1) {
+            imageView{
                 id = Ids.SECOND_FIRST_IMAGE
 
+                Picasso.get().load(R.drawable.book1).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -107,9 +114,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 bottomMargin = dip(24)
             }
 
-            imageView(R.drawable.book4) {
+            imageView {
                 id = Ids.SECOND_SECOND_IMAGE
 
+                Picasso.get().load(R.drawable.book4).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -119,9 +127,10 @@ class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
                 bottomMargin = dip(24)
             }
 
-            imageView(R.drawable.book7) {
+            imageView {
                 id = Ids.SECOND_THIRD_IMAGE
 
+                Picasso.get().load(R.drawable.book7).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {

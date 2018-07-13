@@ -1,5 +1,7 @@
 package it.corelab.airbooks;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
@@ -19,7 +21,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImageX(ImageView imageView, Float xPosition, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageX(final ImageView imageView, Float xPosition, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         imageView.setX(xPosition);
         AnimatorSet anims = new AnimatorSet();
@@ -28,6 +32,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sX);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -41,7 +52,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImageX(ImageView imageView, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageX(final ImageView imageView, Float finalXPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         AnimatorSet anims = new AnimatorSet();
         ObjectAnimator sX = ObjectAnimator.ofFloat(imageView, View.TRANSLATION_X, finalXPosition);
@@ -49,6 +62,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sX);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -63,7 +83,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImageY(ImageView imageView,  Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageY(final ImageView imageView,  Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         imageView.setY(yPosition);
         AnimatorSet anims = new AnimatorSet();
@@ -72,6 +94,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -85,7 +114,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImageY(ImageView imageView, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImageY(final ImageView imageView, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         AnimatorSet anims = new AnimatorSet();
         ObjectAnimator sY = ObjectAnimator.ofFloat(imageView, View.TRANSLATION_Y, finalYPosition);
@@ -93,6 +124,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -109,7 +147,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImage(ImageView imageView, Float xPosition, Float yPosition, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImage(final ImageView imageView, Float xPosition, Float yPosition, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         imageView.setX(xPosition);
         imageView.setY(yPosition);
@@ -121,6 +161,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.playTogether(sX, sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -135,7 +182,9 @@ public class Utils {
      * @param duration duration of the animation
      * @param interpolator type of interpolator
      */
-    public static void animateImage(ImageView imageView, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateImage(final ImageView imageView, Float finalXPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        imageView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         AnimatorSet anims = new AnimatorSet();
         ObjectAnimator sX = ObjectAnimator.ofFloat(imageView, View.TRANSLATION_X, finalXPosition);
@@ -145,6 +194,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.playTogether(sX, sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                imageView.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -161,7 +217,9 @@ public class Utils {
      * @param interpolator type of interpolator
      *
      */
-    public static void animateTextY(TextView text, Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateTextY(final TextView text, Float yPosition, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        text.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         text.setY(yPosition);
         AnimatorSet anims = new AnimatorSet();
@@ -170,6 +228,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                text.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }
@@ -184,7 +249,9 @@ public class Utils {
      * @param interpolator type of interpolator
      *
      */
-    public static void animateTextY(TextView text, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+    public static void animateTextY(final TextView text, Float finalYPosition, int delay, int duration, TimeInterpolator interpolator){
+
+        text.setLayerType(View.LAYER_TYPE_HARDWARE,null);
 
         AnimatorSet anims = new AnimatorSet();
         ObjectAnimator sY = ObjectAnimator.ofFloat(text, View.TRANSLATION_Y, finalYPosition);
@@ -192,6 +259,13 @@ public class Utils {
         anims.setDuration(duration);
         anims.play(sY);
         anims.setInterpolator(interpolator);
+
+        anims.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation, boolean isReverse) {
+                text.setLayerType(View.LAYER_TYPE_NONE,null);
+            }
+        });
 
         anims.start();
     }

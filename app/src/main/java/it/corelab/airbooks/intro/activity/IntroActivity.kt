@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
 import it.corelab.airbooks.R
@@ -16,7 +15,7 @@ import it.corelab.airbooks.Utils.*
 import it.corelab.airbooks.Constants.*
 import it.corelab.airbooks.intro.Handler.OnboardingAdapter
 import it.corelab.airbooks.intro.Interface.*
-import it.corelab.airbooks.intro.Pages.Host.OnBoardingViewPager_Host
+import it.corelab.airbooks.intro.pages.host.OnBoardingViewPagerHost
 import it.corelab.airbooks.widget.RoundedImageView
 
 class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, AnimationPageThree, AnimationPageFour, PageTwoInitialization, PageThreeInitialization, PageFourInitialization {
@@ -72,7 +71,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
         super.onCreate(savedInstanceState)
 
 
-        OnBoardingViewPager_Host().setContentView(this)
+        OnBoardingViewPagerHost().setContentView(this)
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
@@ -110,10 +109,9 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
 
                     1->{
 
-                        initializePageTwoVariables()
-
                         if (!isAnimatedPageTwo){
                             isAnimatedPageTwo = true
+                            initializePageTwoVariables()
                             animatePageTwo()
                         }
 
@@ -121,10 +119,9 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
 
                     2->{
 
-                        initializePageThreeVariables()
-
                         if (!isAnimatedPageThree){
                             isAnimatedPageThree = true
+                            initializePageThreeVariables()
                             animatePageThree()
                         }
 
@@ -132,10 +129,9 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
 
                     3->{
 
-                        initializePageFourVariables()
-
                         if (!isAnimatedPageFour){
                             isAnimatedPageFour = true
+                            initializePageFourVariables()
                             animatePageFour()
                         }
 
@@ -201,52 +197,52 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
     //ANIMATION PAGE FOUR INTERFACE
 
     override fun animateTeaCup() {
-        animateImageY(teacup,0F,100,850,OvershootInterpolator(0.8F))
+        animateImageY(teacup,0F,100,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Tea cup animated")
     }
 
     override fun animatePlusTea() {
-        animateTextY(plusUnderTea,0F,450,850,OvershootInterpolator(0.8F))
+        animateTextY(plusUnderTea,0F,300,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Plus under tea cup animated")
     }
 
     override fun animateSofa() {
-        animateImageY(sofa,0F,800,850,OvershootInterpolator(0.6F))
+        animateImageY(sofa,0F,450,550,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Sofa cup animated")
     }
 
     override fun animatePlusSofa() {
-        animateTextY(plusUnderSofa,0F,950,850,OvershootInterpolator(0.6F))
+        animateTextY(plusUnderSofa,0F,650,550,OvershootInterpolator(0.6F))
         Log.i(ANIMATION, "Plus under sofa cup animated")
     }
 
     override fun animateBookOne() {
-        animateImageX(bookOne,0F,2300,850,OvershootInterpolator(0.8F))
+        animateImageX(bookOne,0F,1351,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book one animated")
     }
 
     override fun animateBookTwo() {
-        animateImageX(bookTwo,0F,2000,850,OvershootInterpolator(0.8F))
+        animateImageX(bookTwo,0F,1150,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book two animated")
     }
 
     override fun animateBookThree() {
-        animateImageX(bookThree,0F,1700,850,OvershootInterpolator(0.8F))
+        animateImageX(bookThree,0F,950,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Book three animated")
     }
 
     override fun animateEqual() {
-        animateTextY(equalSign,0F,2450,850,OvershootInterpolator(0.8F))
+        animateTextY(equalSign,0F,1450,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Equal sign animated")
     }
 
     override fun animateEmojiFace() {
-        animateImageY(emojiFace,0F,2500,850,OvershootInterpolator(0.8F))
+        animateImageY(emojiFace,0F,1650,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji face animated")
     }
 
     override fun animateEmojiHeart() {
-        animateImageY(emojiHeart,0F,2500,850,OvershootInterpolator(0.8F))
+        animateImageY(emojiHeart,0F,1650,550,OvershootInterpolator(0.8F))
         Log.i(ANIMATION, "Emoji heart animated")
     }
 
