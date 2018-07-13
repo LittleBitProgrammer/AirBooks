@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.Pages.Layout
+package it.corelab.airbooks.intro.pages.Layout
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -11,6 +11,8 @@ import android.widget.TextView
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import android.support.v4.content.res.ResourcesCompat
+import android.util.Log
+import com.squareup.picasso.Picasso
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 
 
@@ -574,6 +576,7 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                 *
                  */
 
+                Log.i("TAG","Layout normal")
                 linearLayout {
                     id = Ids.LINEAR_LAYOUT_TOP
                     orientation = LinearLayout.HORIZONTAL
@@ -599,9 +602,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                         id = Ids.LINEAR_LAYOUT_TOP_COLUMN_ONE
                         orientation = LinearLayout.VERTICAL
 
-                        imageView(R.drawable.book6) {
+                        imageView {
                             id = Ids.HIGH_LEFT_IMAGE
 
+                            Picasso.get().load(R.drawable.book6).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.y = -400.0F
@@ -623,9 +627,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                             gravity = Gravity.CENTER_HORIZONTAL
                         }
 
-                        imageView(R.drawable.book5){
+                        imageView{
                             id = Ids.CENTER_LEFT_IMAGE
 
+                            Picasso.get().load(R.drawable.book5).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.x = -400.0F
@@ -645,9 +650,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                             gravity = Gravity.CENTER_HORIZONTAL
                         }
 
-                        imageView(R.drawable.book7){
+                        imageView{
                             id = Ids.DOWN_LEFT_IMAGE
 
+                            Picasso.get().load(R.drawable.book7).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
 
@@ -687,9 +693,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
 
                         //this.setBackgroundColor(resources.getColor(R.color.forChildrenDark))
 
-                        imageView(R.drawable.book2) {
+                        imageView {
                             id = Ids.TOP_CENTER_IMAGE
 
+                            Picasso.get().load(R.drawable.book2).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.y = -600F
 
@@ -711,9 +718,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
 
                         }
 
-                        imageView(R.drawable.book3) {
+                        imageView {
                             id = Ids.DOWN_CENTER_IMAGE
 
+                            Picasso.get().load(R.drawable.book3).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.y = 600F
 
@@ -749,9 +757,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
 
                         //this.setBackgroundColor(resources.getColor(R.color.scifiDark))
 
-                        imageView(R.drawable.book5) {
+                        imageView{
                             id = Ids.TOP_RIGHT_IMAGE
 
+                            Picasso.get().load(R.drawable.book5).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.x = 400.0F
@@ -778,9 +787,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
 
                         }
 
-                        imageView(R.drawable.book6) {
+                        imageView {
                             id = Ids.CENTER_RIGHT_IMAGE
 
+                            Picasso.get().load(R.drawable.book6).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.x = 400.0F
 
@@ -799,9 +809,10 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
                             marginEnd = dip(-15)
                         }
 
-                        imageView(R.drawable.book1) {
+                        imageView {
                             id = Ids.DOWN_RIGHT_IMAGE
 
+                            Picasso.get().load(R.drawable.book1).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.x = 400.0F
                             this@imageView.y = 400.0F
@@ -896,6 +907,7 @@ class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
     *
      */
 
+            Log.i("TAG","Layout piccolo")
             return@with linearLayout {
 
                 id = Ids.LINEAR_LAYOUT_TOTAL_EXTERN

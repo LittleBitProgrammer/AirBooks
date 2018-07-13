@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.Pages.Layout
+package it.corelab.airbooks.intro.pages.Layout
 
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity
@@ -6,6 +6,7 @@ import android.view.ViewManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import it.corelab.airbooks.R
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.widget.RoundedImageView
@@ -32,7 +33,7 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                 roundImage{
                     id = Ids.ROUNDED_IMAGE_INTRO
 
-                    imageResource = R.drawable.profile_picture
+                    Picasso.get().load(R.drawable.profile_picture).into(this@roundImage)
                     gravity = Gravity.CENTER_HORIZONTAL
 
                     y = -1500F
@@ -47,37 +48,42 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
 
                     //this.setBackgroundColor(resources.getColor(R.color.forChildrenLight))
 
-                    imageView(R.drawable.star){
+                    imageView{
                         id = Ids.STAR_ONE_INTRO
 
+                        Picasso.get().load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
-                    imageView(R.drawable.star){
+                    imageView{
                         id = Ids.STAR_TWO_INTRO
 
+                        Picasso.get().load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
-                    imageView(R.drawable.star){
+                    imageView{
                         id = Ids.STAR_THREE_INTRO
 
+                        Picasso.get().load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
-                    imageView(R.drawable.star){
+                    imageView{
                         id = Ids.STAR_FOUR_INTRO
 
+                        Picasso.get().load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
 
-                    imageView(R.drawable.star){
+                    imageView{
                         id = Ids.STAR_FIVE_INTRO
 
+                        Picasso.get().load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -98,9 +104,10 @@ class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
                     topMargin = dip(12)
                 }
 
-                imageView(R.drawable.book2){
+                imageView{
                     id = Ids.BOOK_INTRO_PAGE_THREE
 
+                    Picasso.get().load(R.drawable.book2).into(this@imageView)
                     y = -1500F
                     scaleType = ImageView.ScaleType.FIT_XY
 

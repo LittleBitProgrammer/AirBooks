@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.Pages.Layout
+package it.corelab.airbooks.intro.pages.Layout
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
@@ -6,9 +6,12 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import it.corelab.airbooks.intro.Handler.OnboardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import it.corelab.airbooks.activity.Login
 
 class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
     override fun createView(ui: AnkoContext<OnboardingFragment>) = with(ui){
@@ -53,13 +56,12 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
 
                     //this.setBackgroundColor(resources.getColor(R.color.forChildrenDark))
 
-                    imageView(R.drawable.teacup){
+                    imageView{
                         id = Ids.TEACUP
+                        Picasso.get().load(R.drawable.teacup).into(this@imageView)
 
                         y = 2200F
                     }.lparams(width = dip(160), height = dip(60)){
-                        marginEnd = dip(100)
-                        marginStart = dip(100)
                         topMargin = dip(10)
 
                         gravity = Gravity.CENTER_HORIZONTAL
@@ -76,13 +78,12 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                         topMargin = dip(-10)
                     }
 
-                    imageView(R.drawable.sofa){
+                    imageView{
                         id = Ids.SOFA
+                        Picasso.get().load(R.drawable.sofa).into(this@imageView)
 
                         y = 2200F
                     }.lparams(width = wrapContent, height = dip(100)){
-                        marginStart = dip(80)
-                        marginEnd = dip(80)
                         topMargin = dip(0)
                     }
 
@@ -102,8 +103,9 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
 
                         orientation = LinearLayout.HORIZONTAL
 
-                        imageView(R.drawable.book2){
+                        imageView{
                             id = Ids.LEFT_BOOK_PAGE_FOUR
+                            Picasso.get().load(R.drawable.book2).into(this@imageView)
 
                             x = -1100F
 
@@ -111,16 +113,18 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                             marginStart = dip(60)
                         }
 
-                        imageView(R.drawable.book3){
+                        imageView{
                             id = Ids.CENTER_BOOK_PAGE_FOUR
+                            Picasso.get().load(R.drawable.book3).into(this@imageView)
 
                             x = -1100F
                         }.lparams(width = dip(75), height = dip(107)){
                             marginStart = dip(10)
                         }
 
-                        imageView(R.drawable.book5){
+                        imageView{
                             id = Ids.RIGHT_BOOK_PAGE_FOUR
+                            Picasso.get().load(R.drawable.book5).into(this@imageView)
 
                             x =-1100F
                         }.lparams(width = dip(75), height = dip(107)){
@@ -143,25 +147,27 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                         id = Ids.LINEAR_EMOJI
                         //this.setBackgroundColor(resources.getColor(R.color.biografyDark))
 
-                        imageView(R.drawable.emoji_heart_face){
+                        imageView{
                             id = Ids.FACE_HEART
+                            Picasso.get().load(R.drawable.emoji_heart_face).into(this@imageView)
 
                             y = 2200F
                         }.lparams(width = dip(30), height = dip(30)){
                             topMargin = dip(20)
-                            marginStart = dip(145)
                         }
 
-                        imageView(R.drawable.heart){
+                        imageView{
                             id = Ids.HEART_EMOJI
+                            Picasso.get().load(R.drawable.heart).into(this@imageView)
 
                             y = 2200F
                         }.lparams(width = dip(30), height = dip(30)){
                             topMargin = dip(20)
                             marginStart = dip(10)
                         }
-                    }.lparams(width = matchParent, height = dip(70)){
+                    }.lparams(width = wrapContent, height = dip(70)){
                         topMargin = dip(-10)
+                        gravity = Gravity.CENTER_HORIZONTAL
                     }
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 0.01F)
@@ -210,6 +216,10 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                         textColor =  ContextCompat.getColor(context,R.color.white)
                         background = resources.getDrawable(R.drawable.button_intro)
                         stateListAnimator = null
+
+                        onClick {
+                            startActivity<Login>()
+                        }
 
                     }.lparams(width = matchParent, height = dip(35)){
 

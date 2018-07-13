@@ -1,24 +1,24 @@
-package it.corelab.airbooks.intro.Pages.Host
+package it.corelab.airbooks.intro.pages.host
 
+import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.OverScroller
 import it.corelab.airbooks.intro.activity.IntroActivity
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.support.v4.viewPager
 
-class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
+class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
     override fun createView(ui: AnkoContext<IntroActivity>) = with(ui) {
 
         coordinatorLayout {
-            id = Ids.ONBOARDING_LAYOUT
+            id = Ids.ON_BOARDING_LAYOUT
             fitsSystemWindows = true
 
             viewPager {
-                id = Ids.ONBOARDING_VIEWPAGER
+                id = Ids.ON_BOARDING_VIEWPAGER
                 clipToPadding = false
                 overScrollMode = View.OVER_SCROLL_NEVER
 
@@ -35,7 +35,7 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
 
                     imageView {
                         id = Ids.INDICATOR_ONE
-                        background = resources.getDrawable(R.drawable.indicator_unselected)
+                        background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
                     }.lparams(width = dip(8), height = dip(8)){
                         marginEnd = dip(8)
@@ -44,7 +44,7 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
 
                     imageView {
                         id = Ids.INDICATOR_TWO
-                        background = resources.getDrawable(R.drawable.indicator_unselected)
+                        background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
                     }.lparams(width = dip(8), height = dip(8)){
                         marginEnd = dip(8)
@@ -53,7 +53,7 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
 
                     imageView {
                         id = Ids.INDICATOR_THREE
-                        background = resources.getDrawable(R.drawable.indicator_unselected)
+                        background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
                     }.lparams(width = dip(8), height = dip(8)){
                         marginEnd = dip(8)
@@ -62,7 +62,7 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
 
                     imageView {
                         id = Ids.INDICATOR_FOUR
-                        background = resources.getDrawable(R.drawable.indicator_unselected)
+                        background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
                     }.lparams(width = dip(8), height = dip(8)){
                         marginEnd = dip(8)
@@ -81,8 +81,8 @@ class OnBoardingViewPager_Host : AnkoComponent<IntroActivity> {
     }
 
     private object Ids{
-        const val ONBOARDING_LAYOUT = R.id.ONBOARDING_LAYOUT_BASE
-        const val ONBOARDING_VIEWPAGER = R.id.ONBOARDING_VIEWPAGER_BASE
+        const val ON_BOARDING_LAYOUT = R.id.ONBOARDING_LAYOUT_BASE
+        const val ON_BOARDING_VIEWPAGER = R.id.ONBOARDING_VIEWPAGER_BASE
         const val FRAME_LAYOUT = R.id.FRAME_LAYOUT_BASE
         const val LINEAR_LAYOUT = R.id.LINEAR_LAYOUT_BASE
         const val INDICATOR_ONE = R.id.INDICATOR_ONE
