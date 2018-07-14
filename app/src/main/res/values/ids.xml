@@ -101,8 +101,10 @@
     <item name="BUTTON_PAGE_FOUR" type="id"/>
 
     //ID_LAYOUT_SPLASH_SCREEN
-    <item name="CONSTRAINT_LAYOUT_SPLASH_SCREEN" type="id"/>
+    <item name="LINEAR_LAYOUT_EXTERNAL_SPLASH_SCREEN" type="id"/>
     <item name="CENTRAL_LOGO" type="id"/>
-    <item name="PROGRESS_BAR_SPLASH_SCREEN" type="id"/>
+    <item name="LINEAR_INTERNAL_SPLASH_SCREEN" type="id"/>
+    <item name="APP_NAME_SPLASH_SCREEN" type="id"/>
+    <item name="SUBTITLE" type="id"/>
 
 </resources>

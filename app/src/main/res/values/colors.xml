@@ -24,6 +24,10 @@
     <color name="blu_button">#586BA5</color>
     <color name="blu_button_check">#6377B3</color>
 
+    //SPLASH COLOR
+    <color name="title_color_splash_screen">#5274BA</color>
+    <color name="description_color_splash_screen">#4F84A8</color>
+
     <color name="GradientAppBackground">
         <item name="android:startColor">#586BA4</item>
         <item name="android:endColor">#4299B0</item>
