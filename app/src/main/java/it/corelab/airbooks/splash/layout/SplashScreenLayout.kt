@@ -1,7 +1,5 @@
 package it.corelab.airbooks.splash.layout
 
-import android.content.res.Resources
-import android.graphics.Color
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity

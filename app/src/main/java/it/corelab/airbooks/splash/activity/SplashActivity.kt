@@ -28,17 +28,22 @@ import android.support.v4.view.ViewCompat.animate
 import android.support.v4.view.ViewPropertyAnimatorCompat
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
+import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen
+import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
+import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen.STARTUP_DELAY
+import it.corelab.airbooks.splash.interfaces.AutomaticSignInController
 import java.lang.reflect.Array
 
 
-class SplashActivity : AppCompatActivity() {
-    val STARTUP_DELAY = 300
-    val ANIM_ITEM_DURATION = 1000
-    val ITEM_DELAY = 300
+class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, AutomaticSignInController {
 
+    //BOOLEAN VARIABLES
     private val animationStarted = false
 
+    //LOGIN VARIABLES
     private var mAPIService: APIService? = null
+
+    //LAYOUT VARIABLES
     private lateinit var centralLogo: ImageView
     private lateinit var container: ViewGroup
 
@@ -63,14 +68,14 @@ class SplashActivity : AppCompatActivity() {
     }
 
 
-    fun doIntentToLogin() {
+    override fun doIntentToLogin() {
         val loginIntent = Intent(this@SplashActivity, Login::class.java)
         loginIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(loginIntent)
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
     }
 
-    fun automaticSignInPost(url: String, lang: String, os: String, token: String) {
+    override fun automaticSignIn(url: String, lang: String, os: String, token: String) {
 
         mAPIService!!.automaticSignin(url, lang, os, token).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<AutomaticSignInResponse> {
             override fun onSubscribe(d: Disposable) {
@@ -99,7 +104,9 @@ class SplashActivity : AppCompatActivity() {
         })
     }
 
-    fun animate(){
+
+    //METHOD FOR THE ANIMATION OF THE INTRO SCREEN
+    override fun animate(){
         centralLogo = findViewById(R.id.CENTRAL_LOGO)
         container = findViewById(R.id.LINEAR_INTERNAL_SPLASH_SCREEN)
 
@@ -150,7 +157,7 @@ class SplashActivity : AppCompatActivity() {
                                 doIntentToLogin()
                             } else {
                                 Log.i("TOKEN VUOTO", "FALSE")
-                                automaticSignInPost("http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android", token)
+                                automaticSignIn("http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android", token)
                                 Log.i("TOKEN", token)
                             }
                         }
