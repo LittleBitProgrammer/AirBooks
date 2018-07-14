@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".activity.SignUp">
+    tools:context=".section.SignUp">
 
     <ImageView
         android:id="@+id/owlBackground"

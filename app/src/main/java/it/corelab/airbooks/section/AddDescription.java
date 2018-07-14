@@ -1,11 +1,10 @@
-package it.corelab.airbooks.activity;
+package it.corelab.airbooks.section;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +29,6 @@ import android.widget.Toast;
 import java.io.File;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.fragment.FadeFragment;
 
 public class AddDescription extends AppCompatActivity {
 

@@ -29,9 +29,10 @@ import it.corelab.airbooks.data.model.PostSignUp;
 import it.corelab.airbooks.data.model.PostSignUpResponse;
 import it.corelab.airbooks.data.model.remote.APIService;
 import it.corelab.airbooks.data.model.remote.ApiUtils;
+import it.corelab.airbooks.section.login.activity.Login;
+import it.corelab.airbooks.section.login.fragment.LoginFragment;
 
 import static android.content.ContentValues.TAG;
-import static it.corelab.airbooks.activity.Login.leftArrow;
 
 
 public class SignUp_Fragment extends Fragment implements View.OnClickListener{
@@ -76,13 +77,13 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
 
     private void setListeners(){
 
-        leftArrow.setOnClickListener(new View.OnClickListener() {
+        Login.Companion.getLeftArrow().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentManager
                         .beginTransaction()
                         .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                        .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
+                        .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, new LoginFragment(),"Login_fragment")
                         .commit();
                 setOffLeftArrow();
             }
@@ -130,8 +131,8 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
     }
 
     public void setOffLeftArrow(){
-        leftArrow.setEnabled(false);
-        leftArrow.setVisibility(View.INVISIBLE);
+        Login.Companion.getLeftArrow().setEnabled(false);
+        Login.Companion.getLeftArrow().setVisibility(View.INVISIBLE);
     }
 
     //utility
@@ -221,7 +222,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener{
         fragmentManager
                 .beginTransaction()
                 .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                .replace(R.id.frameContainer, new Login_Fragment(),"Login_fragment")
+                .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, new LoginFragment(),"Login_fragment")
                 .commit();
         setOffLeftArrow();
     }

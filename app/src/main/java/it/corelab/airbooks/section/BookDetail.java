@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity;
+package it.corelab.airbooks.section;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

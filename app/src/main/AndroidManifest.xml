@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name="it.corelab.airbooks.activity.splash.activity.SplashActivity"
+            android:name="it.corelab.airbooks.section.splash.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".section.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -43,41 +43,41 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".activity.AddSection"
+            android:name=".section.AddSection"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.Categories"
+            android:name=".section.Categories"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AddDescription"
+            android:name=".section.AddDescription"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.BookDetail"
+            android:name=".section.BookDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ReadActivity"
+            android:name=".section.ReadActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AllReviews"
+            android:name=".section.AllReviews"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ReviewDetail"
+            android:name=".section.ReviewDetail"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.AddRecap"
+            android:name=".section.AddRecap"
             android:screenOrientation="portrait" />
         <activity
-            android:name="it.corelab.airbooks.activity.intro.activity.IntroActivity"
+            android:name="it.corelab.airbooks.section.intro.activity.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.Login"
+            android:name=".section.login.activity.Login"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.Base" />
         <activity
-            android:name=".activity.SignUp"
+            android:name=".section.SignUp"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.Base" />
-        <activity android:name=".activity.Countries"
+        <activity android:name=".section.Countries"
             android:screenOrientation="portrait"/>
     </application>
 

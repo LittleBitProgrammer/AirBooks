@@ -3,7 +3,6 @@ package it.corelab.airbooks.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.activity.SignUp;
+import it.corelab.airbooks.section.SignUp;
 
 import static it.corelab.airbooks.fragment.SignUp_Fragment.countryDialog;
 import static it.corelab.airbooks.fragment.SignUp_Fragment.nation;

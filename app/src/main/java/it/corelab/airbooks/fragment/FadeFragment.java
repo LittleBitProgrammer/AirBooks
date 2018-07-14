@@ -1,11 +1,8 @@
 package it.corelab.airbooks.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,8 +28,6 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,8 +41,8 @@ import developer.shivam.library.DiagonalView;
 import it.corelab.airbooks.CustomNested;
 import it.corelab.airbooks.Http.HttpHandler;
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.activity.AddSection;
-import it.corelab.airbooks.activity.MainActivity;
+import it.corelab.airbooks.section.AddSection;
+import it.corelab.airbooks.section.MainActivity;
 import it.corelab.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.airbooks.adapters.SnapBestOfWeek;

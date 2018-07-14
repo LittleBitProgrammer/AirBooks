@@ -107,4 +107,15 @@
     <item name="APP_NAME_SPLASH_SCREEN" type="id"/>
     <item name="SUBTITLE" type="id"/>
 
+    //ID_LAYOUT_LOGIN_ACTIVITY
+    <item name="SCROLL_VIEW_LOGIN_ACTIVITY" type="id"/>
+    <item name="CONSTRAINT_LAYOUT_LOGIN_ACTIVITY" type="id"/>
+    <item name="LEFT_ARROW_LOGIN_ACTIVITY" type="id"/>
+    <item name="LOGO_LOGIN_ACTIVITY" type="id"/>
+    <item name="APP_NAME_LOGIN_ACTIVITY" type="id"/>
+    <item name="FRAME_CONTAINER_LOGIN_ACTIVITY" type="id"/>
+
+    //ID_LAYOUT_SIGN_IN_FRAGMENT
+    <item name="CONSTRAINT_LAYOUT_SIGN_IN_FRAGMENT" type="id"/>
+
 </resources>

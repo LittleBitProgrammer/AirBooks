@@ -94,6 +94,10 @@
     <string name="description_page_four">Una tazza di tè, un comodo divano, e un buon libro da leggere. La giornata perfetta.</string>
     <string name="button_text_page_four">CONTINUA</string>
 
+    //LOGIN_HOST
+    <string name="back_button_login_host">back button</string>
+    <string name="simple_circle_background_login_host">proflie border</string>
+
     <string-array name="CountryCodes">
         <item>93,AF</item>
         <item>355,AL</item>

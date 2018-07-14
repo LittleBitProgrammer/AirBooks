@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity.splash.interfaces;
+package it.corelab.airbooks.section.splash.interfaces;
 
 public interface AnimationControllerSpalshScreen {
 

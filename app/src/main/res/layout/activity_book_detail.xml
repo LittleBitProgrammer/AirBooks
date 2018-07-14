@@ -5,7 +5,7 @@
     xmlns:diagonal="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="it.corelab.airbooks.activity.BookDetail">
+    tools:context="it.corelab.airbooks.section.BookDetail">
 
     <developer.shivam.library.DiagonalView
         android:id="@+id/diagonal_view_bookDetail"

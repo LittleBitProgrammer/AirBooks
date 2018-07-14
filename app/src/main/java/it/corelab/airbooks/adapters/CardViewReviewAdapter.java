@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import it.corelab.airbooks.activity.ReviewDetail;
+import it.corelab.airbooks.section.ReviewDetail;
 import it.corelab.airbooks.object.Item;
 import it.corelab.airbooks.R;
 

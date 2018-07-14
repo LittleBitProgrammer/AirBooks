@@ -1,14 +1,10 @@
 package it.corelab.airbooks.adapters;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.activity.BookDetail;
+import it.corelab.airbooks.section.BookDetail;
 import it.corelab.airbooks.object.Book;
 
 /**

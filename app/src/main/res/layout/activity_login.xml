@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none">
+    android:overScrollMode="never">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_color" >
 
@@ -16,9 +15,6 @@
             android:id="@+id/left_arrow_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
             android:paddingStart="16dp"
             android:paddingEnd="20dp"
             android:paddingBottom="17dp"
@@ -28,7 +24,6 @@
             android:background="#00000000"
             android:scaleType="fitCenter"
             android:src="@drawable/left_arrow"
-            app:layout_constraintBottom_toBottomOf="@id/top_bar_description_popup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/back_button"/>
@@ -79,10 +74,11 @@
 
         <FrameLayout
             android:id="@+id/frameContainer"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_below="@+id/textView4"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
     </android.support.constraint.ConstraintLayout>
 

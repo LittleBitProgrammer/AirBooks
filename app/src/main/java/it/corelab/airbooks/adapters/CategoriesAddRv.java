@@ -2,7 +2,6 @@ package it.corelab.airbooks.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import it.corelab.airbooks.R;
-import it.corelab.airbooks.activity.AddDescription;
-import it.corelab.airbooks.activity.Categories;
+import it.corelab.airbooks.section.AddDescription;
 import it.corelab.airbooks.object.Item;
 
 

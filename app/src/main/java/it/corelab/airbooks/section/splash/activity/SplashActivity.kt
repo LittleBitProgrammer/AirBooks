@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity.splash.activity
+package it.corelab.airbooks.section.splash.activity
 
 import android.content.Context
 import android.content.Intent
@@ -16,21 +16,21 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.airbooks.R
-import it.corelab.airbooks.activity.Login
-import it.corelab.airbooks.activity.MainActivity
-import it.corelab.airbooks.activity.intro.activity.IntroActivity
+import it.corelab.airbooks.section.login.activity.Login
+import it.corelab.airbooks.section.MainActivity
+import it.corelab.airbooks.section.intro.activity.IntroActivity
 import it.corelab.airbooks.data.model.AutomaticSignInResponse
 import it.corelab.airbooks.data.model.remote.APIService
 import it.corelab.airbooks.data.model.remote.ApiUtils
-import it.corelab.airbooks.activity.splash.layout.SplashScreenLayout
+import it.corelab.airbooks.section.splash.layout.SplashScreenLayout
 import org.jetbrains.anko.setContentView
 import android.support.v4.view.ViewPropertyAnimatorCompat
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
-import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen
-import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
-import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen.STARTUP_DELAY
-import it.corelab.airbooks.activity.splash.interfaces.AutomaticSignInController
+import it.corelab.airbooks.section.splash.interfaces.AnimationControllerSpalshScreen
+import it.corelab.airbooks.section.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
+import it.corelab.airbooks.section.splash.interfaces.AnimationControllerSpalshScreen.STARTUP_DELAY
+import it.corelab.airbooks.section.splash.interfaces.AutomaticSignInController
 
 
 class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, AutomaticSignInController {
