@@ -1,7 +1,6 @@
 package it.corelab.airbooks.section.login.fragment
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
@@ -32,39 +31,39 @@ import it.corelab.airbooks.data.model.remote.ApiUtils
 import it.corelab.airbooks.section.login.activity.Login
 
 import android.content.ContentValues.TAG
-import it.corelab.airbooks.section.login.activity.Login.Companion.leftArrow
+import android.content.Context
 
-class Login_Fragment : Fragment(), View.OnClickListener {
+class LoginFragment : Fragment(), View.OnClickListener {
 
-    protected var view: View
-    private var fragmentManager: FragmentManager? = null
+    private lateinit var viewLogin: View
+    private var fragmentManagerLogin: FragmentManager? = null
     private var forgotPsw: Button? = null
     private var loginBtn: Button? = null
     private var signUp: Button? = null
-    protected var email: TextInputEditText
-    protected var password: TextInputEditText
+    private lateinit var email: TextInputEditText
+    private lateinit var password: TextInputEditText
     private var mAPIService: APIService? = null
 
-    val isCredentialValid: Boolean
+    private val isCredentialValid: Boolean
         get() = isEmailValid(getString(email)) && !isEditTextEmpty(password)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        view = inflater.inflate(R.layout.signin, container, false)
+        viewLogin = inflater.inflate(R.layout.signin, container, false)
         mAPIService = ApiUtils.getAPIService()
         initViews()
         setListeners()
-        return view
+        return viewLogin
     }
 
     private fun initViews() {
 
-        fragmentManager = activity!!.supportFragmentManager
+        fragmentManagerLogin = activity!!.supportFragmentManager
 
-        forgotPsw = view.findViewById(R.id.forgot_psw)
-        loginBtn = view.findViewById(R.id.login_btn)
-        signUp = view.findViewById(R.id.sign_up)
-        email = view.findViewById(R.id.edit_text)
-        password = view.findViewById(R.id.password_edit_password)
+        forgotPsw = viewLogin.findViewById(R.id.forgot_psw)
+        loginBtn = viewLogin.findViewById(R.id.login_btn)
+        signUp = viewLogin.findViewById(R.id.sign_up)
+        email = viewLogin.findViewById(R.id.edit_text)
+        password = viewLogin.findViewById(R.id.password_edit_password)
     }
 
     private fun setListeners() {
@@ -79,7 +78,7 @@ class Login_Fragment : Fragment(), View.OnClickListener {
             R.id.sign_up -> {
 
                 // Replace signup frgament with animation// Replace signup frgament with animation
-                fragmentManager!!
+                fragmentManagerLogin!!
                         .beginTransaction()
                         .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
                         .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
@@ -99,7 +98,7 @@ class Login_Fragment : Fragment(), View.OnClickListener {
 
             R.id.forgot_psw -> {
 
-                fragmentManager!!
+                fragmentManagerLogin!!
                         .beginTransaction()
                         .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
                         .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, RecoverPassword_Fragment(), "RecoverPassword_Fragment")
@@ -112,7 +111,7 @@ class Login_Fragment : Fragment(), View.OnClickListener {
 
     //utility
 
-    internal fun isEmailValid(email: CharSequence): Boolean {
+    private fun isEmailValid(email: CharSequence): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
@@ -120,16 +119,16 @@ class Login_Fragment : Fragment(), View.OnClickListener {
         return textInputEditText.text.toString()
     }
 
-    fun isEditTextEmpty(editText: EditText): Boolean {
+    private fun isEditTextEmpty(editText: EditText): Boolean {
         return editText.length() == 0
     }
 
-    fun setOnLeftArrow() {
+    private fun setOnLeftArrow() {
         Login.leftArrow.isEnabled = true
         Login.leftArrow.visibility = View.VISIBLE
     }
 
-    fun verifyCredentials() {
+    private fun verifyCredentials() {
 
         if (!isEmailValid(getString(email))) {
             email.error = "you've to insert an email"
@@ -147,7 +146,7 @@ class Login_Fragment : Fragment(), View.OnClickListener {
         activity!!.overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
 
-    fun signInPost(postSignIn: PostSignIn, url: String, lang: String, os: String) {
+    private fun signInPost(postSignIn: PostSignIn, url: String, lang: String, os: String) {
 
         val pDialog = SweetAlertDialog(activity!!, SweetAlertDialog.PROGRESS_TYPE)
         pDialog.progressHelper.barColor = Color.parseColor("#4990e2")
@@ -166,7 +165,7 @@ class Login_Fragment : Fragment(), View.OnClickListener {
                     Log.i(TAG, "post submitted to API. " + postSignInResponse.error.code!!.toString())
                     showErrorDialog()
                 } else {
-                    val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, activity!!.MODE_PRIVATE)
+                    val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, Context.MODE_PRIVATE)
                     sharedPreferences.edit().putString("token", postSignInResponse.result.value).apply()
                     doIntentToHome()
                 }

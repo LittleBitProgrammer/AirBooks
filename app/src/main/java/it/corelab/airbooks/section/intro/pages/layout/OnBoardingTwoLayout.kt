@@ -1,10 +1,10 @@
-package it.corelab.airbooks.activity.intro.pages.layout
+package it.corelab.airbooks.section.intro.pages.layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
+import it.corelab.airbooks.section.intro.handler.OnBoardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout

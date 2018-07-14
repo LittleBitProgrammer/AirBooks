@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.layout
+package it.corelab.airbooks.section.login.pages.host
 
 import android.graphics.Color
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
@@ -11,7 +11,6 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import it.corelab.airbooks.R
 import it.corelab.airbooks.section.login.activity.Login
-import it.corelab.airbooks.section.splash.layout.SplashScreenLayout
 import it.corelab.airbooks.widget.RoundedImageView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout

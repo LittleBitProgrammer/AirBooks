@@ -1,14 +1,14 @@
-package it.corelab.airbooks.activity.intro.handler
+package it.corelab.airbooks.section.intro.handler
 
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import it.corelab.airbooks.activity.intro.pages.layout.OnBoardingTwoLayout
-import it.corelab.airbooks.activity.intro.pages.layout.OnBoardingFourLayout
-import it.corelab.airbooks.activity.intro.pages.layout.OnBoardingOneLayout
-import it.corelab.airbooks.activity.intro.pages.layout.OnBoardingThreeLayout
+import it.corelab.airbooks.section.intro.pages.layout.OnBoardingTwoLayout
+import it.corelab.airbooks.section.intro.pages.layout.OnBoardingFourLayout
+import it.corelab.airbooks.section.intro.pages.layout.OnBoardingOneLayout
+import it.corelab.airbooks.section.intro.pages.layout.OnBoardingThreeLayout
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 import java.util.*

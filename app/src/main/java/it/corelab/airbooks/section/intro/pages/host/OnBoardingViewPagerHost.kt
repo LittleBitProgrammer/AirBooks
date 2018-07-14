@@ -1,10 +1,10 @@
-package it.corelab.airbooks.activity.intro.pages.host
+package it.corelab.airbooks.section.intro.pages.host
 
 import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
-import it.corelab.airbooks.activity.intro.activity.IntroActivity
+import it.corelab.airbooks.section.intro.activity.IntroActivity
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout

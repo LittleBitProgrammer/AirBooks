@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity.intro.pages.layout
+package it.corelab.airbooks.section.intro.pages.layout
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
+import it.corelab.airbooks.section.intro.handler.OnBoardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import it.corelab.airbooks.activity.Login
+import it.corelab.airbooks.section.login.activity.Login
 
 class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
     override fun createView(ui: AnkoContext<OnBoardingFragment>) = with(ui){

@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity.intro.activity
+package it.corelab.airbooks.section.intro.activity
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -13,9 +13,9 @@ import it.corelab.airbooks.R
 import org.jetbrains.anko.setContentView
 import it.corelab.airbooks.Utils.*
 import it.corelab.airbooks.Constants.*
-import it.corelab.airbooks.activity.intro.handler.OnBoardingAdapter
-import it.corelab.airbooks.activity.intro.interfaces.*
-import it.corelab.airbooks.activity.intro.pages.host.OnBoardingViewPagerHost
+import it.corelab.airbooks.section.intro.handler.OnBoardingAdapter
+import it.corelab.airbooks.section.intro.interfaces.*
+import it.corelab.airbooks.section.intro.pages.host.OnBoardingViewPagerHost
 import it.corelab.airbooks.widget.RoundedImageView
 
 class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, AnimationPageThree, AnimationPageFour, PageTwoInitialization, PageThreeInitialization, PageFourInitialization {

@@ -1,4 +1,4 @@
-package it.corelab.airbooks.activity.intro.interfaces;
+package it.corelab.airbooks.section.intro.interfaces;
 
 public interface AnimationPageFour {
 

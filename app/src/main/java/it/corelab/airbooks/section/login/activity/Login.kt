@@ -11,7 +11,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 
 import it.corelab.airbooks.R
-import it.corelab.airbooks.fragment.Login_Fragment
+import it.corelab.airbooks.section.login.fragment.LoginFragment
+import it.corelab.airbooks.section.login.pages.host.LoginHost
+import org.jetbrains.anko.setContentView
 
 
 class Login : AppCompatActivity() {
@@ -20,7 +22,7 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        LoginHost().setContentView(this)
 
         //==========================
         //      hide status bar
@@ -29,7 +31,7 @@ class Login : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         fragmentManager = supportFragmentManager
-        leftArrow = findViewById(R.id.left_arrow_login)
+        leftArrow = findViewById(R.id.LEFT_ARROW_LOGIN_ACTIVITY)
 
         setOffLeftArrow()
 
@@ -37,7 +39,7 @@ class Login : AppCompatActivity() {
         if (savedInstanceState == null) {
             fragmentManager!!
                     .beginTransaction()
-                    .replace(R.id.frameContainer, Login_Fragment(), "Login_FRagment")
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, LoginFragment(), "Login_FRagment")
                     .commit()
         }
 
@@ -79,6 +81,6 @@ class Login : AppCompatActivity() {
     }
 
     companion object {
-        var leftArrow: ImageButton
+        lateinit var leftArrow: ImageButton
     }
 }
