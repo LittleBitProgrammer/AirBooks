@@ -1,4 +1,4 @@
-package it.corelab.airbooks.splash.interfaces;
+package it.corelab.airbooks.activity.splash.interfaces;
 
 public interface AutomaticSignInController {
 

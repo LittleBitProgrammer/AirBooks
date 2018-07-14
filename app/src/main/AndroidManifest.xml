@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name=".splash.activity.SplashActivity"
+            android:name="it.corelab.airbooks.activity.splash.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -67,7 +67,7 @@
             android:name=".activity.AddRecap"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".intro.activity.IntroActivity"
+            android:name="it.corelab.airbooks.activity.intro.activity.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Login"

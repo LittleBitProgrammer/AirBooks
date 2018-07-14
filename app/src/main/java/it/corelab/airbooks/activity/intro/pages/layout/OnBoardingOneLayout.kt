@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.pages.Layout
+package it.corelab.airbooks.activity.intro.pages.layout
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -13,14 +13,14 @@ import org.jetbrains.anko.*
 import android.support.v4.content.res.ResourcesCompat
 import android.util.Log
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.intro.Handler.OnboardingFragment
+import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
 
 
-class OnboardingOne_Laoyout : AnkoComponent<OnboardingFragment> {
+class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
 
 
 
-    override fun createView(ui: AnkoContext<OnboardingFragment>) = with(ui) {
+    override fun createView(ui: AnkoContext<OnBoardingFragment>) = with(ui) {
 
         /*
         *

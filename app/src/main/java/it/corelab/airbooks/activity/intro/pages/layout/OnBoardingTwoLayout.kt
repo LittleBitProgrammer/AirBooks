@@ -1,18 +1,18 @@
-package it.corelab.airbooks.intro.pages.Layout
+package it.corelab.airbooks.activity.intro.pages.layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.intro.Handler.OnboardingFragment
+import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.constraint.layout.matchConstraint
 
-class OnBoardingTwo_Layout : AnkoComponent<OnboardingFragment> {
+class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
 
-    override fun createView(ui: AnkoContext<OnboardingFragment>) = with(ui) {
+    override fun createView(ui: AnkoContext<OnBoardingFragment>) = with(ui) {
 
         constraintLayout {
             id = Ids.CONST_LAYOUT_TWO

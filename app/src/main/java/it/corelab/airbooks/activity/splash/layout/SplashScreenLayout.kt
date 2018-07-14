@@ -1,11 +1,11 @@
-package it.corelab.airbooks.splash.layout
+package it.corelab.airbooks.activity.splash.layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity
 import android.widget.LinearLayout
 import it.corelab.airbooks.R
-import it.corelab.airbooks.splash.activity.SplashActivity
+import it.corelab.airbooks.activity.splash.activity.SplashActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
 

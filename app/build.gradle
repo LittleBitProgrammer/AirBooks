@@ -114,3 +114,8 @@ dependencies {
         maven { url "https://jitpack.io" }
     }
 }
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

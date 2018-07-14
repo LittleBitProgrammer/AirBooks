@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.Interface;
+package it.corelab.airbooks.activity.intro.interfaces;
 
 public interface PageThreeInitialization {
     void initializePageThreeVariables();

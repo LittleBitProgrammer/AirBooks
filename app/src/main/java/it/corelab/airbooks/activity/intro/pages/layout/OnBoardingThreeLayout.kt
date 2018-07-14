@@ -1,4 +1,6 @@
-package it.corelab.airbooks.intro.pages.Layout
+@file:Suppress("NOTHING_TO_INLINE")
+
+package it.corelab.airbooks.activity.intro.pages.layout
 
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity
@@ -8,16 +10,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import it.corelab.airbooks.R
-import it.corelab.airbooks.intro.Handler.OnboardingFragment
+import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
 import it.corelab.airbooks.widget.RoundedImageView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 
-inline fun ViewManager.roundImage(theme: Int = 0) = roundImage(theme) {}
+//inline fun ViewManager.roundImage(theme: Int = 0) = roundImage(theme) {}
 inline fun ViewManager.roundImage(theme: Int = 0, init: RoundedImageView.() -> Unit) = ankoView({ RoundedImageView(it) }, theme, init)
 
-class OnboardingThree_Layout : AnkoComponent<OnboardingFragment>{
-    override fun createView(ui: AnkoContext<OnboardingFragment>) = with(ui){
+class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
+    override fun createView(ui: AnkoContext<OnBoardingFragment>) = with(ui){
 
         linearLayout {
             id = Ids.EXTERNAL_LINEAR_LAYOUT_PAGE_THREE

@@ -1,24 +1,24 @@
-package it.corelab.airbooks.intro.Handler
+package it.corelab.airbooks.activity.intro.handler
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import java.util.*
 
-class OnboardingAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class OnBoardingAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     private val mObservers = FragmentObserver()
 
     override fun getItem(position: Int): Fragment {
         mObservers.deleteObservers() // Clear existing observers.
-        val fragment = OnboardingFragment()
+        val fragment = OnBoardingFragment()
         mObservers.addObserver(fragment as Observer)
-        return OnboardingFragment.newInstance(position)
+        return OnBoardingFragment.newInstance(position)
     }
 
-    fun updateFragments() {
+    /*fun updateFragments() {
         mObservers.notifyObservers()
-    }
+    }*/
 
     override fun getCount(): Int {
         return 4

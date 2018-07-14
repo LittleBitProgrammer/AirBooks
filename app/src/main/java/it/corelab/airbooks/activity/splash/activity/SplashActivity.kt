@@ -1,4 +1,4 @@
-package it.corelab.airbooks.splash.activity
+package it.corelab.airbooks.activity.splash.activity
 
 import android.content.Context
 import android.content.Intent
@@ -18,21 +18,19 @@ import io.reactivex.schedulers.Schedulers
 import it.corelab.airbooks.R
 import it.corelab.airbooks.activity.Login
 import it.corelab.airbooks.activity.MainActivity
-import it.corelab.airbooks.intro.activity.IntroActivity
+import it.corelab.airbooks.activity.intro.activity.IntroActivity
 import it.corelab.airbooks.data.model.AutomaticSignInResponse
 import it.corelab.airbooks.data.model.remote.APIService
 import it.corelab.airbooks.data.model.remote.ApiUtils
-import it.corelab.airbooks.splash.layout.SplashScreenLayout
+import it.corelab.airbooks.activity.splash.layout.SplashScreenLayout
 import org.jetbrains.anko.setContentView
-import android.support.v4.view.ViewCompat.animate
 import android.support.v4.view.ViewPropertyAnimatorCompat
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
-import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen
-import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
-import it.corelab.airbooks.splash.interfaces.AnimationControllerSpalshScreen.STARTUP_DELAY
-import it.corelab.airbooks.splash.interfaces.AutomaticSignInController
-import java.lang.reflect.Array
+import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen
+import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
+import it.corelab.airbooks.activity.splash.interfaces.AnimationControllerSpalshScreen.STARTUP_DELAY
+import it.corelab.airbooks.activity.splash.interfaces.AutomaticSignInController
 
 
 class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, AutomaticSignInController {

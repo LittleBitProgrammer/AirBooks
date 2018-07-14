@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.Handler;
+package it.corelab.airbooks.activity.intro.handler;
 
 import java.util.Observable;
 

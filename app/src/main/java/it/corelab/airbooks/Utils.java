@@ -282,6 +282,13 @@ public class Utils {
         imageView.setX(x);
     }
 
+    /**
+     * This method help to easily set the TextView on the X/Y axis
+     * @author Roberto Vecchio
+     * @param textView TextView tha you want to change the position
+     * @param x position on the X value
+     * @param y position on the Y value
+     */
     public static void setXY(TextView textView, Float x, Float y){
         textView.setY(y);
         textView.setX(x);

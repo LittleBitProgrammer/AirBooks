@@ -1,4 +1,4 @@
-package it.corelab.airbooks.intro.pages.Layout
+package it.corelab.airbooks.activity.intro.pages.layout
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
@@ -7,14 +7,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.intro.Handler.OnboardingFragment
+import it.corelab.airbooks.activity.intro.handler.OnBoardingFragment
 import it.corelab.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import it.corelab.airbooks.activity.Login
 
-class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
-    override fun createView(ui: AnkoContext<OnboardingFragment>) = with(ui){
+class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
+    override fun createView(ui: AnkoContext<OnBoardingFragment>) = with(ui){
 
         /*
        *
@@ -214,7 +214,7 @@ class OnboardingFour_Layout: AnkoComponent<OnboardingFragment> {
                         id = Ids.BUTTON_PAGE_FOUR
 
                         textColor =  ContextCompat.getColor(context,R.color.white)
-                        background = resources.getDrawable(R.drawable.button_intro)
+                        background = ContextCompat.getDrawable(ctx,R.drawable.button_intro)
                         stateListAnimator = null
 
                         onClick {

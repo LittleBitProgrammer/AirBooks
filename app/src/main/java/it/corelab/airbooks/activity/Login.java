@@ -1,7 +1,5 @@
 package it.corelab.airbooks.activity;
 
-
-import android.app.FragmentManager;
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
