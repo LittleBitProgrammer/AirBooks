@@ -98,6 +98,15 @@
     <string name="back_button_login_host">back button</string>
     <string name="simple_circle_background_login_host">proflie border</string>
 
+    //LOGIN_SIGN_IN
+    <string name="email_edit_text_sign_in">Email</string>
+    <string name="password_edit_text_sign_in">Password</string>
+    <string name="login_button_sign_in">LOGIN</string>
+    <string name="forgot_password_sign_in"><u>Forgot the password?</u></string>
+    <string name="text_or_log_in_sign_in">Or login with</string>
+    <string name="facebook">facebook</string>
+    <string name="no_account_sign_in">Don\'t have an account yet? <b>Sign up</b></string>
+
     <string-array name="CountryCodes">
         <item>93,AF</item>
         <item>355,AL</item>

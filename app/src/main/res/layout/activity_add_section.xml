@@ -39,7 +39,7 @@
                 android:windowSoftInputMode="stateAlwaysVisible"
                 android:hint="@string/editText_hint_add_book"
                 android:textColorHint="#B6BCC5"
-                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                app:hintTextAppearance="@style/text_input_theme"
                 app:hintEnabled="true"
                 app:mainHintTextSize="15sp"
                 app:layout_constraintEnd_toEndOf="@id/cardView"

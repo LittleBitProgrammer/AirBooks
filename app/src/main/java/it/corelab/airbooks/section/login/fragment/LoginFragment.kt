@@ -32,10 +32,12 @@ import it.corelab.airbooks.section.login.activity.Login
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import it.corelab.airbooks.section.login.pages.layout.SignInLayout
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.support.v4.ctx
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
-    private lateinit var viewLogin: View
     private var fragmentManagerLogin: FragmentManager? = null
     private var forgotPsw: Button? = null
     private var loginBtn: Button? = null
@@ -45,32 +47,31 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private var mAPIService: APIService? = null
 
     private val isCredentialValid: Boolean
-        get() = isEmailValid(getString(email)) && !isEditTextEmpty(password)
+        get() = isEmailValid(getString(email)) && !isEditTextEmpty(password as EditText)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewLogin = inflater.inflate(R.layout.signin, container, false)
         mAPIService = ApiUtils.getAPIService()
         initViews()
         setListeners()
-        return viewLogin
+        return SignInLayout().createView(AnkoContext.create(ctx,this))
     }
 
     private fun initViews() {
 
         fragmentManagerLogin = activity!!.supportFragmentManager
 
-        forgotPsw = viewLogin.findViewById(R.id.forgot_psw)
-        loginBtn = viewLogin.findViewById(R.id.login_btn)
-        signUp = viewLogin.findViewById(R.id.sign_up)
-        email = viewLogin.findViewById(R.id.edit_text)
-        password = viewLogin.findViewById(R.id.password_edit_password)
+        //forgotPsw = viewLogin.findViewById(R.id.forgot_psw)
+        //loginBtn = viewLogin.findViewById(R.id.login_btn)
+        //signUp = viewLogin.findViewById(R.id.sign_up)
+        //email = viewLogin.findViewById(R.id.edit_text)
+        //password = viewLogin.findViewById(R.id.password_edit_password)
     }
 
     private fun setListeners() {
 
-        forgotPsw!!.setOnClickListener(this)
-        loginBtn!!.setOnClickListener(this)
-        signUp!!.setOnClickListener(this)
+        //forgotPsw!!.setOnClickListener(this)
+        //loginBtn!!.setOnClickListener(this)
+        //signUp!!.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {

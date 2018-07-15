@@ -22,100 +22,113 @@
 
 
     //ID_LAYOUT_INTRO_BASE
-    <item name="ONBOARDING_LAYOUT_BASE" type="id"/>
-    <item name="ONBOARDING_VIEWPAGER_BASE" type="id"/>
-    <item name="FRAME_LAYOUT_BASE" type="id"/>
-    <item name="LINEAR_LAYOUT_BASE" type="id"/>
-    <item name="INDICATOR_ONE" type="id"/>
-    <item name="INDICATOR_TWO" type="id"/>
-    <item name="INDICATOR_THREE" type="id"/>
-    <item name="INDICATOR_FOUR" type="id"/>
+    <item name="ONBOARDING.LAYOUT.BASE" type="id"/>
+    <item name="ONBOARDING.VIEWPAGER.BASE" type="id"/>
+    <item name="FRAME.LAYOUT.BASE" type="id"/>
+    <item name="LINEAR.LAYOUT.BASE" type="id"/>
+    <item name="INDICATOR.ONE" type="id"/>
+    <item name="INDICATOR.TWO" type="id"/>
+    <item name="INDICATOR.THREE" type="id"/>
+    <item name="INDICATOR.FOUR" type="id"/>
 
     //ID_LAYOUT_INTRO_ONE
-    <item name="LINEAR_LAYOUT_TOTAL_EXTERN" type="id"/>
-    <item name="HIGH_LEFT_IMAGE" type="id"/>
-    <item name="DOWN_LEFT_IMAGE" type="id"/>
-    <item name="CENTER_LEFT_IMAGE" type="id"/>
-    <item name="DOWN_CENTER_IMAGE" type="id"/>
-    <item name="TOP_CENTER_IMAGE" type="id"/>
-    <item name="DOWN_RIGHT_IMAGE" type="id"/>
-    <item name="CENTER_RIGHT_IMAGE" type="id"/>
-    <item name="TOP_RIGHT_IMAGE" type="id"/>
-    <item name="ONBOARDING_TEXT_DESCRIPTION" type="id"/>
-    <item name="ONBOARDING_TEXT_TITLE" type="id"/>
-    <item name="LINEAR_LAYOUT_BOTTOM" type="id"/>
-    <item name="LINEAR_LAYOUT_TOP" type="id"/>
-    <item name="LINEAR_LAYOUT_TOP_COLUMN_ONE" type="id"/>
-    <item name="LINEAR_LAYOUT_TOP_COLUMN_TWO" type="id"/>
-    <item name="LINEAR_LAYOUT_TOP_COLUMN_THREE" type="id"/>
+    <item name="LINEAR.LAYOUT.TOTAL.EXTERN" type="id"/>
+    <item name="HIGH.LEFT.IMAGE" type="id"/>
+    <item name="DOWN.LEFT.IMAGE" type="id"/>
+    <item name="CENTER.LEFT.IMAGE" type="id"/>
+    <item name="DOWN.CENTER.IMAGE" type="id"/>
+    <item name="TOP.CENTER.IMAGE" type="id"/>
+    <item name="DOWN.RIGHT.IMAGE" type="id"/>
+    <item name="CENTER.RIGHT.IMAGE" type="id"/>
+    <item name="TOP.RIGHT.IMAGE" type="id"/>
+    <item name="ONBOARDING.TEXT.DESCRIPTION" type="id"/>
+    <item name="ONBOARDING.TEXT.TITLE" type="id"/>
+    <item name="LINEAR.LAYOUT.BOTTOM" type="id"/>
+    <item name="LINEAR.LAYOUT.TOP" type="id"/>
+    <item name="LINEAR.LAYOUT.TOP.COLUMN.ONE" type="id"/>
+    <item name="LINEAR.LAYOUT.TOP.COLUMN.TWO" type="id"/>
+    <item name="LINEAR.LAYOUT.TOP.COLUMN.THREE" type="id"/>
 
     //ID_LAYOUT_INTRO_TWO
-    <item name="CONST_LAYOUT_TWO" type="id"/>
-    <item name="SHELF_ONE" type="id"/>
-    <item name="SHELF_TWO" type="id"/>
-    <item name="SHELF_THREE" type="id"/>
-    <item name="FIRST_FIRST_IMAGE" type="id"/>
-    <item name="FIRST_SECOND_IMAGE" type="id"/>
-    <item name="FIRST_THIRD_IMAGE" type="id"/>
-    <item name="SECOND_FIRST_IMAGE" type="id"/>
-    <item name="SECOND_SECOND_IMAGE" type="id"/>
-    <item name="SECOND_THIRD_IMAGE" type="id"/>
-    <item name="TITLE_PAGE_TWO" type="id"/>
-    <item name="DESC_PAGE_TWO" type="id"/>
+    <item name="CONST.LAYOUT.TWO" type="id"/>
+    <item name="SHELF.ONE" type="id"/>
+    <item name="SHELF.TWO" type="id"/>
+    <item name="SHELF.THREE" type="id"/>
+    <item name="FIRST.FIRST.IMAGE" type="id"/>
+    <item name="FIRST.SECOND.IMAGE" type="id"/>
+    <item name="FIRST.THIRD.IMAGE" type="id"/>
+    <item name="SECOND.FIRST.IMAGE" type="id"/>
+    <item name="SECOND.SECOND.IMAGE" type="id"/>
+    <item name="SECOND.THIRD.IMAGE" type="id"/>
+    <item name="TITLE.PAGE.TWO" type="id"/>
+    <item name="DESC.PAGE.TWO" type="id"/>
 
     //ID_LAYOUT_INTRO_THREE
-    <item name="EXTERNAL_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
-    <item name="TOP_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
-    <item name="BOTTOM_LINEAR_LAYOUT_PAGE_THREE" type="id"/>
-    <item name="ROUNDED_IMAGE_INTRO" type="id"/>
-    <item name="LINEAR_STAR_RATING_INTRO" type="id"/>
-    <item name="STAR_ONE_INTRO" type="id"/>
-    <item name="STAR_TWO_INTRO" type="id"/>
-    <item name="STAR_THREE_INTRO" type="id"/>
-    <item name="STAR_FOUR_INTRO" type="id"/>
-    <item name="STAR_FIVE_INTRO" type="id"/>
-    <item name="SPOT_BOOK_INTRO" type="id"/>
-    <item name="BOKK_INTRO_PAGE_THREE" type="id"/>
-    <item name="TITLE_INTRO_PAGE_THREE" type="id"/>
-    <item name="DESCRIPTION_INTRO_PAGE_THREE" type="id"/>
+    <item name="EXTERNAL.LINEAR.LAYOUT.PAGE.THREE" type="id"/>
+    <item name="TOP.LINEAR.LAYOUT.PAGE.THREE" type="id"/>
+    <item name="BOTTOM.LINEAR.LAYOUT.PAGE.THREE" type="id"/>
+    <item name="ROUNDED.IMAGE.INTRO" type="id"/>
+    <item name="LINEAR.STAR.RATING.INTRO" type="id"/>
+    <item name="STAR.ONE.INTRO" type="id"/>
+    <item name="STAR.TWO.INTRO" type="id"/>
+    <item name="STAR.THREE.INTRO" type="id"/>
+    <item name="STAR.FOUR.INTRO" type="id"/>
+    <item name="STAR.FIVE.INTRO" type="id"/>
+    <item name="SPOT.BOOK.INTRO" type="id"/>
+    <item name="BOKK.INTRO.PAGE.THREE" type="id"/>
+    <item name="TITLE.INTRO.PAGE.THREE" type="id"/>
+    <item name="DESCRIPTION.INTRO.PAGE.THREE" type="id"/>
 
     //ID_LAYOUT_INTRO_FOUR
-    <item name="EXTERNAL_LINEARLAYOUT_PAGE_FOUR" type="id"/>
-    <item name="TOP_LINEAR_LAYOUT_PAGE_FOUR" type="id"/>
-    <item name="BOTTOM_LINEAR_LAYOUT_PAGE_FOUR" type="id"/>
-    <item name="END_LINEAR_LAYOUT_PAGE_FOUR" type ="id"/>
+    <item name="EXTERNAL.LINEARLAYOUT.PAGE.FOUR" type="id"/>
+    <item name="TOP.LINEAR.LAYOUT.PAGE.FOUR" type="id"/>
+    <item name="BOTTOM.LINEAR.LAYOUT.PAGE.FOUR" type="id"/>
+    <item name="END.LINEAR.LAYOUT.PAGE.FOUR" type ="id"/>
     <item name="TEACUP" type="id"/>
-    <item name ="PLUS_UNDER_TEACUP" type="id"/>
+    <item name ="PLUS.UNDER.TEACUP" type="id"/>
     <item name="SOFA" type="id"/>
-    <item name="PLUS_UNDER_SOFA" type="id"/>
-    <item name="LINEAR_BOOKS_PAGE_FOUR" type="id"/>
-    <item name="LEFT_BOOK_PAGE_FOUR" type="id"/>
-    <item name="CENTER_BOOK_PAGE_FOUR" type="id"/>
-    <item name="RIGHT_BOOK_PAGE_FOUR" type="id"/>
-    <item name ="EQUAL_PAGE_FOUR" type="id"/>
-    <item name="FACE_HEART" type="id"/>
-    <item name="HEART_EMOJI" type="id"/>
-    <item name="LINEAR_EMOJI" type="id"/>
-    <item name="TITLE_PAGE_FOUR" type="id"/>
-    <item name="DESCRIPTION_PAGE_FOUR" type="id"/>
-    <item name="BUTTON_PAGE_FOUR" type="id"/>
+    <item name="PLUS.UNDER.SOFA" type="id"/>
+    <item name="LINEAR.BOOKS.PAGE.FOUR" type="id"/>
+    <item name="LEFT.BOOK.PAGE.FOUR" type="id"/>
+    <item name="CENTER.BOOK.PAGE.FOUR" type="id"/>
+    <item name="RIGHT.BOOK.PAGE.FOUR" type="id"/>
+    <item name ="EQUAL.PAGE.FOUR" type="id"/>
+    <item name="FACE.HEART" type="id"/>
+    <item name="HEART.EMOJI" type="id"/>
+    <item name="LINEAR.EMOJI" type="id"/>
+    <item name="TITLE.PAGE.FOUR" type="id"/>
+    <item name="DESCRIPTION.PAGE.FOUR" type="id"/>
+    <item name="BUTTON.PAGE.FOUR" type="id"/>
 
     //ID_LAYOUT_SPLASH_SCREEN
-    <item name="LINEAR_LAYOUT_EXTERNAL_SPLASH_SCREEN" type="id"/>
-    <item name="CENTRAL_LOGO" type="id"/>
-    <item name="LINEAR_INTERNAL_SPLASH_SCREEN" type="id"/>
-    <item name="APP_NAME_SPLASH_SCREEN" type="id"/>
+    <item name="LINEAR.LAYOUT.EXTERNAL.SPLASH.SCREEN" type="id"/>
+    <item name="CENTRAL.LOGO" type="id"/>
+    <item name="LINEAR.INTERNAL.SPLASH.SCREEN" type="id"/>
+    <item name="APP.NAME.SPLASH.SCREEN" type="id"/>
     <item name="SUBTITLE" type="id"/>
 
     //ID_LAYOUT_LOGIN_ACTIVITY
-    <item name="SCROLL_VIEW_LOGIN_ACTIVITY" type="id"/>
-    <item name="CONSTRAINT_LAYOUT_LOGIN_ACTIVITY" type="id"/>
-    <item name="LEFT_ARROW_LOGIN_ACTIVITY" type="id"/>
-    <item name="LOGO_LOGIN_ACTIVITY" type="id"/>
-    <item name="APP_NAME_LOGIN_ACTIVITY" type="id"/>
-    <item name="FRAME_CONTAINER_LOGIN_ACTIVITY" type="id"/>
+    <item name="SCROLL.VIEW.LOGIN.ACTIVITY" type="id"/>
+    <item name="CONSTRAINT.LAYOUT.LOGIN.ACTIVITY" type="id"/>
+    <item name="LEFT.ARROW.LOGIN.ACTIVITY" type="id"/>
+    <item name="LOGO.LOGIN.ACTIVITY" type="id"/>
+    <item name="APP.NAME.LOGIN.ACTIVITY" type="id"/>
+    <item name="FRAME.CONTAINER.LOGIN.ACTIVITY" type="id"/>
 
     //ID_LAYOUT_SIGN_IN_FRAGMENT
-    <item name="CONSTRAINT_LAYOUT_SIGN_IN_FRAGMENT" type="id"/>
+    <item name="LINEAR.LAYOUT.EXTERNAL.SIGN.IN.FRAGMENT" type="id"/>
+    <item name="LINEAR.LAYOUT.EDIT.TEXT.SIGN.IN" type="id"/>
+    <item name="EDIT.TEXT.EMAIL.SIGN.IN" type="id"/>
+    <item name="EDIT.TEXT.PASSWORD.SIGN.IN" type="id"/>
+    <item name="DIVIDER.SIGN.IN" type="id"/>
+    <item name="LOGIN.BUTTON.SIGN.IN" type="id"/>
+    <item name="FORGOT_PASSWORD_BUTTON_SIGN" type="id"/>
+    <item name="LINEAR.LAYOUT.BOTTOM.SIGN.IN" type="id"/>
+    <item name="OR.LOG.IN.WITH.SIGN.IN" type="id"/>
+    <item name="DIVIDER.LEFT.SIGN.IN" type="id"/>
+    <item name="DIVIDER.RIGHT.SIGN.IN" type="id"/>
+    <item name="TEXT.VIEW.OR.LOG.IN.SIGN.IN" type="id"/>
+    <item name="BUTTON.FACEBOOK.SIGN.IN" type="id"/>
+    <item name="NO.ACCOUNT.BUTTON.SIGN.IN" type="id"/>
 
 </resources>
