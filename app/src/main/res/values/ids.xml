@@ -131,4 +131,11 @@
     <item name="BUTTON.FACEBOOK.SIGN.IN" type="id"/>
     <item name="NO.ACCOUNT.BUTTON.SIGN.IN" type="id"/>
 
+    //ID_LAYOUT_RECOVER_PASSWORD_FRAGMENT
+    <item name="LINEAR.LAYOUT.RECOVER.PASSWORD" type="id"/>
+    <item name="LINEAR.LAYOUT.EDIT.TEXT.RECOVER.PASSWORD" type="id"/>
+    <item name="RECOVER.PASSWORD.EDIT.TEXT" type="id"/>
+    <item name="RECOVER.BUTTON" type="id"/>
+    <item name="BACK.TO.LOGIN.RECOVER.PASSWORD" type="id"/>
+
 </resources>

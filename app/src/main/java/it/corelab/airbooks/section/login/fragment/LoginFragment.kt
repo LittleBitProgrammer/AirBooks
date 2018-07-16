@@ -24,19 +24,18 @@ import it.corelab.airbooks.data.model.PostSignIn
 import it.corelab.airbooks.data.model.PostSignInResponse
 import it.corelab.airbooks.data.model.remote.APIService
 import it.corelab.airbooks.data.model.remote.ApiUtils
-import it.corelab.airbooks.section.login.activity.Login
 
 import android.content.ContentValues.TAG
 import android.content.Context
-import it.corelab.airbooks.section.login.interfaces.EditTextController
-import it.corelab.airbooks.section.login.interfaces.ErrorDialogController
-import it.corelab.airbooks.section.login.interfaces.SignInController
+import it.corelab.airbooks.section.login.interfaces.signin.EditTextController
+import it.corelab.airbooks.section.login.interfaces.signin.ErrorDialogController
+import it.corelab.airbooks.section.login.interfaces.signin.SignInController
 import it.corelab.airbooks.section.login.pages.layout.SignInLayout
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 import java.util.*
 
-class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDialogController{
+class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDialogController {
 
 
     //VIEW
@@ -80,11 +79,6 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
     }
 
 
-    private fun setOnLeftArrow() {
-        Login.leftArrow.isEnabled = true
-        Login.leftArrow.visibility = View.VISIBLE
-    }
-
 
     //==============================================================================================================================================================
     //==============================================================================================================================================================
@@ -110,9 +104,8 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
             fragmentManagerLogin!!
                     .beginTransaction()
                     .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, it.corelab.airbooks.section.login.fragment.RecoverPassword_Fragment(), "RecoverPassword_Fragment")
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, RecoverPasswordFragment(), "RecoverPasswordFragment")
                     .commit()
-            setOnLeftArrow()
 
         }
 
@@ -123,7 +116,6 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
                     .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
                     .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
                     .commit()
-            setOnLeftArrow()
 
         }
 

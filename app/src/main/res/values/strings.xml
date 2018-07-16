@@ -107,6 +107,10 @@
     <string name="facebook">facebook</string>
     <string name="no_account_sign_in">Don\'t have an account yet? <b>Sign up</b></string>
 
+    //RECOVER_PASSWORD
+    <string name="recover">Recover</string>
+    <string name="back_to_login_recover_password">Back to login</string>
+
     <string-array name="CountryCodes">
         <item>93,AF</item>
         <item>355,AL</item>
