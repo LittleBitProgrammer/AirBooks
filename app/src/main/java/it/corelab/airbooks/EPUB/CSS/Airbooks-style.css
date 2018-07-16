@@ -1,0 +1,5 @@
+.airbooks-chapter {
+    break-after: always;
+    -webkit-column-break-after: always;
+}
+
