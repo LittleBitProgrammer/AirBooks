@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.view.ViewCompat
 import android.util.Log
 import android.view.View
@@ -26,6 +27,7 @@ import it.corelab.airbooks.section.splash.layout.SplashScreenLayout
 import org.jetbrains.anko.setContentView
 import android.support.v4.view.ViewPropertyAnimatorCompat
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import it.corelab.airbooks.section.splash.interfaces.AnimationControllerSpalshScreen
 import it.corelab.airbooks.section.splash.interfaces.AnimationControllerSpalshScreen.ANIM_ITEM_DURATION
@@ -47,7 +49,8 @@ class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, Aut
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-        setTheme(R.style.AppTheme)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        setTheme(R.style.SplashTheme)
         super.onCreate(savedInstanceState)
 
         SplashScreenLayout().setContentView(this)
@@ -115,20 +118,11 @@ class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, Aut
                 .setStartDelay(STARTUP_DELAY.toLong())
                 .setDuration(ANIM_ITEM_DURATION.toLong())
                 .setInterpolator(DecelerateInterpolator(1.2F))
-                .start()
+                .withEndAction {
 
-        for (element: Int in elements){
-             val v: View = container.getChildAt(element)
-             var viewAnimator: ViewPropertyAnimatorCompat
-
-             viewAnimator = ViewCompat.animate(v)
-                    .translationY(50F)
-                    .alpha(1F)
-                    .setStartDelay((STARTUP_DELAY * element).toLong() + 500)
-                    .setDuration(1000)
-
-            viewAnimator.setInterpolator(DecelerateInterpolator())
-                    .withEndAction { mAPIService = ApiUtils.getAPIService()
+                    val handler = Handler()
+                    handler.postDelayed({
+                        mAPIService = ApiUtils.getAPIService()
 
                         val isFirstRun = getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).getBoolean("isFirstRun", true)
 
@@ -138,7 +132,7 @@ class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, Aut
                             //show start activity
 
                             startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                             Log.i("PRIMA RUN", "TRUE")
 
 
@@ -160,8 +154,22 @@ class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, Aut
                             }
                         }
 
-                        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply() }
-                    .start()
+                        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply()
+                    }, 300)
+                }.start()
+
+        for (element: Int in elements){
+             val v: View = container.getChildAt(element)
+             var viewAnimator: ViewPropertyAnimatorCompat
+
+             viewAnimator = ViewCompat.animate(v)
+                    .translationY(50F)
+                    .alpha(1F)
+                    .setStartDelay((STARTUP_DELAY * element).toLong() + 500)
+                    .setDuration(1000)
+                     .setInterpolator(DecelerateInterpolator())
+
+            viewAnimator.start()
 
         }
     }
