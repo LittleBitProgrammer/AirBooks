@@ -3,7 +3,6 @@ package it.corelab.airbooks.section.login.fragment
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.util.Log
@@ -38,29 +37,48 @@ import org.jetbrains.anko.support.v4.ctx
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
+    //VIEW
+    private lateinit var viewUI: View
+
+
+    //FRAGMENT MANAGER
     private var fragmentManagerLogin: FragmentManager? = null
-    private var forgotPsw: Button? = null
-    private var loginBtn: Button? = null
-    private var signUp: Button? = null
-    private lateinit var email: TextInputEditText
-    private lateinit var password: TextInputEditText
+
+
+    //VIEW VARIABLES
+    private lateinit var forgotPsw: Button
+    //private var loginBtn: Button? = null
+    //private var signUp: Button? = null
+    private lateinit var email: EditText
+    private lateinit var password: EditText
+
+    //API
     private var mAPIService: APIService? = null
+
+    //UI INITIALIZATION
+    private lateinit var mainUI: SignInLayout
 
     private val isCredentialValid: Boolean
         get() = isEmailValid(getString(email)) && !isEditTextEmpty(password as EditText)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mainUI = SignInLayout()
+        viewUI = mainUI.createView(AnkoContext.create(ctx, this))
+
         mAPIService = ApiUtils.getAPIService()
+
         initViews()
+
         setListeners()
-        return SignInLayout().createView(AnkoContext.create(ctx,this))
+
+        return viewUI
     }
 
     private fun initViews() {
 
         fragmentManagerLogin = activity!!.supportFragmentManager
 
-        //forgotPsw = viewLogin.findViewById(R.id.forgot_psw)
+        forgotPsw = mainUI.forgotButton
         //loginBtn = viewLogin.findViewById(R.id.login_btn)
         //signUp = viewLogin.findViewById(R.id.sign_up)
         //email = viewLogin.findViewById(R.id.edit_text)
@@ -69,14 +87,21 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     private fun setListeners() {
 
-        //forgotPsw!!.setOnClickListener(this)
+        forgotPsw.setOnClickListener {
+            fragmentManagerLogin!!
+                    .beginTransaction()
+                    .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, RecoverPassword_Fragment(), "RecoverPassword_Fragment")
+                    .commit()
+            setOnLeftArrow()
+        }
         //loginBtn!!.setOnClickListener(this)
         //signUp!!.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.sign_up -> {
+        when (mainUI) {
+        /*R.id.sign_up -> {
 
                 // Replace signup frgament with animation// Replace signup frgament with animation
                 fragmentManagerLogin!!
@@ -85,9 +110,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
                         .commit()
                 setOnLeftArrow()
-            }
+            }*/
 
-            R.id.login_btn -> {
+        /*R.id.login_btn -> {
 
                 //login action
                 verifyCredentials()
@@ -95,17 +120,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     val postSignIn = PostSignIn(email.text.toString(), password.text.toString())
                     signInPost(postSignIn, "http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android")
                 }
-            }
-
-            R.id.forgot_psw -> {
-
-                fragmentManagerLogin!!
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                        .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, RecoverPassword_Fragment(), "RecoverPassword_Fragment")
-                        .commit()
-                setOnLeftArrow()
-            }
+            }*/
         }
     }
 
@@ -116,7 +131,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    fun getString(textInputEditText: TextInputEditText): String {
+    fun getString(textInputEditText: EditText): String {
         return textInputEditText.text.toString()
     }
 

@@ -66,20 +66,22 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
     private lateinit var plusUnderSofa: TextView
     private lateinit var equalSign: TextView
 
+    private lateinit var mainUI: OnBoardingViewPagerHost
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        OnBoardingViewPagerHost().setContentView(this)
+        mainUI = OnBoardingViewPagerHost()
+        mainUI.setContentView(this)
 
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        val pager = findViewById<ViewPager>(R.id.ONBOARDING_VIEWPAGER_BASE)
-        indicator01 = findViewById(R.id.INDICATOR_ONE)
-        indicator02 = findViewById(R.id.INDICATOR_TWO)
-        indicator03 = findViewById(R.id.INDICATOR_THREE)
-        indicator04 = findViewById(R.id.INDICATOR_FOUR)
+        val pager = mainUI.viewPager
+        indicator01 = mainUI.dot
+        indicator02 = mainUI.dotTwo
+        indicator03 = mainUI.dotThree
+        indicator04 = mainUI.dotFour
         indicators = arrayOf(indicator01, indicator02, indicator03, indicator04)
 
         updateIndicator(pagePosition)

@@ -1,9 +1,12 @@
 package it.corelab.airbooks.section.login.pages.layout
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
+import android.text.InputType
 import android.view.Gravity
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import it.corelab.airbooks.R
@@ -11,6 +14,9 @@ import it.corelab.airbooks.section.login.fragment.LoginFragment
 import org.jetbrains.anko.*
 
 class SignInLayout: AnkoComponent<LoginFragment> {
+
+    lateinit var forgotButton: Button
+
     override fun createView(ui: AnkoContext<LoginFragment>) = with(ui) {
 
         linearLayout {
@@ -59,6 +65,8 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     compoundDrawablePadding = dip(8)
                     backgroundColor = Color.parseColor("#00000000")
                     hint = resources.getString(R.string.password_edit_text_sign_in)
+                    this.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD
+                    this.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)
@@ -84,7 +92,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                 topMargin = dip(14)
             }
 
-            button {
+            forgotButton = button {
                 Ids.FORGOT_PSW
 
                 backgroundColor = Color.parseColor("#00000000")

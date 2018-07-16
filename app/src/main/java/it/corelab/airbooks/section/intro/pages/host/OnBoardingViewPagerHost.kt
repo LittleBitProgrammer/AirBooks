@@ -1,8 +1,10 @@
 package it.corelab.airbooks.section.intro.pages.host
 
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import it.corelab.airbooks.section.intro.activity.IntroActivity
 import it.corelab.airbooks.R
@@ -11,13 +13,20 @@ import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.support.v4.viewPager
 
 class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
+
+    lateinit var dot : ImageView
+    lateinit var dotTwo : ImageView
+    lateinit var dotThree : ImageView
+    lateinit var dotFour : ImageView
+    lateinit var viewPager: ViewPager
+
     override fun createView(ui: AnkoContext<IntroActivity>) = with(ui) {
 
         coordinatorLayout {
             id = Ids.ON_BOARDING_LAYOUT
             fitsSystemWindows = true
 
-            viewPager {
+            viewPager = viewPager {
                 id = Ids.ON_BOARDING_VIEWPAGER
                 clipToPadding = false
                 overScrollMode = View.OVER_SCROLL_NEVER
@@ -33,7 +42,7 @@ class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
                     id = Ids.LINEAR_LAYOUT
                     orientation = LinearLayout.HORIZONTAL
 
-                    imageView {
+                    dot = imageView {
                         id = Ids.INDICATOR_ONE
                         background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
@@ -42,7 +51,7 @@ class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
                         rightMargin = dip(8)
                     }
 
-                    imageView {
+                    dotTwo = imageView {
                         id = Ids.INDICATOR_TWO
                         background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
@@ -51,7 +60,7 @@ class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
                         rightMargin = dip(8)
                     }
 
-                    imageView {
+                    dotThree = imageView {
                         id = Ids.INDICATOR_THREE
                         background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
@@ -60,7 +69,7 @@ class OnBoardingViewPagerHost : AnkoComponent<IntroActivity> {
                         rightMargin = dip(8)
                     }
 
-                    imageView {
+                    dotFour = imageView {
                         id = Ids.INDICATOR_FOUR
                         background = ContextCompat.getDrawable(ctx,R.drawable.indicator_unselected)
 
