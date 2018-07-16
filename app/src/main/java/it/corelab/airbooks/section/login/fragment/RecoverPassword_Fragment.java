@@ -1,4 +1,4 @@
-package it.corelab.airbooks.fragment;
+package it.corelab.airbooks.section.login.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;

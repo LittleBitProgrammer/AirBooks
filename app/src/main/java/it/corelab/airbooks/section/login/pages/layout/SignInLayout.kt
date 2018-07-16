@@ -7,6 +7,7 @@ import android.support.v4.content.res.ResourcesCompat
 import android.text.InputType
 import android.view.Gravity
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import it.corelab.airbooks.R
@@ -16,6 +17,11 @@ import org.jetbrains.anko.*
 class SignInLayout: AnkoComponent<LoginFragment> {
 
     lateinit var forgotButton: Button
+    lateinit var loginButton: Button
+    lateinit var signUpButton: Button
+    lateinit var facebookButton: Button
+    lateinit var emailEditText: EditText
+    lateinit var passwordEditText: EditText
 
     override fun createView(ui: AnkoContext<LoginFragment>) = with(ui) {
 
@@ -35,7 +41,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                 orientation = LinearLayout.VERTICAL
                 background = ContextCompat.getDrawable(ctx,R.drawable.login_edit_text)
 
-                editText{
+                emailEditText = editText{
                     id = Ids.EDIT_TEXT_EMAIL
 
                     this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.email_icon ,0,0,0)
@@ -58,7 +64,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     leftMargin = dip(8)
                 }
 
-                editText{
+                passwordEditText = editText{
                     id = Ids.EDIT_TEXT_PASSWORD
 
                     this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.password_icon ,0,0,0)
@@ -78,7 +84,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                 leftMargin = dip(20)
             }
 
-            button {
+            loginButton = button {
                 id = Ids.LOGIN_BUTTON_SIGN_IN
 
                 background = ContextCompat.getDrawable(ctx,R.drawable.login_button_background)
@@ -153,7 +159,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
 
                 }.lparams(width = matchParent, height = wrapContent)
 
-                button {
+                facebookButton = button {
                     id = Ids.BUTTON_FACEBOOK
 
                     //this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.facebook_letter_logo ,0,0,0)
@@ -171,7 +177,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     topMargin = dip(12)
                 }
 
-                button(R.string.no_account_sign_in) {
+                signUpButton = button(R.string.no_account_sign_in) {
                     Ids.NO_ACCOUNT_BUTTON
 
                     backgroundColor = Color.parseColor("#00000000")

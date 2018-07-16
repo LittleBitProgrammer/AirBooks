@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.ImageButton
 
 import it.corelab.airbooks.R
@@ -49,7 +50,7 @@ class Login : AppCompatActivity() {
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val v = currentFocus
-            if (v is TextInputEditText) {
+            if (v is EditText) {
                 if (!isPointInsideView(event.rawX, event.rawY, v)) {
                     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(v.windowToken, 0)

@@ -12,15 +12,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 
-import java.util.Locale
-
 import cn.pedant.SweetAlert.SweetAlertDialog
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.airbooks.R
-import it.corelab.airbooks.fragment.RecoverPassword_Fragment
 import it.corelab.airbooks.fragment.SignUp_Fragment
 import it.corelab.airbooks.section.MainActivity
 import it.corelab.airbooks.data.model.PostSignIn
@@ -31,11 +28,16 @@ import it.corelab.airbooks.section.login.activity.Login
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import it.corelab.airbooks.section.login.interfaces.EditTextController
+import it.corelab.airbooks.section.login.interfaces.ErrorDialogController
+import it.corelab.airbooks.section.login.interfaces.SignInController
 import it.corelab.airbooks.section.login.pages.layout.SignInLayout
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
+import java.util.*
 
-class LoginFragment : Fragment(), View.OnClickListener {
+class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDialogController{
+
 
     //VIEW
     private lateinit var viewUI: View
@@ -47,19 +49,22 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     //VIEW VARIABLES
     private lateinit var forgotPsw: Button
-    //private var loginBtn: Button? = null
-    //private var signUp: Button? = null
+    private lateinit var loginButton: Button
+    private lateinit var signUpButton: Button
+    private lateinit var facebookButton: Button
     private lateinit var email: EditText
     private lateinit var password: EditText
+    private val isCredentialValid: Boolean get() = isEmailValid(getString(email)) && !isEditTextEmpty(password)
+
 
     //API
     private var mAPIService: APIService? = null
 
+
     //UI INITIALIZATION
     private lateinit var mainUI: SignInLayout
 
-    private val isCredentialValid: Boolean
-        get() = isEmailValid(getString(email)) && !isEditTextEmpty(password as EditText)
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mainUI = SignInLayout()
@@ -74,101 +79,85 @@ class LoginFragment : Fragment(), View.OnClickListener {
         return viewUI
     }
 
-    private fun initViews() {
-
-        fragmentManagerLogin = activity!!.supportFragmentManager
-
-        forgotPsw = mainUI.forgotButton
-        //loginBtn = viewLogin.findViewById(R.id.login_btn)
-        //signUp = viewLogin.findViewById(R.id.sign_up)
-        //email = viewLogin.findViewById(R.id.edit_text)
-        //password = viewLogin.findViewById(R.id.password_edit_password)
-    }
-
-    private fun setListeners() {
-
-        forgotPsw.setOnClickListener {
-            fragmentManagerLogin!!
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
-                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, RecoverPassword_Fragment(), "RecoverPassword_Fragment")
-                    .commit()
-            setOnLeftArrow()
-        }
-        //loginBtn!!.setOnClickListener(this)
-        //signUp!!.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View) {
-        when (mainUI) {
-        /*R.id.sign_up -> {
-
-                // Replace signup frgament with animation// Replace signup frgament with animation
-                fragmentManagerLogin!!
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
-                        .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
-                        .commit()
-                setOnLeftArrow()
-            }*/
-
-        /*R.id.login_btn -> {
-
-                //login action
-                verifyCredentials()
-                if (isCredentialValid) {
-                    val postSignIn = PostSignIn(email.text.toString(), password.text.toString())
-                    signInPost(postSignIn, "http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android")
-                }
-            }*/
-        }
-    }
-
-
-    //utility
-
-    private fun isEmailValid(email: CharSequence): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    fun getString(textInputEditText: EditText): String {
-        return textInputEditText.text.toString()
-    }
-
-    private fun isEditTextEmpty(editText: EditText): Boolean {
-        return editText.length() == 0
-    }
 
     private fun setOnLeftArrow() {
         Login.leftArrow.isEnabled = true
         Login.leftArrow.visibility = View.VISIBLE
     }
 
-    private fun verifyCredentials() {
 
-        if (!isEmailValid(getString(email))) {
-            email.error = "you've to insert an email"
-        }
-        if (isEditTextEmpty(password)) {
-            //passwordLayout.setPasswordVisibilityToggleEnabled(false);
-            password.error = "Please insert a password"
-        }
+    //==============================================================================================================================================================
+    //==============================================================================================================================================================
+
+
+    //SIGN IN CONTROLLER
+    override fun initViews() {
+
+        fragmentManagerLogin = activity!!.supportFragmentManager
+
+        forgotPsw = mainUI.forgotButton
+        loginButton = mainUI.loginButton
+        signUpButton = mainUI.signUpButton
+        facebookButton = mainUI.facebookButton
+        email = mainUI.emailEditText
+        password = mainUI.passwordEditText
     }
 
-    fun doIntentToHome() {
+    override fun setListeners() {
+
+        forgotPsw.setOnClickListener {
+
+            fragmentManagerLogin!!
+                    .beginTransaction()
+                    .setCustomAnimations(R.anim.left_enter_animation, R.anim.right_exit_animation)
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, it.corelab.airbooks.section.login.fragment.RecoverPassword_Fragment(), "RecoverPassword_Fragment")
+                    .commit()
+            setOnLeftArrow()
+
+        }
+
+        signUpButton.setOnClickListener{
+
+            fragmentManagerLogin!!
+                    .beginTransaction()
+                    .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
+                    .commit()
+            setOnLeftArrow()
+
+        }
+
+        loginButton.setOnClickListener {
+            verifyCredentials()
+            if (isCredentialValid) {
+                val postSignIn = PostSignIn(email.text.toString(), password.text.toString())
+                signInPost(postSignIn, "http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android")
+            }
+        }
+
+    }
+
+    override fun doIntentToHome() {
         val homeIntent = Intent(activity, MainActivity::class.java)
         homeIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(homeIntent)
         activity!!.overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
 
-    private fun signInPost(postSignIn: PostSignIn, url: String, lang: String, os: String) {
+    override fun verifyCredentials() {
+
+        if (!isEmailValid(getString(email))) {
+            email.error = "you've to insert an email"
+        }
+        if (isEditTextEmpty(password)) {
+            password.error = "Please insert a password"
+        }
+    }
+
+    override fun signInPost(postSignIn: PostSignIn, url: String, lang: String, os: String) {
 
         val pDialog = SweetAlertDialog(activity!!, SweetAlertDialog.PROGRESS_TYPE)
-        pDialog.progressHelper.barColor = Color.parseColor("#4990e2")
-        pDialog.titleText = "Loading"
-        pDialog.setCancelable(false)
-        pDialog.show()
+        showProgressDialog(pDialog)
 
         mAPIService!!.signInPost(postSignIn, url, lang, os).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<PostSignInResponse> {
             override fun onSubscribe(d: Disposable) {
@@ -198,10 +187,79 @@ class LoginFragment : Fragment(), View.OnClickListener {
         })
     }
 
-    fun showErrorDialog() {
+
+    //==============================================================================================================================================================
+    //==============================================================================================================================================================
+
+
+    //EDIT TEXT CONTROLLER
+    /**
+     *
+     * This function work to verify the reliability of the email inserted
+     *
+     * @author Roberto Vecchio
+     * @param email email string text
+     *
+     * @version 1.0
+     *
+     * @return return a boolean value (is VALID or NOT)
+     *
+     */
+    override fun isEmailValid(email: CharSequence): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    /**
+     *
+     * This function to get the string of a editText
+     *
+     * @author Roberto Vecchio
+     * @param editText editText that you want to take the string
+     *
+     * @version 1.0
+     *
+     * @return the string of a editText
+     *
+     */
+    override fun getString(editText: EditText): String {
+        return editText.text.toString()
+    }
+
+    /**
+     *
+     * This function work to see if a editText is empty
+     *
+     * @author Roberto Vecchio
+     * @param editText editText that you want to verify if is empty
+     *
+     * @version 1.0
+     *
+     * @return if is EMPTY or NOT
+     *
+     */
+    override fun isEditTextEmpty(editText: EditText): Boolean {
+        return editText.length() == 0
+    }
+
+    //==============================================================================================================================================================
+    //==============================================================================================================================================================
+
+    //ERROR DIALOG CONTROLLER
+    override fun showErrorDialog() {
         SweetAlertDialog(activity!!, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("Errore")
                 .setContentText("Credenziali sbagliate")
                 .show()
     }
+
+    override fun showProgressDialog(dialog: SweetAlertDialog) {
+
+        dialog.progressHelper.barColor = Color.parseColor("#4990e2")
+        dialog.titleText = "Loading"
+        dialog.setCancelable(false)
+        dialog.show()
+    }
+
+    //==============================================================================================================================================================
+    //==============================================================================================================================================================
 }
