@@ -18,7 +18,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.airbooks.R
-import it.corelab.airbooks.fragment.SignUp_Fragment
 import it.corelab.airbooks.section.MainActivity
 import it.corelab.airbooks.data.model.PostSignIn
 import it.corelab.airbooks.data.model.PostSignInResponse
@@ -114,7 +113,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
             fragmentManagerLogin!!
                     .beginTransaction()
                     .setCustomAnimations(R.anim.right_enter_animation, R.anim.left_exit_animation)
-                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUp_Fragment(), "SignUp_Fragment")
+                    .replace(R.id.FRAME_CONTAINER_LOGIN_ACTIVITY, SignUpFragment(), "SignUpFragment")
                     .commit()
 
         }

@@ -111,6 +111,14 @@
     <string name="recover">Recover</string>
     <string name="back_to_login_recover_password">Back to login</string>
 
+    //SIGN_UP
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="nationality_sign_up">Nationality</string>
+    <string name="confirm_sign_up">Confirm</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="back_to_login_sign_up">Back to login</string>
+
     <string-array name="CountryCodes">
         <item>93,AF</item>
         <item>355,AL</item>

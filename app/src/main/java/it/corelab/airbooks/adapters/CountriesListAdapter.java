@@ -10,12 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import it.corelab.airbooks.R;
 import it.corelab.airbooks.section.SignUp;
+import it.corelab.airbooks.section.login.fragment.SignUpFragment;
 
-import static it.corelab.airbooks.fragment.SignUp_Fragment.countryDialog;
-import static it.corelab.airbooks.fragment.SignUp_Fragment.nation;
 
 public class CountriesListAdapter extends ArrayAdapter<String> {
     private final Context context;
@@ -30,6 +30,8 @@ public class CountriesListAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, final View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final SignUpFragment sign = new SignUpFragment();
+
         final Intent adpterIntent = new Intent(context, SignUp.class);
 
         final View rowView = inflater.inflate(R.layout.country_list_item, parent, false);
@@ -41,8 +43,8 @@ public class CountriesListAdapter extends ArrayAdapter<String> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nation.setText(textView.getText().toString());
-                countryDialog.dismiss();
+                sign.nation.setText(textView.getText().toString());
+                Objects.requireNonNull(SignUpFragment.Companion.getCountryDialog()).dismiss();
             }
         });
         return rowView;

@@ -138,4 +138,24 @@
     <item name="RECOVER.BUTTON" type="id"/>
     <item name="BACK.TO.LOGIN.RECOVER.PASSWORD" type="id"/>
 
+    //ID_LAYOUT_SIGN_UP
+    <item name="LINEAR.LAYOUT.SIGN.UP" type="id"/>
+    <item name="LINEAR.LAYOUT.EDIT.TEXT.SIGN.UP" type="id"/>
+    <item name="LINEAR.LAYOUT.HORIZONTAL.PERSON.SIGN.UP" type="id"/>
+    <item name="PERSON.IMAGE.VIEW.SIGN.UP" type="id"/>
+    <item name="LINEAR.LAYOUT.VERTICAL.PERSON.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.FIRST.NAME.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.LAST.NAME.SIGN.UP" type="id"/>
+    <item name="DIVIDER.PERSON.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.NATIONALITY.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.EMAIL.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.PASSWORD.SIGN.UP" type="id"/>
+    <item name="EDIT.TEXT.CONFIRM.PASSWORD.SIGN.UP" type="id"/>
+    <item name="DIVIDER.UNDER.PERSON.SIGN.UP" type="id"/>
+    <item name="DIVIDER.UNDER.NATIONALITY.SIGN.UP" type="id"/>
+    <item name="DIVIDER.UNDER.EMAIL.SIGN.UP" type="id"/>
+    <item name="DIVIDER.UNDER.PASSWORD.SIGN.UP" type="id"/>
+    <item name="SIGN.UP.BUTTON" type="id"/>
+    <item name="BACK.TO.LOGIN.SIGN.UP" type="id"/>
+
 </resources>
