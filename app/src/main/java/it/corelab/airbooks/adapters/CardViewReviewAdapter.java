@@ -1,9 +1,5 @@
 package it.corelab.airbooks.adapters;
 
-/**
- * Created by Roberto_Vecchio on 06/02/18.
- */
-
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -40,7 +36,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
 
     @NonNull
     @Override
-    public CardViewReviewAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardViewReviewAdapter.ReyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = layoutInflater.inflate(R.layout.review_card, parent, false);
 
         return new CardViewReviewAdapter.ReyclerViewHolder(item);

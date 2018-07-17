@@ -29,15 +29,20 @@ import it.corelab.airbooks.data.model.remote.APIService
 import it.corelab.airbooks.data.model.remote.ApiUtils
 
 import android.content.ContentValues.TAG
+import android.widget.TextView
 import it.corelab.airbooks.section.login.interfaces.signup.DialogController
 import it.corelab.airbooks.section.login.interfaces.signup.EditTextController
 import it.corelab.airbooks.section.login.interfaces.signup.SignUpController
 import it.corelab.airbooks.section.login.pages.layout.SignUpUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
+import kotlin.math.log
 
 
 class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogController {
+
+    //SINGLETON
+    //val instance = SignUpFragment()
 
     //VIEW
     private lateinit var viewUI: View
@@ -50,7 +55,6 @@ class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogC
     //VIEW VARIABLES
     private lateinit var firstName: EditText
     private lateinit var lastName: EditText
-    lateinit var nation: EditText
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var confirmPsw: EditText
@@ -81,8 +85,9 @@ class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogC
 
 
 
-    companion object {
+    companion object{
         lateinit var countryDialog: CountryDialog
+        lateinit var nation: EditText
     }
 
 
@@ -262,8 +267,8 @@ class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogC
     override fun showErrorDialog() {
         SweetAlertDialog(activity!!, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("Email esistente")
-                .setContentText("hai inserito una mail già esistente")
+                .setContentText("Email già esistente")
                 .show()
     }
-    
+
 }

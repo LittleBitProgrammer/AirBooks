@@ -1,6 +1,7 @@
 package it.corelab.airbooks.section.login.pages.layout
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.support.v4.content.ContextCompat
 import android.text.InputType
 import android.view.Gravity
@@ -69,6 +70,7 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                             backgroundColor = Color.parseColor("#00000000")
                             hint = resources.getString(R.string.first_name)
                             this.inputType = InputType.TYPE_CLASS_TEXT
+                            maxLines = 1
 
                         }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                             rightMargin = dip(8)
@@ -91,6 +93,7 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                             backgroundColor = Color.parseColor("#00000000")
                             hint = resources.getString(R.string.last_name)
                             this.inputType = InputType.TYPE_CLASS_TEXT
+                            maxLines = 1
 
                         }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                             rightMargin = dip(8)
@@ -118,6 +121,7 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                     isFocusableInTouchMode = false
                     hint = resources.getString(R.string.nationality_sign_up)
                     this.inputType = InputType.TYPE_CLASS_TEXT
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)
@@ -140,8 +144,9 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                     this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.email_icon ,0,0,0)
                     compoundDrawablePadding = dip(8)
                     backgroundColor = Color.parseColor("#00000000")
-                    hint = resources.getString(R.string.last_name)
-                    this.inputType = InputType.TYPE_CLASS_TEXT
+                    hint = resources.getString(R.string.email_edit_text_sign_in)
+                    this.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)
@@ -165,7 +170,9 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                     compoundDrawablePadding = dip(8)
                     backgroundColor = Color.parseColor("#00000000")
                     hint = resources.getString(R.string.password_edit_text_sign_in)
-                    this.inputType = InputType.TYPE_CLASS_TEXT
+                    this.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD
+                    this.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)
@@ -189,7 +196,9 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                     compoundDrawablePadding = dip(8)
                     backgroundColor = Color.parseColor("#00000000")
                     hint = resources.getString(R.string.confirm_sign_up)
-                    this.inputType = InputType.TYPE_CLASS_TEXT
+                    this.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD
+                    this.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent,weight = 1F){
                     rightMargin = dip(8)

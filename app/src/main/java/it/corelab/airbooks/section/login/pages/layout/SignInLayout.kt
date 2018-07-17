@@ -49,6 +49,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     backgroundColor = Color.parseColor("#00000000")
                     hint = resources.getString(R.string.email_edit_text_sign_in)
                     this.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)
@@ -74,6 +75,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     hint = resources.getString(R.string.password_edit_text_sign_in)
                     this.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD
                     this.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = wrapContent, weight = 1F){
                     rightMargin = dip(8)

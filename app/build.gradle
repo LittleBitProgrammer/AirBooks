@@ -9,6 +9,14 @@ allprojects {
 }
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'Aquilatedesca06'
+            storeFile file('C:/Users/rober/Desktop/airbooksKeystore.jks')
+            storePassword 'Aquilatedesca06'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "it.corelab.airbooks"
@@ -24,18 +32,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     /* ======================================================================
-                                 libraries
-     ======================================================================*/
+                                             libraries
+                 ======================================================================*/
 
     //basics
+
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation "com.android.support:recyclerview-v7:$android_support_version"
@@ -74,11 +84,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$gson_converter"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_rx_javva"
 
-
-
     /* ======================================================================
-                                  Anko
-     ======================================================================*/
+                                              Anko
+                 ======================================================================*/
 
     //anko
     implementation "org.jetbrains.anko:anko:$anko_version"
@@ -88,6 +96,7 @@ dependencies {
 
     // Anko Layouts
     implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+
     // sdk15, sdk19, sdk21, sdk23 are also available
     implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
 
@@ -97,17 +106,15 @@ dependencies {
 
     // Anko SQLite
     implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
-
     implementation "org.jetbrains.anko:anko-constraint-layout:$anko_version"
 
     // Anko Layouts
-    implementation "org.jetbrains.anko:anko-sdk25:$anko_version" // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+
+    // sdk15, sdk19, sdk21, sdk23 are also available
     implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
-
     implementation "org.jetbrains.anko:anko-cardview-v7:$anko_version"
-
     implementation "org.jetbrains.anko:anko-design:$anko_version"
-
     repositories {
         mavenCentral()
         jcenter()

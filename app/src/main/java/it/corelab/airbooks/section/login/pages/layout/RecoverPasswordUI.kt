@@ -42,6 +42,7 @@ class RecoverPasswordUI: AnkoComponent<RecoverPasswordFragment> {
                     backgroundColor = Color.parseColor("#00000000")
                     hint = resources.getString(R.string.email_edit_text_sign_in)
                     this.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    maxLines = 1
 
                 }.lparams(width = matchParent, height = matchParent){
                     rightMargin = dip(8)

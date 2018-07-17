@@ -158,4 +158,8 @@
     <item name="SIGN.UP.BUTTON" type="id"/>
     <item name="BACK.TO.LOGIN.SIGN.UP" type="id"/>
 
+    //COUNTRY_LIST_ITEM
+    <item name="LINEAR_LAYOUT_ITEM_COUNTRY" type="id"/>
+    <item name="LIST_VIEW_ITEM_COUNTRY" type="id"/>
+
 </resources>
