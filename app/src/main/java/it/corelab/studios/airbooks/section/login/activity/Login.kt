@@ -1,7 +1,6 @@
 package it.corelab.studios.airbooks.section.login.activity
 
 import android.content.Context
-import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageButton
 
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.section.login.fragment.LoginFragment
@@ -32,9 +30,6 @@ class Login : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         fragmentManager = supportFragmentManager
-        leftArrow = findViewById(R.id.LEFT_ARROW_LOGIN_ACTIVITY)
-
-        setOffLeftArrow()
 
         // If savedinstnacestate is null then replace login fragment
         if (savedInstanceState == null) {
@@ -74,14 +69,5 @@ class Login : AppCompatActivity() {
 
     override fun onBackPressed() {
         moveTaskToBack(true)
-    }
-
-    fun setOffLeftArrow() {
-        leftArrow.isEnabled = false
-        leftArrow.visibility = View.INVISIBLE
-    }
-
-    companion object {
-        lateinit var leftArrow: ImageButton
     }
 }

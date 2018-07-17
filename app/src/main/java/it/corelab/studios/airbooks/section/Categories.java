@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.adapters.CategoriesAddRv;
 import it.corelab.studios.airbooks.object.Item;
+import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
 
 public class Categories extends AppCompatActivity {
 

@@ -29,14 +29,12 @@ import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 
 import android.content.ContentValues.TAG
-import android.widget.TextView
 import it.corelab.studios.airbooks.section.login.interfaces.signup.DialogController
 import it.corelab.studios.airbooks.section.login.interfaces.signup.EditTextController
 import it.corelab.studios.airbooks.section.login.interfaces.signup.SignUpController
 import it.corelab.studios.airbooks.section.login.pages.layout.SignUpUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
-import kotlin.math.log
 
 
 class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogController {

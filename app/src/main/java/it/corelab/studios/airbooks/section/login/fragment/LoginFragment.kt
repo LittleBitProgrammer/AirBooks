@@ -18,7 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.section.MainActivity
+import it.corelab.studios.airbooks.section.navigation.activity.MainActivity
 import it.corelab.studios.airbooks.data.model.PostSignIn
 import it.corelab.studios.airbooks.data.model.PostSignInResponse
 import it.corelab.studios.airbooks.data.model.remote.APIService

@@ -29,6 +29,7 @@ import android.widget.Toast;
 import java.io.File;
 
 import it.corelab.studios.airbooks.R;
+import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
 
 public class AddDescription extends AppCompatActivity {
 

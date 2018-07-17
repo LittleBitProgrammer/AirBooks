@@ -44,16 +44,15 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
                 ?.apply {
                     onScrollListener = OnScrollListener(
                             adapter.itemCount,
-                            layoutManager,
-                            {
-                                // When dragging, we assume user swiped. So we will stop auto rotation
-                                if (it == RecyclerView.SCROLL_STATE_DRAGGING) {
-                                    dispose?.dispose()
-                                } else {
-                                    autoScroll(3, 2000)
-                                }
-                            }
-                    )
+                            layoutManager
+                    ) {
+                        // When dragging, we assume user swiped. So we will stop auto rotation
+                        if (it == RecyclerView.SCROLL_STATE_DRAGGING) {
+                            dispose?.dispose()
+                        } else {
+                            autoScroll(3, 2000)
+                        }
+                    }
                     recyclerView.addOnScrollListener(onScrollListener)
                     recyclerView.scrollToPosition(1)
                 }

@@ -42,7 +42,7 @@ import it.corelab.studios.airbooks.CustomNested;
 import it.corelab.studios.airbooks.Http.HttpHandler;
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.section.AddSection;
-import it.corelab.studios.airbooks.section.MainActivity;
+import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
 import it.corelab.studios.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.studios.airbooks.adapters.SnapBestOfWeek;

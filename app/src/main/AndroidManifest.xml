@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".section.MainActivity"
+            android:name=".section.navigation.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -73,10 +73,7 @@
             android:name=".section.login.activity.Login"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.Base" />
-        <activity
-            android:name=".section.SignUp"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.App.Base" />
+
         <activity android:name=".section.Countries"
             android:screenOrientation="portrait"/>
     </application>

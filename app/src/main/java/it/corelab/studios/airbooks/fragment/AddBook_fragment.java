@@ -1,7 +1,6 @@
 package it.corelab.studios.airbooks.fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -9,20 +8,21 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import java.util.Objects;
 
 import it.corelab.studios.airbooks.R;
 
@@ -34,12 +34,6 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
     protected View view;
     private FragmentManager fragmentManager;
     private ImageView centralCard;
-    private ImageButton returnButton;
-    private Button nextButton;
-    private TextInputLayout textInputLayout;
-    private Uri pickedImage;
-    private EditText editText;
-    private TextInputEditText editTextInput;
     public static final int PICK_IMAGE = 1;
 
     public AddBook_fragment() {
@@ -47,7 +41,7 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_add_section, container, false);
         view.setFocusableInTouchMode(true);
@@ -59,13 +53,13 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
 
     private void initViews(){
 
-        fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
         centralCard = view.findViewById(R.id.placeholder_add);
-        returnButton = view.findViewById(R.id.left_arrow_add_categories);
-        nextButton = view.findViewById(R.id.color_button_next_add_book);
-        editTextInput = view.findViewById(R.id.edit_text);
-        editText = view.findViewById(R.id.edit_text_hidden);
-        textInputLayout = view.findViewById(R.id.text_input_layout);
+        ImageButton returnButton = view.findViewById(R.id.left_arrow_add_categories);
+        Button nextButton = view.findViewById(R.id.color_button_next_add_book);
+        TextInputEditText editTextInput = view.findViewById(R.id.edit_text);
+        EditText editText = view.findViewById(R.id.edit_text_hidden);
+        TextInputLayout textInputLayout = view.findViewById(R.id.text_input_layout);
 
         editText.setEnabled(false);
 
@@ -128,11 +122,12 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
         // If the resultCode is RESULT_OK and there is some data we know that an image was picked.
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             // Let's read picked image data - its URI
-            pickedImage = data.getData();
+            Uri pickedImage = data.getData();
             // Let's read picked image path using content resolver
             String[] filePath = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getActivity().getContentResolver().query(pickedImage, filePath, null, null, null);
-            cursor.moveToFirst();
+            assert pickedImage != null;
+            Cursor cursor = Objects.requireNonNull(getActivity()).getContentResolver().query(pickedImage, filePath, null, null, null);
+            Objects.requireNonNull(cursor).moveToFirst();
             String imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
 
             BitmapFactory.Options options = new BitmapFactory.Options();

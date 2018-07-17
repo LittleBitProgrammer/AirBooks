@@ -15,18 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import it.corelab.studios.airbooks.R;
+import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
 
 public class AddRecap extends AppCompatActivity {
 
     private ImageButton dismiss;
-    private ImageButton leftArrow;
-    private Button addButton;
-    private ImageView cover;
-    private ImageView genreDrawable;
-    private TextView genreNameLabel;
-    private TextView recapDescription;
-    private TextView titleRecap;
-    private TextView filePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +30,14 @@ public class AddRecap extends AppCompatActivity {
         final Intent addIntent = new Intent(getApplicationContext(),MainActivity.class);
 
         dismiss = findViewById(R.id.dismiss_button_recap);
-        leftArrow = findViewById(R.id.left_arrow_add_recap);
-        addButton = findViewById(R.id.color_button_next_add_book_recap);
-        cover = findViewById(R.id.cover_recap);
-        genreDrawable = findViewById(R.id.genre_recap);
-        genreNameLabel = findViewById(R.id.genreName);
-        recapDescription = findViewById(R.id.recap_description);
-        titleRecap = findViewById(R.id.title_recap);
-        filePath = findViewById(R.id.file_path_recap);
+        ImageButton leftArrow = findViewById(R.id.left_arrow_add_recap);
+        Button addButton = findViewById(R.id.color_button_next_add_book_recap);
+        ImageView cover = findViewById(R.id.cover_recap);
+        ImageView genreDrawable = findViewById(R.id.genre_recap);
+        TextView genreNameLabel = findViewById(R.id.genreName);
+        TextView recapDescription = findViewById(R.id.recap_description);
+        TextView titleRecap = findViewById(R.id.title_recap);
+        TextView filePath = findViewById(R.id.file_path_recap);
 
         //==========================
         //      hide status bar
@@ -55,6 +48,7 @@ public class AddRecap extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
 
+        assert extra != null;
         int drawable = extra.getInt("categories");
         String genreName = extra.getString("nameCat");
         String uriString = extra.getString("image");
