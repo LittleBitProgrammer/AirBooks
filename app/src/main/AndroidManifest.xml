@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="it.corelab.airbooks">
+    package="it.corelab.studios.airbooks">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name="it.corelab.airbooks.section.splash.activity.SplashActivity"
+            android:name="it.corelab.studios.airbooks.section.splash.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -67,7 +67,7 @@
             android:name=".section.AddRecap"
             android:screenOrientation="portrait" />
         <activity
-            android:name="it.corelab.airbooks.section.intro.activity.IntroActivity"
+            android:name="it.corelab.studios.airbooks.section.intro.activity.IntroActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".section.login.activity.Login"

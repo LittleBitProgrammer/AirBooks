@@ -22,7 +22,7 @@
         app:layout_constraintGuide_begin="368dp" />
 
 
-    <it.corelab.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
+    <it.corelab.studios.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:diagonal="http://schemas.android.com/apk/res-auto"
         android:id="@+id/nested_home"
@@ -48,7 +48,7 @@
                 diagonal:diagonalColor="#fafafa"
                 diagonal:diagonalGravity="left" />
 
-            <it.corelab.airbooks.recyclerViewExtension.InfiniteRotationView
+            <it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView
                 android:id="@+id/rv_showcase"
                 android:layout_width="0dp"
                 android:layout_height="191dp"
@@ -147,7 +147,7 @@
                 app:layout_constraintGuide_begin="55dp" />
 
         </android.support.constraint.ConstraintLayout>
-    </it.corelab.airbooks.CustomNested>
+    </it.corelab.studios.airbooks.CustomNested>
 
     <ImageView
         android:id="@+id/topbar"

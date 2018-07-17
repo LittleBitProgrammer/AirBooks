@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Title_bookDetail" />
 
-    <it.corelab.airbooks.widget.JustifyTextView
+    <it.corelab.studios.airbooks.widget.JustifyTextView
         android:id="@+id/description_review_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"

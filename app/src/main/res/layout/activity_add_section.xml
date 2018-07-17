@@ -18,7 +18,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="it.corelab.airbooks.section.AddSection">
+            tools:context="it.corelab.studios.airbooks.section.AddSection">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@id/edit_text_hidden"
@@ -28,7 +28,7 @@
                 android:focusableInTouchMode="true"
                 android:inputType="text" />
 
-            <it.corelab.airbooks.CustomTextInputLayout
+            <it.corelab.studios.airbooks.CustomTextInputLayout
                 android:id="@id/text_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     android:inputType="text|textNoSuggestions"
                     android:textSize="18sp" />
 
-            </it.corelab.airbooks.CustomTextInputLayout>
+            </it.corelab.studios.airbooks.CustomTextInputLayout>
 
             <android.support.v7.widget.CardView
                 android:id="@id/cardView"

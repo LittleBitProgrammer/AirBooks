@@ -17,7 +17,7 @@
         diagonal:diagonalColor="#fafafa"
         diagonal:diagonalGravity="left" />
 
-    <it.corelab.airbooks.recyclerViewExtension.SnappingRecyclerView
+    <it.corelab.studios.airbooks.recyclerViewExtension.SnappingRecyclerView
         android:id="@+id/recycler_view_explore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
