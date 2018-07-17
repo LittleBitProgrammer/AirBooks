@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.interfaces.signin;
+package it.corelab.studios.airbooks.section.login.interfaces.signin;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 

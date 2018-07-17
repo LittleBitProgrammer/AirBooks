@@ -1,4 +1,4 @@
-package it.corelab.airbooks.data.model.remote;
+package it.corelab.studios.airbooks.data.model.remote;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

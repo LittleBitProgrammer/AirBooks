@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.interfaces.recover;
+package it.corelab.studios.airbooks.section.login.interfaces.recover;
 
 public interface TransactionController {
 

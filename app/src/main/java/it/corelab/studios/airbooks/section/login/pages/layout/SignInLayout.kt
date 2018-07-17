@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.pages.layout
+package it.corelab.studios.airbooks.section.login.pages.layout
 
 import android.graphics.Color
 import android.graphics.Typeface
@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import it.corelab.airbooks.R
-import it.corelab.airbooks.section.login.fragment.LoginFragment
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.section.login.fragment.LoginFragment
 import org.jetbrains.anko.*
 
 class SignInLayout: AnkoComponent<LoginFragment> {

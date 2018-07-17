@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.fragment
+package it.corelab.studios.airbooks.section.login.fragment
 
 import android.graphics.Color
 import android.os.Bundle
@@ -17,16 +17,16 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.corelab.airbooks.R
-import it.corelab.airbooks.data.model.PostRecoverResponse
-import it.corelab.airbooks.data.model.remote.APIService
-import it.corelab.airbooks.data.model.remote.ApiUtils
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.data.model.PostRecoverResponse
+import it.corelab.studios.airbooks.data.model.remote.APIService
+import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 import android.content.ContentValues.TAG
 import android.widget.EditText
-import it.corelab.airbooks.section.login.interfaces.recover.RecoverPasswordController
-import it.corelab.airbooks.section.login.interfaces.recover.TransactionController
-import it.corelab.airbooks.section.login.interfaces.signin.ErrorDialogController
-import it.corelab.airbooks.section.login.pages.layout.RecoverPasswordUI
+import it.corelab.studios.airbooks.section.login.interfaces.recover.RecoverPasswordController
+import it.corelab.studios.airbooks.section.login.interfaces.recover.TransactionController
+import it.corelab.studios.airbooks.section.login.interfaces.signin.ErrorDialogController
+import it.corelab.studios.airbooks.section.login.pages.layout.RecoverPasswordUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 

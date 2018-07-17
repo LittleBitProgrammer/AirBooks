@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package it.corelab.airbooks.section.intro.pages.layout
+package it.corelab.studios.airbooks.section.intro.pages.layout
 
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity
@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import it.corelab.airbooks.R
-import it.corelab.airbooks.section.intro.handler.OnBoardingFragment
-import it.corelab.airbooks.widget.RoundedImageView
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.section.intro.handler.OnBoardingFragment
+import it.corelab.studios.airbooks.widget.RoundedImageView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 

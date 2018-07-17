@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.intro.handler
+package it.corelab.studios.airbooks.section.intro.handler
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

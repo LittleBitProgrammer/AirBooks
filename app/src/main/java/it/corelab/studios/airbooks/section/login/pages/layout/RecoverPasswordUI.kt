@@ -88,4 +88,6 @@ class RecoverPasswordUI: AnkoComponent<RecoverPasswordFragment> {
         const val LINEAR_LAYOUT_EDIT_TEXT = R.id.LINEAR_LAYOUT_EDIT_TEXT_RECOVER_PASSWORD
         const val RECOVER_PASSWORD_EDIT_TEXT = R.id.RECOVER_PASSWORD_EDIT_TEXT
         const val RECOVER_BUTTON = R.id.RECOVER_BUTTON
-        const val BACK_TO_LOGIN = R.id.BACK_TO_LOGIN_RE
+        const val BACK_TO_LOGIN = R.id.BACK_TO_LOGIN_RECOVER_PASSWORD
+    }
+}

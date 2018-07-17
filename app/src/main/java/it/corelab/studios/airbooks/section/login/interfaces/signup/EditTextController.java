@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.interfaces.signup;
+package it.corelab.studios.airbooks.section.login.interfaces.signup;
 
 import android.widget.EditText;
 

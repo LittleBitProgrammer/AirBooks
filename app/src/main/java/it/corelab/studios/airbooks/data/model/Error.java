@@ -1,4 +1,4 @@
-package it.corelab.airbooks.data.model;
+package it.corelab.studios.airbooks.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

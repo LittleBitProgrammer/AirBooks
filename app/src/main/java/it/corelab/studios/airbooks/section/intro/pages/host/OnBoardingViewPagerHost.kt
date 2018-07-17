@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.intro.pages.host
+package it.corelab.studios.airbooks.section.intro.pages.host
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
@@ -6,8 +6,8 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import it.corelab.airbooks.section.intro.activity.IntroActivity
-import it.corelab.airbooks.R
+import it.corelab.studios.airbooks.section.intro.activity.IntroActivity
+import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.support.v4.viewPager

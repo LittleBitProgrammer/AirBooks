@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.fragment
+package it.corelab.studios.airbooks.section.login.fragment
 
 import android.content.Intent
 import android.graphics.Color
@@ -17,19 +17,19 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.corelab.airbooks.R
-import it.corelab.airbooks.section.MainActivity
-import it.corelab.airbooks.data.model.PostSignIn
-import it.corelab.airbooks.data.model.PostSignInResponse
-import it.corelab.airbooks.data.model.remote.APIService
-import it.corelab.airbooks.data.model.remote.ApiUtils
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.section.MainActivity
+import it.corelab.studios.airbooks.data.model.PostSignIn
+import it.corelab.studios.airbooks.data.model.PostSignInResponse
+import it.corelab.studios.airbooks.data.model.remote.APIService
+import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 
 import android.content.ContentValues.TAG
 import android.content.Context
-import it.corelab.airbooks.section.login.interfaces.signin.EditTextController
-import it.corelab.airbooks.section.login.interfaces.signin.ErrorDialogController
-import it.corelab.airbooks.section.login.interfaces.signin.SignInController
-import it.corelab.airbooks.section.login.pages.layout.SignInLayout
+import it.corelab.studios.airbooks.section.login.interfaces.signin.EditTextController
+import it.corelab.studios.airbooks.section.login.interfaces.signin.ErrorDialogController
+import it.corelab.studios.airbooks.section.login.interfaces.signin.SignInController
+import it.corelab.studios.airbooks.section.login.pages.layout.SignInLayout
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 import java.util.*

@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.intro.interfaces;
+package it.corelab.studios.airbooks.section.intro.interfaces;
 
 public interface PageFourInitialization {
     void initializePageFourVariables();

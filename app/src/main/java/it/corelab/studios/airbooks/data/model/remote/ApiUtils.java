@@ -1,4 +1,4 @@
-package it.corelab.airbooks.data.model.remote;
+package it.corelab.studios.airbooks.data.model.remote;
 
 public class ApiUtils {
 

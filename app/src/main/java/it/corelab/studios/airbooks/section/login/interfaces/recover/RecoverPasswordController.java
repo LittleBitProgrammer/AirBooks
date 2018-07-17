@@ -14,4 +14,5 @@ public interface RecoverPasswordController {
 
     void verifyCredential();
 
-    void sendPost(String emailText,String url,String lang,String o
+    void sendPost(String emailText,String url,String lang,String os);
+}

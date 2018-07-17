@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.fragment
+package it.corelab.studios.airbooks.section.login.fragment
 
 import android.graphics.Color
 import android.os.Bundle
@@ -21,19 +21,19 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.corelab.airbooks.CountryDialog
-import it.corelab.airbooks.R
-import it.corelab.airbooks.data.model.PostSignUp
-import it.corelab.airbooks.data.model.PostSignUpResponse
-import it.corelab.airbooks.data.model.remote.APIService
-import it.corelab.airbooks.data.model.remote.ApiUtils
+import it.corelab.studios.airbooks.CountryDialog
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.data.model.PostSignUp
+import it.corelab.studios.airbooks.data.model.PostSignUpResponse
+import it.corelab.studios.airbooks.data.model.remote.APIService
+import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 
 import android.content.ContentValues.TAG
 import android.widget.TextView
-import it.corelab.airbooks.section.login.interfaces.signup.DialogController
-import it.corelab.airbooks.section.login.interfaces.signup.EditTextController
-import it.corelab.airbooks.section.login.interfaces.signup.SignUpController
-import it.corelab.airbooks.section.login.pages.layout.SignUpUI
+import it.corelab.studios.airbooks.section.login.interfaces.signup.DialogController
+import it.corelab.studios.airbooks.section.login.interfaces.signup.EditTextController
+import it.corelab.studios.airbooks.section.login.interfaces.signup.SignUpController
+import it.corelab.studios.airbooks.section.login.pages.layout.SignUpUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 import kotlin.math.log

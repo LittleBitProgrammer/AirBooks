@@ -1,4 +1,4 @@
-package it.corelab.airbooks.section.login.activity
+package it.corelab.studios.airbooks.section.login.activity
 
 import android.content.Context
 import android.support.design.widget.TextInputEditText
@@ -11,9 +11,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 
-import it.corelab.airbooks.R
-import it.corelab.airbooks.section.login.fragment.LoginFragment
-import it.corelab.airbooks.section.login.pages.host.LoginHost
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.section.login.fragment.LoginFragment
+import it.corelab.studios.airbooks.section.login.pages.host.LoginHost
 import org.jetbrains.anko.setContentView
 
 
