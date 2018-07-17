@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.section;
+package it.corelab.studios.airbooks.section.navigation.activity;
 
 import android.content.Context;
 import android.content.Intent;
