@@ -28,7 +28,7 @@ android {
 
         buildConfigField 'int', 'DEFAULT_ANIMATION_DURATION', '450'
     }
-    
+
     buildTypes {
         release {
             minifyEnabled false
