@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class CountryCodes {
-    final Map<String, String> map = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+    private final Map<String, String> map = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     public CountryCodes() {
 

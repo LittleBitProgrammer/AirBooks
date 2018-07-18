@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import it.corelab.studios.airbooks.object.Book;
-import it.corelab.studios.airbooks.object.Item;
 import it.corelab.studios.airbooks.R;
 
 /**

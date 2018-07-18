@@ -1,6 +1,6 @@
 package it.corelab.studios.airbooks.recyclerViewExtension;
 
-/**
+/*
  * Created by Roberto_Vecchio on 14/02/18.
  */
 import android.content.Context;
@@ -70,7 +70,7 @@ public class SnappingRecyclerView extends RecyclerView {
         getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
         });
 
@@ -207,7 +207,7 @@ public class SnappingRecyclerView extends RecyclerView {
             ((MarginLayoutParams) child.getLayoutParams()).setMarginEnd(endMargin);
         }
 
-        /** If layout direction is RTL, swap the margins  **/
+        /* If layout direction is RTL, swap the margins  **/
         if (ViewCompat.getLayoutDirection(child) == ViewCompat.LAYOUT_DIRECTION_RTL) {
             ((MarginLayoutParams) child.getLayoutParams()).setMargins(endMargin, topMargin, startMargin, bottomMargin);
         } else {
@@ -284,7 +284,7 @@ public class SnappingRecyclerView extends RecyclerView {
             int distance = childCenterLocation - location;
 
 
-            /** if child center is closer than previous closest, set it as closest child  **/
+            /* if child center is closer than previous closest, set it as closest child  **/
             if (Math.abs(distance) < Math.abs(closestPos)) {
                 closestPos = distance;
                 closestChild = child;

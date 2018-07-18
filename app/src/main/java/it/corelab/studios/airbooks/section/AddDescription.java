@@ -36,9 +36,7 @@ public class AddDescription extends AppCompatActivity {
     private EditText editText;
     private TextView textView;
     private TextView filePathLabel;
-    private Button nextButton;
     private static final int PICKFILE_RESULT_CODE = 1;
-    private File myFile;
     private String fileNameString;
 
     @Override
@@ -49,7 +47,7 @@ public class AddDescription extends AppCompatActivity {
         editText = findViewById(R.id.editText_description);
         textView = findViewById(R.id.text_counter);
         filePathLabel = findViewById(R.id.filePath);
-        nextButton = findViewById(R.id.color_button_next_add_book);
+        Button nextButton = findViewById(R.id.color_button_next_add_book);
 
 
         final Intent dismissIntent = new Intent(getApplicationContext(),MainActivity.class);
@@ -61,6 +59,7 @@ public class AddDescription extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
+        assert extra != null;
         final String uri = extra.getString("image");
         final int drawable = extra.getInt("categories");
         final String genreName = extra.getString("nameCat");
@@ -164,7 +163,7 @@ public class AddDescription extends AppCompatActivity {
                     Uri uri = data.getData();
                     assert uri != null;
                     String uriString = uri.toString();
-                    myFile = new File(uriString);
+                    File myFile = new File(uriString);
                     String path = myFile.getAbsolutePath();
                     String displayName;
 

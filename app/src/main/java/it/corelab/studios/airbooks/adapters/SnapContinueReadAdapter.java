@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.object.Book;
-import it.corelab.studios.airbooks.object.Item;
 
 /**
  * Created by Roberto_Vecchio on 18/02/18.
