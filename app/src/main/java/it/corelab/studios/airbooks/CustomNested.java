@@ -34,15 +34,15 @@ public class CustomNested extends NestedScrollView {
                float variation = 46.0f - (diff * 0.05f);
                //Log.i("AIRBOOKS >= 600:-----> ", "" + diff);
 
-               takeYPosition(FadeFragment.diagonalView);
+               //takeYPosition(FadeFragment.diagonalView);
 
                if (diff <= 600){
-                   FadeFragment.diagonalView.setAngle(16.0f);
-                   FadeFragment.angleVariation = 16.0f;
+                   //FadeFragment.diagonalView.setAngle(16.0f);
+                   //FadeFragment.angleVariation = 16.0f;
                }else if ( diff <= 900 && variation <= 16.0f){
                    //topBar.animate().scaleY(0.8f);
-                   FadeFragment.diagonalView.setAngle(variation);
-                   FadeFragment.angleVariation = variation;
+                   //FadeFragment.diagonalView.setAngle(variation);
+                   //FadeFragment.angleVariation = variation;
                   // Log.i("AIRBOOKS >= 61000:---> ", "" + (46.0f - (diff * 0.05f)));
                }
            }

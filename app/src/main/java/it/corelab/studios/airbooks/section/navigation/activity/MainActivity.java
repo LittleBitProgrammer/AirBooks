@@ -33,10 +33,6 @@ import it.corelab.studios.airbooks.adapters.ViewPagerAdapter;
 
 import static it.corelab.studios.airbooks.CustomNested.yHomePosition;
 import static it.corelab.studios.airbooks.fragment.FadeFragment.angleVariation;
-import static it.corelab.studios.airbooks.fragment.FadeFragment.diagonalView;
-import static it.corelab.studios.airbooks.fragment.FadeFragment.exploreDiagonal;
-import static it.corelab.studios.airbooks.fragment.FadeFragment.libDiagonal;
-import static it.corelab.studios.airbooks.fragment.FadeFragment.profileDiagonal;
 import static it.corelab.studios.airbooks.fragment.FadeFragment.yPosition;
 
 public class MainActivity extends AppCompatActivity {
@@ -166,16 +162,16 @@ public class MainActivity extends AppCompatActivity {
                     //currentFragment.willBeHidden();
                     switch (currentFragment.getArguments().getInt("index", 0)){
                         case 0:
-                            takeYPosition(diagonalView);
+                            //takeYPosition(diagonalView);
                             break;
                         case 1:
-                            takeYPosition(exploreDiagonal);
+                            //takeYPosition(exploreDiagonal);
                             break;
                         case 2:
-                            takeYPosition(libDiagonal);
+                            //takeYPosition(libDiagonal);
                             break;
                         case 3:
-                            takeYPosition(profileDiagonal);
+                            //takeYPosition(profileDiagonal);
                             break;
                     }
                     Log.i("FRAGMENT", "fragment will be hidden");
@@ -196,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
 
                         if ( yHomePosition < 0.0 ){
-                            FadeFragment.diagonalView.setY(- yHomePosition);
-                            diagonalView.animate().translationY(6).setInterpolator(new DecelerateInterpolator());
+                            //FadeFragment.diagonalView.setY(- yHomePosition);
+                            //diagonalView.animate().translationY(6).setInterpolator(new DecelerateInterpolator());
                         }
 
                         break;
@@ -206,15 +202,15 @@ public class MainActivity extends AppCompatActivity {
                         if (angleVariation <= 16.0){
                             for ( float i = angleVariation; i <= 16.0f; i += 0.1){
                                 if (i <= 16.0) {
-                                    exploreDiagonal.setAngle(i);
+                                    //exploreDiagonal.setAngle(i);
                                     Log.i("ANGLE", "" + i );
                                 }
                             }
                         }
 
                         if (yPosition <= 0) {
-                            exploreDiagonal.setY(yPosition);
-                            exploreDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
+                            //exploreDiagonal.setY(yPosition);
+                            //exploreDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
                         }
 
 
@@ -224,35 +220,35 @@ public class MainActivity extends AppCompatActivity {
                         if (angleVariation <= 16.0){
                             for ( float i = angleVariation; i <= 16.0f; i += 0.1){
                                 if (i <= 16.0) {
-                                    libDiagonal.setAngle(i);
+                                    //libDiagonal.setAngle(i);
                                     Log.i("ANGLE", "" + i );
                                 }
                             }
                         }
 
                         if (yPosition <= 0) {
-                            libDiagonal.setY(yPosition);
-                            libDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
+                            //libDiagonal.setY(yPosition);
+                            //libDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
                         }
 
-                        takeYPosition(libDiagonal);
+                        //takeYPosition(libDiagonal);
                         break;
                     case 3:
                         if (angleVariation <= 16.0){
                             for ( float i = angleVariation; i <= 16.0f; i += 0.1){
                                 if (i <= 16.0) {
-                                    profileDiagonal.setAngle(i);
+                                    //profileDiagonal.setAngle(i);
                                     Log.i("ANGLE", "" + i );
                                 }
                             }
                         }
 
                         if (yPosition <= 0) {
-                            profileDiagonal.setY(yPosition);
-                            profileDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
+                            //profileDiagonal.setY(yPosition);
+                            //profileDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
                         }
 
-                        takeYPosition(profileDiagonal);
+                        //takeYPosition(profileDiagonal);
                         break;
                 }
 

@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-import developer.shivam.library.DiagonalView;
 import it.corelab.studios.airbooks.CustomNested;
 import it.corelab.studios.airbooks.Http.HttpHandler;
 import it.corelab.studios.airbooks.R;
@@ -100,12 +99,8 @@ public class FadeFragment extends Fragment {
    private static ProgressDialog pDialog;
    public static CustomNested customNested;
    public static ImageView trapezoid;
-   public static DiagonalView diagonalView;
    public static float angleVariation;
    public static int yPosition;
-   public static DiagonalView exploreDiagonal;
-    public static DiagonalView libDiagonal;
-    public static DiagonalView profileDiagonal;
     private FragmentManager fragmentManager;
    //public static ImageView topBar;
 
@@ -227,7 +222,7 @@ public class FadeFragment extends Fragment {
 
    public void willBeDisplayed(){
        if(fragmentContainer!= null){
-           exploreDiagonal.setAngle(angleVariation);
+           //exploreDiagonal.setAngle(angleVariation);
            Log.i("HIDDEN", "" + angleVariation);
        }
    }
@@ -249,7 +244,7 @@ public class FadeFragment extends Fragment {
 
    public void willBeHidden(){
        if (fragmentContainer != null){
-           exploreDiagonal.setAngle(angleVariation);
+           //exploreDiagonal.setAngle(angleVariation);
        }
    }
 
@@ -286,7 +281,7 @@ public class FadeFragment extends Fragment {
     public void initHome(final View view){
 
         customNested = view.findViewById(R.id.nested_home);
-        diagonalView = view.findViewById(R.id.diagonal_view);
+        //diagonalView = view.findViewById(R.id.diagonal_view);
         fragmentManager = getActivity().getSupportFragmentManager();
         //trapezoid = view.findViewById(R.id.trapezoid);
         //topBar = view.findViewById(R.id.topbar);
@@ -582,7 +577,7 @@ public class FadeFragment extends Fragment {
          */
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
-        exploreDiagonal = view.findViewById(R.id.diagonal_view_explore);
+        //exploreDiagonal = view.findViewById(R.id.diagonal_view_explore);
 
 
 
@@ -708,7 +703,7 @@ public class FadeFragment extends Fragment {
 
         fragmentContainer = view.findViewById(R.id.fragment_container);
 
-        libDiagonal = view.findViewById(R.id.diagonal_view_library);
+        //libDiagonal = view.findViewById(R.id.diagonal_view_library);
 
 
         /*
@@ -834,7 +829,7 @@ public class FadeFragment extends Fragment {
          */
 
        fragmentContainer = view.findViewById(R.id.fragment_container);
-       profileDiagonal = view.findViewById(R.id.diagonal_view_profile);
+       //profileDiagonal = view.findViewById(R.id.diagonal_view_profile);
 
 
        /*

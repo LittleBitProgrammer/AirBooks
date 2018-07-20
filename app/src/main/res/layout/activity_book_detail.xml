@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="it.corelab.studios.airbooks.section.BookDetail">
 
-    <developer.shivam.library.DiagonalView
+    <!--<developer.shivam.library.DiagonalView
         android:id="@+id/diagonal_view_bookDetail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         diagonal:angle="16"
         diagonal:diagonalColor="#fafafa"
-        diagonal:diagonalGravity="left" />
+        diagonal:diagonalGravity="left" />-->
 
     <TextView
         android:id="@+id/top_bar_name"
