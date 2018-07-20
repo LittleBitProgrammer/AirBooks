@@ -24,7 +24,7 @@ public class CustomNested extends NestedScrollView {
     }
 
 
-   public void snap(){
+   public void takeScrollVariation(){
        setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
            @Override
            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {

@@ -94,7 +94,7 @@ public class SnappingRecyclerView extends RecyclerView {
                         _userScrolling = true;
                     }
                 } else if (newState == SCROLL_STATE_IDLE) {
-                    /* if user is the one scrolling, snap to the view closest to center */
+                    /* if user is the one scrolling, takeScrollVvariation to the view closest to center */
                     if (_userScrolling) {
                         scrollToView(getCenterView());
                     }

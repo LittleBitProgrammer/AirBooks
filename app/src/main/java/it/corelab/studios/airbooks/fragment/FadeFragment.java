@@ -130,10 +130,7 @@ public class FadeFragment extends Fragment {
 
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
-   private ArrayList<Item> exploreCardItem;
-   private ArrayList<Item> libraryCardItem;
-   private ArrayList<Item> rvContinueReadItem;
-   private ArrayList<Item> rvCategoriesItem;
+    private ArrayList<Item> rvCategoriesItem;
    private ArrayList<Showcase> showcaseCardItem;
    private static ArrayList<Book> bookArrayList;
 
@@ -294,7 +291,7 @@ public class FadeFragment extends Fragment {
         //trapezoid = view.findViewById(R.id.trapezoid);
         //topBar = view.findViewById(R.id.topbar);
 
-        customNested.snap();
+        //customNested.takeScrollVvariation();
         angleVariation = 16.0f;
 
         /*
@@ -1020,7 +1017,7 @@ public class FadeFragment extends Fragment {
     }
 
     private void createExploreCard(){
-        exploreCardItem = new ArrayList<>();
+        ArrayList<Item> exploreCardItem = new ArrayList<>();
 
         exploreCardItem.add(new Item("All this", R.drawable.all_this, 93, 3 , "Jojo Moyes"));
         exploreCardItem.add(new Item("Titan", R.drawable.titan,25, 4, "Alessandro Baricco"));
@@ -1034,7 +1031,7 @@ public class FadeFragment extends Fragment {
         exploreCardItem.add(new Item("Papera", R.drawable.papera,67,2,"Harper Lee"));
     }
     private void createLibraryCard(){
-        libraryCardItem = new ArrayList<>();
+        ArrayList<Item> libraryCardItem = new ArrayList<>();
 
         libraryCardItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 93));
         libraryCardItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco",25));
@@ -1066,7 +1063,7 @@ public class FadeFragment extends Fragment {
 
     public void createRvContinueReadItem() {
 
-        rvContinueReadItem = new ArrayList<>();
+        ArrayList<Item> rvContinueReadItem = new ArrayList<>();
 
 
         rvContinueReadItem.add(new Item( R.drawable.all_this));

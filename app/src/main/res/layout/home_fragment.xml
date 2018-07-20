@@ -35,18 +35,6 @@
             android:paddingBottom="60dp">
 
 
-            <developer.shivam.library.DiagonalView
-                android:id="@+id/diagonal_view"
-                android:layout_width="match_parent"
-                android:layout_height="357dp"
-                android:layout_marginBottom="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/background_color"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_background"
-                diagonal:angle="16"
-                diagonal:diagonalColor="#fafafa"
-                diagonal:diagonalGravity="left" />
-
             <it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView
                 android:id="@+id/rv_showcase"
                 android:layout_width="0dp"

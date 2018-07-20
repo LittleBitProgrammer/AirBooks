@@ -7,23 +7,10 @@
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:diagonal="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F5F8"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-
-        <developer.shivam.library.DiagonalView
-            android:id="@+id/diagonal_view_profile"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/background_color"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_background"
-            app:layout_constraintTop_toTopOf="parent"
-            diagonal:angle="16"
-            diagonal:diagonalColor="#fafafa"
-            diagonal:diagonalGravity="left" />
 
         <ImageView
             android:id="@+id/imageView9"

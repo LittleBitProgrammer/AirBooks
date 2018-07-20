@@ -121,9 +121,6 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private void initUI(){
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        }
 
         bottomNavigation= findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
@@ -150,9 +147,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setAccentColor(Color.parseColor("#4A88AC"));
         bottomNavigation.setInactiveColor(Color.parseColor("#E1E4E9"));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            bottomNavigation.setElevation(0);
-        }
+        bottomNavigation.setElevation(0);
 
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
