@@ -37,14 +37,14 @@ import static it.corelab.studios.airbooks.fragment.FadeFragment.yPosition;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FadeFragment currentFragment;
+    //private FadeFragment currentFragment;
     private ViewPagerAdapter adapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private Handler handler = new Handler();
 
     // UI
 
-    private AHBottomNavigationViewPager viewPager;
+    //private AHBottomNavigationViewPager viewPager;
     public static AHBottomNavigation bottomNavigation;
 
 
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
                 .getBoolean("translucentNavigation", false);
         setTheme(enabledTranslucentNavigation ? R.style.AppTheme_TranslucentNavigation : R.style.AppTheme);
-        setContentView(R.layout.activity_main);
+        //DOPPIONE? setContentView(R.layout.activity_main);
         initUI();
 
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
+        //handler.removeCallbacksAndMessages(null);
     }
 
     public void minimizeApp(){
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigation.setElevation(0);
 
-        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+        /*bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
 
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("FRAGMENT", "fragment will be hidden");
                 }
 
-                viewPager.setCurrentItem(position, false);
+                //viewPager.setCurrentItem(position, false);
 
                 if (currentFragment == null) {
                     return true;
@@ -256,14 +256,14 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             }
-        });
+        });*/
 
-        viewPager.setOffscreenPageLimit(3);
+        //viewPager.setOffscreenPageLimit(3);
 
-        adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+        //adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        //viewPager.setAdapter(adapter);
 
-        currentFragment = adapter.getCurrentFragment();
+        //currentFragment = adapter.getCurrentFragment();
     }
 
     public void takeYPosition(final View view) {
