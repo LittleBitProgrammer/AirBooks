@@ -140,10 +140,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setTranslucentNavigationEnabled(true);
 
         // Change colors
-        bottomNavigation.setAccentColor(Color.parseColor("#4A88AC"));
-        bottomNavigation.setInactiveColor(Color.parseColor("#E1E4E9"));
+        bottomNavigation.setAccentColor(Color.parseColor("#6E7B8C"));
+        bottomNavigation.setInactiveColor(Color.parseColor("#C6C8CB"));
 
         bottomNavigation.setElevation(0);
+        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
 
         /*bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
