@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI(){
 
-        bottomNavigation= findViewById(R.id.bottom_navigation);
-        viewPager = findViewById(R.id.view_pager);
+        bottomNavigation= findViewById(R.id.navigation);
+        //viewPager = findViewById(R.id.view_pager);
 
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab1, R.drawable.icona_home, R.color.accent_color);

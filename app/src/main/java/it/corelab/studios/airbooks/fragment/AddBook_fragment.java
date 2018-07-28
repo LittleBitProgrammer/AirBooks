@@ -77,12 +77,12 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
             {
                 if( keyCode == KeyEvent.KEYCODE_BACK )
                 {
-                    fragmentManager
+                   /* fragmentManager
                             .beginTransaction()
                             .setCustomAnimations(R.anim.right_enter_animation,R.anim.left_exit_animation)
                             .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
                             .commit();
-                    return true;
+                    return true;*/
                 }
                 return false;
             }

@@ -528,7 +528,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        addButtonHome.setOnClickListener(new View.OnClickListener() {
+      /*  addButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentManager
@@ -537,7 +537,7 @@ public class FadeFragment extends Fragment {
                         .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
                         .commit();
             }
-        });
+        });*/
 
     }
 
