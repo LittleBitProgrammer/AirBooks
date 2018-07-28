@@ -37,6 +37,8 @@ import static it.corelab.studios.airbooks.fragment.FadeFragment.yPosition;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     //private FadeFragment currentFragment;
     private ViewPagerAdapter adapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -61,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
-                .getBoolean("translucentNavigation", false);
-        setTheme(enabledTranslucentNavigation ? R.style.AppTheme_TranslucentNavigation : R.style.AppTheme);
+       // boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
+         //       .getBoolean("translucentNavigation", false);
+        setTheme( R.style.AppTheme);
         //DOPPIONE? setContentView(R.layout.activity_main);
         initUI();
 
