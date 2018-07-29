@@ -1,6 +1,7 @@
 package it.corelab.studios.airbooks.data.model.remote;
 
 import io.reactivex.Observable;
+import it.corelab.studios.airbooks.data.model.HOME.GetHome;
 import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.AutomaticSignInResponse;
 import it.corelab.studios.airbooks.data.model.LOGIN.RECOVERPASSWORD.PostRecoverResponse;
 import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn;
@@ -40,4 +41,11 @@ public interface APIService {
                                                         @Header("Lang") String lang,
                                                         @Header("Os") String os,
                                                         @Header("Token") String token);
+
+    @GET
+    Observable<GetHome> getHomeFeed(@Url String url,
+                                    @Header("Lang") String lang,
+                                    @Header("Os") String os,
+                                    @Header("Token") String token);
+    
 }
