@@ -512,7 +512,7 @@ public class FadeFragment extends Fragment {
             public void onScrollChanged() {
                 if (customNested.getChildAt(0).getBottom() <= (customNested.getHeight() + customNested.getScrollY())) {
                     //scroll view is at bottom
-                    MainActivity.bottomNavigation.restoreBottomNavigation(true);
+                   // MainActivity.getBottomNavigation().restoreBottomNavigation(true);
                 }
                 //@ELSE scroll view is not at bottom
 
