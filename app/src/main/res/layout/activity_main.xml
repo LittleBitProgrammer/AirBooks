@@ -6,6 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.github.florent37.shapeofview.shapes.DiagonalView
+        android:id="@+id/diagonal_main"
+        android:layout_width="match_parent"
+        android:layout_height="357dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_diagonal_angle="16"
+        app:shape_diagonal_direction="left"
+        app:shape_diagonal_position="bottom">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_color"/>
+
+    </com.github.florent37.shapeofview.shapes.DiagonalView>
+
     <FrameLayout
         android:id="@+id/section_home_wrapper"
         android:layout_width="match_parent"

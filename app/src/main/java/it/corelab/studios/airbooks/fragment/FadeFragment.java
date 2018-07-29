@@ -1,14 +1,11 @@
 package it.corelab.studios.airbooks.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +19,6 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -40,8 +36,6 @@ import java.util.Objects;
 import it.corelab.studios.airbooks.CustomNested;
 import it.corelab.studios.airbooks.Http.HttpHandler;
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.section.AddSection;
-import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
 import it.corelab.studios.airbooks.adapters.CardViewReviewAdapter;
 import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.studios.airbooks.adapters.SnapBestOfWeek;
@@ -101,7 +95,6 @@ public class FadeFragment extends Fragment {
    public static ImageView trapezoid;
    public static float angleVariation;
    public static int yPosition;
-    private FragmentManager fragmentManager;
    //public static ImageView topBar;
 
 
@@ -209,62 +202,6 @@ public class FadeFragment extends Fragment {
 
    }
 
-
-
-   /*
-
-   // USE THIS METHOD IF YOU NEED TO ANIMATE IN ENTRY A SECTION OF BOTTOM
-   * Called when a fragment will be displayed
-   * Do what you want here, for example animate the content
-
-   * ========================================================================================= *
- */
-
-   public void willBeDisplayed(){
-       if(fragmentContainer!= null){
-           //exploreDiagonal.setAngle(angleVariation);
-           Log.i("HIDDEN", "" + angleVariation);
-       }
-   }
-
-/*
-   * ========================================================================================= *
-
-
-
-
-
-   // USE THIS METHOD IF YOU NEED TO ANIMATE IN EXIT A SECTION OF BOTTOM
-   * called when a fragment will be hidden
-   * Do what you want here, for example animate the content
-
-
-   * ========================================================================================= *
- */
-
-   public void willBeHidden(){
-       if (fragmentContainer != null){
-           //exploreDiagonal.setAngle(angleVariation);
-       }
-   }
-
- /*
-   * ========================================================================================= *
-
-
-
-   * @refresh method
-   * used to smooth scroll to choosen section of bottomBar
-
-    */
-
-    public void refresh() {
-        if (getArguments().getInt("index", 0) > 0 && recyclerView != null) {
-            recyclerView.smoothScrollToPosition(0);
-        }
-    }
-
-
     /*=====================================================================
                                 initHome()
     =====================================================================*/
@@ -276,29 +213,9 @@ public class FadeFragment extends Fragment {
     * to initialize the @USER INTERFACE of the home
 
      */
-
-    @SuppressLint("ClickableViewAccessibility")
     public void initHome(final View view){
 
         customNested = view.findViewById(R.id.nested_home);
-        //diagonalView = view.findViewById(R.id.diagonal_view);
-        fragmentManager = getActivity().getSupportFragmentManager();
-        //trapezoid = view.findViewById(R.id.trapezoid);
-        //topBar = view.findViewById(R.id.topbar);
-
-        //customNested.takeScrollVvariation();
-        angleVariation = 16.0f;
-
-        /*
-
-         * This is the intent for the add section
-         * is declared final to access to inner method
-         * this is the biggest section initialization for now
-
-         */
-
-        final Intent intentAddSection = new Intent(getActivity(), AddSection.class);
-
 
         /*
 
@@ -320,15 +237,6 @@ public class FadeFragment extends Fragment {
 
         /*
 
-        Initialize the @fragmentContainer with the choosen layout
-
-         */
-
-        fragmentContainer = view.findViewById(R.id.fragment_container);
-
-
-        /*
-
         * Initialization of different variables @GROUP
         *
         * @1. GROUP = declare final to access to inner method
@@ -339,13 +247,6 @@ public class FadeFragment extends Fragment {
         * @rotationView is declared as global so it is an exception for guidelines
 
          */
-
-        // 1. GROUP
-        final ImageButton addButtonHome = view.findViewById(R.id.add_button_home);
-        //final NestedScrollView nestedScrollView = view.findViewById(R.id.nested_home);
-
-        // 2. GROUP
-        ImageButton search = view.findViewById(R.id.search_button_home);
 
         // 3. GROUP
         rotationView = view.findViewById(R.id.rv_showcase);
@@ -479,27 +380,6 @@ public class FadeFragment extends Fragment {
 
         /*
 
-        * This method is used to enlarge the hit area of @addButton
-        * for now the area is 200, to modify comunicate it to design team
-
-         */
-
-        final View parent = (View) addButtonHome.getParent();  // button: the view you want to enlarge hit area
-        parent.post( new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                addButtonHome.getHitRect(rect);
-                rect.top -= 200;    // increase top hit area
-                rect.left -= 200;   // increase left hit area
-                rect.bottom += 200; // increase bottom hit area
-                rect.right += 200;  // increase right hit area
-                parent.setTouchDelegate( new TouchDelegate( rect , addButtonHome));
-            }
-        });
-
-
-        /*
-
         * This method is used to show automatically the bottomNavigation at the end of the page
         * this isn't scripted to a specifically height
         * it is modular and adapted automatically to every height you choose for the main layout
@@ -518,26 +398,6 @@ public class FadeFragment extends Fragment {
 
             }
         });
-
-
-        /*
-
-        * This method is used for action on tap of @addButton
-        * the setFlags is used to avoid multiple intent on multiple tap
-        * the pending transition override the animation of the intent
-
-         */
-
-      /*  addButtonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.right_enter_animation,R.anim.left_exit_animation)
-                        .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
-                        .commit();
-            }
-        });*/
 
     }
 
