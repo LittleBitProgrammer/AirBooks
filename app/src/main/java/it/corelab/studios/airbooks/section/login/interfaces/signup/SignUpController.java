@@ -2,7 +2,7 @@ package it.corelab.studios.airbooks.section.login.interfaces.signup;
 
 import android.widget.EditText;
 
-import it.corelab.studios.airbooks.data.model.PostSignUp;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUp;
 
 public interface SignUpController {
 

@@ -1,9 +1,12 @@
-package it.corelab.studios.airbooks.data.model;
+package it.corelab.studios.airbooks.data.model.LOGIN.RECOVERPASSWORD;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AutomaticSignInResponse {
+import it.corelab.studios.airbooks.data.model.Error;
+import it.corelab.studios.airbooks.data.model.LOGIN.Result;
+
+public class PostRecoverResponse {
 
     @SerializedName("lang")
     @Expose
@@ -16,7 +19,7 @@ public class AutomaticSignInResponse {
     private Error error;
     @SerializedName("result")
     @Expose
-    private Object result;
+    private Result result;
 
     public String getLang() {
         return lang;
@@ -42,11 +45,11 @@ public class AutomaticSignInResponse {
         this.error = error;
     }
 
-    public Object getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 

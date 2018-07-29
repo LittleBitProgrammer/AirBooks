@@ -1,6 +1,6 @@
 package it.corelab.studios.airbooks.section.login.interfaces.signin;
 
-import it.corelab.studios.airbooks.data.model.PostSignIn;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn;
 
 public interface SignInController {
 

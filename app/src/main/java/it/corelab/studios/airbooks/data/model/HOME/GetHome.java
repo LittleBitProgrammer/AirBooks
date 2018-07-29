@@ -1,9 +1,10 @@
-package it.corelab.studios.airbooks.data.model;
+package it.corelab.studios.airbooks.data.model.HOME;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PostSignInResponse {
+public class GetHome {
+
     @SerializedName("lang")
     @Expose
     private String lang;
@@ -12,7 +13,7 @@ public class PostSignInResponse {
     private String os;
     @SerializedName("error")
     @Expose
-    private Error error;
+    private Object error;
     @SerializedName("result")
     @Expose
     private Result result;
@@ -33,11 +34,11 @@ public class PostSignInResponse {
         this.os = os;
     }
 
-    public Error getError() {
+    public Object getError() {
         return error;
     }
 
-    public void setError(Error error) {
+    public void setError(Object error) {
         this.error = error;
     }
 

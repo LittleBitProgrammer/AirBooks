@@ -19,8 +19,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.section.navigation.activity.MainActivity
-import it.corelab.studios.airbooks.data.model.PostSignIn
-import it.corelab.studios.airbooks.data.model.PostSignInResponse
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignInResponse
 import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 
@@ -121,7 +121,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
         loginButton.setOnClickListener {
             verifyCredentials()
             if (isCredentialValid) {
-                val postSignIn = PostSignIn(email.text.toString(), password.text.toString())
+                val postSignIn = it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn(email.text.toString(), password.text.toString())
                 signInPost(postSignIn, "http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android")
             }
         }

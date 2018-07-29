@@ -20,7 +20,7 @@ import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.section.login.activity.Login
 import it.corelab.studios.airbooks.section.navigation.activity.MainActivity
 import it.corelab.studios.airbooks.section.intro.activity.IntroActivity
-import it.corelab.studios.airbooks.data.model.AutomaticSignInResponse
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.AutomaticSignInResponse
 import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 import it.corelab.studios.airbooks.section.splash.layout.SplashScreenLayout

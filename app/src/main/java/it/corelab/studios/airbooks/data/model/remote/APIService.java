@@ -1,12 +1,12 @@
 package it.corelab.studios.airbooks.data.model.remote;
 
 import io.reactivex.Observable;
-import it.corelab.studios.airbooks.data.model.AutomaticSignInResponse;
-import it.corelab.studios.airbooks.data.model.PostRecoverResponse;
-import it.corelab.studios.airbooks.data.model.PostSignIn;
-import it.corelab.studios.airbooks.data.model.PostSignInResponse;
-import it.corelab.studios.airbooks.data.model.PostSignUp;
-import it.corelab.studios.airbooks.data.model.PostSignUpResponse;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.AutomaticSignInResponse;
+import it.corelab.studios.airbooks.data.model.LOGIN.RECOVERPASSWORD.PostRecoverResponse;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignInResponse;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUp;
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUpResponse;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

@@ -1,10 +1,12 @@
-package it.corelab.studios.airbooks.data.model;
+package it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PostSignUpResponse {
+import it.corelab.studios.airbooks.data.model.Error;
+import it.corelab.studios.airbooks.data.model.LOGIN.Result;
 
+public class PostSignInResponse {
     @SerializedName("lang")
     @Expose
     private String lang;
@@ -49,5 +51,4 @@ public class PostSignUpResponse {
     public void setResult(Result result) {
         this.result = result;
     }
-
 }

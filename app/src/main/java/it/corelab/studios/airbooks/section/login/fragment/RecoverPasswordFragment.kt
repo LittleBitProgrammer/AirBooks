@@ -18,7 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.data.model.PostRecoverResponse
+import it.corelab.studios.airbooks.data.model.LOGIN.RECOVERPASSWORD.PostRecoverResponse
 import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 import android.content.ContentValues.TAG

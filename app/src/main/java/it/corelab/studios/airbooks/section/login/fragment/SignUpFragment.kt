@@ -23,8 +23,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.CountryDialog
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.data.model.PostSignUp
-import it.corelab.studios.airbooks.data.model.PostSignUpResponse
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUp
+import it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUpResponse
 import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
 
@@ -192,7 +192,7 @@ class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogC
                         lastName.text.toString() + " " +
                         takeIsoNation(nation))
 
-                val postSignUp = PostSignUp(email.text.toString(), password.text.toString(), firstName.text.toString(), lastName.text.toString(), takeIsoNation(nation))
+                val postSignUp = it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUp(email.text.toString(), password.text.toString(), firstName.text.toString(), lastName.text.toString(), takeIsoNation(nation))
 
                 signUpPost(postSignUp,
                         "http://airbooks.altervista.org/API/v2/users/",
