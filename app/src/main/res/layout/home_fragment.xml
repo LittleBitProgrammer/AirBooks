@@ -5,27 +5,16 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="70dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="368dp" />
-
-
     <it.corelab.studios.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/nested_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,10 +26,9 @@
                 android:id="@+id/rv_showcase"
                 android:layout_width="0dp"
                 android:layout_height="191dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_showcase"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline6" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/continueReadLabel"
@@ -52,7 +40,7 @@
                 android:textColor="#FFF"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_showcase" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_showcase" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -103,90 +91,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/continueReadLabel" />
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline_showcase"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="255dp" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline_background"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="367dp" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="79dp" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="55dp" />
-
         </android.support.constraint.ConstraintLayout>
     </it.corelab.studios.airbooks.CustomNested>
-
-    <ImageView
-        android:id="@+id/topbar"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="@drawable/top_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/add_button_home"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="14dp"
-        android:background="#00000000"
-        android:contentDescription="@string/add_book_button"
-        android:src="@drawable/add_icon"
-        android:tint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="11dp"
-        android:fontFamily="@font/koliko"
-        android:text="@string/main_section_appName"
-        android:textAlignment="center"
-        android:textColor="#FFF"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/topbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/search_button_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:contentDescription="@string/search_icon"
-        android:paddingBottom="15dp"
-        android:paddingEnd="35dp"
-        android:paddingStart="15dp"
-        android:paddingTop="15dp"
-        android:src="@drawable/icona_search"
-        android:tint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

@@ -15,9 +15,7 @@ import android.view.LayoutInflater;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -37,7 +35,6 @@ import it.corelab.studios.airbooks.CustomNested;
 import it.corelab.studios.airbooks.Http.HttpHandler;
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.adapters.CardViewReviewAdapter;
-import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter;
 import it.corelab.studios.airbooks.adapters.SnapBestOfWeek;
 import it.corelab.studios.airbooks.adapters.SnapCategoriesAdapter;
 import it.corelab.studios.airbooks.adapters.SnapContinueReadAdapter;
@@ -46,9 +43,7 @@ import it.corelab.studios.airbooks.adapters.SnapLibraryAdapter;
 import it.corelab.studios.airbooks.adapters.SnapRecyclerAdapter;
 import it.corelab.studios.airbooks.object.Book;
 import it.corelab.studios.airbooks.object.Item;
-import it.corelab.studios.airbooks.object.Showcase;
 import it.corelab.studios.airbooks.object.User;
-import it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView;
 import it.corelab.studios.airbooks.recyclerViewExtension.SnappingRecyclerView;
 import it.corelab.studios.airbooks.widget.RoundedImageView;
 
@@ -61,16 +56,6 @@ import it.corelab.studios.airbooks.widget.RoundedImageView;
  */
 
 public class FadeFragment extends Fragment {
-
-    /*
-
-    * frame layout that contains all the section managed in the bottom bar
-    * @fragmentContainer is never accessed because
-    * we have commented @willBeHidden and @willBeDisplay
-
-     */
-
-   private FrameLayout fragmentContainer;
 
 
    /*
@@ -105,7 +90,7 @@ public class FadeFragment extends Fragment {
 
     */
 
-    public static InfiniteRotationView rotationView;
+
 
 
    /*
@@ -119,7 +104,6 @@ public class FadeFragment extends Fragment {
    private ArrayList<Item> items;
    private ArrayList<Item> reviewCard;
     private ArrayList<Item> rvCategoriesItem;
-   private ArrayList<Showcase> showcaseCardItem;
    private static ArrayList<Book> bookArrayList;
 
 
@@ -130,13 +114,6 @@ public class FadeFragment extends Fragment {
 
     */
 
-   public static FadeFragment newInstance(int index){
-       FadeFragment fragment = new FadeFragment();
-       Bundle b = new Bundle();
-       b.putInt("index", index);
-       fragment.setArguments(b);
-       return fragment;
-   }
 
     @Override
     public void onDestroy() {
@@ -149,8 +126,6 @@ public class FadeFragment extends Fragment {
         }else if (asyncTaskExplorer != null){
             asyncTaskExplorer.setListener(null); // PREVENT LEAK AFTER ACTIVITY DESTROYED
         }
-
-        rotationView.stopAutoScroll();
     }
 
 
@@ -215,8 +190,6 @@ public class FadeFragment extends Fragment {
      */
     public void initHome(final View view){
 
-        customNested = view.findViewById(R.id.nested_home);
-
         /*
 
         * these method initialize and fill the empty recyclerView with the choosen elements
@@ -229,27 +202,10 @@ public class FadeFragment extends Fragment {
 
          */
 
-        createShowcaseCard();
         createRvContinueReadItem();
         createRvCategoriesItem();
         bookArrayList = new ArrayList<>();
 
-
-        /*
-
-        * Initialization of different variables @GROUP
-        *
-        * @1. GROUP = declare final to access to inner method
-        * @2. GROUP = normal widget and view variables
-        * @3. GROUP = recyclerView @creation and @initialization
-        *
-        * @CREATION and @INITIALIZATION must be done in one line
-        * @rotationView is declared as global so it is an exception for guidelines
-
-         */
-
-        // 3. GROUP
-        rotationView = view.findViewById(R.id.rv_showcase);
 
         final RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
@@ -263,7 +219,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        ViewCompat.setNestedScrollingEnabled(rotationView, false);
+
         ViewCompat.setNestedScrollingEnabled(rvContinueRead, false);
         ViewCompat.setNestedScrollingEnabled(rvCategories, false);
         ViewCompat.setNestedScrollingEnabled(rvBestWeek, false);
@@ -334,29 +290,6 @@ public class FadeFragment extends Fragment {
         rvCategories.setAdapter(snapCategoriesAdapter);
 
 
-        rotationView.setAdapter(new InfiniteRotationAdapter(showcaseCardItem));
-
-
-        /*
-
-        * autoScroll customization
-
-         */
-
-        rotationView.autoScroll(3, 3000);
-
-
-        /*
-
-        * This command is used for the bounce effect on @recyclerView
-        * if you want add effect add here
-
-         */
-
-        //OverScrollDecoratorHelper.setUpOverScroll(rvContinueRead, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-        //OverScrollDecoratorHelper.setUpOverScroll(rvCategories, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-
-
         asyncTask = new GetBestOfWeek(this);
         asyncTask.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
             @Override
@@ -378,26 +311,7 @@ public class FadeFragment extends Fragment {
         asyncTask.execute();
 
 
-        /*
 
-        * This method is used to show automatically the bottomNavigation at the end of the page
-        * this isn't scripted to a specifically height
-        * it is modular and adapted automatically to every height you choose for the main layout
-
-         */
-
-        //final ImageView trapezoid = view.findViewById(R.id.trapezoid);
-       customNested.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                if (customNested.getChildAt(0).getBottom() <= (customNested.getHeight() + customNested.getScrollY())) {
-                    //scroll view is at bottom
-                   // MainActivity.getBottomNavigation().restoreBottomNavigation(true);
-                }
-                //@ELSE scroll view is not at bottom
-
-            }
-        });
 
     }
 
@@ -436,7 +350,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        fragmentContainer = view.findViewById(R.id.fragment_container);
         //exploreDiagonal = view.findViewById(R.id.diagonal_view_explore);
 
 
@@ -561,7 +474,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        fragmentContainer = view.findViewById(R.id.fragment_container);
 
         //libDiagonal = view.findViewById(R.id.diagonal_view_library);
 
@@ -688,7 +600,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-       fragmentContainer = view.findViewById(R.id.fragment_container);
        //profileDiagonal = view.findViewById(R.id.diagonal_view_profile);
 
 
@@ -907,14 +818,7 @@ public class FadeFragment extends Fragment {
         libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));
 
     }
-    public void createShowcaseCard() {
 
-        showcaseCardItem = new ArrayList<>();
-
-        showcaseCardItem.add( new Showcase(R.drawable.place_holder_sinistra));
-        showcaseCardItem.add(new Showcase(R.drawable.place_holder_centro));
-        showcaseCardItem.add(new Showcase(R.drawable.place_holder_destra));
-    }
 
     public void createRvContinueReadItem() {
 

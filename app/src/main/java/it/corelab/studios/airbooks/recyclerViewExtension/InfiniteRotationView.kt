@@ -50,7 +50,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
                         if (it == RecyclerView.SCROLL_STATE_DRAGGING) {
                             dispose?.dispose()
                         } else {
-                            autoScroll(3, 2000)
+                            autoScroll(3, 3000)
                         }
                     }
                     recyclerView.addOnScrollListener(onScrollListener)

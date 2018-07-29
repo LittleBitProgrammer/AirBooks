@@ -4,14 +4,14 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClient {
+class RetrofitClient {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl){
+    static Retrofit getClient(){
         if (retrofit == null){
             retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
+                    .baseUrl(ApiUtils.BASE_URL)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

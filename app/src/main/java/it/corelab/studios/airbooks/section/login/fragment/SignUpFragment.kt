@@ -39,9 +39,6 @@ import org.jetbrains.anko.support.v4.ctx
 
 class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogController {
 
-    //SINGLETON
-    //val instance = SignUpFragment()
-
     //VIEW
     private lateinit var viewUI: View
 
