@@ -199,7 +199,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        createExploreCard();
 
 
         /*
@@ -323,7 +322,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        createLibraryCard();
 
 
         /*
@@ -447,9 +445,6 @@ public class FadeFragment extends Fragment {
         * 2. cardReviewRecycleView
 
          */
-
-       createApps();
-       createReviewCard();
 
 
        /*
@@ -610,72 +605,6 @@ public class FadeFragment extends Fragment {
     * @NEXT TODO:// collegue to dataBase
 
      */
-
-    private void createApps() {
-        items = new ArrayList<>();
-
-        items.add(new Item("AllThis", R.drawable.all_this));
-        items.add(new Item("Titan", R.drawable.titan));
-        items.add(new Item("Spazio", R.drawable.spazio));
-        items.add(new Item("ArtBook", R.drawable.art_bookcover));
-        items.add(new Item("Creative", R.drawable.creative_bookcover));
-        items.add(new Item("Cupcake", R.drawable.cupcake));
-        items.add(new Item("Fiore", R.drawable.fiore));
-        items.add(new Item("Gelato", R.drawable.gelato));
-        items.add(new Item("Lampadina", R.drawable.lampadina));
-        items.add(new Item("Papera", R.drawable.papera));
-}
-    private void createReviewCard(){
-        reviewCard = new ArrayList<>();
-        reviewCard.add(new Item("All this has nothing",R.drawable.all_this, 5, "Jojo Moyes", "This book is very fantastic, no words !!!!",R.drawable.for_children));
-        reviewCard.add(new Item("Titan", R.drawable.titan,4,"Alessandro Baricco","“Oltre l’inverno” è l’opera letteraria di un’autrice che, negli ultimi anni, comincia a scrivere ogni suo libro l’8 di Gennaio.\n" +
-                "Si parla di una bufera di neve che coinvolge la città di Brooklyn e più nello specifico di tre persone le cui vite si intrecciano: Lucia Maraz, Richard Bowmaster e Evelyn Ortega",R.drawable.sci_fi));
-        reviewCard.add(new Item("Spazio", R.drawable.spazio,3,"Chiara Gamberale","Isabel Allende ci racconta una storia di amori, politica, dittature e fughe. Un romanzo ambientato in una Brooklyn paralizzata da una forte bufera di neve.",R.drawable.biografy));
-        reviewCard.add(new Item("Bookcover", R.drawable.art_bookcover,2,"Stephanie Meyer", "Tra tutti i libri di Allende che ho letto questo è quello che mi ha meno coinvolto, potrei definirlo il più ingenuo. Mi ha dato la sensazione di leggere una pagina di diario di una ragazzina degli anni '60",R.drawable.comics_manga));
-        reviewCard.add(new Item("Creative", R.drawable.creative_bookcover,1,"Fabio Volo","buon libro scritto molto bene",R.drawable.wise));
-        reviewCard.add(new Item("Cupcake", R.drawable.cupcake,5, "Federico Moccia","Libro particolare .....da' l'idea di un libro a spirale . Isabelle Allende descrive i personaggi e le situazioni da loro vissute in modo particolare",R.drawable.erotic));
-        reviewCard.add(new Item("fiore", R.drawable.fiore,4,"Dan Brown","Amo la Allende, ho letto quasi tutti i suoi libri. Questo romanzo l'ho letto nel giro di una settimana e devo dire che la storia scorre tranquillamente.",R.drawable.self_help));
-        reviewCard.add(new Item("gelato", R.drawable.gelato,3,"Sam Pvnik","Ho letto alcuni libri di Isabel Allende a partire dal suo primo grande successo. La sua narrativa scorrevole e appetitosa mi piace e m'invita alla lettura",R.drawable.yellow_thriller));
-        reviewCard.add(new Item("Lampadina", R.drawable.lampadina,2,"George Orwell","Bel libro, scorrevole emozionante anche se mi aspettavo di più da Isabel Allende.",R.drawable.for_children));
-        reviewCard.add(new Item("Papera", R.drawable.papera,1,"Harper Lee","This book is very fantastic, no words !!!!",R.drawable.sci_fi));
-    }
-
-    private void createExploreCard(){
-        ArrayList<Item> exploreCardItem = new ArrayList<>();
-
-        exploreCardItem.add(new Item("All this", R.drawable.all_this, 93, 3 , "Jojo Moyes"));
-        exploreCardItem.add(new Item("Titan", R.drawable.titan,25, 4, "Alessandro Baricco"));
-        exploreCardItem.add(new Item("Spazio", R.drawable.spazio,801,5, "Chiara Gamberale"));
-        exploreCardItem.add(new Item("Bookcover", R.drawable.art_bookcover,1044,2, "Stephanie Meyer"));
-        exploreCardItem.add(new Item("Creative", R.drawable.creative_bookcover,528,1, "Fabio Volo"));
-        exploreCardItem.add(new Item("Cupcake", R.drawable.cupcake,19,5, "Federico Moccia"));
-        exploreCardItem.add(new Item("fiore", R.drawable.fiore,10246,4,"Dan Brown"));
-        exploreCardItem.add(new Item("gelato", R.drawable.gelato, 94,3, "Sam Pvnik"));
-        exploreCardItem.add(new Item("Lampadina", R.drawable.lampadina,621,1, "George Orwell"));
-        exploreCardItem.add(new Item("Papera", R.drawable.papera,67,2,"Harper Lee"));
-    }
-    private void createLibraryCard(){
-        ArrayList<Item> libraryCardItem = new ArrayList<>();
-
-        libraryCardItem.add(new Item("All this", R.drawable.all_this, "Jojo Moyes", 93));
-        libraryCardItem.add(new Item("Titan", R.drawable.titan, "Alessandro Baricco",25));
-        libraryCardItem.add(new Item("Spazio", R.drawable.spazio, "Chiara Gamberale",801));
-        libraryCardItem.add(new Item("Bookcover", R.drawable.art_bookcover, "Stephanie Meyer",1044));
-        libraryCardItem.add(new Item("Creative", R.drawable.creative_bookcover, "Fabio Volo",528));
-        libraryCardItem.add(new Item("Cupcake", R.drawable.cupcake, "Federico Moccia",19));
-        libraryCardItem.add(new Item("fiore", R.drawable.fiore, "Dan Brown",10246));
-        libraryCardItem.add(new Item("gelato", R.drawable.gelato, "Sam Pvnik", 94));
-        libraryCardItem.add(new Item("Lampadina", R.drawable.lampadina, "George Orwell",621));
-        libraryCardItem.add(new Item("Papera", R.drawable.papera,"Harper Lee",67));
-        libraryCardItem.add(new Item("All this2", R.drawable.all_this, "Jojo Moyes", 93));
-        libraryCardItem.add(new Item("Titan2", R.drawable.titan, "Alessandro Baricco",25));
-        libraryCardItem.add(new Item("Spazio2", R.drawable.spazio, "Chiara Gamberale",801));
-        libraryCardItem.add(new Item("Bookcover2", R.drawable.art_bookcover, "Stephanie Meyer",1044));
-        libraryCardItem.add(new Item("Creative2", R.drawable.creative_bookcover, "Fabio Volo",528));
-        libraryCardItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia",19));
-        libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));
-
-    }
 
     public static class GetBestOfWeek extends AsyncTask<Void,Void,Integer> {
 

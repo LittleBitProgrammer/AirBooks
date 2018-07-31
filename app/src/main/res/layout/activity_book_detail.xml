@@ -69,7 +69,6 @@
                 android:id="@+id/genre_color_shared"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/for_children"
                 android:contentDescription="@string/image_colorGenre"
                 android:scaleType="fitXY" />
 

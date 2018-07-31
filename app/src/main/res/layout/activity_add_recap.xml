@@ -12,7 +12,6 @@
         android:layout_height="55dp"
         android:contentDescription="@string/topBar"
         android:scaleType="fitXY"
-        android:src="@drawable/barra_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

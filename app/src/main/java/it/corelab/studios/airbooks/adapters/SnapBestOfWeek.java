@@ -62,35 +62,30 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
         switch (genreID){
             case 1:
-                holder.colorGenre.setImageResource(R.drawable.for_children);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.forChildrenDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.forChildrenDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.forChildrenLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context,R.color.forChildrenLight));
                 break;
             case 2:
-                holder.colorGenre.setImageResource(R.drawable.biografy);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.biografyDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.biografyDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.biografyLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.biografyLight));
                 break;
             case 3:
-                holder.colorGenre.setImageResource(R.drawable.erotic);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.eroticLight));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.eroticLight));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.eroticDark));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context, R.color.eroticDark));
                 break;
             case 4:
-                holder.colorGenre.setImageResource(R.drawable.sci_fi);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.scifiDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.scifiDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.scifiLight));
                 holder.numbReaders.setTextColor(ContextCompat.getColor(context,R.color.scifiLight));
                 break;
             case 5:
-                holder.colorGenre.setImageResource(R.drawable.comics_manga);
                 holder.lovers.setColorFilter(ContextCompat.getColor(context, R.color.comicsDark));
                 holder.numbLovers.setTextColor(ContextCompat.getColor(context, R.color.comicsDark));
                 holder.readers.setColorFilter(ContextCompat.getColor(context,R.color.comicsLight));

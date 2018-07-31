@@ -32,7 +32,7 @@ public class Categories extends AppCompatActivity {
 
         final Intent dismissIntent = new Intent(getApplicationContext(),MainActivity.class);
 
-        createCategioriesRvAdd();
+        //createCategioriesRvAdd();
 
         leftArrow = findViewById(R.id.left_arrow_add_categories);
         dismiss = findViewById(R.id.dismiss_button);
@@ -111,36 +111,6 @@ public class Categories extends AppCompatActivity {
         returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(returnIntent);
         overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
-    }
-
-    public void createCategioriesRvAdd(){
-
-        categories = new ArrayList<>();
-
-        categories.add(new Item(R.drawable.sci_fi, "Sci-fi"));
-        categories.add(new Item(R.drawable.for_children, "Per bambini"));
-        categories.add(new Item(R.drawable.biografy, "Biografia"));
-        categories.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
-        categories.add(new Item(R.drawable.teen_fiction, "Teen fiction"));
-        categories.add(new Item(R.drawable.teenagers, "Adolescenti e ragazzi"));
-        categories.add(new Item(R.drawable.self_help, "Self help"));
-        categories.add(new Item(R.drawable.gastronomy, "Gastronomia"));
-        categories.add(new Item(R.drawable.religion, "Religione"));
-        categories.add(new Item(R.drawable.fan_fiction,"Fan fiction"));
-        categories.add(new Item(R.drawable.dramatic,"Drammatico"));
-        categories.add(new Item(R.drawable.wise, "Saggistica"));
-        categories.add(new Item(R.drawable.humor,"Humor"));
-        categories.add(new Item(R.drawable.fantasy_gradient, "Fantasy"));
-        categories.add(new Item(R.drawable.adventure, "Avventura"));
-        categories.add(new Item(R.drawable.erotic, "Erotic"));
-        categories.add(new Item(R.drawable.yellow_thriller, "Gialli e thriller"));
-        categories.add(new Item(R.drawable.manual, "Manuali"));
-        categories.add(new Item(R.drawable.horror_gradient, "Horror"));
-        categories.add(new Item(R.drawable.action, "Azione"));
-        categories.add(new Item(R.drawable.sport,"Sport"));
-        categories.add(new Item(R.drawable.poetry, "Poesia"));
-        categories.add(new Item(R.drawable.story,"Storia"));
-        categories.add(new Item(R.drawable.other, "Altro"));
     }
 
 
