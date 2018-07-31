@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<it.corelab.studios.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nested_home"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:overScrollMode="never"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:fitsSystemWindows="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="15dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
         <it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView
@@ -85,4 +74,3 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     </LinearLayout>
-</it.corelab.studios.airbooks.CustomNested>

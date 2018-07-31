@@ -130,6 +130,8 @@ class MainActivity : AppCompatActivity() {
         sectionLibraryWrapper.visibility = View.INVISIBLE
         sectionProfileWrapper.visibility = View.INVISIBLE
 
+        nested_home.takeScrollVariation(diagonal_main)
+
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {

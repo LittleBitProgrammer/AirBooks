@@ -5,8 +5,8 @@ import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import developer.shivam.library.DiagonalView
 
-import it.corelab.studios.airbooks.fragment.FadeFragment
 
 class CustomNested : NestedScrollView {
 
@@ -17,23 +17,26 @@ class CustomNested : NestedScrollView {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
 
-    fun takeScrollVariation() {
-        setOnScrollChangeListener(OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            val diff = v.height + v.scrollY - v.bottom
+    fun takeScrollVariation(diagonalView: DiagonalView) {
+        diagonalView.setAngle(14F)
 
-            val variation = 46.0f - diff * 0.05f
-            //Log.i("AIRBOOKS >= 600:-----> ", "" + diff);
+        setOnScrollChangeListener(OnScrollChangeListener { diagonal, scrollX, scrollY, oldScrollX, oldScrollY ->
+            val diff = diagonal.height + diagonal.scrollY - diagonal.bottom
 
-            //takeYPosition(FadeFragment.diagonalView);
+            val variation = 47.0f - diff * 0.05f
+            Log.i("variationlog", "" + diff);
 
-            if (diff <= 600) {
-                //FadeFragment.diagonalView.setAngle(16.0f);
-                //FadeFragment.angleVariation = 16.0f;
-            } else if (diff <= 900 && variation <= 16.0f) {
-                //topBar.animate().scaleY(0.8f);
-                //FadeFragment.diagonalView.setAngle(variation);
-                //FadeFragment.angleVariation = variation;
+            takeYPosition(diagonalView)
+
+            if (diff <= 620) {
+                diagonalView.setAngle(14F)
+                diagonalView.y = -scrollY.toFloat()
+            } else if (diff <= 906 && variation <= 14.0f) {
+                diagonalView.setAngle(variation)
+                diagonalView.y = -scrollY.toFloat()
                 // Log.i("AIRBOOKS >= 61000:---> ", "" + (46.0f - (diff * 0.05f)));
+            }else{
+                diagonalView.y = -scrollY.toFloat()
             }
         })
     }
@@ -41,13 +44,9 @@ class CustomNested : NestedScrollView {
     private fun takeYPosition(view: View) {
         val xy = IntArray(2)
         view.getLocationOnScreen(xy)
-        yHomePosition = xy[1].toFloat()
-        FadeFragment.yPosition = xy[1]
-        Log.i("CUSTOMNESTED Y: ", "$yHomePosition")
+        val yViewPosition = xy[1].toFloat()
+        Log.i("CUSTOMNESTED Y: ", "$yViewPosition")
     }
 
-    companion object {
-        var yHomePosition: Float = 0.toFloat()
-    }
 }
 

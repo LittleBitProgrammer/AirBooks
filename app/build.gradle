@@ -72,7 +72,7 @@ dependencies {
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02'
 
     //decor
-    implementation "com.github.florent37:shapeofview:$diagonal_view"
+    implementation "com.github.developer-shivam:Diagonalify:$diagonal_view"
     implementation "com.github.f0ris.sweetalert:library:$sweet_alert"
     implementation "com.ToxicBakery.viewpager.transforms:view-pager-transforms:$transformer"
 
