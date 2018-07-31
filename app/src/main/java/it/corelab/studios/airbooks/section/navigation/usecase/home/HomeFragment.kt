@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter
+import it.corelab.studios.airbooks.adapters.home.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.data.model.HOME.GetHome
 import it.corelab.studios.airbooks.data.model.remote.APIService
 import it.corelab.studios.airbooks.data.model.remote.ApiUtils
@@ -24,10 +24,9 @@ import it.corelab.studios.airbooks.section.navigation.common.isSectionVisible
 import it.corelab.studios.airbooks.section.navigation.common.setupActionBar
 import java.util.*
 import com.google.gson.GsonBuilder
-import it.corelab.studios.airbooks.CustomNested
 import it.corelab.studios.airbooks.adapters.SnapBestOfWeek
-import it.corelab.studios.airbooks.adapters.SnapCategoriesAdapter
-import it.corelab.studios.airbooks.adapters.SnapContinueReadAdapter
+import it.corelab.studios.airbooks.adapters.home.CategoriesAdapter
+import it.corelab.studios.airbooks.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.data.model.HOME.Genre
 import it.corelab.studios.airbooks.data.model.HOME.ItemBest
 import it.corelab.studios.airbooks.data.model.HOME.ItemReading
@@ -126,7 +125,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                     }
 
                     if (getHomeResponse.result.reading != null) {
-                        val snapContinueReadAdapter = SnapContinueReadAdapter(activity, readingItems)
+                        val snapContinueReadAdapter = ContinueReadAdapter(readingItems)
                         rv_continue_reading.adapter = snapContinueReadAdapter
                     }
 
@@ -136,7 +135,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                     }
 
                     if (getHomeResponse.result.genres != null){
-                        val snapCategoriesAdapter = SnapCategoriesAdapter(activity, categoriesItems)
+                        val snapCategoriesAdapter = CategoriesAdapter(categoriesItems)
                         rv_categories.adapter = snapCategoriesAdapter
                     }
 

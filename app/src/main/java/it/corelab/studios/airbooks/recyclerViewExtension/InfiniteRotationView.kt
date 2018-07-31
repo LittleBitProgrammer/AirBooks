@@ -13,7 +13,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter
+import it.corelab.studios.airbooks.adapters.home.InfiniteRotationAdapter
 import java.util.concurrent.TimeUnit
 
 /**
