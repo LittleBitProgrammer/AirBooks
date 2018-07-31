@@ -202,15 +202,9 @@ public class FadeFragment extends Fragment {
 
          */
 
-        createRvContinueReadItem();
         createRvCategoriesItem();
-        bookArrayList = new ArrayList<>();
 
-
-        final RecyclerView rvContinueRead = view.findViewById(R.id.rv_continue_reading);
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-        final RecyclerView rvBestWeek = view.findViewById(R.id.rv_bestweek);
-
 
         /*
 
@@ -220,9 +214,9 @@ public class FadeFragment extends Fragment {
          */
 
 
-        ViewCompat.setNestedScrollingEnabled(rvContinueRead, false);
+
         ViewCompat.setNestedScrollingEnabled(rvCategories, false);
-        ViewCompat.setNestedScrollingEnabled(rvBestWeek, false);
+
 
 
         /*
@@ -236,13 +230,7 @@ public class FadeFragment extends Fragment {
 
          */
 
-        rvBestWeek.setItemViewCacheSize(20);
-        rvBestWeek.setDrawingCacheEnabled(true);
-        rvBestWeek.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        rvContinueRead.setItemViewCacheSize(20);
-        rvContinueRead.setDrawingCacheEnabled(true);
-        rvContinueRead.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         rvCategories.setItemViewCacheSize(20);
         rvCategories.setDrawingCacheEnabled(true);
@@ -258,15 +246,8 @@ public class FadeFragment extends Fragment {
 
          */
 
-        rvContinueRead.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rvContinueRead.setHasFixedSize(true);
-        rvBestWeek.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
-        rvBestWeek.setHasFixedSize(true);
+
+
 
 
         rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
@@ -288,29 +269,6 @@ public class FadeFragment extends Fragment {
 
         SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
         rvCategories.setAdapter(snapCategoriesAdapter);
-
-
-        asyncTask = new GetBestOfWeek(this);
-        asyncTask.setListener(new GetBestOfWeek.BestOfWekkAsyncTaskLinestener() {
-            @Override
-            public void onExampleAsyncTaskFinished(Integer value) {
-                // update UI in Activity here
-                //dismiss the progress dialog
-               /* if (pDialog.isShowing()){
-                    pDialog.dismiss();
-                }*/
-
-                SnapContinueReadAdapter snapContinueReadAdapter = new SnapContinueReadAdapter(getActivity(), bookArrayList);
-                rvContinueRead.setAdapter(snapContinueReadAdapter);
-
-                SnapBestOfWeek snapBestOfWeek = new SnapBestOfWeek(getActivity(),bookArrayList);
-                rvBestWeek.setAdapter(snapBestOfWeek);
-
-            }
-        });
-        asyncTask.execute();
-
-
 
 
     }
@@ -819,30 +777,6 @@ public class FadeFragment extends Fragment {
 
     }
 
-
-    public void createRvContinueReadItem() {
-
-        ArrayList<Item> rvContinueReadItem = new ArrayList<>();
-
-
-        rvContinueReadItem.add(new Item( R.drawable.all_this));
-        rvContinueReadItem.add(new Item( R.drawable.titan));
-        rvContinueReadItem.add(new Item(R.drawable.spazio));
-        rvContinueReadItem.add(new Item(R.drawable.art_bookcover));
-        rvContinueReadItem.add(new Item(R.drawable.creative_bookcover));
-        rvContinueReadItem.add(new Item(R.drawable.cupcake));
-        rvContinueReadItem.add(new Item( R.drawable.fiore));
-        rvContinueReadItem.add(new Item(R.drawable.gelato));
-        rvContinueReadItem.add(new Item(R.drawable.lampadina));
-        rvContinueReadItem.add(new Item(R.drawable.papera));
-        rvContinueReadItem.add(new Item(R.drawable.all_this));
-        rvContinueReadItem.add(new Item(R.drawable.titan));
-        rvContinueReadItem.add(new Item(R.drawable.spazio));
-        rvContinueReadItem.add(new Item(R.drawable.art_bookcover));
-        rvContinueReadItem.add(new Item(R.drawable.creative_bookcover));
-        rvContinueReadItem.add(new Item(R.drawable.cupcake));
-        rvContinueReadItem.add(new Item(R.drawable.fiore));
-    }
     public void createRvCategoriesItem(){
         rvCategoriesItem = new ArrayList<>();
 

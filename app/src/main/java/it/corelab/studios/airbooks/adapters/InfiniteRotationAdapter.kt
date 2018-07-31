@@ -6,18 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import butterknife.ButterKnife
+import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.`object`.Showcase
 
 /**
  * Created by Roberto_Vecchio on 16/02/18.
  */
-class InfiniteRotationAdapter(itemList: ArrayList<Showcase>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class InfiniteRotationAdapter(itemList: List<it.corelab.studios.airbooks.data.model.HOME.Showcase>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val list: List<Showcase> = listOf(itemList.last()) + itemList + listOf(itemList.first())
+    private val list: List<it.corelab.studios.airbooks.data.model.HOME.Showcase> = listOf(itemList.last()) + itemList + listOf(itemList.first())
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? ItemViewHolder)?.imageShowCase?.setBackgroundResource(list[position % list.size].drawable)
+        val showcase = list[position]
+
+        Picasso.get().load(showcase.imageUrl).into((holder as? ItemViewHolder)?.imageShowCase)
+        //(holder as? ItemViewHolder)?.imageShowCase?.setBackgroundResource(list[position % list.size].drawable)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

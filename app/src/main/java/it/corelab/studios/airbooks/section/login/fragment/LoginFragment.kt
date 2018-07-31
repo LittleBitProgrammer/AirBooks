@@ -121,7 +121,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
         loginButton.setOnClickListener {
             verifyCredentials()
             if (isCredentialValid) {
-                val postSignIn = it.corelab.studios.airbooks.data.model.LOGIN.SIGNIN.PostSignIn(email.text.toString(), password.text.toString())
+                val postSignIn = PostSignIn(email.text.toString(), password.text.toString())
                 signInPost(postSignIn, "http://airbooks.altervista.org/API/v2/auth/", Locale.getDefault().language, "android")
             }
         }

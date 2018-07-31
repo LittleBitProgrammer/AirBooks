@@ -1,64 +1,56 @@
-package it.corelab.studios.airbooks.adapters;
+package it.corelab.studios.airbooks.adapters
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 
-import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso
 
-import java.util.ArrayList;
+import java.util.ArrayList
 
-import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.object.Book;
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.`object`.Book
 
 /**
  * Created by Roberto_Vecchio on 18/02/18.
  */
 
-public class SnapContinueReadAdapter extends RecyclerView.Adapter<SnapContinueReadAdapter.ReyclerViewHolder> {
-    private LayoutInflater layoutInflater;
-    private Context context;
-    private ArrayList<Book> books;
+class SnapContinueReadAdapter(context: Context, private val books: ArrayList<Book>) : RecyclerView.Adapter<SnapContinueReadAdapter.ReyclerViewHolder>() {
+    private val layoutInflater: LayoutInflater
 
-    public SnapContinueReadAdapter(Context context, ArrayList<Book> books) {
-        this.layoutInflater = LayoutInflater.from(context);
-        this.context = context;
-        this.books = books;
+    init {
+        this.layoutInflater = LayoutInflater.from(context)
     }
 
-    @Override
-    public SnapContinueReadAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View book = layoutInflater.inflate(R.layout.rv_continue_read, parent, false);
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SnapContinueReadAdapter.ReyclerViewHolder {
+        val book = layoutInflater.inflate(R.layout.rv_continue_read, parent, false)
 
-        return new SnapContinueReadAdapter.ReyclerViewHolder(book);
+        return SnapContinueReadAdapter.ReyclerViewHolder(book)
     }
 
     @SuppressLint("SetTextI18n")
-    @Override
-    public void onBindViewHolder(final SnapContinueReadAdapter.ReyclerViewHolder holder, int position) {
-        Book book = books.get(position);
+    override fun onBindViewHolder(holder: SnapContinueReadAdapter.ReyclerViewHolder, position: Int) {
+        val book = books[position]
 
-        Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        Picasso.get().load(book.coverUrl).into(holder.image)
 
     }
 
-    @Override
-    public int getItemCount() {
-        return books.size();
+    override fun getItemCount(): Int {
+        return books.size
     }
 
-    class ReyclerViewHolder extends RecyclerView.ViewHolder {
-        private ImageView image;
+    internal inner class ReyclerViewHolder private constructor(v: View) : RecyclerView.ViewHolder(v) {
+        private val image: ImageView
 
 
-        private ReyclerViewHolder(final View v) {
-            super(v);
+        init {
 
-            image = v.findViewById(R.id.review_cover_image);
+            image = v.findViewById(R.id.review_cover_image)
         }
     }
 }

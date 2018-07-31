@@ -23,29 +23,29 @@ public interface APIService {
     @FormUrlEncoded
     Observable<PostRecoverResponse> savePost(@Field("email") String email,
                                              @Url String url,
-                                             @Header("Lang") String lang,
+                                             @Header("Language") String lang,
                                              @Header("Os") String os);
     @POST
     Observable<PostSignUpResponse> signUpPost(@Body PostSignUp postSignUp,
                                             @Url String url,
-                                            @Header("Lang") String lang,
+                                            @Header("Language") String lang,
                                             @Header("Os") String os);
 
     @POST
     Observable<PostSignInResponse> signInPost(@Body PostSignIn postSignIn,
                                               @Url String url,
-                                              @Header("Lang") String lang,
+                                              @Header("Language") String lang,
                                               @Header("Os") String os);
     @GET
     Observable<AutomaticSignInResponse> automaticSignin(@Url String url,
-                                                        @Header("Lang") String lang,
+                                                        @Header("Language") String lang,
                                                         @Header("Os") String os,
                                                         @Header("Token") String token);
 
     @GET
     Observable<GetHome> getHomeFeed(@Url String url,
-                                    @Header("Lang") String lang,
+                                    @Header("Language") String lang,
                                     @Header("Os") String os,
                                     @Header("Token") String token);
-    
+
 }

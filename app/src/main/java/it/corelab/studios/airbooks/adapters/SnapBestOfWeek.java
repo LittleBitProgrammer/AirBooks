@@ -14,8 +14,10 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.corelab.studios.airbooks.R;
+import it.corelab.studios.airbooks.data.model.HOME.ItemBest;
 import it.corelab.studios.airbooks.section.BookDetail;
 import it.corelab.studios.airbooks.object.Book;
 
@@ -27,11 +29,10 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
     private LayoutInflater layoutInflater;
     private Context context;
-    private ArrayList<Book> books;
-    private View item;
+    private List<ItemBest> books;
 
 
-    public SnapBestOfWeek(Context context, ArrayList<Book> books) {
+    public SnapBestOfWeek(Context context, List<ItemBest> books) {
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.books = books;
@@ -39,7 +40,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
     @Override
     public SnapBestOfWeek.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
+        View item = layoutInflater.inflate(R.layout.home_best_of_week, parent, false);
 
         return new SnapBestOfWeek.ReyclerViewHolder(item);
     }
@@ -47,16 +48,16 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, final int position) {
-        final Book book = books.get(position);
+        final ItemBest book = books.get(position);
 
         Picasso.get().load(book.getCoverUrl()).into(holder.image);
         holder.title.setText(book.getTitle());
         //holder.author.setText(item.getAuthor());
         holder.numbLovers.setText("" + book.getLovers());
         holder.numbReaders.setText("" + book.getReadings());
-        holder.author.setText(book.getAuthorFirstName() + " " + book.getAuthorLastNAme());
+        holder.author.setText(book.getAuthorFirstName() + " " + book.getAuthorLastName());
 
-        int genreID = Integer.parseInt(book.getGenreID());
+        int genreID = Integer.parseInt(book.getGenreId().toString());
 
 
         switch (genreID){
@@ -110,7 +111,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
 
                     sharedIntent.putExtra("pos", book.getCoverUrl());
                     sharedIntent.putExtra("title", book.getTitle());
-                    sharedIntent.putExtra("genre", Integer.parseInt(book.getGenreID()));
+                    sharedIntent.putExtra("genre", Integer.parseInt(book.getGenreId().toString()));
                     //sharedIntent.putExtra("author", book.getAuthor());
                     sharedIntent.putExtra("loversNumb", book.getLovers());
                     sharedIntent.putExtra("readersNumb", book.getReadings());

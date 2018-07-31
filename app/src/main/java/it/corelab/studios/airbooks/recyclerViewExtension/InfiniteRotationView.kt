@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import butterknife.ButterKnife
@@ -39,6 +40,8 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
+        Log.i("LCOUNTER", "${adapter.itemCount}")
+
         adapter.itemCount
                 .takeIf { it > 1 }
                 ?.apply {
@@ -50,7 +53,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
                         if (it == RecyclerView.SCROLL_STATE_DRAGGING) {
                             dispose?.dispose()
                         } else {
-                            autoScroll(3, 3000)
+                            autoScroll(adapter.itemCount, 4000)
                         }
                     }
                     recyclerView.addOnScrollListener(onScrollListener)
@@ -78,10 +81,17 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
     class OnScrollListener(
             private val itemCount: Int,
             val layoutManager: LinearLayoutManager,
+
             private val stateChanged: (Int) -> Unit) : RecyclerView.OnScrollListener() {
+
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+
             super.onScrolled(recyclerView, dx, dy)
+
             val firstItemVisible = layoutManager.findFirstVisibleItemPosition()
+
+            Log.i("RCOUNTER", "$itemCount")
+
 
             if (firstItemVisible > 0 && firstItemVisible % (itemCount - 1) == 0) {
                 // When position reaches end of the list, it should go back to the beginning

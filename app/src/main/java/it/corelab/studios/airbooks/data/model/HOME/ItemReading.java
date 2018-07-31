@@ -51,7 +51,7 @@ public class ItemReading {
     private Integer readings;
     @SerializedName("average_rating")
     @Expose
-    private Integer averageRating;
+    private Double averageRating;
     @SerializedName("lovers")
     @Expose
     private Integer lovers;
@@ -177,11 +177,11 @@ public class ItemReading {
         this.readings = readings;
     }
 
-    public Integer getAverageRating() {
+    public Double getAverageRating() {
         return averageRating;
     }
 
-    public void setAverageRating(Integer averageRating) {
+    public void setAverageRating(Double averageRating) {
         this.averageRating = averageRating;
     }
 

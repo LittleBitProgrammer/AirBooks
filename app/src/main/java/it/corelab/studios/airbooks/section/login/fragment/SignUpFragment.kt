@@ -192,7 +192,7 @@ class SignUpFragment : Fragment(), SignUpController, EditTextController, DialogC
                         lastName.text.toString() + " " +
                         takeIsoNation(nation))
 
-                val postSignUp = it.corelab.studios.airbooks.data.model.LOGIN.SIGNUP.PostSignUp(email.text.toString(), password.text.toString(), firstName.text.toString(), lastName.text.toString(), takeIsoNation(nation))
+                val postSignUp = PostSignUp(email.text.toString(), password.text.toString(), firstName.text.toString(), lastName.text.toString(), takeIsoNation(nation))
 
                 signUpPost(postSignUp,
                         "http://airbooks.altervista.org/API/v2/users/",
