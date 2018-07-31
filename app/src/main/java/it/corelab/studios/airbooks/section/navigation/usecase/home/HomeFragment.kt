@@ -5,18 +5,15 @@ import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.gson.Gson
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.`object`.Showcase
 import it.corelab.studios.airbooks.adapters.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.data.model.HOME.GetHome
 import it.corelab.studios.airbooks.data.model.remote.APIService
@@ -28,12 +25,15 @@ import it.corelab.studios.airbooks.section.navigation.common.setupActionBar
 import java.util.*
 import com.google.gson.GsonBuilder
 import it.corelab.studios.airbooks.adapters.SnapBestOfWeek
+import it.corelab.studios.airbooks.adapters.SnapCategoriesAdapter
 import it.corelab.studios.airbooks.adapters.SnapContinueReadAdapter
+import it.corelab.studios.airbooks.data.model.HOME.Genre
 import it.corelab.studios.airbooks.data.model.HOME.ItemBest
 import it.corelab.studios.airbooks.data.model.HOME.ItemReading
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.view.*
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.toast
 
 
 class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
@@ -56,6 +56,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 ViewCompat.setNestedScrollingEnabled(rotationView, false)
                 ViewCompat.setNestedScrollingEnabled(rv_continue_reading, false)
                 ViewCompat.setNestedScrollingEnabled(rv_bestweek, false)
+                ViewCompat.setNestedScrollingEnabled(rv_categories, false)
 
 
                 rv_continue_reading.setItemViewCacheSize(20)
@@ -66,6 +67,11 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 rv_bestweek.isDrawingCacheEnabled = true
                 rv_bestweek.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
 
+                rv_categories.setItemViewCacheSize(20)
+                rv_categories.isDrawingCacheEnabled = true
+                rv_categories.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
+
+
                 rv_continue_reading.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
                 rv_continue_reading.setHasFixedSize(true)
 
@@ -75,6 +81,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                     }
                 }
                 rv_bestweek.setHasFixedSize(true)
+
+                rv_categories.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
+                rv_categories.setHasFixedSize(true)
 
                 getShowcase("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token)
 
@@ -107,14 +116,32 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 val showCaseItem: MutableList<it.corelab.studios.airbooks.data.model.HOME.Showcase> = getHomeResponse.result.showcase
                 val readingItems: MutableList<ItemReading> = getHomeResponse.result.reading.items
                 val bestOfWeekItems: MutableList<ItemBest> = getHomeResponse.result.best.items
+                val categoriesItems: MutableList<Genre> = getHomeResponse.result.genres
 
-                rotationView.setAdapter(InfiniteRotationAdapter(showCaseItem))
+                if (getHomeResponse.error == null) {
 
-                val snapContinueReadAdapter = SnapContinueReadAdapter(activity, readingItems)
-                rv_continue_reading.adapter = snapContinueReadAdapter
+                    if (getHomeResponse.result.showcase != null) {
+                        rotationView.setAdapter(InfiniteRotationAdapter(showCaseItem))
+                    }
 
-                val snapBestOfWeek = SnapBestOfWeek(activity, bestOfWeekItems)
-                rv_bestweek.setAdapter(snapBestOfWeek)
+                    if (getHomeResponse.result.reading != null) {
+                        val snapContinueReadAdapter = SnapContinueReadAdapter(activity, readingItems)
+                        rv_continue_reading.adapter = snapContinueReadAdapter
+                    }
+
+                    if (getHomeResponse.result.best != null) {
+                        val snapBestOfWeek = SnapBestOfWeek(activity, bestOfWeekItems)
+                        rv_bestweek.adapter = snapBestOfWeek
+                    }
+
+                    if (getHomeResponse.result.genres != null){
+                        val snapCategoriesAdapter = SnapCategoriesAdapter(activity, categoriesItems)
+                        rv_categories.adapter = snapCategoriesAdapter
+                    }
+
+                }else{
+                    toast("Sorry, we have a problem. Try later.")
+                }
 
             }
 

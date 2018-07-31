@@ -2,6 +2,9 @@ package it.corelab.studios.airbooks.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,39 +13,46 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.corelab.studios.airbooks.R;
+import it.corelab.studios.airbooks.data.model.HOME.Genre;
 import it.corelab.studios.airbooks.object.Item;
 
 /**
  * Created by Roberto_Vecchio on 19/02/18.
  */
 
-public class SnapCategoriesAdapter  extends RecyclerView.Adapter<SnapCategoriesAdapter.ReyclerViewHolder> {
+public class SnapCategoriesAdapter  extends RecyclerView.Adapter<SnapCategoriesAdapter.RecyclerViewHolder> {
     private LayoutInflater layoutInflater;
-    private Context context;
-    private ArrayList<Item> items;
+    private List<Genre> items;
 
-    public SnapCategoriesAdapter(Context context, ArrayList<Item> items) {
+    public SnapCategoriesAdapter(Context context, List<Genre> items) {
         this.layoutInflater = LayoutInflater.from(context);
-        this.context = context;
         this.items = items;
     }
 
+    @NonNull
     @Override
-    public SnapCategoriesAdapter.ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SnapCategoriesAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = layoutInflater.inflate(R.layout.categories_home, parent, false);
 
-        return new SnapCategoriesAdapter.ReyclerViewHolder(item);
+        return new SnapCategoriesAdapter.RecyclerViewHolder(item);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(final SnapCategoriesAdapter.ReyclerViewHolder holder, int position) {
-        Item item = items.get(position);
+    public void onBindViewHolder(@NonNull final SnapCategoriesAdapter.RecyclerViewHolder holder, int position) {
+        Genre item = items.get(position);
 
-        holder.image.setImageResource(item.getDrawable());
-        holder.textView.setText(item.getGenreName());
+        int[] colors = {Color.parseColor("#" + item.getFirstColor()),Color.parseColor("#" + item.getSecondColor())};
+        GradientDrawable gd = new GradientDrawable(
+                GradientDrawable.Orientation.LEFT_RIGHT,
+                colors);
+        gd.setCornerRadius(0f);
+
+        holder.image.setBackground(gd);
+        holder.textView.setText(item.getName());
 
 
     }
@@ -52,13 +62,13 @@ public class SnapCategoriesAdapter  extends RecyclerView.Adapter<SnapCategoriesA
         return items.size();
     }
 
-    class ReyclerViewHolder extends RecyclerView.ViewHolder {
+    class RecyclerViewHolder extends RecyclerView.ViewHolder {
         private ImageView image;
         private TextView textView;
 
 
 
-        private ReyclerViewHolder(final View v) {
+        private RecyclerViewHolder(final View v) {
             super(v);
 
             image = v.findViewById(R.id.cardImage_categories_home);

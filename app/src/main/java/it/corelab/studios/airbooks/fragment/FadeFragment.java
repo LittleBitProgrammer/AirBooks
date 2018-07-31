@@ -148,11 +148,7 @@ public class FadeFragment extends Fragment {
    public View onCreateView(@NonNull LayoutInflater inflanter, ViewGroup container, Bundle savedInstanceState){
 
        switch (getArguments().getInt("index", 0)) {
-           case 0: {
-               View view = inflanter.inflate(R.layout.home_fragment, container, false);
-               initHome(view);
-               return view;
-           }
+           case 0:
            case 1: {
                View view = inflanter.inflate(R.layout.explore_fragment, container, false);
                initExplore(view);
@@ -176,102 +172,6 @@ public class FadeFragment extends Fragment {
        }
 
    }
-
-    /*=====================================================================
-                                initHome()
-    =====================================================================*/
-
-    /*
-
-    * home initialization
-    * this method is used by @onCreateView at @125 line
-    * to initialize the @USER INTERFACE of the home
-
-     */
-    public void initHome(final View view){
-
-        /*
-
-        * these method initialize and fill the empty recyclerView with the choosen elements
-        * @EMPTY RECYCLERVIEW FILLED:
-        *
-        * 1. rotationView
-        * 2. rvContinueRead
-        * 3. rvCategories
-        * 4. rvBestWeek
-
-         */
-
-        createRvCategoriesItem();
-
-        RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-
-        /*
-
-        * disabled nested scroll for the different @recyclerView in home
-        * add here same command if you want to add other recyclerView section
-
-         */
-
-
-
-        ViewCompat.setNestedScrollingEnabled(rvCategories, false);
-
-
-
-        /*
-
-        * optimization of the recyclerView with the use of the @CACHE
-        * we are:
-        *
-        * 1.Setting the cache size
-        * 2.Enabling drawing cache
-        * 3.Setting cache quality
-
-         */
-
-
-
-        rvCategories.setItemViewCacheSize(20);
-        rvCategories.setDrawingCacheEnabled(true);
-        rvCategories.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
-
-        /*
-
-        * Here we are setting the layout manager that manage the recyclerView
-        * Change it carefully, it could change completely your layout appearance
-        * we set also a commmand for each recyclerView to have a fixedSize
-        * @rvBestWeek has a particular method to block the scroll
-
-         */
-
-
-
-
-
-        rvCategories.setLayoutManager(new GridLayoutManager(getActivity(), 2,GridLayoutManager.HORIZONTAL,false));
-        rvCategories.setHasFixedSize(true);
-
-
-
-
-
-        /*
-
-        * we can't use one adapter for all the recyclerView
-        * so here we are initializing and creating different adapter
-        * and then assigning to the different recyclerView
-        * different adapter initialization used only for @rotationView
-        * @FOLLOW the guidelines of the other
-
-         */
-
-        SnapCategoriesAdapter snapCategoriesAdapter = new SnapCategoriesAdapter(getActivity(), rvCategoriesItem);
-        rvCategories.setAdapter(snapCategoriesAdapter);
-
-
-    }
 
 
     /*=====================================================================
@@ -775,35 +675,6 @@ public class FadeFragment extends Fragment {
         libraryCardItem.add(new Item("Cupcake2", R.drawable.cupcake, "Federico Moccia",19));
         libraryCardItem.add(new Item("fiore2", R.drawable.fiore, "Dan Brown",10246));
 
-    }
-
-    public void createRvCategoriesItem(){
-        rvCategoriesItem = new ArrayList<>();
-
-        rvCategoriesItem.add(new Item(R.drawable.sci_fi, "Sci-fi"));
-        rvCategoriesItem.add(new Item(R.drawable.for_children, "Per bambini"));
-        rvCategoriesItem.add(new Item(R.drawable.biografy, "Biografia"));
-        rvCategoriesItem.add(new Item(R.drawable.comics_manga, "Fumetti e Manga"));
-        rvCategoriesItem.add(new Item(R.drawable.teen_fiction, "Teen fiction"));
-        rvCategoriesItem.add(new Item(R.drawable.teenagers, "Adolescenti e ragazzi"));
-        rvCategoriesItem.add(new Item(R.drawable.self_help, "Self help"));
-        rvCategoriesItem.add(new Item(R.drawable.gastronomy, "Gastronomia"));
-        rvCategoriesItem.add(new Item(R.drawable.religion, "Religione"));
-        rvCategoriesItem.add(new Item(R.drawable.fan_fiction,"Fan fiction"));
-        rvCategoriesItem.add(new Item(R.drawable.dramatic,"Drammatico"));
-        rvCategoriesItem.add(new Item(R.drawable.wise, "Saggistica"));
-        rvCategoriesItem.add(new Item(R.drawable.humor,"Humor"));
-        rvCategoriesItem.add(new Item(R.drawable.fantasy_gradient, "Fantasy"));
-        rvCategoriesItem.add(new Item(R.drawable.adventure, "Avventura"));
-        rvCategoriesItem.add(new Item(R.drawable.erotic, "Erotic"));
-        rvCategoriesItem.add(new Item(R.drawable.yellow_thriller, "Gialli e thriller"));
-        rvCategoriesItem.add(new Item(R.drawable.manual, "Manuali"));
-        rvCategoriesItem.add(new Item(R.drawable.horror_gradient, "Horror"));
-        rvCategoriesItem.add(new Item(R.drawable.action, "Azione"));
-        rvCategoriesItem.add(new Item(R.drawable.sport,"Sport"));
-        rvCategoriesItem.add(new Item(R.drawable.poetry, "Poesia"));
-        rvCategoriesItem.add(new Item(R.drawable.story,"Storia"));
-        rvCategoriesItem.add(new Item(R.drawable.other, "Altro"));
     }
 
     public static class GetBestOfWeek extends AsyncTask<Void,Void,Integer> {
