@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.adapters
+package it.corelab.studios.airbooks.adapters.home
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.ImageView
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.`object`.Showcase
 
 /**
  * Created by Roberto_Vecchio on 16/02/18.

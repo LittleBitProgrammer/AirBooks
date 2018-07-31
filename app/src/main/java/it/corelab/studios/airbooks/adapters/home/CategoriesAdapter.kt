@@ -1,7 +1,5 @@
-package it.corelab.studios.airbooks.adapters.HOME
+package it.corelab.studios.airbooks.adapters.home
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.RecyclerView
@@ -10,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import butterknife.ButterKnife
 
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.data.model.HOME.Genre
@@ -18,21 +17,12 @@ import it.corelab.studios.airbooks.data.model.HOME.Genre
  * Created by Roberto_Vecchio on 19/02/18.
  */
 
-class CategoriesAdapter(context: Context, private val items: List<Genre>) : RecyclerView.Adapter<CategoriesAdapter.RecyclerViewHolder>() {
-    private val layoutInflater: LayoutInflater
+class CategoriesAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    init {
-        this.layoutInflater = LayoutInflater.from(context)
-    }
+    private val items: List<Genre> = itemList
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesAdapter.RecyclerViewHolder {
-        val item = layoutInflater.inflate(R.layout.categories_home, parent, false)
 
-        return CategoriesAdapter.RecyclerViewHolder(item)
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: CategoriesAdapter.RecyclerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
 
         val colors = intArrayOf(Color.parseColor("#" + item.firstColor), Color.parseColor("#" + item.secondColor))
@@ -41,25 +31,26 @@ class CategoriesAdapter(context: Context, private val items: List<Genre>) : Recy
                 colors)
         gd.cornerRadius = 0f
 
-        holder.image.background = gd
-        holder.textView.text = item.name
-
+        (holder as? ItemViewHolder)?.image?.background = gd
+        (holder as? ItemViewHolder)?.textView?.text = item.name
 
     }
 
-    override fun getItemCount(): Int {
-        return items.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val view = LayoutInflater
+                .from(parent.context)
+                .inflate(R.layout.categories_home, parent, false)
+        return CategoriesAdapter.ItemViewHolder(view)
     }
 
-    internal inner class RecyclerViewHolder private constructor(v: View) : RecyclerView.ViewHolder(v) {
-        private val image: ImageView
-        private val textView: TextView
+    override fun getItemCount() = items.size
 
+    internal class ItemViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+        var image: ImageView = view.findViewById(R.id.cardImage_categories_home)
+        var textView: TextView = view.findViewById(R.id.categories_home_id)
 
         init {
-
-            image = v.findViewById(R.id.cardImage_categories_home)
-            textView = v.findViewById(R.id.categories_home_id)
+            ButterKnife.bind(this,view)
         }
     }
 }
