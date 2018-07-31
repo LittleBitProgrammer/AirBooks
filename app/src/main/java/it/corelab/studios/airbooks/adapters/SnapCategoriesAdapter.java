@@ -47,7 +47,7 @@ public class SnapCategoriesAdapter  extends RecyclerView.Adapter<SnapCategoriesA
 
         int[] colors = {Color.parseColor("#" + item.getFirstColor()),Color.parseColor("#" + item.getSecondColor())};
         GradientDrawable gd = new GradientDrawable(
-                GradientDrawable.Orientation.LEFT_RIGHT,
+                GradientDrawable.Orientation.TL_BR,
                 colors);
         gd.setCornerRadius(0f);
 

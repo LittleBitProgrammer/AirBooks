@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="60dp">
+        android:paddingBottom="15dp">
 
 
         <it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView
