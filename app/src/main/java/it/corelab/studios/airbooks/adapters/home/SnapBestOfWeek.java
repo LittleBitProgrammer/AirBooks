@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.adapters;
+package it.corelab.studios.airbooks.adapters.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,13 +13,12 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import developer.shivam.library.DiagonalView;
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.data.model.HOME.ItemBest;
 import it.corelab.studios.airbooks.section.BookDetail;
-import it.corelab.studios.airbooks.object.Book;
 
 /**
  * Created by Roberto_Vecchio on 21/02/18.
@@ -50,6 +49,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
     public void onBindViewHolder(final SnapBestOfWeek.ReyclerViewHolder holder, final int position) {
         final ItemBest book = books.get(position);
 
+        //holder.colorGenre.setAngle(4F);
         Picasso.get().load(book.getCoverUrl()).into(holder.image);
         holder.title.setText(book.getTitle());
         //holder.author.setText(item.getAuthor());
@@ -144,7 +144,7 @@ public class SnapBestOfWeek extends RecyclerView.Adapter<SnapBestOfWeek.ReyclerV
         private ImageView image;
         private TextView title;
         private TextView author;
-        private ImageView colorGenre;
+        private com.github.florent37.shapeofview.shapes.DiagonalView colorGenre;
         private ImageView lovers;
         private ImageView readers;
         private TextView numbLovers;

@@ -24,7 +24,7 @@ import it.corelab.studios.airbooks.section.navigation.common.isSectionVisible
 import it.corelab.studios.airbooks.section.navigation.common.setupActionBar
 import java.util.*
 import com.google.gson.GsonBuilder
-import it.corelab.studios.airbooks.adapters.SnapBestOfWeek
+import it.corelab.studios.airbooks.adapters.home.SnapBestOfWeek
 import it.corelab.studios.airbooks.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.data.model.HOME.Genre

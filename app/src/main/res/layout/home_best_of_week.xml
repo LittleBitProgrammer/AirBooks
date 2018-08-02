@@ -28,58 +28,66 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textIsSelectable="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
-
         <ImageView
-            android:id="@+id/rettangolo_smussato_rv"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:contentDescription="@string/image_colorGenre"
-            android:src="#000"
-            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek" />
-
-        <ImageView
-            android:id="@+id/color_bestweek"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/Image_background_colorGenre"
-            android:src="@drawable/rettangolo_taglio"
+            android:layout_height="0dp"
+            android:background="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/title_rv_bestweek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/book_title"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
 
-        <TextView
-            android:id="@+id/author_bestweek"
-            android:layout_width="wrap_content"
+        <com.github.florent37.shapeofview.shapes.DiagonalView
+            android:id="@+id/rettangolo_smussato_rv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/cookie"
-            android:text="@string/author_book_home_card"
-            android:textColor="#FFF"
-            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_color"
+            app:shape_diagonal_angle="4"
+            app:shape_diagonal_position="bottom"
+            app:shape_diagonal_direction="left"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/title_rv_bestweek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:maxLines="2"
+                    android:text="@string/book_title"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+
+                <TextView
+                    android:id="@+id/author_bestweek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/author_book_home_card"
+                    android:textColor="#FFF"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+            </LinearLayout>
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+
 
         <ImageView
             android:id="@+id/lovers_best_week"
@@ -96,33 +104,33 @@
             android:id="@+id/numb_lovers_best_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
             android:text="@string/numbers_lovers_text_placeHolder"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/color_bestweek" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/numb_readers_best_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
             android:layout_marginEnd="3dp"
+            android:layout_marginBottom="2dp"
             android:text="@string/numbers_readers_text_placeHolder_card_home"
             android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/lovers_best_week" />
 
         <ImageView
             android:id="@+id/readers_best_week"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginBottom="2dp"
             android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:contentDescription="@string/numbers_of_readers_image_contentDescription"
             android:src="@drawable/reader"
-            app:layout_constraintBottom_toBottomOf="@+id/color_bestweek"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/numb_readers_best_week" />
 
     </android.support.constraint.ConstraintLayout>

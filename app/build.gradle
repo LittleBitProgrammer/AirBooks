@@ -73,6 +73,7 @@ dependencies {
 
     //decor
     implementation "com.github.developer-shivam:Diagonalify:$diagonal_view"
+    implementation "com.github.florent37:shapeofview:$diagonal_view_group"
     implementation "com.github.f0ris.sweetalert:library:$sweet_alert"
     implementation "com.ToxicBakery.viewpager.transforms:view-pager-transforms:$transformer"
 

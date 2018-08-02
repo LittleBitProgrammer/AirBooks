@@ -17,6 +17,7 @@ buildscript {
 
     //group FOUR -------> 4 <-------- Decor
     ext.diagonal_view = '1.1'
+    ext.diagonal_view_group = '1.2.0'
     ext.sweet_alert = '1.5.3'
     ext.transformer = '1.2.32@aar'
 
