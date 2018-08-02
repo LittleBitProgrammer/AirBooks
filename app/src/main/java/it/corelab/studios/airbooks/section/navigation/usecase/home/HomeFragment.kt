@@ -24,7 +24,7 @@ import it.corelab.studios.airbooks.section.navigation.common.isSectionVisible
 import it.corelab.studios.airbooks.section.navigation.common.setupActionBar
 import java.util.*
 import com.google.gson.GsonBuilder
-import it.corelab.studios.airbooks.adapters.home.SnapBestOfWeek
+import it.corelab.studios.airbooks.adapters.home.BestOfWeekAdapter
 import it.corelab.studios.airbooks.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.data.model.HOME.Genre
@@ -111,7 +111,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
             }
 
             override fun onNext(getHomeResponse: GetHome) {
-                Log.i("Home Responsed", "${GsonBuilder().setPrettyPrinting().create().toJson(getHomeResponse)}")
+                Log.i("Home Responsed", "${GsonBuilder().setPrettyPrinting().create().toJson(getHomeResponse.result.best.items)}")
 
                 val showCaseItem: MutableList<it.corelab.studios.airbooks.data.model.HOME.Showcase> = getHomeResponse.result.showcase
                 val readingItems: MutableList<ItemReading> = getHomeResponse.result.reading.items
@@ -130,7 +130,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                     }
 
                     if (getHomeResponse.result.best != null) {
-                        val snapBestOfWeek = SnapBestOfWeek(activity, bestOfWeekItems)
+                        val snapBestOfWeek = BestOfWeekAdapter(bestOfWeekItems)
                         rv_bestweek.adapter = snapBestOfWeek
                     }
 

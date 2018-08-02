@@ -40,7 +40,7 @@ public class Categories extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
         String uriString = extra.getString("image");
-        String title = extra.getString("title");
+        String title = extra.getString("bookTitle");
 
         //take and set @URI image
        /* Uri uri = Uri.parse(extra.getString("image"));

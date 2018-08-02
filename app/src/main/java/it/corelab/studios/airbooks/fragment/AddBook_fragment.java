@@ -63,7 +63,7 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
 
         editText.setEnabled(false);
 
-        textInputLayout.setHint("Insert your title here");
+        textInputLayout.setHint("Insert your bookTitle here");
 
 
     }

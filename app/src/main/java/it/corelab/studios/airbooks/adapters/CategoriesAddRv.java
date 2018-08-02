@@ -58,7 +58,7 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.studios.air
                 intent.putExtra("image", uri);
                 intent.putExtra("categories", item.getDrawable());
                 intent.putExtra("nameCat", item.getGenreName());
-                intent.putExtra("title", title);
+                intent.putExtra("bookTitle", title);
                 view.getContext().startActivity(intent);
             }
         });

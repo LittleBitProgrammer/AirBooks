@@ -52,6 +52,7 @@
             app:layout_constraintStart_toStartOf="parent" >
 
             <ImageView
+                android:id="@+id/color_diagonal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#000"/>
@@ -59,55 +60,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/title_rv_bestweek"
+                    android:id="@+id/bookTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:maxLines="2"
+                    android:ellipsize="end"
                     android:text="@string/book_title"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/rettangolo_smussato_rv" />
+                    android:textColor="#FFF"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/author_bestweek"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="20dp"
                     android:text="@string/author_book_home_card"
                     android:textColor="#FFF"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title_rv_bestweek" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </com.github.florent37.shapeofview.shapes.DiagonalView>
 
 
 
         <ImageView
-            android:id="@+id/lovers_best_week"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
+            android:id="@+id/starImage"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="1dp"
             android:layout_marginEnd="2dp"
             android:contentDescription="@string/numbers_lovers_image"
-            android:src="@drawable/lovers"
+            android:src="@drawable/star"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/numb_lovers_best_week" />
+            app:layout_constraintEnd_toStartOf="@+id/bookAverageRating" />
 
         <TextView
-            android:id="@+id/numb_lovers_best_week"
+            android:id="@+id/bookAverageRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="1dp"
             android:text="@string/numbers_lovers_text_placeHolder"
-            android:textSize="11sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -116,11 +117,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="1dp"
             android:text="@string/numbers_readers_text_placeHolder_card_home"
-            android:textSize="11sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/lovers_best_week" />
+            app:layout_constraintEnd_toStartOf="@+id/starImage" />
 
         <ImageView
             android:id="@+id/readers_best_week"

@@ -52,7 +52,7 @@ public class AddSection extends AppCompatActivity {
 
         editText.setEnabled(false);
 
-        textInputLayout.setHint("Insert your title here");
+        textInputLayout.setHint("Insert your bookTitle here");
 
 
 

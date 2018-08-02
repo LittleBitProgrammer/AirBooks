@@ -40,8 +40,6 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
-        Log.i("LCOUNTER", "${adapter.itemCount}")
-
         adapter.itemCount
                 .takeIf { it > 1 }
                 ?.apply {

@@ -48,7 +48,7 @@ public class Book extends Entity {
 
         this.ID = books.get("id").toString();
         this.userID = books.get("user_id").toString();
-        this.title = books.get("title").toString();
+        this.title = books.get("bookTitle").toString();
         this.description = books.get("description").toString();
         this.genreID = books.get("genre_id").toString();
         this.language = books.get("language").toString();
@@ -66,8 +66,8 @@ public class Book extends Entity {
             this.reviews = (Page<Review>) books.get("reviews");
         }
 
-        if ((this.author = (User) books.get("author")) != null){
-            this.author = (User) books.get("author");
+        if ((this.author = (User) books.get("bookAuthor")) != null){
+            this.author = (User) books.get("bookAuthor");
         }
     }
 

@@ -8,7 +8,7 @@ public class Showcase {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("title")
+    @SerializedName("bookTitle")
     @Expose
     private String title;
     @SerializedName("image_url")

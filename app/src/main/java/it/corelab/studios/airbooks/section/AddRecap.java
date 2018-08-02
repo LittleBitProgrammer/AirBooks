@@ -53,7 +53,7 @@ public class AddRecap extends AppCompatActivity {
         String genreName = extra.getString("nameCat");
         String uriString = extra.getString("image");
         String desciption = extra.getString("description");
-        String title = extra.getString("title");
+        String title = extra.getString("bookTitle");
         String path = extra.getString("path");
         Uri uri = Uri.parse(uriString);
         cover.setImageURI(uri);

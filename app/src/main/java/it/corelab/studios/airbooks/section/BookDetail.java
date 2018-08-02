@@ -77,8 +77,8 @@ public class BookDetail extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         Picasso.get().load(extras.getString("pos")).into(bookDetailCover);
-        bookDetailTitle.setText(extras.getString("title"));
-        //bookDetailAuthor.setText(extras.getString("author"));
+        bookDetailTitle.setText(extras.getString("bookTitle"));
+        //bookDetailAuthor.setText(extras.getString("bookAuthor"));
         numbLovers.setText("" + extras.getInt("loversNumb"));
         numbReaders.setText("" + extras.getInt("readersNumb" ));
 

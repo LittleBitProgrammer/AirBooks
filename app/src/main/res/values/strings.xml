@@ -49,8 +49,8 @@
     <string name="book_title">Title</string>
     <string name="author_book_home_card">author</string>
     <string name="numbers_lovers_image">numbers of lovers image</string>
-    <string name="numbers_lovers_text_placeHolder">123</string>
-    <string name="numbers_readers_text_placeHolder_card_home">123</string>
+    <string name="numbers_lovers_text_placeHolder">0</string>
+    <string name="numbers_readers_text_placeHolder_card_home">0</string>
     <string name="genre_color_add_book">genre type and color genre</string>
     <string name="showcase_home">showcase home image</string>
     <string name="text_review_profile">Lorem ipsum dolor sit amet, elit consectetuer adipiscing elit. Elit aenean…</string>

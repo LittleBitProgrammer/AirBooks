@@ -62,8 +62,8 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
                 pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
 
                 reviewSharedIntent.putExtra("image",item.getDrawable());
-                reviewSharedIntent.putExtra("title",item.getName());
-                reviewSharedIntent.putExtra("author",item.getAuthor());
+                reviewSharedIntent.putExtra("bookTitle",item.getName());
+                reviewSharedIntent.putExtra("bookAuthor",item.getAuthor());
                 reviewSharedIntent.putExtra("review",item.getReview());
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);

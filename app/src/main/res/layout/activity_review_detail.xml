@@ -53,7 +53,6 @@
         android:background="#00000000"
         android:contentDescription="@string/reviews_button"
         android:scaleType="fitXY"
-        android:src="@drawable/stella"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

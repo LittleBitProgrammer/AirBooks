@@ -63,7 +63,7 @@ public class AddDescription extends AppCompatActivity {
         final String uri = extra.getString("image");
         final int drawable = extra.getInt("categories");
         final String genreName = extra.getString("nameCat");
-        final String title = extra.getString("title");
+        final String title = extra.getString("bookTitle");
 
         final TextWatcher txwatcher = new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,7 +96,7 @@ public class AddDescription extends AppCompatActivity {
                 nextIntent.putExtra("categories",drawable);
                 nextIntent.putExtra("nameCat",genreName);
                 nextIntent.putExtra("description", description);
-                nextIntent.putExtra("title", title);
+                nextIntent.putExtra("bookTitle", title);
                 nextIntent.putExtra("path", fileNameString);
                 Toast.makeText(getApplicationContext(),description,Toast.LENGTH_LONG).show();
                 nextIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

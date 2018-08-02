@@ -20,7 +20,7 @@ public class Review extends Entity {
 
         this.bookID = review.get("book_id").toString();
         this.userID = review.get("user_id").toString();
-        this.title = review.get("title").toString();
+        this.title = review.get("bookTitle").toString();
         this.description = review.get("description").toString();
         this.rating = (int)review.get("rating");
         this.date = (Date) review.get("date");
@@ -29,8 +29,8 @@ public class Review extends Entity {
             this.book = (Book) review.get("book");
         }
 
-        if ((this.author = (User) review.get("author")) != null){
-            this.author= (User) review.get("author");
+        if ((this.author = (User) review.get("bookAuthor")) != null){
+            this.author= (User) review.get("bookAuthor");
         }
     }
 

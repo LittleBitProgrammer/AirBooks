@@ -651,7 +651,7 @@ public class FadeFragment extends Fragment {
 
                         String id = c.getString("id");
                         String userID = c.getString("user_id");
-                        String title = c.getString("title");
+                        String title = c.getString("bookTitle");
                         String description = c.getString("description");
                         String genreID = c.getString("genre_id");
                         String language = c.getString("language");
@@ -671,7 +671,7 @@ public class FadeFragment extends Fragment {
                         //adding each child node to HashMap key => value
                         bookItem.put("id",id);
                         bookItem.put("user_id", userID);
-                        bookItem.put("title", title);
+                        bookItem.put("bookTitle", title);
                         bookItem.put("description", description);
                         bookItem.put("genre_id", genreID);
                         bookItem.put("language", language);

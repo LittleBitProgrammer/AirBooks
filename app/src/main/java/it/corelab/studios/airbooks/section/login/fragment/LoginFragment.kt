@@ -188,7 +188,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
      *
      * This function work to verify the reliability of the email inserted
      *
-     * @author Roberto Vecchio
+     * @bookAuthor Roberto Vecchio
      * @param email email string text
      *
      * @version 1.0
@@ -204,7 +204,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
      *
      * This function to get the string of a editText
      *
-     * @author Roberto Vecchio
+     * @bookAuthor Roberto Vecchio
      * @param editText editText that you want to take the string
      *
      * @version 1.0
@@ -220,7 +220,7 @@ class LoginFragment : Fragment(), SignInController, EditTextController, ErrorDia
      *
      * This function work to see if a editText is empty
      *
-     * @author Roberto Vecchio
+     * @bookAuthor Roberto Vecchio
      * @param editText editText that you want to verify if is empty
      *
      * @version 1.0

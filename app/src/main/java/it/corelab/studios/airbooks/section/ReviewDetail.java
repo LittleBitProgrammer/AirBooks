@@ -37,8 +37,8 @@ public class ReviewDetail extends AppCompatActivity {
         Bundle extras = intent.getExtras();
 
         imageCover.setImageResource(extras.getInt("image"));
-        title.setText(extras.getString("title"));
-        author.setText(extras.getString("author"));
+        title.setText(extras.getString("bookTitle"));
+        author.setText(extras.getString("bookAuthor"));
         review.setText(extras.getString("review"));
 
     }

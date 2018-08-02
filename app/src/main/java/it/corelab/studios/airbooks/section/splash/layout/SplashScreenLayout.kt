@@ -1,6 +1,7 @@
 package it.corelab.studios.airbooks.section.splash.layout
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
+import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
 import android.view.Gravity
 import android.widget.LinearLayout
@@ -14,7 +15,7 @@ class SplashScreenLayout : AnkoComponent<SplashActivity> {
 
         constraintLayout {
             id = Ids.LINEAR_LAYOUT_EXTERNAL
-            this.setBackgroundColor(resources.getColor(R.color.white))
+            this.setBackgroundColor(android.support.v4.content.ContextCompat.getColor(ctx,R.color.white))
 
             linearLayout {
                 id = Ids.LINEAR_INTERNAL
@@ -27,7 +28,7 @@ class SplashScreenLayout : AnkoComponent<SplashActivity> {
 
                     typeface = ResourcesCompat.getFont(ctx,R.font.koliko)
                     textSize = sp(15).toFloat()
-                    textColor = resources.getColor(R.color.title_color_splash_screen)
+                    textColor = ContextCompat.getColor(ctx,R.color.title_color_splash_screen)
                     alpha = 0F
                 }.lparams(width = wrapContent, height = wrapContent){
                     topMargin = dip(16)
@@ -38,7 +39,7 @@ class SplashScreenLayout : AnkoComponent<SplashActivity> {
 
                     typeface = ResourcesCompat.getFont(ctx,R.font.cookie)
                     textSize = sp(13).toFloat()
-                    textColor = resources.getColor(R.color.description_color_splash_screen)
+                    textColor = ContextCompat.getColor(ctx,R.color.description_color_splash_screen)
                     alpha = 0F
                 }.lparams(width = wrapContent, height = dip(60)){
                     topMargin = dip(0)

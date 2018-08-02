@@ -13,7 +13,7 @@ public class ItemReading {
     @SerializedName("user_id")
     @Expose
     private String userId;
-    @SerializedName("title")
+    @SerializedName("bookTitle")
     @Expose
     private String title;
     @SerializedName("description")

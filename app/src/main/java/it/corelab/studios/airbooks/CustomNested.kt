@@ -20,7 +20,7 @@ class CustomNested : NestedScrollView {
     fun takeScrollVariation(diagonalView: DiagonalView) {
         diagonalView.setAngle(14F)
 
-        setOnScrollChangeListener(OnScrollChangeListener { diagonal, scrollX, scrollY, oldScrollX, oldScrollY ->
+        setOnScrollChangeListener(OnScrollChangeListener { diagonal, _, scrollY, _, _ ->
             val diff = diagonal.height + diagonal.scrollY - diagonal.bottom
 
             val variation = 47.0f - diff * 0.05f

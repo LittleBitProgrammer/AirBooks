@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private var currentController: NavController? = null
 
-    private val mOnNavigationItemSelectedListener = AHBottomNavigation.OnTabSelectedListener { position, wasSelected ->
+    private val mOnNavigationItemSelectedListener = AHBottomNavigation.OnTabSelectedListener { position, _ ->
         var returnValue = false
 
         when(position){
