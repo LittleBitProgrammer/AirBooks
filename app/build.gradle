@@ -66,10 +66,8 @@ dependencies {
 
     //navigation
     implementation "com.aurelhubert:ahbottomnavigation:$bottom_navigation"
-    //noinspection GradleDependency
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha02'
-    //noinspection GradleDependency
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02'
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha04'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha04'
 
     //decor
     implementation "com.github.developer-shivam:Diagonalify:$diagonal_view"

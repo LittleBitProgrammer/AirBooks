@@ -1,19 +1,21 @@
 package it.corelab.studios.airbooks.adapters.home
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.Navigation
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.data.model.HOME.ItemBest
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by Roberto_Vecchio on 21/02/18.
@@ -46,6 +48,9 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
         holderContainer?.bookAverageRating?.text = "${book.averageRating}"
         holderContainer?.bookAverageRating?.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
+        holderContainer?.itemView?.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook,null)
+        )
 
         /*holder.itemView.setOnClickListener {
             val sharedIntent = Intent(context, BookDetail::class.java)
@@ -89,7 +94,6 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
         val numbReaders: TextView = view.findViewById(R.id.numb_readers_best_week)
         val bookRatingImage: ImageView = view.findViewById(R.id.starImage)
         val bookAverageRating: TextView = view.findViewById(R.id.bookAverageRating)
-
 
         init {
 

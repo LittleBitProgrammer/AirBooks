@@ -30,7 +30,6 @@ import it.corelab.studios.airbooks.section.navigation.common.or
 
 class MainActivity : AppCompatActivity() {
 
-
     private val sectionHomeWrapper: FrameLayout by lazy { section_home_wrapper }
     private val sectionExploreWarapper: FrameLayout by lazy { section_explore_wrapper }
     private val sectionLibraryWrapper: FrameLayout by lazy { section_library_wrapper }
@@ -360,7 +359,6 @@ class MainActivity : AppCompatActivity() {
         val xy = IntArray(2)
         view.getLocationOnScreen(xy)
         yPosition = xy[1]
-        Log.i("YPOSITION: ", "$yPosition")
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

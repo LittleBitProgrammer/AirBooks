@@ -29,8 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <it.corelab.studios.airbooks.CustomNested xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <it.corelab.studios.airbooks.CustomNested
             android:id="@+id/nested_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
