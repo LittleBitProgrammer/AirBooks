@@ -76,18 +76,6 @@ public class FadeFragment extends Fragment {
    public static ImageView trapezoid;
    public static float angleVariation;
    public static int yPosition;
-   //public static ImageView topBar;
-
-
-    /*
-
-   * This is the global variable of the autoScroll recyclerView
-   * Is declared as global because it is called by onDestroyMethod in MainActivity
-
-    */
-
-
-
 
    /*
 
@@ -205,9 +193,6 @@ public class FadeFragment extends Fragment {
 
         //exploreDiagonal = view.findViewById(R.id.diagonal_view_explore);
 
-
-
-
         /*
 
         * Initialization of different variables @GROUP
@@ -220,12 +205,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        //1. GROUP
-
-        //2. GROUP
-
-        //3.GROUP
-        final SnappingRecyclerView recyclerCardExplore = view.findViewById(R.id.recycler_view_explore);
 
 
         /*
@@ -236,7 +215,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-        recyclerCardExplore.enableViewScaling(true);
         //recyclerCardExplore.enableAlphaScaling(true);
 
 
@@ -248,20 +226,6 @@ public class FadeFragment extends Fragment {
         * 1.Setting the cache size
         * 2.Enabling drawing cache
         * 3.Setting cache quality
-
-         */
-
-        recyclerCardExplore.setItemViewCacheSize(20);
-        recyclerCardExplore.setDrawingCacheEnabled(true);
-        recyclerCardExplore.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
-
-        /*
-
-        * we can't use one adapter for all the recyclerView
-        * so here we are initializing and creating different adapter
-        * and then assigning to the different recyclerView
-        * @FOLLOW the guidelines of these
 
          */
 
@@ -285,8 +249,6 @@ public class FadeFragment extends Fragment {
                     pDialog.dismiss();
                 }*/
 
-                SnapExploreRecyclerAdapter adapter = new SnapExploreRecyclerAdapter(getActivity(), bookArrayList);
-                recyclerCardExplore.setAdapter(adapter);
             }
         });
         asyncTaskExplorer.execute();
@@ -311,40 +273,12 @@ public class FadeFragment extends Fragment {
 
         /*
 
-        * these method initialize and fill the empty recyclerView with the choosen elements
-        * @EMPTY RECYCLERVIEW FILLED:
-        *
-        * 1. recyclerViewLibrary
-
-         */
-
-
-
-        /*
-
         Initialize the @fragmentContainer with the choosen layout
 
          */
 
 
         //libDiagonal = view.findViewById(R.id.diagonal_view_library);
-
-
-        /*
-
-        * Initialization of different variables @GROUP
-        *
-        * @1. GROUP = declare final to access to inner method
-        * @2. GROUP = normal widget and view variables
-        * @3. GROUP = recyclerView @creation and @initialization
-        *
-        * @CREATION and @INITIALIZATION must be done in one line
-
-         */
-
-        //1. GROUP
-
-        //2. GROUP
 
         //3.GROUP
         final RecyclerView recyclerViewLibrary = view.findViewById(R.id.recycler_view_cardView_library);
@@ -376,19 +310,6 @@ public class FadeFragment extends Fragment {
 
         recyclerViewLibrary.setLayoutManager(new GridLayoutManager(getActivity(),3, GridLayout.VERTICAL,false));
         recyclerViewLibrary.setHasFixedSize(true);
-
-
-        /*
-
-        * we can't use one adapter for all the recyclerView
-        * so here we are initializing and creating different adapter
-        * and then assigning to the different recyclerView
-        * @FOLLOW the guidelines of these
-
-         */
-
-
-
 
         /*
 
@@ -434,17 +355,6 @@ public class FadeFragment extends Fragment {
 
        /*
 
-        * these method initialize and fill the empty recyclerView with the choosen elements
-        * @EMPTY RECYCLERVIEW FILLED:
-        *
-        * 1. recyclerView
-        * 2. cardReviewRecycleView
-
-         */
-
-
-       /*
-
         Initialize the @fragmentContainer with the choosen layout
 
          */
@@ -483,9 +393,7 @@ public class FadeFragment extends Fragment {
            }
        });
        userAsync.execute();*/
-
-       //2. GROUP
-
+      
        //3.GROUP
        RecyclerView cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
        RecyclerView recyclerViewAllBooks = view.findViewById(R.id.recycler_view);

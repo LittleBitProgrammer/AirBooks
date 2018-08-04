@@ -62,6 +62,7 @@
     <string name="bookshelf">bookshelf</string>
     <string name="add_book_button">add Book button</string>
     <string name="continue_read">"Continue to read</string>
+    <string name="recents">Più recenti</string>
     <string name="categories_home">Categories</string>
     <string name="best_weeek">Best of Week</string>
     <string name="main_section_appName">Airbooks</string>

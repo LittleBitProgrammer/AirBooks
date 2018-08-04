@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
+                nested_home.animateDiagonal(diagonal_main)
                 returnValue = true
             }
 
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
+                nested_explore.animateDiagonal(diagonal_main)
                 returnValue = true
             }
 
@@ -84,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.VISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
+                nested_library.animateDiagonal(diagonal_main)
                 returnValue = true
             }
 
@@ -95,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.VISIBLE
 
+                nested_Profile.animateDiagonal(diagonal_main)
                 returnValue = true
             }
         }
@@ -130,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         sectionProfileWrapper.visibility = View.INVISIBLE
 
         nested_home.takeScrollVariation(diagonal_main)
+        nested_explore.takeScrollVariation(diagonal_main)
 
     }
 

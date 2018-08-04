@@ -60,7 +60,6 @@ public class BookDetail extends AppCompatActivity {
         bookDetailCardviewGenre = findViewById(R.id.cardView_categories_shared);
         bookDetailGenreLabel = findViewById(R.id.text_genre_label);
         bookDetailAuthor = findViewById(R.id.author_bookDetail);
-        leftArrow = findViewById(R.id.left_arrow_book_detail);
         star = findViewById(R.id.reviews_button_bookDetail);
         numbLovers = findViewById(R.id.numb_lovers_book_detail);
         numbReaders = findViewById(R.id.numb_readers_book_detail);

@@ -1,11 +1,14 @@
 package it.corelab.studios.airbooks
 
+import android.animation.ValueAnimator
 import android.content.Context
+import android.support.v4.view.animation.FastOutLinearInInterpolator
+import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import developer.shivam.library.DiagonalView
+import android.view.animation.DecelerateInterpolator
 
 
 class CustomNested : NestedScrollView {
@@ -17,24 +20,62 @@ class CustomNested : NestedScrollView {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
 
-    fun takeScrollVariation(diagonalView: DiagonalView) {
+    private var lastYPosition = 0F
+    private var lastAngleVariation = 14F
+
+
+    fun animateDiagonal(diagonalView: it.corelab.studios.airbooks.DiagonalView){
+
+        diagonalView.animate().translationY(lastYPosition).interpolator = DecelerateInterpolator()
+
+        if (lastAngleVariation < 14){
+            ValueAnimator.ofFloat(diagonalView.getAngle(),lastAngleVariation).apply {
+                addUpdateListener { animation -> diagonalView.setAngle(animation.animatedValue as Float)
+                    duration = 500
+                    interpolator = LinearOutSlowInInterpolator() }
+            }.start()
+        }else {
+
+            ValueAnimator.ofFloat(diagonalView.getAngle(), lastAngleVariation).apply {
+                addUpdateListener { animation ->
+                    diagonalView.setAngle(animation.animatedValue as Float)
+                    duration = 600
+                    interpolator = FastOutLinearInInterpolator()
+                }
+            }.start()
+
+        }
+
+        Log.i("getValueVariation", "" +diagonalView.getAngle())
+        Log.i("LastAnglevariationLog", "" +lastAngleVariation)
+
+    }
+
+    fun takeScrollVariation(diagonalView: it.corelab.studios.airbooks.DiagonalView) {
         diagonalView.setAngle(14F)
 
         setOnScrollChangeListener(OnScrollChangeListener { diagonal, _, scrollY, _, _ ->
             val diff = diagonal.height + diagonal.scrollY - diagonal.bottom
 
-            val variation = 47.0f - diff * 0.05f
-            Log.i("variationlog", "" + diff);
+            var variation = 47.0f - diff * 0.05f
 
-            takeYPosition(diagonalView)
+            lastYPosition = -scrollY.toFloat()
+            //takeYPosition(diagonalView)
 
             if (diff <= 620) {
+
                 diagonalView.setAngle(14F)
                 diagonalView.y = -scrollY.toFloat()
+                variation = 14F
+                lastAngleVariation = variation
+
             } else if (diff <= 906 && variation <= 14.0f) {
+
                 diagonalView.setAngle(variation)
                 diagonalView.y = -scrollY.toFloat()
-                // Log.i("AIRBOOKS >= 61000:---> ", "" + (46.0f - (diff * 0.05f)));
+                lastAngleVariation = variation
+                Log.i("ANGLE", "$lastAngleVariation")
+
             }else{
                 diagonalView.y = -scrollY.toFloat()
             }
@@ -44,8 +85,7 @@ class CustomNested : NestedScrollView {
     private fun takeYPosition(view: View) {
         val xy = IntArray(2)
         view.getLocationOnScreen(xy)
-        val yViewPosition = xy[1].toFloat()
-        Log.i("CUSTOMNESTED Y: ", "$yViewPosition")
+        lastYPosition = xy[1].toFloat()
     }
 
 }

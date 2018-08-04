@@ -1,6 +1,5 @@
-package it.corelab.studios.airbooks.adapters.home
+package it.corelab.studios.airbooks.adapters
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.RecyclerView
@@ -13,15 +12,12 @@ import androidx.navigation.Navigation
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.data.model.HOME.ItemBest
+import it.corelab.studios.airbooks.adapters.home.BestOfWeekAdapter
+import it.corelab.studios.airbooks.data.model.EXPLORE.Item
 
-/**
- * Created by Roberto_Vecchio on 21/02/18.
- */
+class ExploreRecentsAdapter(books: List<Item>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val bookItems: List<ItemBest> = books
+    private val bookItems: List<Item> = books
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -34,7 +30,7 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 colors)
         gd.cornerRadius = 0f
 
-        Picasso.get().load(book.coverUrl).placeholder(R.drawable.placeholder_image).into(holderContainer?.coverImage)
+        Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
 
         holderContainer?.bookTitle?.text = book.title
         holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)
@@ -50,32 +46,13 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook,null)
         )
 
-        /*holder.itemView.setOnClickListener {
-            val sharedIntent = Intent(context, BookDetail::class.java)
-
-            //Pair[] pairs = new Pair[2];
-            //pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
-
-            sharedIntent.putExtra("pos", book.coverUrl)
-            sharedIntent.putExtra("bookTitle", book.bookTitle)
-            sharedIntent.putExtra("genre", Integer.parseInt(book.genreId!!.toString()))
-            //sharedIntent.putExtra("bookAuthor", book.getBookAuthor());
-            sharedIntent.putExtra("loversNumb", book.lovers)
-            sharedIntent.putExtra("readersNumb", book.readings)
-            //sharedIntent.putExtra("colorGenre",)
-            sharedIntent.putExtra("coverImage", book.coverUrl)
-
-
-            context.startActivity(sharedIntent)
-        }*/
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.home_best_of_week, parent, false)
-        return BestOfWeekAdapter.ItemViewHolder(view)
+        return ExploreRecentsAdapter.ItemViewHolder(view)
     }
 
 

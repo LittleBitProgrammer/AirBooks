@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.Navigation
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -87,9 +85,8 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 rv_categories.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
                 rv_categories.setHasFixedSize(true)
 
-                getShowcase("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token)
+                getHomeFeed("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token)
 
-                Log.i("asrubale", "$token ${Locale.getDefault().language}")
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
@@ -106,7 +103,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
         rotationView.stopAutoScroll()
     }
 
-    override fun getShowcase(url: String, lang: String, os: String, token: String) {
+    override fun getHomeFeed(url: String, lang: String, os: String, token: String) {
 
         mAPIService!!.getHomeFeed(url, lang, os, token).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<GetHome> {
             override fun onSubscribe(d: Disposable) {
@@ -133,6 +130,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
                     if (getHomeResponse.result.best != null) {
                         val snapBestOfWeek = BestOfWeekAdapter(bestOfWeekItems)
+                        snapBestOfWeek.notifyDataSetChanged()
                         rv_bestweek.adapter = snapBestOfWeek
                     }
 

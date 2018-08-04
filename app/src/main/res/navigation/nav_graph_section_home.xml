@@ -11,12 +11,11 @@
             android:id="@+id/action_homeFragment_to_detailBook"
             app:clearTask="false"
             app:destination="@id/detailBook"
-            app:enterAnim="@anim/intent_from_left_in"
-            app:exitAnim="@anim/intent_from_left_out"
+            app:enterAnim="@anim/intent_from_right_in"
+            app:exitAnim="@anim/intent_from_right_out"
             app:launchDocument="false"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/detailBook"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -26,6 +25,9 @@
         <action
             android:id="@+id/action_detailBook_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/intent_from_left_in"
+            app:exitAnim="@anim/intent_from_left_out"
+            app:launchSingleTop="true"
             app:popUpTo="@+id/homeFragment" />
     </fragment>
 
