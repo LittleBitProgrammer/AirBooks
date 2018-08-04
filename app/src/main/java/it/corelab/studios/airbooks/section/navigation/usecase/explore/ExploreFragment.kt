@@ -35,7 +35,9 @@ class ExploreFragment: Fragment(),OnReselectedDelegate, ExploreController{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             View.inflate(activity, R.layout.explore_fragment,null).apply {
                 Log.d("ExploreFragment", "onCreateView")
+
                 mAPIService = ApiUtils.getAPIService()
+
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
 
@@ -60,7 +62,7 @@ class ExploreFragment: Fragment(),OnReselectedDelegate, ExploreController{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Explore")
+    private fun setupActionBar() = setupActionBar("Explore",false,1)
 
     override fun onReselected() = setupActionBar()
 

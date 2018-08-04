@@ -26,7 +26,7 @@
             android:contentDescription="@string/search_icon"
             android:paddingEnd="0dp"
             android:paddingStart="8dp"
-            android:src="@drawable/icona_search"
+            android:src="@drawable/search"
             android:tint="#6C798B" />
 
         <EditText

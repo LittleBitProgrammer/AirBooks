@@ -23,7 +23,6 @@
             android:scaleY="0.8"
             android:background="#00000000"
             android:scaleType="fitCenter"
-            android:src="@drawable/left_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/back_button"/>

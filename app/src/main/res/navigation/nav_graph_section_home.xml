@@ -22,12 +22,20 @@
         android:id="@+id/detailBook"
         android:name="it.corelab.studios.airbooks.section.navigation.usecase.book.detail.DetailBook"
         android:label="BookDetailFragment">
+        <argument
+            android:name="firstColor"
+            app:argType="string"/>
+        <argument
+            android:name="secondColor"
+            app:argType="string"/>
         <action
             android:id="@+id/action_detailBook_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:enterAnim="@anim/intent_from_left_in"
-            app:exitAnim="@anim/intent_from_left_out"
+            app:enterAnim="@anim/intent_from_right_in"
+            app:exitAnim="@anim/intent_from_right_out"
             app:launchSingleTop="true"
+            app:popEnterAnim="@anim/intent_from_left_in"
+            app:popExitAnim="@anim/intent_from_left_out"
             app:popUpTo="@+id/homeFragment" />
     </fragment>
 

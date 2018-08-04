@@ -8,7 +8,6 @@ import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -24,7 +23,6 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import java.util.ArrayList
 import it.corelab.studios.airbooks.R
 import kotlinx.android.synthetic.main.activity_main.*
-import it.corelab.studios.airbooks.fragment.FadeFragment.yPosition
 import it.corelab.studios.airbooks.section.navigation.common.OnReselectedDelegate
 import it.corelab.studios.airbooks.section.navigation.common.or
 
@@ -127,11 +125,6 @@ class MainActivity : AppCompatActivity() {
         currentController = navHomeController
 
         initUI()
-
-        sectionHomeWrapper.visibility = View.VISIBLE
-        sectionExploreWarapper.visibility = View.INVISIBLE
-        sectionLibraryWrapper.visibility = View.INVISIBLE
-        sectionProfileWrapper.visibility = View.INVISIBLE
 
         nested_home.takeScrollVariation(diagonal_main)
         nested_explore.takeScrollVariation(diagonal_main)
@@ -239,131 +232,6 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnTabSelectedListener(mOnNavigationItemSelectedListener)
 
-        /*bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-            @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-
-                if (currentFragment == null) {
-                    currentFragment = adapter.getCurrentFragment();
-                }
-
-                if (wasSelected) {
-                    currentFragment.refresh();
-                    return true;
-                }
-
-                if (currentFragment != null) {
-                    //currentFragment.willBeHidden();
-                    switch (currentFragment.getArguments().getInt("index", 0)){
-                        case 0:
-                            //takeYPosition(diagonalView);
-                            break;
-                        case 1:
-                            //takeYPosition(exploreDiagonal);
-                            break;
-                        case 2:
-                            //takeYPosition(libDiagonal);
-                            break;
-                        case 3:
-                            //takeYPosition(profileDiagonal);
-                            break;
-                    }
-                    Log.i("FRAGMENT", "fragment will be hidden");
-                }
-
-                //viewPager.setCurrentItem(position, false);
-
-                if (currentFragment == null) {
-                    return true;
-                }
-
-                currentFragment = adapter.getCurrentFragment();
-                currentFragment.willBeDisplayed();
-
-
-
-                switch (currentFragment.getArguments().getInt("index", 0)){
-                    case 0:
-
-                        if ( yHomePosition < 0.0 ){
-                            //FadeFragment.diagonalView.setY(- yHomePosition);
-                            //diagonalView.animate().translationY(6).setInterpolator(new DecelerateInterpolator());
-                        }
-
-                        break;
-                    case 1:
-
-                        if (angleVariation <= 16.0){
-                            for ( float i = angleVariation; i <= 16.0f; i += 0.1){
-                                if (i <= 16.0) {
-                                    //exploreDiagonal.setAngle(i);
-                                    Log.i("ANGLE", "" + i );
-                                }
-                            }
-                        }
-
-                        if (yPosition <= 0) {
-                            //exploreDiagonal.setY(yPosition);
-                            //exploreDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
-                        }
-
-
-
-                        break;
-                    case 2:
-                        if (angleVariation <= 16.0){
-                            for ( float i = angleVariation; i <= 16.0f; i += 0.1){
-                                if (i <= 16.0) {
-                                    //libDiagonal.setAngle(i);
-                                    Log.i("ANGLE", "" + i );
-                                }
-                            }
-                        }
-
-                        if (yPosition <= 0) {
-                            //libDiagonal.setY(yPosition);
-                            //libDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
-                        }
-
-                        //takeYPosition(libDiagonal);
-                        break;
-                    case 3:
-                        if (angleVariation <= 16.0){
-                            for ( float i = angleVariation; i <= 16.0f; i += 0.1){
-                                if (i <= 16.0) {
-                                    //profileDiagonal.setAngle(i);
-                                    Log.i("ANGLE", "" + i );
-                                }
-                            }
-                        }
-
-                        if (yPosition <= 0) {
-                            //profileDiagonal.setY(yPosition);
-                            //profileDiagonal.animate().translationY(0).setInterpolator(new DecelerateInterpolator());
-                        }
-
-                        //takeYPosition(profileDiagonal);
-                        break;
-                }
-
-
-
-                return true;
-            }
-        });*/
-
-        //viewPager.setOffscreenPageLimit(3);
-
-        //adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        //viewPager.setAdapter(adapter);
-
-        //currentFragment = adapter.getCurrentFragment();
-    }
-
-    fun takeYPosition(view: View) {
-        val xy = IntArray(2)
-        view.getLocationOnScreen(xy)
-        yPosition = xy[1]
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

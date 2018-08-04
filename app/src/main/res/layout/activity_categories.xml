@@ -45,7 +45,6 @@
         android:scaleType="fitCenter"
         android:scaleX="0.8"
         android:scaleY="0.8"
-        android:src="@drawable/left_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/top_bar_categories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

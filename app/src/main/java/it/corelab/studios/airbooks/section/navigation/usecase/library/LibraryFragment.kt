@@ -23,7 +23,7 @@ class LibraryFragment: Fragment(), OnReselectedDelegate{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Library")
+    private fun setupActionBar() = setupActionBar("Library",false,0)
 
     override fun onReselected() = setupActionBar()
 

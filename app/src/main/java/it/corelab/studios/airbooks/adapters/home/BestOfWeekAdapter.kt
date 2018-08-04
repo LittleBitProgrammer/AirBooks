@@ -3,6 +3,7 @@ package it.corelab.studios.airbooks.adapters.home
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,7 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 colors)
         gd.cornerRadius = 0f
 
-        Picasso.get().load(book.coverUrl).placeholder(R.drawable.placeholder_image).into(holderContainer?.coverImage)
+        Picasso.get().load(book.coverUrl).placeholder(R.drawable.logo_login).into(holderContainer?.coverImage)
 
         holderContainer?.bookTitle?.text = book.title
         holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)
@@ -47,7 +48,9 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
         holderContainer?.bookAverageRating?.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
         holderContainer?.itemView?.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook,null)
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook, Bundle().apply {
+                    putString("firstColor", book.genre.firstColor)
+                    putString("secondColor", book.genre.secondColor)})
         )
 
         /*holder.itemView.setOnClickListener {

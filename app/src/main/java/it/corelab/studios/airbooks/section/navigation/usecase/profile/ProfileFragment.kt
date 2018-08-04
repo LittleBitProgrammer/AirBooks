@@ -23,7 +23,7 @@ class ProfileFragment: Fragment(), OnReselectedDelegate{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Profile")
+    private fun setupActionBar() = setupActionBar("Profile",false,0)
 
     override fun onReselected() = setupActionBar()
 }

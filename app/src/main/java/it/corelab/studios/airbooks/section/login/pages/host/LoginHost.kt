@@ -34,23 +34,6 @@ class LoginHost : AnkoComponent<Login> {
 
                 background = ContextCompat.getDrawable(ctx,R.drawable.background_color)
 
-                imageButton{
-                    id = Ids.LEFT_ARROW
-
-                    Picasso.get().load(R.drawable.left_arrow).into(this@imageButton)
-                    backgroundColor = Color.parseColor("#00000000")
-                    contentDescription = resources.getString(R.string.back_button_login_host)
-                    scaleX = 0.9F
-                    scaleY = 0.9F
-                    scaleType = ImageView.ScaleType.FIT_CENTER
-
-                }.lparams(width = wrapContent, height = wrapContent){
-                    leftToLeft = PARENT_ID
-                    topToTop = PARENT_ID
-                    leftMargin = dip(16)
-                    topMargin = dip(16)
-                }
-
                 roundImage {
                     id = Ids.LOGO
 

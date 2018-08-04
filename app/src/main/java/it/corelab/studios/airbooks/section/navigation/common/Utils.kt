@@ -14,19 +14,34 @@ fun <T> T?.or(compute: () -> T): T = this ?: compute()
 
 fun Fragment.isSectionVisible(): Boolean = (((view?.parent as? ViewGroup)?.parent as? ViewGroup)?.visibility == View.VISIBLE)
 
-fun Fragment.setupActionBar(title: String, displayHome: Boolean = false){
+fun Fragment.setupActionBar(title: String, displayHome: Boolean = false, id:Int){
     (activity as? AppCompatActivity)?.supportActionBar?.apply {
 
-        this.title = title
         this.elevation = 0F
 
-        this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        this.setCustomView(R.layout.actionbar)
+        when(id){
+            0-> {
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_home)
+            }
+            1-> {
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_explore)
+            }
+            2->{
+
+            }
+            3->{
+
+            }
+        }
+
 
         setDisplayShowHomeEnabled(displayHome)
         setDisplayHomeAsUpEnabled(displayHome)
 
         setBackgroundDrawable(ContextCompat.getDrawable(ctx,R.drawable.top_bar))
+
     }
     setHasOptionsMenu(displayHome)
 }

@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import developer.shivam.library.R.styleable;
 
@@ -76,6 +77,10 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
 
     public float getAngle() {
         return angle;
+    }
+
+    public Drawable getDrawable(){
+        return this.getBackground();
     }
 
     public void setDiagonalGravity(String gravity) {

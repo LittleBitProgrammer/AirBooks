@@ -94,7 +94,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Home")
+    private fun setupActionBar() = setupActionBar("Home",false,0)
     override fun onReselected() = setupActionBar()
 
     override fun onDestroy() {
