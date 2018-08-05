@@ -111,6 +111,10 @@ class SplashActivity : AppCompatActivity(), AnimationControllerSpalshScreen, Aut
         centralLogo = findViewById(R.id.CENTRAL_LOGO)
         container = findViewById(R.id.LINEAR_INTERNAL_SPLASH_SCREEN)
 
+        val sharedPreferences = getSharedPreferences(this.packageName, Context.MODE_PRIVATE)
+        sharedPreferences?.edit()?.putString("firstColor", "586BA4")?.apply()
+        sharedPreferences?.edit()?.putString("secondColor", "4299B0")?.apply()
+
         val elements = intArrayOf(0,1)
 
         ViewCompat.animate(centralLogo)

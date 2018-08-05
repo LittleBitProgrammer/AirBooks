@@ -32,6 +32,9 @@ class ExploreFragment: Fragment(),OnReselectedDelegate, ExploreController{
 
     private var mAPIService: APIService? = null
 
+    private var firstColor: String? = null
+    private var secondColor: String? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             View.inflate(activity, R.layout.explore_fragment,null).apply {
                 Log.d("ExploreFragment", "onCreateView")
@@ -40,6 +43,8 @@ class ExploreFragment: Fragment(),OnReselectedDelegate, ExploreController{
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
+                firstColor = sharedPreferences.getString("firstColor", "")
+                secondColor = sharedPreferences.getString("secondColor", "")
 
                 ViewCompat.setNestedScrollingEnabled(rv_recents, false)
 
@@ -62,7 +67,7 @@ class ExploreFragment: Fragment(),OnReselectedDelegate, ExploreController{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Explore",false,1)
+    private fun setupActionBar() = setupActionBar("Explore",false,1,firstColor,secondColor)
 
     override fun onReselected() = setupActionBar()
 

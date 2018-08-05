@@ -41,6 +41,8 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private var mAPIService: APIService? = null
 
     private lateinit var rotationView: InfiniteRotationView
+    private var firstColor: String? = null
+    private var secondColor: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             View.inflate(ctx, R.layout.home_fragment,null).apply {
@@ -48,6 +50,8 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
+                firstColor = sharedPreferences.getString("firstColor", "")
+                secondColor = sharedPreferences.getString("secondColor", "")
 
                 mAPIService = ApiUtils.getAPIService()
 
@@ -94,7 +98,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Home",false,0)
+    private fun setupActionBar() = setupActionBar("Home",false,0, firstColor, secondColor)
     override fun onReselected() = setupActionBar()
 
     override fun onDestroy() {

@@ -79,10 +79,6 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
         return angle;
     }
 
-    public Drawable getDrawable(){
-        return this.getBackground();
-    }
-
     public void setDiagonalGravity(String gravity) {
         this.mPath.reset();
         this.diagonalGravity = gravity;
