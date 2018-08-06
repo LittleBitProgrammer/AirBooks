@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.home.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.model.data.remote.APIService
@@ -34,6 +35,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private var mAPIService: APIService? = null
 
     private lateinit var rotationView: InfiniteRotationView
+    private var button: Button? = null
     private var firstColor: String? = null
     private var secondColor: String? = null
 
@@ -42,6 +44,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 Log.d("HomeFragment", "onCreateView")
 
                 viewModel = ViewModelProviders.of(activity!!).get(ViewModelHome::class.java)
+
+                button = activity?.findViewById(R.id.color_button_read_now)
+
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")

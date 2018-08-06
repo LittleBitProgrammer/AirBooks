@@ -144,6 +144,21 @@
         </it.corelab.studios.airbooks.view.widget.CustomNested>
     </FrameLayout>
 
+    <Button
+        android:id="@+id/color_button_read_now"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_read"
+        android:scaleType="fitXY"
+        android:text="@string/read_now_button"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/navigation"
         android:layout_width="match_parent"

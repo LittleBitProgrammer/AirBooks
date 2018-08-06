@@ -13,6 +13,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.navigation.NavController
@@ -46,6 +47,8 @@ class MainActivity : AppCompatActivity() {
     private val navProfileFragment: Fragment by lazy { section_profile }
 
     private var currentController: NavController? = null
+
+    private lateinit var button: Button
 
     private val mOnNavigationItemSelectedListener = AHBottomNavigation.OnTabSelectedListener { position, _ ->
         var returnValue = false
@@ -123,6 +126,10 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
 
         currentController = navHomeController
+
+        button = findViewById(R.id.color_button_read_now)
+        button.isEnabled = false
+        button.visibility = View.INVISIBLE
 
         initUI()
 
