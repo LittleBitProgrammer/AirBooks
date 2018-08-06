@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 allprojects {
     repositories {
@@ -18,7 +19,7 @@ android {
             storePassword 'Aquilatedesca06'
         }
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "it.corelab.studios.airbooks"
         minSdkVersion 21
@@ -48,7 +49,6 @@ dependencies {
                      ======================================================================*/
 
     //basics
-    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation "com.android.support:recyclerview-v7:$android_support_version"
     implementation "com.android.support:cardview-v7:$android_support_version"
@@ -63,11 +63,16 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22.1'
+    implementation "androidx.core:core-ktx:0.3"
 
     //navigation
     implementation "com.aurelhubert:ahbottomnavigation:$bottom_navigation"
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha04'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha04'
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
     //decor
     implementation "com.github.developer-shivam:Diagonalify:$diagonal_view"

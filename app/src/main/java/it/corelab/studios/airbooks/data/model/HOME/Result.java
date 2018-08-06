@@ -1,5 +1,8 @@
 package it.corelab.studios.airbooks.data.model.HOME;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

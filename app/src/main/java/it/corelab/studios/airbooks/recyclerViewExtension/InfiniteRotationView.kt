@@ -82,7 +82,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
 
             private val stateChanged: (Int) -> Unit) : RecyclerView.OnScrollListener() {
 
-        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
 
             super.onScrolled(recyclerView, dx, dy)
 
@@ -100,7 +100,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
             }
         }
 
-        override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
             stateChanged(newState)
         }
