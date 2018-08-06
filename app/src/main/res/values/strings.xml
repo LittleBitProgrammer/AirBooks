@@ -61,10 +61,10 @@
     <string name="insert_image_add_book">insert here your image</string>
     <string name="bookshelf">bookshelf</string>
     <string name="add_book_button">add Book button</string>
-    <string name="continue_read">"Continue to read</string>
+    <string name="continue_read">Continua a leggere</string>
     <string name="recents">Più recenti</string>
-    <string name="categories_home">Categories</string>
-    <string name="best_weeek">Best of Week</string>
+    <string name="categories_home">Generi</string>
+    <string name="best_weeek">Libri migliori</string>
     <string name="main_section_appName">Airbooks</string>
     <string name="book_detail_name_section">BOOK DETAIL</string>
     <string name="drawable_card_genre">Genre</string>

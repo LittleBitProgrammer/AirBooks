@@ -18,26 +18,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="@string/continue_read"
             android:textColor="#FFF"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_continue_reading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="6dp"/>
 
         <TextView
             android:id="@+id/section_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
             android:text="@string/best_weeek"
             android:textColor="#6E7071"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_bestweek"
@@ -51,12 +50,12 @@
             android:layout_marginStart="10dp"
             android:text="@string/categories_home"
             android:textColor="#6E7071"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="6dp" />
 
     </LinearLayout>
