@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <it.corelab.studios.airbooks.widget.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <it.corelab.studios.airbooks.view.widget.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profileImagePlaceHolder"
             android:layout_width="115dp"
             android:layout_height="115dp"

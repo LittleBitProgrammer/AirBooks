@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="it.corelab.studios.airbooks.section.navigation.usecase.explore.ExploreFragment"
+        android:name="it.corelab.studios.airbooks.view.fragment.explore.ExploreFragment"
         android:label="ExploreFragment"/>
 
 </navigation>

@@ -9,8 +9,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import it.corelab.studios.airbooks.data.model.HOME.*
-import it.corelab.studios.airbooks.data.model.remote.ApiUtils
+import it.corelab.studios.airbooks.model.data.HOME.*
+import it.corelab.studios.airbooks.model.data.remote.ApiUtils
 
 class ViewModelHome : ViewModel() {
 

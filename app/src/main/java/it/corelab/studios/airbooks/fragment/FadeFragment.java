@@ -16,32 +16,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-import it.corelab.studios.airbooks.CustomNested;
-import it.corelab.studios.airbooks.Http.HttpHandler;
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.adapters.CardViewReviewAdapter;
-import it.corelab.studios.airbooks.adapters.SnapExploreRecyclerAdapter;
-import it.corelab.studios.airbooks.adapters.SnapLibraryAdapter;
-import it.corelab.studios.airbooks.adapters.SnapRecyclerAdapter;
-import it.corelab.studios.airbooks.object.Book;
-import it.corelab.studios.airbooks.object.Item;
-import it.corelab.studios.airbooks.object.User;
-import it.corelab.studios.airbooks.recyclerViewExtension.SnappingRecyclerView;
-import it.corelab.studios.airbooks.widget.RoundedImageView;
+import it.corelab.studios.airbooks.view.adapters.CardViewReviewAdapter;
+import it.corelab.studios.airbooks.view.adapters.SnapLibraryAdapter;
+import it.corelab.studios.airbooks.view.adapters.SnapRecyclerAdapter;
+import it.corelab.studios.airbooks.view.widget.RoundedImageView;
 
 /*
 
@@ -62,8 +52,8 @@ public class FadeFragment extends Fragment {
     */
 
    private RecyclerView recyclerView;
-   private GetCurrentUser userAsync;
-   private static User userclass;
+   //private GetCurrentUser userAsync;
+   //private static User userclass;
    private TextView nameSurname;
    private TextView fromTo;
    private TextView followers;
@@ -78,10 +68,10 @@ public class FadeFragment extends Fragment {
 
     */
 
-   private ArrayList<Item> items;
-   private ArrayList<Item> reviewCard;
-    private ArrayList<Item> rvCategoriesItem;
-   private static ArrayList<Book> bookArrayList;
+   //private ArrayList<Item> items;
+   //private ArrayList<Item> reviewCard;
+   //private ArrayList<Item> rvCategoriesItem;
+   //private static ArrayList<Book> bookArrayList;
 
 
 
@@ -182,8 +172,8 @@ public class FadeFragment extends Fragment {
         recyclerViewLibrary.setLayoutManager(new GridLayoutManager(getActivity(),3, GridLayout.VERTICAL,false));
         recyclerViewLibrary.setHasFixedSize(true);
 
-        SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), bookArrayList );
-        recyclerViewLibrary.setAdapter(snapLibraryAdapter);
+        //SnapLibraryAdapter snapLibraryAdapter = new SnapLibraryAdapter(getActivity(), bookArrayList );
+        //recyclerViewLibrary.setAdapter(snapLibraryAdapter);
 
     }
 
@@ -265,11 +255,11 @@ public class FadeFragment extends Fragment {
 
          */
 
-       SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
-       recyclerViewAllBooks.setAdapter(adapter);
+       //SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
+       //recyclerViewAllBooks.setAdapter(adapter);
 
-       CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(),reviewCard);
-       cardReviewRecycleView.setAdapter(reviewAdapter);
+       //CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(),reviewCard);
+       //cardReviewRecycleView.setAdapter(reviewAdapter);
 
 
        /*
@@ -338,7 +328,7 @@ public class FadeFragment extends Fragment {
      */
 
 
-    public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
+    /*public static class GetCurrentUser extends AsyncTask<Void,Void,Integer> {
 
         private String TAG = FadeFragment.class.getSimpleName();
         private String urlUser = "http://airbooks.altervista.org/API/v2/users/5ae64d9f3d1570.58512716/all";
@@ -432,5 +422,5 @@ public class FadeFragment extends Fragment {
         public interface userAsyncTaskLinestener {
             void onExampleAsyncTaskFinished(Integer value);
         }
-    }
+    }*/
 }

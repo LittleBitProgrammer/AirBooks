@@ -7,7 +7,7 @@
     android:background="@color/white"
     xmlns:diagonal="http://schemas.android.com/tools">
 
-    <it.corelab.studios.airbooks.DiagonalView
+    <it.corelab.studios.airbooks.view.widget.DiagonalView
         android:id="@+id/diagonal_main"
         android:layout_width="match_parent"
         android:layout_height="312dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <it.corelab.studios.airbooks.CustomNested
+        <it.corelab.studios.airbooks.view.widget.CustomNested
             android:id="@+id/nested_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="false"
             app:navGraph="@navigation/nav_graph_section_home"/>
-        </it.corelab.studios.airbooks.CustomNested>
+        </it.corelab.studios.airbooks.view.widget.CustomNested>
 
     </FrameLayout>
 
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <it.corelab.studios.airbooks.CustomNested
+        <it.corelab.studios.airbooks.view.widget.CustomNested
             android:id="@+id/nested_explore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="false"
             app:navGraph="@navigation/nav_graph_section_explore"/>
-        </it.corelab.studios.airbooks.CustomNested>
+        </it.corelab.studios.airbooks.view.widget.CustomNested>
 
     </FrameLayout>
 
@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <it.corelab.studios.airbooks.CustomNested
+        <it.corelab.studios.airbooks.view.widget.CustomNested
             android:id="@+id/nested_library"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             app:defaultNavHost="false"
             app:navGraph="@navigation/nav_graph_section_library"/>
 
-        </it.corelab.studios.airbooks.CustomNested>
+        </it.corelab.studios.airbooks.view.widget.CustomNested>
     </FrameLayout>
 
     <FrameLayout
@@ -123,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <it.corelab.studios.airbooks.CustomNested
+        <it.corelab.studios.airbooks.view.widget.CustomNested
             android:id="@+id/nested_Profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
             app:defaultNavHost="false"
             app:navGraph="@navigation/nav_graph_section_profile"/>
 
-        </it.corelab.studios.airbooks.CustomNested>
+        </it.corelab.studios.airbooks.view.widget.CustomNested>
     </FrameLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation

@@ -12,18 +12,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-import java.util.ArrayList;
-
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.adapters.CategoriesAddRv;
-import it.corelab.studios.airbooks.object.Item;
-import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
+import it.corelab.studios.airbooks.view.adapters.CategoriesAddRv;
+import it.corelab.studios.airbooks.view.activity.main.MainActivity;
 
 public class Categories extends AppCompatActivity {
 
     private ImageButton leftArrow;
     private ImageButton dismiss;
-    private ArrayList<Item> categories;
+    //private ArrayList<Item> categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +53,8 @@ public class Categories extends AppCompatActivity {
         categoriesAddRv.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         categoriesAddRv.setHasFixedSize(true);
 
-        CategoriesAddRv categoriesAdapter = new CategoriesAddRv(getApplicationContext(), categories, uriString, title);
-        categoriesAddRv.setAdapter(categoriesAdapter);
+        //CategoriesAddRv categoriesAdapter = new CategoriesAddRv(getApplicationContext(), categories, uriString, title);
+        //categoriesAddRv.setAdapter(categoriesAdapter);
 
 
         //==========================

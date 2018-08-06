@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@+id/ratingBar_listView"
         app:layout_constraintTop_toBottomOf="@+id/name_surname" />
 
-    <it.corelab.studios.airbooks.widget.ExpandableTextView
+    <it.corelab.studios.airbooks.view.widget.ExpandableTextView
         android:id="@+id/expandable_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

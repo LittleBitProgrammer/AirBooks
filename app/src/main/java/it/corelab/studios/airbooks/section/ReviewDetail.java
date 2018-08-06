@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.widget.JustifyTextView;
+import it.corelab.studios.airbooks.view.widget.JustifyTextView;
 
 public class ReviewDetail extends AppCompatActivity {
 

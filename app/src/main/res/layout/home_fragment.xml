@@ -8,7 +8,7 @@
     android:descendantFocusability="blocksDescendants">
 
 
-        <it.corelab.studios.airbooks.recyclerViewExtension.InfiniteRotationView
+        <it.corelab.studios.airbooks.view.widget.InfiniteRotationView
             android:id="@+id/rv_showcase"
             android:layout_width="match_parent"
             android:layout_height="171dp" />

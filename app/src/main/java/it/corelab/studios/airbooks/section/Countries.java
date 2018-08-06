@@ -6,7 +6,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.adapters.CountriesListAdapter;
+import it.corelab.studios.airbooks.view.adapters.CountriesListAdapter;
 
 public class Countries extends AppCompatActivity {
 

@@ -24,9 +24,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import it.corelab.studios.airbooks.CustomDialogClass;
-import it.corelab.studios.airbooks.Gesture.GestureHelper;
-import it.corelab.studios.airbooks.MySpannable;
+import it.corelab.studios.airbooks.view.dialog.CustomDialogClass;
+import it.corelab.studios.airbooks.model.Gesture.GestureHelper;
 import it.corelab.studios.airbooks.R;
 
 public class BookDetail extends AppCompatActivity {
@@ -240,6 +239,7 @@ public class BookDetail extends AppCompatActivity {
         if (str.contains(spanableText)) {
 
 
+            /*
             ssb.setSpan(new MySpannable(false){
                 CustomDialogClass cdd=new CustomDialogClass(BookDetail.this);
                 @Override
@@ -254,7 +254,7 @@ public class BookDetail extends AppCompatActivity {
                         }
                     });
                 }
-            }, str.indexOf(spanableText), str.indexOf(spanableText) + spanableText.length(), 0);
+            }, str.indexOf(spanableText), str.indexOf(spanableText) + spanableText.length(), 0);*/
         }
         return ssb;
 

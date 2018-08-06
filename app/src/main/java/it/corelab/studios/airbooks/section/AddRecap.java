@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
+import it.corelab.studios.airbooks.view.activity.main.MainActivity;
 
 public class AddRecap extends AppCompatActivity {
 

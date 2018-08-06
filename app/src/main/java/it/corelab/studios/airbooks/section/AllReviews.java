@@ -8,12 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.adapters.CustomListViewAdapter;
-import it.corelab.studios.airbooks.object.Reviews;
 
 public class AllReviews extends AppCompatActivity {
 
@@ -21,7 +16,7 @@ public class AllReviews extends AppCompatActivity {
     private TextView reviews;
     private ListView listView;
 
-    private ArrayList<Reviews> listViewItem;
+    //private ArrayList<Reviews> listViewItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +29,8 @@ public class AllReviews extends AppCompatActivity {
 
         //createElementListView();
 
-        CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(this, R.layout.custom_listview_item_all_reviews, listViewItem );
-        listView.setAdapter(customListViewAdapter);
+        //CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(this, R.layout.custom_listview_item_all_reviews, listViewItem );
+        //listView.setAdapter(customListViewAdapter);
 
         listView.setDrawingCacheEnabled(true);
         listView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);

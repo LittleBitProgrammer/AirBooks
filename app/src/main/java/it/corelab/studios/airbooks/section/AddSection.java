@@ -22,7 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.section.navigation.activity.MainActivity;
+import it.corelab.studios.airbooks.view.activity.main.MainActivity;
 
 public class AddSection extends AppCompatActivity {
 

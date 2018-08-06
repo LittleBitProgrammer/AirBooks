@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="it.corelab.studios.airbooks.section.navigation.usecase.home.HomeFragment"
+        android:name="it.corelab.studios.airbooks.view.fragment.home.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_detailBook"
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/detailBook"
-        android:name="it.corelab.studios.airbooks.section.navigation.usecase.book.detail.DetailBook"
+        android:name="it.corelab.studios.airbooks.view.fragment.book.detail.DetailBook"
         android:label="BookDetailFragment">
         <argument
             android:name="firstColor"
