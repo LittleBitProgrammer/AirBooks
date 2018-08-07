@@ -148,7 +148,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +174,7 @@
             android:layout_marginEnd="8dp"
             android:text=""
             fancy:fb_iconPaddingTop="4dp"
-            fancy:fb_iconResource="@drawable/icona_segnalibro"
+            fancy:fb_iconResource="@drawable/ic_bookmark"
             fancy:fb_radius="4dp"/>
     </LinearLayout>
 

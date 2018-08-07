@@ -125,12 +125,12 @@
 
         <ImageView
             android:id="@+id/readers_best_week"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="1dp"
             android:contentDescription="@string/numbers_of_readers_image_contentDescription"
-            android:src="@drawable/reader"
+            android:src="@drawable/ic_readers"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/numb_readers_best_week" />
 

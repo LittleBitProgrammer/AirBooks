@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.home.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.model.data.remote.APIService
@@ -39,6 +40,10 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private lateinit var bestBook: RecyclerView
     private lateinit var rvCategories: RecyclerView
 
+    private lateinit var continueReadText: TextView
+    private lateinit var bestBookLabel: TextView
+    private lateinit var categoriesLabel: TextView
+
     private var button: FancyButton? = null
 
     private var firstColor: String? = null
@@ -53,6 +58,10 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 continueReading = findViewById(R.id.rv_continue_reading)
                 bestBook = findViewById(R.id.rv_bestweek)
                 rvCategories = findViewById(R.id.rv_categories)
+
+                continueReadText = findViewById(R.id.continueReadLabel)
+                bestBookLabel = findViewById(R.id.best_book_label)
+                categoriesLabel = findViewById(R.id.categories_label)
 
                 button = activity?.findViewById(R.id.color_button_read_now)
 
@@ -111,6 +120,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
             if (readingItems != null){
 
+                continueReadText.visibility = View.VISIBLE
+                continueReadText.isEnabled = true
+
                 ViewCompat.setNestedScrollingEnabled(continueReading, false)
                 continueReading.setItemViewCacheSize(20)
                 continueReading.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -119,6 +131,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 val snapContinueReadAdapter = ContinueReadAdapter(readingItems)
                 continueReading.adapter = snapContinueReadAdapter
 
+            }else{
+                continueReadText.visibility = View.INVISIBLE
+                continueReadText.isEnabled = false
             }
         })
     }
@@ -127,6 +142,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
         viewModel.getBestOfWeekBooks()?.observe(viewLifecycleOwner,android.arch.lifecycle.Observer { bestWeekItem->
 
             if (bestWeekItem != null){
+
+                bestBookLabel.visibility = View.VISIBLE
+                bestBookLabel.isEnabled = true
 
                 ViewCompat.setNestedScrollingEnabled(bestBook, false)
                 bestBook.setItemViewCacheSize(20)
@@ -140,6 +158,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 val snapBestOfWeek = BestOfWeekAdapter(bestWeekItem)
                 bestBook.adapter = snapBestOfWeek
 
+            }else{
+                bestBookLabel.visibility = View.INVISIBLE
+                bestBookLabel.isEnabled = false
             }
         })
     }
@@ -149,6 +170,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
             if ( categories != null){
 
+                categoriesLabel.visibility = View.VISIBLE
+                categoriesLabel.isEnabled = true
+
                 ViewCompat.setNestedScrollingEnabled(rvCategories, false)
                 rvCategories.setItemViewCacheSize(20)
                 rvCategories.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
@@ -157,6 +181,9 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 val snapCategoriesAdapter = CategoriesAdapter(categories)
                 rvCategories.adapter = snapCategoriesAdapter
 
+            }else{
+                categoriesLabel.visibility = View.INVISIBLE
+                categoriesLabel.isEnabled = false
             }
         })
     }

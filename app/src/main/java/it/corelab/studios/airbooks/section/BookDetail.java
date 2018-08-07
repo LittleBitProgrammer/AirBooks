@@ -53,7 +53,7 @@ public class BookDetail extends AppCompatActivity {
 
 
         bookDetailCover = findViewById(R.id.image_bestweek_shared);
-        bookDetailTitle = findViewById(R.id.Title_bookDetail);
+        bookDetailTitle = findViewById(R.id.title_bookDetail);
         //bookDetailgenreColor = findViewById(R.id.genre_color_shared);
         bookDetailCardView = findViewById(R.id.cardView_shared);
         bookDetailCardviewGenre = findViewById(R.id.cardView_categories_shared);

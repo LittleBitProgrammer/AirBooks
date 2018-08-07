@@ -50,7 +50,10 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook, Bundle().apply {
                     putString("firstColor", book.genre.firstColor)
                     putString("secondColor", book.genre.secondColor)
-                    putString("coverUrl", book.coverUrl)})
+                    putString("coverUrl", book.coverUrl)
+                    putString("bookTitle", book.title)
+                    putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
+                })
         )
 
         /*holder.itemView.setOnClickListener {

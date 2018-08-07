@@ -13,8 +13,9 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.view.widget.CustomNested
@@ -24,7 +25,6 @@ import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.Gesture.GestureHelper
-import kotlinx.android.synthetic.main.activity_main.view.*
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
@@ -39,9 +39,14 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var firstColor:String? = null
     private var secondColor:String? = null
     private var coverUrl:String? = null
+    private var bookTitle:String? = null
+    private var bookAuthor:String? = null
     private lateinit var coverImage: ImageView
     private lateinit var cardBook: CardView
     private lateinit var cardGenre: CardView
+    private lateinit var linearCard: LinearLayout
+    private lateinit var author: TextView
+    private lateinit var title: TextView
     internal var isSwipedCenter = true
 
     @SuppressLint("ClickableViewAccessibility")
@@ -55,6 +60,9 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 coverImage = findViewById(R.id.image_bestweek_shared)
                 cardBook = findViewById(R.id.cardView_shared)
                 cardGenre = findViewById(R.id.cardView_categories_shared)
+                linearCard = findViewById(R.id.linear_genre)
+                title = findViewById(R.id.title_bookDetail)
+                author = findViewById(R.id.author_bookDetail)
 
                 Handler().postDelayed({
 
@@ -71,7 +79,11 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 firstColor = arguments?.getString("firstColor")
                 secondColor = arguments?.getString("secondColor")
                 coverUrl = arguments?.getString("coverUrl")
+                bookTitle = arguments?.getString("bookTitle")
+                bookAuthor = arguments?.getString("bookAuthor")
                 Picasso.get().load(coverUrl).into(coverImage)
+                title.text = bookTitle
+                author.text = bookAuthor
 
                 val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
                 sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
@@ -90,7 +102,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 gd.cornerRadius = 0f
 
                 diagonalView?.background = gd
-                cardGenre.background = gd2
+                linearCard.background = gd2
                 button?.backgroundColor = Color.parseColor("#$firstColor")
                 buttonPreference!!.backgroundColor = Color.parseColor("#$secondColor")
 

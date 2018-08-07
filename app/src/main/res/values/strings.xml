@@ -37,7 +37,7 @@
     <string name="numbers_of_readers_image_contentDescription">numbers of readers</string>
     <string name="provenance_text_placeHolder">Italy</string>
     <string name="follow_button_profile">Follow</string>
-    <string name="numbers_readers_text_placeHolder">2178</string>
+    <string name="numbers_readers_text_placeHolder">0</string>
     <string name="all_books_profile">All Books (27)</string>
     <string name="all_reviews_profile">All reviews (220)</string>
     <string name="topBar_alert">topBar alert</string>
@@ -68,7 +68,7 @@
     <string name="main_section_appName">Airbooks</string>
     <string name="book_detail_name_section">BOOK DETAIL</string>
     <string name="drawable_card_genre">Genre</string>
-    <string name="title_book_detail">This is a try</string>
+    <string name="title_book_detail">Title</string>
     <string name="author_book_detail">author</string>
     <string name="all_review_section">ALL REVIEWS</string>
     <string name="reviews_button">reviews button</string>
