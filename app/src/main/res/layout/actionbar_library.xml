@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/linear_library"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:background="@drawable/search_bar_background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/search_icon"
+            android:paddingEnd="0dp"
+            android:paddingStart="8dp"
+            android:src="@drawable/search"
+            android:tint="#6C798B" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="@string/search_library_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingEnd="0dp"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:textColor="#B4BBC3"
+            android:textSize="16sp" />
+    </LinearLayout>

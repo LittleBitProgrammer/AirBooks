@@ -24,6 +24,9 @@ class LibraryFragment: Fragment(), OnReselectedDelegate {
                 val token = sharedPreferences.getString("token", "")
                 firstColor = sharedPreferences.getString("firstColor", "")
                 secondColor = sharedPreferences.getString("secondColor", "")
+
+                Log.i("COLOR", "$firstColor")
+                Log.i("COLOR", "$secondColor")
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
@@ -31,7 +34,7 @@ class LibraryFragment: Fragment(), OnReselectedDelegate {
         if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Library",false,0,firstColor,secondColor)
+    private fun setupActionBar() = setupActionBar("Library",false,2,firstColor,secondColor)
 
     override fun onReselected() = setupActionBar()
 

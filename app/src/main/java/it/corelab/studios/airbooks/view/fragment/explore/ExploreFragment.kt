@@ -48,8 +48,6 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
                 ViewCompat.setNestedScrollingEnabled(rv_recents, false)
 
                 rv_recents.setItemViewCacheSize(20)
-                rv_recents.isDrawingCacheEnabled = true
-                rv_recents.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
 
                 rv_recents.layoutManager = object : GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false) {
                     override fun canScrollVertically(): Boolean {

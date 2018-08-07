@@ -39,7 +39,6 @@ fun Fragment.setupActionBar(title: String, displayHome: Boolean = false, id:Int,
                     gd.cornerRadius = 0f
 
                     setBackgroundDrawable(gd)
-                    Log.i("BACKGROUND", "DONE")
                 }
             }
             1-> {
@@ -56,14 +55,62 @@ fun Fragment.setupActionBar(title: String, displayHome: Boolean = false, id:Int,
 
                     gd.cornerRadius = 0f
 
-                    //setBackgroundDrawable(gd)
+                    setBackgroundDrawable(gd)
                 }
             }
             2->{
 
-            }
-            3->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_library)
 
+                if (firstColor != null && secondColor != null){
+
+                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
+
+                    val gd = GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            colors)
+
+                    gd.cornerRadius = 0f
+
+                    setBackgroundDrawable(gd)
+                }
+            }
+            3-> {
+
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_library)
+
+                if (firstColor != null && secondColor != null) {
+
+                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
+
+                    val gd = GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            colors)
+
+                    gd.cornerRadius = 0f
+
+                    setBackgroundDrawable(gd)
+                }
+            }
+            4-> {
+
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_book_detail)
+
+                if (firstColor != null && secondColor != null) {
+
+                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
+
+                    val gd = GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            colors)
+
+                    gd.cornerRadius = 0f
+
+                    setBackgroundDrawable(gd)
+                }
             }
         }
 

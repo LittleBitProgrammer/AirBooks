@@ -26,12 +26,12 @@
     <string name="select_genre_add_book">Select your genre</string>
     <string name="background_image">background image</string>
     <string name="search_icon">search icon</string>
-    <string name="search_library_hint">Search books…</string>
+    <string name="search_library_hint">Cerca libri…</string>
     <string name="author_name_explore">by Gerard Woodward</string>
     <string name="book_title_explore">All this has</string>
     <string name="cover_book">cover book</string>
     <string name="number_reviews_explore">97 Reviews</string>
-    <string name="read_now_button">READ NOW</string>
+    <string name="read_now_button">LEGGI ADESSO</string>
     <string name="name_surname_profile">Marion Newton</string>
     <string name="provenance_pin_profile">provenance</string>
     <string name="numbers_of_readers_image_contentDescription">numbers of readers</string>

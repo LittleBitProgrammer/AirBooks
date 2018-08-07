@@ -26,6 +26,7 @@ import it.corelab.studios.airbooks.R
 import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.or
+import mehdi.sakout.fancybuttons.FancyButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 
     private var currentController: NavController? = null
 
-    private lateinit var button: Button
+    private lateinit var button: FancyButton
+    private lateinit var buttonPreference: FancyButton
 
     private val mOnNavigationItemSelectedListener = AHBottomNavigation.OnTabSelectedListener { position, _ ->
         var returnValue = false
@@ -63,6 +65,12 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
+                if (button.visibility == View.VISIBLE){
+                    button.isEnabled = false
+                    buttonPreference.isEnabled = false
+                    button.visibility = View.INVISIBLE
+                    buttonPreference.visibility = View.INVISIBLE
+                }
                 nested_home.animateDiagonal(diagonal_main)
                 returnValue = true
             }
@@ -74,6 +82,13 @@ class MainActivity : AppCompatActivity() {
                 sectionExploreWarapper.visibility = View.VISIBLE
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
+
+                if (button.visibility == View.VISIBLE){
+                    button.isEnabled = false
+                    buttonPreference.isEnabled = false
+                    button.visibility = View.INVISIBLE
+                    buttonPreference.visibility = View.INVISIBLE
+                }
 
                 nested_explore.animateDiagonal(diagonal_main)
                 returnValue = true
@@ -87,6 +102,13 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.VISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
+                if (button.visibility == View.VISIBLE){
+                    button.isEnabled = false
+                    buttonPreference.isEnabled = false
+                    button.visibility = View.INVISIBLE
+                    buttonPreference.visibility = View.INVISIBLE
+                }
+
                 nested_library.animateDiagonal(diagonal_main)
                 returnValue = true
             }
@@ -98,6 +120,13 @@ class MainActivity : AppCompatActivity() {
                 sectionExploreWarapper.visibility = View.INVISIBLE
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.VISIBLE
+
+                if (button.visibility == View.VISIBLE){
+                    button.isEnabled = false
+                    buttonPreference.isEnabled = false
+                    button.visibility = View.INVISIBLE
+                    buttonPreference.visibility = View.INVISIBLE
+                }
 
                 nested_Profile.animateDiagonal(diagonal_main)
                 returnValue = true
@@ -128,8 +157,11 @@ class MainActivity : AppCompatActivity() {
         currentController = navHomeController
 
         button = findViewById(R.id.color_button_read_now)
+        buttonPreference = findViewById(R.id.preferred_button)
         button.isEnabled = false
+        buttonPreference.isEnabled = false
         button.visibility = View.INVISIBLE
+        buttonPreference.visibility = View.INVISIBLE
 
         initUI()
 
@@ -146,6 +178,13 @@ class MainActivity : AppCompatActivity() {
         currentController
                 ?.let { if (it.popBackStack().not()) finish() }
                 .or { finish() }
+
+        if (button.visibility == View.VISIBLE){
+            button.visibility = View.INVISIBLE
+            buttonPreference.visibility = View.INVISIBLE
+            button.isEnabled = false
+            buttonPreference.isEnabled = false
+        }
     }
 
     private fun onReselected(itemId: Int){

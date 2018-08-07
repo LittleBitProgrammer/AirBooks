@@ -23,6 +23,15 @@ class CustomNested : NestedScrollView {
     private var lastYPosition = 0F
     private var lastAngleVariation = 14F
 
+    fun animateToOriginal(diagonalView: DiagonalView){
+        diagonalView.animate().translationY(0F).interpolator = DecelerateInterpolator()
+
+        ValueAnimator.ofFloat(diagonalView.getAngle(),14F).apply {
+            addUpdateListener { animation -> diagonalView.setAngle(animation.animatedValue as Float)
+                duration = 500
+                interpolator = LinearOutSlowInInterpolator() }
+        }.start()
+    }
 
     fun animateDiagonal(diagonalView: DiagonalView){
 
@@ -46,9 +55,6 @@ class CustomNested : NestedScrollView {
 
         }
 
-        Log.i("getValueVariation", "" +diagonalView.getAngle())
-        Log.i("LastAnglevariationLog", "" +lastAngleVariation)
-
     }
 
     fun takeScrollVariation(diagonalView: DiagonalView) {
@@ -61,8 +67,6 @@ class CustomNested : NestedScrollView {
 
             lastYPosition = -scrollY.toFloat()
             //takeYPosition(diagonalView)
-            Log.i("customDiff", "$diff")
-            Log.i("customVariation", "$variation")
 
             if (diff <= 585) {
 

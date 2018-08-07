@@ -79,6 +79,7 @@ dependencies {
     implementation "com.github.florent37:shapeofview:$diagonal_view_group"
     implementation "com.github.f0ris.sweetalert:library:$sweet_alert"
     implementation "com.ToxicBakery.viewpager.transforms:view-pager-transforms:$transformer"
+    implementation 'com.github.medyo:fancybuttons:1.9.0'
 
     //utility
     implementation "com.jakewharton:butterknife:$butter_knife"
