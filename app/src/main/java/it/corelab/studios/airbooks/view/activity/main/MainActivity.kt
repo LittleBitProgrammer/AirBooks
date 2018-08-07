@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
@@ -49,8 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private var currentController: NavController? = null
 
-    private lateinit var button: FancyButton
-    private lateinit var buttonPreference: FancyButton
+    private lateinit var linearBottom: LinearLayout
 
     private val mOnNavigationItemSelectedListener = AHBottomNavigation.OnTabSelectedListener { position, _ ->
         var returnValue = false
@@ -65,11 +65,9 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (button.visibility == View.VISIBLE){
-                    button.isEnabled = false
-                    buttonPreference.isEnabled = false
-                    button.visibility = View.INVISIBLE
-                    buttonPreference.visibility = View.INVISIBLE
+                if (linearBottom.visibility == View.VISIBLE){
+                    linearBottom.isEnabled = false
+                    linearBottom.visibility = View.INVISIBLE
                 }
                 nested_home.animateDiagonal(diagonal_main)
                 returnValue = true
@@ -83,11 +81,9 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (button.visibility == View.VISIBLE){
-                    button.isEnabled = false
-                    buttonPreference.isEnabled = false
-                    button.visibility = View.INVISIBLE
-                    buttonPreference.visibility = View.INVISIBLE
+                if (linearBottom.visibility == View.VISIBLE){
+                    linearBottom.isEnabled = false
+                    linearBottom.visibility = View.INVISIBLE
                 }
 
                 nested_explore.animateDiagonal(diagonal_main)
@@ -102,11 +98,9 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.VISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (button.visibility == View.VISIBLE){
-                    button.isEnabled = false
-                    buttonPreference.isEnabled = false
-                    button.visibility = View.INVISIBLE
-                    buttonPreference.visibility = View.INVISIBLE
+                if (linearBottom.visibility == View.VISIBLE){
+                    linearBottom.isEnabled = false
+                    linearBottom.visibility = View.INVISIBLE
                 }
 
                 nested_library.animateDiagonal(diagonal_main)
@@ -121,11 +115,9 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.VISIBLE
 
-                if (button.visibility == View.VISIBLE){
-                    button.isEnabled = false
-                    buttonPreference.isEnabled = false
-                    button.visibility = View.INVISIBLE
-                    buttonPreference.visibility = View.INVISIBLE
+                if (linearBottom.visibility == View.VISIBLE){
+                    linearBottom.isEnabled = false
+                    linearBottom.visibility = View.INVISIBLE
                 }
 
                 nested_Profile.animateDiagonal(diagonal_main)
@@ -156,12 +148,9 @@ class MainActivity : AppCompatActivity() {
 
         currentController = navHomeController
 
-        button = findViewById(R.id.color_button_read_now)
-        buttonPreference = findViewById(R.id.preferred_button)
-        button.isEnabled = false
-        buttonPreference.isEnabled = false
-        button.visibility = View.INVISIBLE
-        buttonPreference.visibility = View.INVISIBLE
+        linearBottom = findViewById(R.id.linearMain)
+        linearBottom.isEnabled = false
+        linearBottom.visibility = View.INVISIBLE
 
         initUI()
 
@@ -179,11 +168,9 @@ class MainActivity : AppCompatActivity() {
                 ?.let { if (it.popBackStack().not()) finish() }
                 .or { finish() }
 
-        if (button.visibility == View.VISIBLE){
-            button.visibility = View.INVISIBLE
-            buttonPreference.visibility = View.INVISIBLE
-            button.isEnabled = false
-            buttonPreference.isEnabled = false
+        if (linearBottom.visibility == View.VISIBLE){
+            linearBottom.visibility = View.INVISIBLE
+            linearBottom.isEnabled = false
         }
     }
 

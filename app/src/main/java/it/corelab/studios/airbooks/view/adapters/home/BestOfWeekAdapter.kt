@@ -53,6 +53,9 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                     putString("coverUrl", book.coverUrl)
                     putString("bookTitle", book.title)
                     putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
+                    putString("bookGenre", book.genre.name)
+                    putInt("bookReaders", book.readings)
+                    putInt("bookLovers", book.lovers)
                 })
         )
 

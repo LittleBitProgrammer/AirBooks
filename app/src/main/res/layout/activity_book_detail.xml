@@ -135,6 +135,19 @@
             android:textColor="#6C7A8C"
             android:textSize="18sp"/>
 
+        <RatingBar
+            android:id="@+id/ratingBar_book_detail"
+            style="@style/RatingBarSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginTop="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="3.5"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:stepSize="0.5" />
+
         <TextView
             android:id="@+id/description_book_detail"
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/stella_piena"
+    android:src="@drawable/star"
     android:tint="#E1E4E6"/>

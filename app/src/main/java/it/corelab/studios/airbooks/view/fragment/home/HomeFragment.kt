@@ -44,8 +44,6 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private lateinit var bestBookLabel: TextView
     private lateinit var categoriesLabel: TextView
 
-    private var button: FancyButton? = null
-
     private var firstColor: String? = null
     private var secondColor: String? = null
 
@@ -62,9 +60,6 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 continueReadText = findViewById(R.id.continueReadLabel)
                 bestBookLabel = findViewById(R.id.best_book_label)
                 categoriesLabel = findViewById(R.id.categories_label)
-
-                button = activity?.findViewById(R.id.color_button_read_now)
-
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
 

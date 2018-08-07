@@ -36,17 +36,24 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var customNested: CustomNested? = null
     private var button: FancyButton? = null
     private var buttonPreference: FancyButton? = null
+    private var linearBottom: LinearLayout? = null
     private var firstColor:String? = null
     private var secondColor:String? = null
     private var coverUrl:String? = null
     private var bookTitle:String? = null
     private var bookAuthor:String? = null
+    private var bookGenre: String? = null
+    private var bookReaders: Int? = null
+    private var bookLovers: Int? = null
     private lateinit var coverImage: ImageView
     private lateinit var cardBook: CardView
     private lateinit var cardGenre: CardView
     private lateinit var linearCard: LinearLayout
     private lateinit var author: TextView
     private lateinit var title: TextView
+    private lateinit var genre: TextView
+    private lateinit var readers: TextView
+    private lateinit var lovers: TextView
     internal var isSwipedCenter = true
 
     @SuppressLint("ClickableViewAccessibility")
@@ -57,19 +64,21 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 diagonalView = activity?.findViewById(R.id.diagonal_main)
                 button = activity?.findViewById(R.id.color_button_read_now)
                 buttonPreference = activity?.findViewById(R.id.preferred_button)
+                linearBottom = activity?.findViewById(R.id.linearMain)
                 coverImage = findViewById(R.id.image_bestweek_shared)
                 cardBook = findViewById(R.id.cardView_shared)
                 cardGenre = findViewById(R.id.cardView_categories_shared)
                 linearCard = findViewById(R.id.linear_genre)
                 title = findViewById(R.id.title_bookDetail)
                 author = findViewById(R.id.author_bookDetail)
+                genre = findViewById(R.id.text_genre_label)
+                readers = findViewById(R.id.numb_readers_book_detail)
+                lovers = findViewById(R.id.numb_lovers_book_detail)
 
                 Handler().postDelayed({
 
-                    button?.visibility = View.VISIBLE
-                    button?.isEnabled = true
-                    buttonPreference?.visibility = View.VISIBLE
-                    button?.isEnabled = true
+                    linearBottom?.visibility = View.VISIBLE
+                    linearBottom?.isEnabled = true
 
                 }, 200)
 
@@ -81,9 +90,15 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 coverUrl = arguments?.getString("coverUrl")
                 bookTitle = arguments?.getString("bookTitle")
                 bookAuthor = arguments?.getString("bookAuthor")
+                bookGenre = arguments?.getString("bookGenre")
+                bookReaders = arguments?.getInt("bookReaders")
+                bookLovers = arguments?.getInt("bookLovers")
                 Picasso.get().load(coverUrl).into(coverImage)
                 title.text = bookTitle
                 author.text = bookAuthor
+                genre.text = bookGenre
+                readers.text = "$bookReaders"
+                lovers.text = "$bookLovers"
 
                 val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
                 sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
@@ -125,6 +140,10 @@ class DetailBook: Fragment(), OnReselectedDelegate {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         if (isSectionVisible()) setupActionBar()
+        if (linearBottom?.visibility == View.INVISIBLE){
+            linearBottom?.visibility = View.VISIBLE
+            linearBottom?.isEnabled = true
+        }
     }
 
     fun tapDownAnimation() {
@@ -150,8 +169,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
             R.id.back_to_home -> {
                 toast("fsfdf")
                 view?.findNavController()?.navigateUp()
-                button?.isEnabled = false
-                button?.visibility = View.INVISIBLE
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
 
                 return true
             }

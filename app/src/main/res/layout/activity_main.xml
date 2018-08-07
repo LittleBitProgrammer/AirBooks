@@ -146,32 +146,35 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/linearMain"
         android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_height="71dp"
         android:orientation="horizontal"
+        android:background="@drawable/fade_rectangle"
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" >
 
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/color_button_read_now"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
             android:layout_weight="9"
             android:layout_marginEnd="4dp"
             android:layout_marginStart="8dp"
-            android:scaleType="fitXY"
             android:text="@string/read_now_button"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            android:layout_gravity="bottom"
             fancy:fb_radius="4dp"
             />
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/preferred_button"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
+            android:layout_gravity="bottom"
             android:text=""
             fancy:fb_iconPaddingTop="4dp"
             fancy:fb_iconResource="@drawable/ic_bookmark"
