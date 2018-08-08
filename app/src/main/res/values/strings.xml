@@ -42,7 +42,7 @@
     <string name="all_reviews_profile">All reviews (220)</string>
     <string name="topBar_alert">topBar alert</string>
     <string name="title_topBar_alert">Description</string>
-    <string name="placeholder_text_showMore_alert">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</string>
+    <string name="placeholder_text_showMore_alert">No description</string>
     <string name="category_type">category type</string>
     <string name="Image_background_colorGenre">Image background colorGenre</string>
     <string name="image_colorGenre">image color genre</string>

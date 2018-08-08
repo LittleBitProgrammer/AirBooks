@@ -3,7 +3,9 @@ package it.corelab.studios.airbooks.view.fragment.book.detail
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -15,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.squareup.picasso.Picasso
@@ -45,6 +48,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var bookGenre: String? = null
     private var bookReaders: Int? = null
     private var bookLovers: Int? = null
+    private var bookDescription: String? = null
     private lateinit var coverImage: ImageView
     private lateinit var cardBook: CardView
     private lateinit var cardGenre: CardView
@@ -54,6 +58,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private lateinit var genre: TextView
     private lateinit var readers: TextView
     private lateinit var lovers: TextView
+    private lateinit var ratingBar: RatingBar
+    private lateinit var descriprionLabel: TextView
     internal var isSwipedCenter = true
 
     @SuppressLint("ClickableViewAccessibility")
@@ -74,6 +80,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 genre = findViewById(R.id.text_genre_label)
                 readers = findViewById(R.id.numb_readers_book_detail)
                 lovers = findViewById(R.id.numb_lovers_book_detail)
+                ratingBar = findViewById(R.id.ratingBar_book_detail)
+                descriprionLabel = findViewById(R.id.description_book_detail)
 
                 Handler().postDelayed({
 
@@ -93,12 +101,17 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 bookGenre = arguments?.getString("bookGenre")
                 bookReaders = arguments?.getInt("bookReaders")
                 bookLovers = arguments?.getInt("bookLovers")
+                bookDescription = arguments?.getString("bookDescription")
                 Picasso.get().load(coverUrl).into(coverImage)
                 title.text = bookTitle
                 author.text = bookAuthor
                 genre.text = bookGenre
                 readers.text = "$bookReaders"
                 lovers.text = "$bookLovers"
+                descriprionLabel.text = bookDescription
+
+                val stars: LayerDrawable =  (ratingBar.progressDrawable as LayerDrawable)
+                stars.getDrawable(2).setColorFilter(Color.parseColor("#$firstColor"),PorterDuff.Mode.SRC_ATOP)
 
                 val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
                 sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()

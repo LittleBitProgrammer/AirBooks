@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="800dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="50dp"
     android:descendantFocusability="blocksDescendants"
     tools:context="it.corelab.studios.airbooks.section.BookDetail">
 
@@ -139,13 +139,13 @@
             android:id="@+id/ratingBar_book_detail"
             style="@style/RatingBarSmall"
             android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:isIndicator="true"
             android:numStars="5"
             android:rating="3.5"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
             android:stepSize="0.5" />
 
         <TextView
@@ -153,8 +153,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="10dp"
+            android:textColor="#666B75"
+            android:textSize="15sp"
             android:text="@string/placeholder_text_showMore_alert"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

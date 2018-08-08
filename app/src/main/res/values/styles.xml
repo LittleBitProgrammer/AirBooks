@@ -54,8 +54,6 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
     <style name="RatingBarSmall" parent="android:Widget.DeviceDefault.Light.RatingBar.Indicator">
-        <item name="colorControlNormal">#E1E4E6</item>
-        <item name="colorControlActivated">#F8B800</item>
         <item name="android:minHeight">36dp</item>
         <item name="android:maxHeight">36dp</item>
     </style>
