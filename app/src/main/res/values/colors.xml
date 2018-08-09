@@ -5,16 +5,6 @@
     <color name="inactive_color">#E1E4E9</color>
     <color name="accent_color">#6e7b8c</color>
     <color name="genereLibro">#4B85AA</color>
-    <color name="forChildrenDark">#FF8993</color>
-    <color name="forChildrenLight">#FEC180</color>
-    <color name="biografyLight">#6681ea</color>
-    <color name="biografyDark">#7e43aa</color>
-    <color name="eroticDark">#e53935</color>
-    <color name="eroticLight">#e35d5b</color>
-    <color name="scifiDark">#6859ea</color>
-    <color name="scifiLight">#6acbe0</color>
-    <color name="comicsDark">#679fe4</color>
-    <color name="comicsLight">#a7bfe8</color>
 
     //GENERAL
     <color name="white">#FFFFFF</color>
@@ -22,7 +12,6 @@
     //INTRO COLOR
     <color name="textColor">#585860</color>
     <color name="textDesc">#858586</color>
-    <color name="plusButtonColor">#50535C</color>
     <color name="blu_button">#586BA5</color>
     <color name="blu_button_check">#6377B3</color>
 
@@ -30,9 +19,4 @@
     <color name="title_color_splash_screen">#5274BA</color>
     <color name="description_color_splash_screen">#4F84A8</color>
 
-    <color name="GradientAppBackground">
-        <item name="android:startColor">#586BA4</item>
-        <item name="android:endColor">#4299B0</item>
-        <item name="android:angle">-90</item>
-    </color>
 </resources>

@@ -9,7 +9,10 @@ import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.CardView
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -20,6 +23,10 @@ import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.navigation.findNavController
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayout
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.view.widget.CustomNested
 import it.corelab.studios.airbooks.view.widget.DiagonalView
@@ -28,10 +35,13 @@ import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.Gesture.GestureHelper
+import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
+import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.textColor
 
 class DetailBook: Fragment(), OnReselectedDelegate {
 
@@ -49,6 +59,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var bookReaders: Int? = null
     private var bookLovers: Int? = null
     private var bookDescription: String? = null
+    private var tagsList: ArrayList<String>? = null
     private lateinit var coverImage: ImageView
     private lateinit var cardBook: CardView
     private lateinit var cardGenre: CardView
@@ -60,6 +71,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private lateinit var lovers: TextView
     private lateinit var ratingBar: RatingBar
     private lateinit var descriprionLabel: TextView
+    private lateinit var tags: RecyclerView
+    private lateinit var noTag: TextView
     internal var isSwipedCenter = true
 
     @SuppressLint("ClickableViewAccessibility")
@@ -82,6 +95,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 lovers = findViewById(R.id.numb_lovers_book_detail)
                 ratingBar = findViewById(R.id.ratingBar_book_detail)
                 descriprionLabel = findViewById(R.id.description_book_detail)
+                tags = findViewById(R.id.tag_book_detail)
+                noTag = findViewById(R.id.no_tag_label)
 
                 Handler().postDelayed({
 
@@ -102,6 +117,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 bookReaders = arguments?.getInt("bookReaders")
                 bookLovers = arguments?.getInt("bookLovers")
                 bookDescription = arguments?.getString("bookDescription")
+                tagsList = arguments?.getStringArrayList("tags")
+
                 Picasso.get().load(coverUrl).into(coverImage)
                 title.text = bookTitle
                 author.text = bookAuthor
@@ -145,10 +162,20 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                     }
                 })
 
-                Log.d("BookDetail", "onCreateView")
-                Log.d("Arguments", "$firstColor")
-                Log.d("Arguments", "$secondColor")
-                Log.d("Arguments", "$diagonalView")
+                if (tagsList == null){
+                    noTag.visibility = View.VISIBLE
+                    noTag.textColor = Color.parseColor("#$firstColor")
+                }
+
+                val layoutManager = FlexboxLayoutManager(ctx)
+                layoutManager.flexDirection = FlexDirection.ROW
+                layoutManager.justifyContent = JustifyContent.FLEX_START
+                tags.setItemViewCacheSize(20)
+                tags.layoutManager = layoutManager
+                tags.setHasFixedSize(true)
+
+                val tagAdapter = TagAdapter(tagsList, firstColor!!)
+                tags.adapter = tagAdapter
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

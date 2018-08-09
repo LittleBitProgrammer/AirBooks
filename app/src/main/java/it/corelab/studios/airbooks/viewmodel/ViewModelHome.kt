@@ -65,7 +65,6 @@ class ViewModelHome : ViewModel() {
 
             override fun onError(e: Throwable) {
 
-                Log.i("erfinelgildo", e.toString())
             }
 
             override fun onComplete() {

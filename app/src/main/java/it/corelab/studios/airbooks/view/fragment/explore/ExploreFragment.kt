@@ -75,7 +75,6 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
             }
 
             override fun onNext(getExploreResponse: GetExplore) {
-                Log.i("Explore Response", "${GsonBuilder().setPrettyPrinting().create().toJson(getExploreResponse.result.recents.items)}")
 
                 val recentsItems: MutableList<Item> = getExploreResponse.result.recents.items
 
@@ -96,7 +95,6 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
 
             override fun onError(e: Throwable) {
 
-                Log.i("erfinelgildo", e.toString())
             }
 
             override fun onComplete() {

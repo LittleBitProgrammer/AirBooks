@@ -66,7 +66,6 @@ class CustomNested : NestedScrollView {
             var variation = 43.25f - diff * 0.05f
 
             lastYPosition = -scrollY.toFloat()
-            Log.i("BOTTTOM", "" +diagonal.bottom)
             //takeYPosition(diagonalView)
 
             if (diff <= 585) {

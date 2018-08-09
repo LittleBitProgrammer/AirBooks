@@ -26,8 +26,6 @@ import it.corelab.studios.airbooks.view.adapters.home.BestOfWeekAdapter
 import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.viewmodel.ViewModelHome
-import kotlinx.android.synthetic.main.home_fragment.view.*
-import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.support.v4.ctx
 
 

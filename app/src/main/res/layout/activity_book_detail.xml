@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="50dp"
+    android:paddingBottom="65dp"
     android:descendantFocusability="blocksDescendants"
     tools:context="it.corelab.studios.airbooks.section.BookDetail">
 
@@ -58,7 +58,6 @@
                     android:textSize="12sp" />
 
                 <ImageView
-                    android:id="@+id/lovers_book_detail"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="2dp"
@@ -148,15 +147,44 @@
             android:scaleY="0.5"
             android:stepSize="0.5" />
 
-        <TextView
+        <it.corelab.studios.airbooks.view.widget.JustifyTextView
             android:id="@+id/description_book_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="10dp"
-            android:textColor="#666B75"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:text="@string/placeholder_text_showMore_alert"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:textColor="#6C7A8C"
+            android:textSize="15sp"
+            android:text="Tag:"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tag_book_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/no_tag_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:text="Questo libro non ha nessun tag"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="© Tutti i diritti riservati all'autore di questo libro."
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:textSize="13sp"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

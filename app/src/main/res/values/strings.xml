@@ -8,11 +8,6 @@
     <string name="popUp_tab_one">Change image</string>
     <string name="popUp_tab_two">Change email</string>
     <string name="popUp_tab_three">Change password</string>
-    <string name="profile_image_review">profile image</string>
-    <string name="name_surname_review">Name Surname</string>
-    <string name="time_ago_review">1 hour ago</string>
-    <string name="review_description">here is your description</string>
-    <string name="button_read_all">Read all</string>
     <string name="topBar">Top bar</string>
     <string name="back_button">back button</string>
     <string name="dismiss_button">dismiss button</string>
@@ -24,7 +19,6 @@
     <string name="upload_button">upload button</string>
     <string name="select_file_add_book">Select your file</string>
     <string name="select_genre_add_book">Select your genre</string>
-    <string name="background_image">background image</string>
     <string name="search_icon">search icon</string>
     <string name="search_library_hint">Cerca libri…</string>
     <string name="author_name_explore">by Gerard Woodward</string>
@@ -44,8 +38,6 @@
     <string name="title_topBar_alert">Description</string>
     <string name="placeholder_text_showMore_alert">No description</string>
     <string name="category_type">category type</string>
-    <string name="Image_background_colorGenre">Image background colorGenre</string>
-    <string name="image_colorGenre">image color genre</string>
     <string name="book_title">Title</string>
     <string name="author_book_home_card">author</string>
     <string name="numbers_lovers_image">numbers of lovers image</string>
@@ -57,16 +49,13 @@
     <string name="book_author_profile">By Roberto Vecchio</string>
     <string name="book_title_profile">All this has nothing</string>
     <string name="genre_color_profile">genre color</string>
-    <string name="editText_hint_add_book">Insert your title here</string>
     <string name="insert_image_add_book">insert here your image</string>
     <string name="bookshelf">bookshelf</string>
-    <string name="add_book_button">add Book button</string>
     <string name="continue_read">Continua a leggere</string>
     <string name="recents">Più recenti</string>
     <string name="categories_home">Generi</string>
     <string name="best_weeek">Libri migliori</string>
     <string name="main_section_appName">Airbooks</string>
-    <string name="book_detail_name_section">BOOK DETAIL</string>
     <string name="drawable_card_genre">Genre</string>
     <string name="title_book_detail">Title</string>
     <string name="author_book_detail">author</string>
@@ -74,8 +63,6 @@
     <string name="reviews_button">reviews button</string>
     <string name="simple_circle_background">proflie border</string>
     <string name="review_detail_name">REVIEW DETAIL</string>
-    <string name="forgot_password"><u>Forgot password?</u></string>
-    <string name="sign_up">Not have an account? <u>Sign up</u></string>
 
     //INTRO PAGE ONE
     <string name="onboarding_one_description">Tutti amano leggere. Airbooks è il luogo ideale per leggere tanti fantastici libri, crearli e condividerli</string>
@@ -96,7 +83,6 @@
     <string name="button_text_page_four">CONTINUA</string>
 
     //LOGIN_HOST
-    <string name="back_button_login_host">back button</string>
     <string name="simple_circle_background_login_host">proflie border</string>
 
     //LOGIN_SIGN_IN
@@ -328,8 +314,5 @@
         <item>263,ZW</item>
 
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
