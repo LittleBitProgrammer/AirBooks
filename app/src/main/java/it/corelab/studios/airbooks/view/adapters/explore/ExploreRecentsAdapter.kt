@@ -2,6 +2,7 @@ package it.corelab.studios.airbooks.view.adapters.explore
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,18 @@ class ExploreRecentsAdapter(books: List<Item>) : RecyclerView.Adapter<RecyclerVi
         holderContainer?.bookAverageRating?.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
         holderContainer?.itemView?.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook,null)
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook_explore, Bundle().apply {
+                    putString("firstColor", book.genre.firstColor)
+                    putString("secondColor", book.genre.secondColor)
+                    putString("coverUrl", book.coverUrl)
+                    putString("bookTitle", book.title)
+                    putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
+                    putString("bookGenre", book.genre.name)
+                    putString("bookDescription", book.description)
+                    putInt("bookReaders", book.readings)
+                    putInt("bookLovers", book.lovers)
+                    //putStringArrayList("tags",book.tags)
+                })
         )
 
     }

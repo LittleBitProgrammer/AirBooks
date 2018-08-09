@@ -10,27 +10,25 @@ import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
+import org.jetbrains.anko.support.v4.act
 
 class ProfileFragment: Fragment(), OnReselectedDelegate {
 
-    private var firstColor: String? = null
-    private var secondColor: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(activity, R.layout.profile_fragment,null).apply {
-                Log.d("ProfileFragment", "onCreateView")
+            View.inflate(act, R.layout.profile_fragment,null).apply {
+                Log.d("SECTION", "onCreateViewProfile")
+                if (isSectionVisible()) setupActionBar()
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
-                firstColor = sharedPreferences.getString("firstColor", "")
-                secondColor = sharedPreferences.getString("secondColor", "")
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        Log.d("ProfileFragment", "OnViewCreated")
-        if (isSectionVisible()) setupActionBar()
+        Log.d("SECTION", "OnViewCreatedProfile")
+        //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Profile",false,0,firstColor,secondColor)
+    private fun setupActionBar() = setupActionBar("profile",3)
 
     override fun onReselected() = setupActionBar()
 }

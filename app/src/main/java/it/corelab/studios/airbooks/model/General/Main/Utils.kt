@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import it.corelab.studios.airbooks.R
 
 fun <T> T?.or(default: T): T = this ?: default
@@ -15,111 +16,82 @@ fun <T> T?.or(compute: () -> T): T = this ?: compute()
 
 fun Fragment.isSectionVisible(): Boolean = (((view?.parent as? ViewGroup)?.parent as? ViewGroup)?.visibility == View.VISIBLE)
 
-fun Fragment.setupActionBar(title: String, displayHome: Boolean = false, id:Int, firstColor: String?, secondColor: String?){
+fun Fragment.setupActionBar(title: String, id: Int){
+
+    val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
+    val firstColor = sharedPreferences.getString("firstColor", "")
+    val secondColor = sharedPreferences.getString("secondColor", "")
+    val linearBottom: LinearLayout? = activity?.findViewById(R.id.linearMain)
+
     (activity as? AppCompatActivity)?.supportActionBar?.apply {
 
         this.elevation = 0F
-        Log.i("GRADIENT", "$firstColor")
-        Log.i("GRADIENT", "$secondColor")
 
-        when(id){
+        if (firstColor != null && secondColor != null) {
 
-            0-> {
-                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                this.setCustomView(R.layout.actionbar_home)
+            val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
 
-                if (firstColor != null && secondColor != null){
+            val gd = GradientDrawable(
+                    GradientDrawable.Orientation.LEFT_RIGHT,
+                    colors)
 
-                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
+            gd.cornerRadius = 0f
 
-                    val gd = GradientDrawable(
-                            GradientDrawable.Orientation.LEFT_RIGHT,
-                            colors)
-
-                    gd.cornerRadius = 0f
-
-                    setBackgroundDrawable(gd)
-                }
-            }
-            1-> {
-                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                this.setCustomView(R.layout.actionbar_explore)
-
-                if (firstColor != null && secondColor != null){
-
-                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
-
-                    val gd = GradientDrawable(
-                            GradientDrawable.Orientation.LEFT_RIGHT,
-                            colors)
-
-                    gd.cornerRadius = 0f
-
-                    setBackgroundDrawable(gd)
-                }
-            }
-            2->{
-
-                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                this.setCustomView(R.layout.actionbar_library)
-
-                if (firstColor != null && secondColor != null){
-
-                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
-
-                    val gd = GradientDrawable(
-                            GradientDrawable.Orientation.LEFT_RIGHT,
-                            colors)
-
-                    gd.cornerRadius = 0f
-
-                    setBackgroundDrawable(gd)
-                }
-            }
-            3-> {
-
-                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                this.setCustomView(R.layout.actionbar_library)
-
-                if (firstColor != null && secondColor != null) {
-
-                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
-
-                    val gd = GradientDrawable(
-                            GradientDrawable.Orientation.LEFT_RIGHT,
-                            colors)
-
-                    gd.cornerRadius = 0f
-
-                    setBackgroundDrawable(gd)
-                }
-            }
-            4-> {
-
-                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                this.setCustomView(R.layout.actionbar_book_detail)
-
-                if (firstColor != null && secondColor != null) {
-
-                    val colors = intArrayOf(Color.parseColor("#$firstColor"), Color.parseColor("#$secondColor"))
-
-                    val gd = GradientDrawable(
-                            GradientDrawable.Orientation.LEFT_RIGHT,
-                            colors)
-
-                    gd.cornerRadius = 0f
-
-                    setBackgroundDrawable(gd)
-                }
-            }
+            setBackgroundDrawable(gd)
         }
 
 
-        setDisplayShowHomeEnabled(displayHome)
-        setDisplayHomeAsUpEnabled(displayHome)
+        this.title = title
+        when (id) {
 
-        //setBackgroundDrawable(ContextCompat.getDrawable(ctx,R.drawable.top_bar))
+            0 -> {
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_home)
 
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+                Log.i("SECTION", title)
+            }
+
+            1->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_explore)
+
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+                Log.i("SECTION", title)
+            }
+
+            2->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_library)
+
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+                Log.i("SECTION", title)
+            }
+
+            3->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_book_detail)
+
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+                Log.i("SECTION", title)
+            }
+
+            4->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_book_detail)
+
+                linearBottom?.isEnabled = true
+                linearBottom?.visibility = View.VISIBLE
+                Log.i("SECTION", title)
+            }
+        }
+        setDisplayShowHomeEnabled(false)
+        setDisplayHomeAsUpEnabled(false)
     }
-    setHasOptionsMenu(displayHome)
+
+    setHasOptionsMenu(false)
 }

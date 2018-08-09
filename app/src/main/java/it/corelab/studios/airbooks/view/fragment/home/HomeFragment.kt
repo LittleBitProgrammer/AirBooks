@@ -1,9 +1,12 @@
 package it.corelab.studios.airbooks.view.fragment.home
 
+import android.app.Activity
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
+import android.support.v7.app.ActionBar
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,18 +18,15 @@ import android.widget.Button
 import android.widget.TextView
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.home.InfiniteRotationAdapter
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
 import it.corelab.studios.airbooks.view.widget.InfiniteRotationView
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import java.util.*
 import it.corelab.studios.airbooks.view.adapters.home.BestOfWeekAdapter
 import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.viewmodel.ViewModelHome
-import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.act
 
 
 class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
@@ -42,13 +42,12 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private lateinit var bestBookLabel: TextView
     private lateinit var categoriesLabel: TextView
 
-    private var firstColor: String? = null
-    private var secondColor: String? = null
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(ctx, R.layout.home_fragment,null).apply {
+            View.inflate(act, R.layout.home_fragment,null).apply {
 
                 viewModel = ViewModelProviders.of(activity!!).get(ViewModelHome::class.java)
+
+                setupActionBar()
 
                 rotationView = findViewById(R.id.rv_showcase)
                 continueReading = findViewById(R.id.rv_continue_reading)
@@ -62,21 +61,20 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
 
                 val token = sharedPreferences.getString("token", "")
-                firstColor = sharedPreferences.getString("firstColor", "")
-                secondColor = sharedPreferences.getString("secondColor", "")
 
                 getHomeFeed("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token!!)
+                Log.i("SECTION","Home Created")
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        Log.d("HomeFragment", "OnViewCreated")
-        if (isSectionVisible()) setupActionBar()
+        Log.d("SECTION", "OnViewCreated")
+       // if (isSectionVisible()) setupActionBar()
     }
 
 
     //HANDLER METHODS
 
-    private fun setupActionBar() = setupActionBar("Home",false,0, firstColor, secondColor)
+    private fun setupActionBar() = setupActionBar("Home", 0)
     override fun onReselected() = setupActionBar()
 
     override fun onDestroy() {

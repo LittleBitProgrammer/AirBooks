@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -65,11 +66,8 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (linearBottom.visibility == View.VISIBLE){
-                    linearBottom.isEnabled = false
-                    linearBottom.visibility = View.INVISIBLE
-                }
                 nested_home.animateDiagonal(diagonal_main)
+                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -81,12 +79,8 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (linearBottom.visibility == View.VISIBLE){
-                    linearBottom.isEnabled = false
-                    linearBottom.visibility = View.INVISIBLE
-                }
-
                 nested_explore.animateDiagonal(diagonal_main)
+                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -98,12 +92,8 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.VISIBLE
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
-                if (linearBottom.visibility == View.VISIBLE){
-                    linearBottom.isEnabled = false
-                    linearBottom.visibility = View.INVISIBLE
-                }
-
                 nested_library.animateDiagonal(diagonal_main)
+                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -115,12 +105,8 @@ class MainActivity : AppCompatActivity() {
                 sectionLibraryWrapper.visibility = View.INVISIBLE
                 sectionProfileWrapper.visibility = View.VISIBLE
 
-                if (linearBottom.visibility == View.VISIBLE){
-                    linearBottom.isEnabled = false
-                    linearBottom.visibility = View.INVISIBLE
-                }
-
                 nested_Profile.animateDiagonal(diagonal_main)
+                Log.i("MENU", "$position")
                 returnValue = true
             }
         }
@@ -236,8 +222,6 @@ class MainActivity : AppCompatActivity() {
     private fun initUI() {
 
         bottomNavigation = findViewById(R.id.navigation)
-        //viewPager = findViewById(R.id.view_pager);
-
 
         val item1 = AHBottomNavigationItem(R.string.tab1, R.drawable.icona_home, R.color.accent_color)
 
@@ -254,7 +238,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.addItems(bottomNavigationItems)
 
-        bottomNavigation.isTranslucentNavigationEnabled = true
+        bottomNavigation.isTranslucentNavigationEnabled = false
 
         // Change colors
         bottomNavigation.accentColor = Color.parseColor("#6E7B8C")

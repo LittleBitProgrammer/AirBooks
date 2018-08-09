@@ -3,6 +3,8 @@ package it.corelab.studios.airbooks.view.fragment.explore
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
+import android.support.v7.app.ActionBar
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,6 +26,8 @@ import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import kotlinx.android.synthetic.main.explore_fragment.*
 import kotlinx.android.synthetic.main.explore_fragment.view.*
+import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.toast
 import java.util.*
 
@@ -31,19 +35,15 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
 
     private var mAPIService: APIService? = null
 
-    private var firstColor: String? = null
-    private var secondColor: String? = null
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(activity, R.layout.explore_fragment,null).apply {
-                Log.d("ExploreFragment", "onCreateView")
+            View.inflate(act, R.layout.explore_fragment,null).apply {
+                Log.d("SECTION", "onCreateViewExplore")
 
+                if (isSectionVisible()) setupActionBar()
                 mAPIService = ApiUtils.getAPIService()
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
-                firstColor = sharedPreferences.getString("firstColor", "")
-                secondColor = sharedPreferences.getString("secondColor", "")
 
                 ViewCompat.setNestedScrollingEnabled(rv_recents, false)
 
@@ -60,11 +60,11 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        Log.d("ExploreFragment", "OnViewCreated")
-        if (isSectionVisible()) setupActionBar()
+        Log.d("SECTION", "OnViewCreatedExplore")
+        //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("Explore",false,1,firstColor,secondColor)
+    private fun setupActionBar() = setupActionBar("Explore",1)
 
     override fun onReselected() = setupActionBar()
 
