@@ -53,7 +53,8 @@ class ExploreRecentsAdapter(books: List<Item>) : RecyclerView.Adapter<RecyclerVi
                     putString("bookDescription", book.description)
                     putInt("bookReaders", book.readings)
                     putInt("bookLovers", book.lovers)
-                    //putStringArrayList("tags",book.tags)
+                    putBoolean("comingExplore", true)
+                    putStringArrayList("tags",book.tags)
                 })
         )
 

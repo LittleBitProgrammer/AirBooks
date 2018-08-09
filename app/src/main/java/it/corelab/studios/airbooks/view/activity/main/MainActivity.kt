@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private val sectionLibraryWrapper: FrameLayout by lazy { section_library_wrapper }
     private val sectionProfileWrapper: FrameLayout by lazy { section_profile_wrapper }
 
-    private val navHomeController: NavController by lazy { findNavController(R.id.section_home) }
+    public val navHomeController: NavController by lazy { findNavController(R.id.section_home) }
     private val navHomeFragment: Fragment by lazy { section_home }
 
     private val navExploreController: NavController by lazy { findNavController(R.id.section_explore) }

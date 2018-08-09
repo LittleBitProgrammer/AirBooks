@@ -58,6 +58,7 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                     putString("bookDescription", book.description)
                     putInt("bookReaders", book.readings)
                     putInt("bookLovers", book.lovers)
+                    putBoolean("comingHome", true)
                     putStringArrayList("tags",book.tags)
                 })
         )

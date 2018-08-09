@@ -9,11 +9,7 @@ import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.ActionBar
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,10 +20,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayout
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.squareup.picasso.Picasso
@@ -39,7 +33,6 @@ import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.Gesture.GestureHelper
 import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
-import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
@@ -49,7 +42,8 @@ import org.jetbrains.anko.textColor
 class DetailBook: Fragment(), OnReselectedDelegate {
 
     private var diagonalView: DiagonalView? = null
-    private var customNested: CustomNested? = null
+    private var customNestedHome: CustomNested? = null
+    private var customNestedExplore: CustomNested? = null
     private var button: FancyButton? = null
     private var buttonPreference: FancyButton? = null
     private var linearBottom: LinearLayout? = null
@@ -77,12 +71,15 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private lateinit var tags: RecyclerView
     private lateinit var noTag: TextView
     internal var isSwipedCenter = true
+    private var isComingFromHome: Boolean = false
+    private var isComingFromExplore: Boolean = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             View.inflate(ctx, R.layout.activity_book_detail,null).apply {
 
-                customNested = activity?.findViewById(R.id.nested_home)
+                customNestedHome = activity?.findViewById(R.id.nested_home)
+                customNestedExplore = activity?.findViewById(R.id.nested_explore)
                 diagonalView = activity?.findViewById(R.id.diagonal_main)
                 button = activity?.findViewById(R.id.color_button_read_now)
                 buttonPreference = activity?.findViewById(R.id.preferred_button)
@@ -109,9 +106,6 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 }, 200)
 
 
-                customNested?.animateToOriginal(diagonalView!!)
-                customNested?.scrollTo(0,0)
-
                 firstColor = arguments?.getString("firstColor")
                 secondColor = arguments?.getString("secondColor")
                 coverUrl = arguments?.getString("coverUrl")
@@ -122,6 +116,19 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 bookLovers = arguments?.getInt("bookLovers")
                 bookDescription = arguments?.getString("bookDescription")
                 tagsList = arguments?.getStringArrayList("tags")
+                isComingFromHome = arguments?.getBoolean("comingHome")!!
+                isComingFromExplore = arguments?.getBoolean("comingExplore")!!
+
+                Log.i("SECTIONHome", "$isComingFromHome")
+                Log.i("SECTIONEXplore", "$isComingFromExplore")
+
+                if (isComingFromHome) {
+                    customNestedHome?.animateToOriginal(diagonalView!!)
+                    customNestedHome?.scrollTo(0, 0)
+                }else if (isComingFromExplore){
+                    customNestedExplore?.animateToOriginal(diagonalView!!)
+                    customNestedExplore?.scrollTo(0, 0)
+                }
 
                 Picasso.get().load(coverUrl).into(coverImage)
                 title.text = bookTitle

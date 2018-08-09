@@ -3,6 +3,7 @@ package it.corelab.studios.airbooks.model.data.EXPLORE;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.corelab.studios.airbooks.model.data.HOME.Genre;
@@ -37,7 +38,7 @@ public class Item {
     private String bookUrl;
     @SerializedName("tags")
     @Expose
-    private List<String> tags = null;
+    private ArrayList<String> tags = null;
     @SerializedName("format")
     @Expose
     private String format;
@@ -138,11 +139,11 @@ public class Item {
         this.bookUrl = bookUrl;
     }
 
-    public List<String> getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 
