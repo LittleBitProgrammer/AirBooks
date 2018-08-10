@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -33,6 +35,7 @@ import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.Gesture.GestureHelper
 import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
+import kotlinx.android.synthetic.main.actionbar_book_detail.view.*
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
@@ -98,13 +101,6 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 tags = findViewById(R.id.tag_book_detail)
                 noTag = findViewById(R.id.no_tag_label)
 
-                Handler().postDelayed({
-
-                    linearBottom?.visibility = View.VISIBLE
-                    linearBottom?.isEnabled = true
-
-                }, 200)
-
 
                 firstColor = arguments?.getString("firstColor")
                 secondColor = arguments?.getString("secondColor")
@@ -118,9 +114,6 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 tagsList = arguments?.getStringArrayList("tags")
                 isComingFromHome = arguments?.getBoolean("comingHome")!!
                 isComingFromExplore = arguments?.getBoolean("comingExplore")!!
-
-                Log.i("SECTIONHome", "$isComingFromHome")
-                Log.i("SECTIONEXplore", "$isComingFromExplore")
 
                 if (isComingFromHome) {
                     customNestedHome?.animateToOriginal(diagonalView!!)

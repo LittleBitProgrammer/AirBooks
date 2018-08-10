@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.ActionBar
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private val sectionLibraryWrapper: FrameLayout by lazy { section_library_wrapper }
     private val sectionProfileWrapper: FrameLayout by lazy { section_profile_wrapper }
 
-    public val navHomeController: NavController by lazy { findNavController(R.id.section_home) }
+    private val navHomeController: NavController by lazy { findNavController(R.id.section_home) }
     private val navHomeFragment: Fragment by lazy { section_home }
 
     private val navExploreController: NavController by lazy { findNavController(R.id.section_explore) }
@@ -67,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
                 nested_home.animateDiagonal(diagonal_main)
-                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -80,7 +80,6 @@ class MainActivity : AppCompatActivity() {
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
                 nested_explore.animateDiagonal(diagonal_main)
-                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -93,7 +92,6 @@ class MainActivity : AppCompatActivity() {
                 sectionProfileWrapper.visibility = View.INVISIBLE
 
                 nested_library.animateDiagonal(diagonal_main)
-                Log.i("MENU", "$position")
                 returnValue = true
             }
 
@@ -106,7 +104,6 @@ class MainActivity : AppCompatActivity() {
                 sectionProfileWrapper.visibility = View.VISIBLE
 
                 nested_Profile.animateDiagonal(diagonal_main)
-                Log.i("MENU", "$position")
                 returnValue = true
             }
         }
@@ -133,10 +130,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
 
         currentController = navHomeController
-
         linearBottom = findViewById(R.id.linearMain)
-        linearBottom.isEnabled = false
-        linearBottom.visibility = View.INVISIBLE
 
         initUI()
 
@@ -153,11 +147,6 @@ class MainActivity : AppCompatActivity() {
         currentController
                 ?.let { if (it.popBackStack().not()) finish() }
                 .or { finish() }
-
-        if (linearBottom.visibility == View.VISIBLE){
-            linearBottom.visibility = View.INVISIBLE
-            linearBottom.isEnabled = false
-        }
     }
 
     private fun onReselected(itemId: Int){
@@ -274,13 +263,6 @@ class MainActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 
-    /**
-     * Determines if given points are inside view
-     * @param x - x coordinate of point
-     * @param y - y coordinate of point
-     * @param view - view object to compare
-     * @return true if the points are within view bounds, false otherwise
-     */
     private fun isPointInsideView(x: Float, y: Float, view: View): Boolean {
         val location = IntArray(2)
         view.getLocationOnScreen(location)

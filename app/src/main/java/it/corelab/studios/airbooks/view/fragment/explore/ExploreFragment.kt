@@ -1,5 +1,7 @@
 package it.corelab.studios.airbooks.view.fragment.explore
 
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
@@ -24,6 +26,7 @@ import it.corelab.studios.airbooks.model.data.remote.ApiUtils
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
+import it.corelab.studios.airbooks.viewmodel.ViewModelExplore
 import kotlinx.android.synthetic.main.explore_fragment.*
 import kotlinx.android.synthetic.main.explore_fragment.view.*
 import org.jetbrains.anko.support.v4.act
@@ -33,73 +36,48 @@ import java.util.*
 
 class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
 
-    private var mAPIService: APIService? = null
+    private lateinit var viewModel: ViewModelExplore
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             View.inflate(act, R.layout.explore_fragment,null).apply {
-                Log.d("SECTION", "onCreateViewExplore")
 
-                if (isSectionVisible()) setupActionBar()
-                mAPIService = ApiUtils.getAPIService()
+                viewModel = ViewModelProviders.of(activity!!).get(ViewModelExplore::class.java)
+
+                if (isSectionVisible())setupActionBar()
 
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
 
-                ViewCompat.setNestedScrollingEnabled(rv_recents, false)
-
-                rv_recents.setItemViewCacheSize(20)
-
-                rv_recents.layoutManager = object : GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false) {
-                    override fun canScrollVertically(): Boolean {
-                        return false
-                    }
-                }
-                rv_recents.setHasFixedSize(true)
 
                 getExploreBook("http://airbooks.altervista.org/API/v2/explore/",Locale.getDefault().language, "android",token)
+
             }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        Log.d("SECTION", "OnViewCreatedExplore")
-        //if (isSectionVisible()) setupActionBar()
-    }
+    //HANDLER METHODS
 
     private fun setupActionBar() = setupActionBar("Explore",1)
 
     override fun onReselected() = setupActionBar()
 
+    //  HOME CONTROLLER METHODS
+
     override fun getExploreBook(url: String?, lang: String?, os: String?, token: String?) {
-        mAPIService!!.getExploreBook(url, lang, os, token).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<GetExplore> {
+        viewModel.getExplore(url!!,lang!!,os!!,token!!)
+                ?.observe(viewLifecycleOwner, android.arch.lifecycle.Observer { exploreItems->
+                    if (exploreItems != null){
 
-            override fun onSubscribe(d: Disposable) {
-            }
+                        ViewCompat.setNestedScrollingEnabled(rv_recents, false)
 
-            override fun onNext(getExploreResponse: GetExplore) {
+                        rv_recents.layoutManager = object : GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false) {
+                            override fun canScrollVertically(): Boolean {
+                                return false
+                            }
+                        }
+                        rv_recents.setHasFixedSize(true)
 
-                val recentsItems: MutableList<Item> = getExploreResponse.result.recents.items
-
-                if (getExploreResponse.error == null) {
-
-
-                    if (getExploreResponse.result.recents.items != null) {
-                        val recentsAdapter = ExploreRecentsAdapter(recentsItems)
+                        val recentsAdapter = ExploreRecentsAdapter(exploreItems)
                         rv_recents.adapter = recentsAdapter
                     }
-
-
-                }else{
-                    toast("Sorry, we have a problem. Try later.")
-                }
-
-            }
-
-            override fun onError(e: Throwable) {
-
-            }
-
-            override fun onComplete() {
-
-            }
-        })
+                })
     }
 }
