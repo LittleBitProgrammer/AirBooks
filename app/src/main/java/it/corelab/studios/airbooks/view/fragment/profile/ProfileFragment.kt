@@ -28,7 +28,7 @@ class ProfileFragment: Fragment(), OnReselectedDelegate {
         //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("profile",3)
+    private fun setupActionBar() = setupActionBar("profile",3, null)
 
     override fun onReselected() = setupActionBar()
 }

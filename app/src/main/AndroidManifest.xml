@@ -52,9 +52,6 @@
             android:name=".section.AddDescription"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".section.BookDetail"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".section.ReadActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -11,7 +11,7 @@
             android:id="@+id/action_homeFragment_to_detailBook_explore"
             app:clearTask="false"
             app:destination="@id/detailBookExplore"
-            app:enterAnim="@anim/modal_in"
+            app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/fade_out"
             app:launchDocument="false"
             app:launchSingleTop="true"

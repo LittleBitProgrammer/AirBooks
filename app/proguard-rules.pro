@@ -31,3 +31,7 @@
 
 # OkHttp platform used only on JVM and when Conscrypt dependency is available.
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+ -keep class cn.pedant.SweetAlert.Rotate3dAnimation {
+    public <init>(...);
+}

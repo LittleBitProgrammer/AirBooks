@@ -55,7 +55,7 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
 
     //HANDLER METHODS
 
-    private fun setupActionBar() = setupActionBar("Explore",1)
+    private fun setupActionBar() = setupActionBar("Explore",1,null)
 
     override fun onReselected() = setupActionBar()
 

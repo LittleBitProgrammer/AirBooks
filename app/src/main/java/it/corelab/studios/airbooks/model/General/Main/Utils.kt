@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.navigation.findNavController
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.support.v4.toast
 
@@ -18,7 +20,7 @@ fun <T> T?.or(compute: () -> T): T = this ?: compute()
 
 fun Fragment.isSectionVisible(): Boolean = (((view?.parent as? ViewGroup)?.parent as? ViewGroup)?.visibility == View.VISIBLE)
 
-fun Fragment.setupActionBar(title: String, id: Int){
+fun Fragment.setupActionBar(title: String, id: Int, string: String?){
 
     val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
     val firstColor = sharedPreferences.getString("firstColor", "")
@@ -85,7 +87,10 @@ fun Fragment.setupActionBar(title: String, id: Int){
             4->{
                 this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
                 this.setCustomView(R.layout.actionbar_book_detail)
-                this.customView.findViewById<ImageButton>(R.id.back_to_home).setOnClickListener { toast("fddfsfd") }
+                this.customView.findViewById<ImageButton>(R.id.back_to_home).setOnClickListener {
+                    view?.findNavController()?.navigateUp()
+                }
+                this.customView.findViewById<TextView>(R.id.number_comments).text = string
 
                 linearBottom?.isEnabled = true
                 linearBottom?.visibility = View.VISIBLE

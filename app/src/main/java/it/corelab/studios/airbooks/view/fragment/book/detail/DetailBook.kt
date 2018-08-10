@@ -11,6 +11,7 @@ import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -58,6 +59,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var bookGenre: String? = null
     private var bookReaders: Int? = null
     private var bookLovers: Int? = null
+    private var counterReview: Int? = null
     private var bookDescription: String? = null
     private var tagsList: ArrayList<String>? = null
     private lateinit var coverImage: ImageView
@@ -76,6 +78,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     internal var isSwipedCenter = true
     private var isComingFromHome: Boolean = false
     private var isComingFromExplore: Boolean = false
+    private var isSaved: Boolean = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -101,7 +104,6 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 tags = findViewById(R.id.tag_book_detail)
                 noTag = findViewById(R.id.no_tag_label)
 
-
                 firstColor = arguments?.getString("firstColor")
                 secondColor = arguments?.getString("secondColor")
                 coverUrl = arguments?.getString("coverUrl")
@@ -114,6 +116,8 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 tagsList = arguments?.getStringArrayList("tags")
                 isComingFromHome = arguments?.getBoolean("comingHome")!!
                 isComingFromExplore = arguments?.getBoolean("comingExplore")!!
+                counterReview = arguments?.getInt("countNumb")
+                isSaved = arguments?.getBoolean("isSaved")!!
 
                 if (isComingFromHome) {
                     customNestedHome?.animateToOriginal(diagonalView!!)
@@ -154,6 +158,20 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 linearCard.background = gd2
                 button?.backgroundColor = Color.parseColor("#$firstColor")
                 buttonPreference!!.backgroundColor = Color.parseColor("#$secondColor")
+
+                if (!isSaved){
+                    buttonPreference?.setIconResource(R.drawable.ic_bookmark_border)
+                    buttonPreference?.setOnClickListener {
+                        buttonPreference?.setIconResource(R.drawable.ic_bookmark)
+                        isSaved = true
+                    }
+                }else{
+                    buttonPreference?.setIconResource(R.drawable.ic_bookmark)
+                    buttonPreference?.setOnClickListener {
+                        buttonPreference?.setIconResource(R.drawable.ic_bookmark_border)
+                        isSaved = false
+                    }
+                }
 
                 cardBook.setOnTouchListener(object : GestureHelper(ctx) {
                     override fun onClick() {
@@ -204,21 +222,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
         this.isSwipedCenter = true
     }
 
-    private fun setupActionBar() = setupActionBar("Book Detail", 4)
+    private fun setupActionBar() = setupActionBar("Book Detail", 4, counterReview.toString())
 
     override fun onReselected() = setupActionBar()
-
-    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
-        when (menuItem.itemId){
-            R.id.back_to_home -> {
-                toast("fsfdf")
-                view?.findNavController()?.navigateUp()
-                linearBottom?.isEnabled = false
-                linearBottom?.visibility = View.INVISIBLE
-
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(menuItem)
-    }
 }

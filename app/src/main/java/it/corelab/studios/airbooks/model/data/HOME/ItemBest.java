@@ -59,6 +59,9 @@ public class ItemBest {
     @SerializedName("lovers")
     @Expose
     private Integer lovers;
+    @SerializedName("is_saved")
+    @Expose
+    private Boolean isSaved;
     @SerializedName("genre")
     @Expose
     private Genre genre;
@@ -199,6 +202,13 @@ public class ItemBest {
         this.lovers = lovers;
     }
 
+    public boolean getIsSaved(){
+        return isSaved;
+    }
+
+    public void setIsSaved(boolean isSaved){
+        this.isSaved = isSaved;
+    }
     public Genre getGenre() {
         return genre;
     }

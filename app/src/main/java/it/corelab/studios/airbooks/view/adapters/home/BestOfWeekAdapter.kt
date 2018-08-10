@@ -58,30 +58,12 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                     putString("bookDescription", book.description)
                     putInt("bookReaders", book.readings)
                     putInt("bookLovers", book.lovers)
+                    putInt("countNumb", book.reviewsCount)
                     putBoolean("comingHome", true)
+                    putBoolean("isSaved", book.isSaved)
                     putStringArrayList("tags",book.tags)
                 })
         )
-
-        /*holder.itemView.setOnClickListener {
-            val sharedIntent = Intent(context, BookDetail::class.java)
-
-            //Pair[] pairs = new Pair[2];
-            //pairs[0] = new Pair<View, String>(holder.colorGenre, "genreTransition");
-
-            sharedIntent.putExtra("pos", book.coverUrl)
-            sharedIntent.putExtra("bookTitle", book.bookTitle)
-            sharedIntent.putExtra("genre", Integer.parseInt(book.genreId!!.toString()))
-            //sharedIntent.putExtra("bookAuthor", book.getBookAuthor());
-            sharedIntent.putExtra("loversNumb", book.lovers)
-            sharedIntent.putExtra("readersNumb", book.readings)
-            //sharedIntent.putExtra("colorGenre",)
-            sharedIntent.putExtra("coverImage", book.coverUrl)
-
-
-            context.startActivity(sharedIntent)
-        }*/
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

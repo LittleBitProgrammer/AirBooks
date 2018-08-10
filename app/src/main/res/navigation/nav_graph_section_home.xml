@@ -9,15 +9,17 @@
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_detailBook"
-            app:clearTask="false"
             app:destination="@id/detailBook"
-            app:enterAnim="@anim/modal_in"
+            app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/fade_out"
-            app:launchDocument="false"
-            app:launchSingleTop="true"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_showcaseDetail"
+            app:destination="@id/showcaseDetail" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
@@ -30,6 +32,66 @@
         <argument
             android:name="secondColor"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_detailBook_to_author_view"
+            app:destination="@id/author_view" />
+        <action
+            android:id="@+id/action_detailBook_to_review_view"
+            app:destination="@id/book_review" />
+        <action
+            android:id="@+id/action_detailBook_to_reading_book"
+            app:destination="@id/reading_book" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showcaseDetail"
+        android:name="it.corelab.studios.airbooks.view.fragment.showcase.ShowcaseDetail"
+        android:label="ShowcaseDetail">
+        <action
+            android:id="@+id/action_showcaseDetail_to_detailBook"
+            app:destination="@id/detailBook" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="it.corelab.studios.airbooks.view.fragment.search.Search"
+        android:label="search_fragment">
+        <action
+            android:id="@+id/action_searchFragment_to_detailBook"
+            app:destination="@id/detailBook" />
+    </fragment>
+    <fragment
+        android:id="@+id/author_view"
+        android:name="it.corelab.studios.airbooks.view.fragment.profile.OtherProfile"
+        android:label="author_view">
+        <action
+            android:id="@+id/action_author_view_to_detailBook"
+            app:destination="@id/detailBook" />
+        <action
+            android:id="@+id/action_author_view_to_review_from_author"
+            app:destination="@id/review_from_author" />
+    </fragment>
+    <fragment
+        android:id="@+id/book_review"
+        android:name="it.corelab.studios.airbooks.view.fragment.review.Review"
+        android:label="review">
+        <action
+            android:id="@+id/action_book_review_to_author_view"
+            app:destination="@id/author_view" />
+    </fragment>
+    <fragment
+        android:id="@+id/reading_book"
+        android:name="it.corelab.studios.airbooks.view.fragment.read.Reader"
+        android:label="reader"/>
+    <fragment
+        android:id="@+id/review_from_author"
+        android:name="it.corelab.studios.airbooks.view.fragment.review.ReviewFromAuthor"
+        android:label="reviewFromAuthor">
+        <action
+            android:id="@+id/action_review_from_author_to_detailBook"
+            app:destination="@id/detailBook" />
+        <action
+            android:id="@+id/action_review_from_author_to_author_view"
+            app:destination="@id/author_view" />
     </fragment>
 
 </navigation>
