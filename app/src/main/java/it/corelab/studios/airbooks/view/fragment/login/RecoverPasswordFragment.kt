@@ -19,8 +19,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.LOGIN.RECOVERPASSWORD.PostRecoverResponse
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.APIService
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 import android.content.ContentValues.TAG
 import android.widget.EditText
 import it.corelab.studios.airbooks.model.interfaces.login.recover.RecoverPasswordController

@@ -21,8 +21,8 @@ import it.corelab.studios.airbooks.view.activity.login.Login
 import it.corelab.studios.airbooks.view.activity.main.MainActivity
 import it.corelab.studios.airbooks.view.activity.intro.IntroActivity
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.AutomaticSignInResponse
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.APIService
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 import it.corelab.studios.airbooks.view.anko.layout.splash.SplashScreenLayout
 import org.jetbrains.anko.setContentView
 import android.support.v4.view.ViewPropertyAnimatorCompat

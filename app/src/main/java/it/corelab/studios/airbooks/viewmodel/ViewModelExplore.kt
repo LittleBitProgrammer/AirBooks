@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.model.data.EXPLORE.GetExplore
 import it.corelab.studios.airbooks.model.data.EXPLORE.Item
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 
 class ViewModelExplore: ViewModel(){
 

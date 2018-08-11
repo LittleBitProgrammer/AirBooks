@@ -1,37 +1,21 @@
 package it.corelab.studios.airbooks.view.fragment.explore
 
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
-import android.support.v7.app.ActionBar
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.gson.GsonBuilder
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.explore.ExploreRecentsAdapter
-import it.corelab.studios.airbooks.model.data.EXPLORE.GetExplore
-import it.corelab.studios.airbooks.model.data.EXPLORE.Item
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.viewmodel.ViewModelExplore
 import kotlinx.android.synthetic.main.explore_fragment.*
-import kotlinx.android.synthetic.main.explore_fragment.view.*
 import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
-import org.jetbrains.anko.support.v4.toast
 import java.util.*
 
 class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{

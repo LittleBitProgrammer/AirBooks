@@ -25,8 +25,8 @@ import it.corelab.studios.airbooks.view.dialog.login.CountryDialog
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNUP.PostSignUp
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNUP.PostSignUpResponse
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.APIService
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 
 import android.content.ContentValues.TAG
 import it.corelab.studios.airbooks.model.interfaces.login.signup.DialogController

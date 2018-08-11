@@ -24,7 +24,6 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
 
     private val bookItems: List<ItemBest> = books
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val book = bookItems[position]
         val holderContainer = (holder as? ItemViewHolder)
@@ -35,7 +34,7 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 colors)
         gd.cornerRadius = 0f
 
-        Picasso.get().load(book.coverUrl).placeholder(R.drawable.logo_login).into(holderContainer?.coverImage)
+        Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
 
         holderContainer?.bookTitle?.text = book.title
         holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)

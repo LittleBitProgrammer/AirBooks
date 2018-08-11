@@ -21,8 +21,8 @@ import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.activity.main.MainActivity
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.PostSignIn
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.PostSignInResponse
-import it.corelab.studios.airbooks.model.data.remote.APIService
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.APIService
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 
 import android.content.ContentValues.TAG
 import android.content.Context

@@ -3,14 +3,13 @@ package it.corelab.studios.airbooks.viewmodel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.model.data.HOME.*
-import it.corelab.studios.airbooks.model.data.remote.ApiUtils
+import it.corelab.studios.airbooks.model.API.remote.ApiUtils
 
 class ViewModelHome : ViewModel() {
 
