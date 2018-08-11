@@ -16,7 +16,7 @@ class Review : Fragment(), OnReselectedDelegate {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(act, R.layout.profile_fragment,null).apply {
+            View.inflate(act, R.layout.activity_all_reviews,null).apply {
                 if (isSectionVisible()) setupActionBar()
             }
 
@@ -25,7 +25,7 @@ class Review : Fragment(), OnReselectedDelegate {
         //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("profile",3, null)
+    private fun setupActionBar() = setupActionBar("profile",4, null)
 
     override fun onReselected() = setupActionBar()
 }

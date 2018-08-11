@@ -23,8 +23,6 @@ public class AllReviews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_reviews);
 
-        dismissButton = findViewById(R.id.dismiss_button_all_reviews);
-        reviews = findViewById(R.id.top_bar_name_all_reviews);
         listView = findViewById(R.id.listView_all_reviews);
 
         //createElementListView();

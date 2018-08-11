@@ -40,6 +40,7 @@ import kotlinx.android.synthetic.main.actionbar_book_detail.view.*
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.onUiThread
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 
@@ -119,85 +120,90 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                 counterReview = arguments?.getInt("countNumb")
                 isSaved = arguments?.getBoolean("isSaved")!!
 
-                if (isComingFromHome) {
-                    customNestedHome?.animateToOriginal(diagonalView!!)
-                    customNestedHome?.scrollTo(0, 0)
-                }else if (isComingFromExplore){
-                    customNestedExplore?.animateToOriginal(diagonalView!!)
-                    customNestedExplore?.scrollTo(0, 0)
-                }
+                onUiThread {
 
-                Picasso.get().load(coverUrl).into(coverImage)
-                title.text = bookTitle
-                author.text = bookAuthor
-                genre.text = bookGenre
-                readers.text = "$bookReaders"
-                lovers.text = "$bookLovers"
-                descriprionLabel.text = bookDescription
-
-                val stars: LayerDrawable =  (ratingBar.progressDrawable as LayerDrawable)
-                stars.getDrawable(2).setColorFilter(Color.parseColor("#$firstColor"),PorterDuff.Mode.SRC_ATOP)
-
-                val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
-                sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
-                sharedPreferences?.edit()?.putString("secondColor", arguments!!.getString("secondColor"))?.apply()
-
-                val colors = intArrayOf(Color.parseColor("#${arguments?.getString("firstColor")}"), Color.parseColor("#${arguments?.getString("secondColor")}"))
-
-                val gd = GradientDrawable(
-                        GradientDrawable.Orientation.LEFT_RIGHT,
-                        colors)
-                gd.cornerRadius = 0f
-
-                val gd2 = GradientDrawable(
-                        GradientDrawable.Orientation.LEFT_RIGHT,
-                        colors)
-                gd.cornerRadius = 0f
-
-                diagonalView?.background = gd
-                linearCard.background = gd2
-                button?.backgroundColor = Color.parseColor("#$firstColor")
-                buttonPreference!!.backgroundColor = Color.parseColor("#$secondColor")
-
-                if (!isSaved){
-                    buttonPreference?.setIconResource(R.drawable.ic_bookmark_border)
-                    buttonPreference?.setOnClickListener {
-                        buttonPreference?.setIconResource(R.drawable.ic_bookmark)
-                        isSaved = true
+                    if (isComingFromHome) {
+                        customNestedHome?.animateToOriginal(diagonalView!!)
+                        customNestedHome?.scrollTo(0, 0)
+                    } else if (isComingFromExplore) {
+                        customNestedExplore?.animateToOriginal(diagonalView!!)
+                        customNestedExplore?.scrollTo(0, 0)
                     }
-                }else{
-                    buttonPreference?.setIconResource(R.drawable.ic_bookmark)
-                    buttonPreference?.setOnClickListener {
+
+                    Picasso.get().load(coverUrl).into(coverImage)
+                    title.text = bookTitle
+                    author.text = bookAuthor
+                    genre.text = bookGenre
+                    readers.text = "$bookReaders"
+                    lovers.text = "$bookLovers"
+                    descriprionLabel.text = bookDescription
+
+                    val stars: LayerDrawable = (ratingBar.progressDrawable as LayerDrawable)
+                    stars.getDrawable(2).setColorFilter(Color.parseColor("#$firstColor"), PorterDuff.Mode.SRC_ATOP)
+
+                    val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
+                    sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
+                    sharedPreferences?.edit()?.putString("secondColor", arguments!!.getString("secondColor"))?.apply()
+
+                    val colors = intArrayOf(Color.parseColor("#${arguments?.getString("firstColor")}"), Color.parseColor("#${arguments?.getString("secondColor")}"))
+
+                    val gd = GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            colors)
+                    gd.cornerRadius = 0f
+
+                    val gd2 = GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            colors)
+                    gd.cornerRadius = 0f
+
+                    diagonalView?.background = gd
+                    linearCard.background = gd2
+                    button?.backgroundColor = Color.parseColor("#$firstColor")
+                    buttonPreference!!.backgroundColor = Color.parseColor("#$secondColor")
+
+                    if (!isSaved) {
                         buttonPreference?.setIconResource(R.drawable.ic_bookmark_border)
-                        isSaved = false
-                    }
-                }
-
-                cardBook.setOnTouchListener(object : GestureHelper(ctx) {
-                    override fun onClick() {
-                        if (isSwipedCenter) {
-                            tapDownAnimation()
-                        } else if (!isSwipedCenter) {
-                            tapTopAnimation()
+                        buttonPreference?.setOnClickListener {
+                            buttonPreference?.setIconResource(R.drawable.ic_bookmark)
+                            isSaved = true
                         }
-
+                    } else {
+                        buttonPreference?.setIconResource(R.drawable.ic_bookmark)
+                        buttonPreference?.setOnClickListener {
+                            buttonPreference?.setIconResource(R.drawable.ic_bookmark_border)
+                            isSaved = false
+                        }
                     }
-                })
 
-                if (tagsList == null){
-                    noTag.visibility = View.VISIBLE
-                    noTag.textColor = Color.parseColor("#$firstColor")
+                    cardBook.setOnTouchListener(object : GestureHelper(ctx) {
+                        override fun onClick() {
+                            if (isSwipedCenter) {
+                                tapDownAnimation()
+                            } else if (!isSwipedCenter) {
+                                tapTopAnimation()
+                            }
+
+                        }
+                    })
+
+                    if (tagsList == null) {
+                        noTag.visibility = View.VISIBLE
+                        noTag.textColor = Color.parseColor("#$firstColor")
+                    }
+
+                    val layoutManager = FlexboxLayoutManager(ctx)
+                    layoutManager.flexDirection = FlexDirection.ROW
+                    layoutManager.justifyContent = JustifyContent.FLEX_START
+                    tags.setItemViewCacheSize(20)
+                    tags.layoutManager = layoutManager
+                    tags.setHasFixedSize(true)
+
+                    val tagAdapter = TagAdapter(tagsList, firstColor!!)
+                    tags.adapter = tagAdapter
+
                 }
 
-                val layoutManager = FlexboxLayoutManager(ctx)
-                layoutManager.flexDirection = FlexDirection.ROW
-                layoutManager.justifyContent = JustifyContent.FLEX_START
-                tags.setItemViewCacheSize(20)
-                tags.layoutManager = layoutManager
-                tags.setHasFixedSize(true)
-
-                val tagAdapter = TagAdapter(tagsList, firstColor!!)
-                tags.adapter = tagAdapter
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

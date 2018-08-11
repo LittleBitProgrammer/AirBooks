@@ -6,47 +6,6 @@
     android:layout_height="match_parent"
     tools:context="it.corelab.studios.airbooks.section.AllReviews">
 
-    <ImageView
-        android:id="@+id/top_bar_all_reviews"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/topBar"/>
-
-    <TextView
-        android:id="@+id/top_bar_name_all_reviews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/all_review_section"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_all_reviews"
-        app:layout_constraintStart_toStartOf="@+id/top_bar_all_reviews"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews" />
-
-    <ImageButton
-        android:id="@+id/dismiss_button_all_reviews"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginBottom="17dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="18dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/dismiss"
-        app:layout_constraintBottom_toBottomOf="@+id/top_bar_all_reviews"
-        app:layout_constraintEnd_toEndOf="@+id/top_bar_all_reviews"
-        app:layout_constraintTop_toTopOf="@+id/top_bar_all_reviews"
-        android:contentDescription="@string/dismiss_button"/>
-
     <ListView
         android:id="@+id/listView_all_reviews"
         android:layout_width="match_parent"
@@ -54,8 +13,6 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_all_reviews"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

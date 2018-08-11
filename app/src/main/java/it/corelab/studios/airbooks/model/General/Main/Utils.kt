@@ -1,8 +1,11 @@
 package it.corelab.studios.airbooks.model.General.Main
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.support.v4.app.Fragment
+import android.support.v4.app.ShareCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -91,6 +94,26 @@ fun Fragment.setupActionBar(title: String, id: Int, string: String?){
                     view?.findNavController()?.navigateUp()
                 }
                 this.customView.findViewById<TextView>(R.id.number_comments).text = string
+                this.customView.findViewById<ImageButton>(R.id.reviewButton).setOnClickListener {
+                    view?.findNavController()?.navigate(R.id.action_detailBook_to_review_view)
+                }
+                this.customView.findViewById<ImageButton>(R.id.share_button).setOnClickListener {
+                    val shareIntent = ShareCompat.IntentBuilder.from(activity)
+                            .setText("Condividi da Airbooks")
+                            .setType("text/plain")
+                            .createChooserIntent()
+                            .apply {
+                                // https://android-developers.googleblog.com/2012/02/share-with-intents.html
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    // If we're on Lollipop, we can open the intent as a document
+                                    addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                                } else {
+                                    // Else, we will use the old CLEAR_WHEN_TASK_RESET flag
+                                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
+                                }
+                            }
+                    startActivity(shareIntent)
+                }
 
                 linearBottom?.isEnabled = true
                 linearBottom?.visibility = View.VISIBLE
