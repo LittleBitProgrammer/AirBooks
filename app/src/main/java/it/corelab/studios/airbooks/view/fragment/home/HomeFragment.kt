@@ -23,6 +23,7 @@ import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
 import it.corelab.studios.airbooks.viewmodel.ViewModelHome
 import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.support.v4.ctx
 
 
 class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
@@ -96,7 +97,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
                         Log.i("roberto","$showcaseItem")
                         ViewCompat.setNestedScrollingEnabled(rotationView, false)
-                        rotationView.setAdapter(InfiniteRotationAdapter(showcaseItem))
+                        rotationView.setAdapter(InfiniteRotationAdapter(showcaseItem, ctx))
 
                     }
                 })
@@ -115,7 +116,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 continueReading.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
                 continueReading.setHasFixedSize(true)
 
-                val snapContinueReadAdapter = ContinueReadAdapter(readingItems)
+                val snapContinueReadAdapter = ContinueReadAdapter(readingItems,ctx)
                 continueReading.adapter = snapContinueReadAdapter
 
             }else{
@@ -142,7 +143,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
                 }
                 bestBook.setHasFixedSize(true)
 
-                val snapBestOfWeek = BestOfWeekAdapter(bestWeekItem)
+                val snapBestOfWeek = BestOfWeekAdapter(bestWeekItem, ctx)
                 bestBook.adapter = snapBestOfWeek
 
             }else{

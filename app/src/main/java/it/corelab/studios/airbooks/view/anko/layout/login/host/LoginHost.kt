@@ -6,7 +6,7 @@ import android.support.v4.content.res.ResourcesCompat
 import android.view.View
 import android.view.ViewManager
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.activity.login.Login
 import it.corelab.studios.airbooks.view.widget.RoundedImageView
@@ -35,7 +35,7 @@ class LoginHost : AnkoComponent<Login> {
                 roundImage {
                     id = Ids.LOGO
 
-                    Picasso.get().load(R.drawable.logo_login).into(this@roundImage)
+                    Glide.with(ctx).load(R.drawable.logo_login).into(this@roundImage)
                     contentDescription = resources.getString(R.string.simple_circle_background_login_host)
 
                 }.lparams(width = dip(90), height = dip(90)){

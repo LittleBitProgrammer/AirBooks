@@ -1,5 +1,6 @@
 package it.corelab.studios.airbooks.view.adapters.home
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -12,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import butterknife.ButterKnife
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.ItemBest
 
@@ -20,7 +21,7 @@ import it.corelab.studios.airbooks.model.data.HOME.ItemBest
  * Created by Roberto_Vecchio on 21/02/18.
  */
 
-class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val bookItems: List<ItemBest> = books
 
@@ -34,7 +35,8 @@ class BestOfWeekAdapter(books: List<ItemBest>) : RecyclerView.Adapter<RecyclerVi
                 colors)
         gd.cornerRadius = 0f
 
-        Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
+        //Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
+        Glide.with(context).load(book.coverUrl).into(holderContainer?.coverImage!!)
 
         holderContainer?.bookTitle?.text = book.title
         holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)

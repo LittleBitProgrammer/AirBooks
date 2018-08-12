@@ -16,6 +16,7 @@ import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.viewmodel.ViewModelExplore
 import kotlinx.android.synthetic.main.explore_fragment.*
 import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.support.v4.ctx
 import java.util.*
 
 class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
@@ -59,7 +60,7 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
                         }
                         rv_recents.setHasFixedSize(true)
 
-                        val recentsAdapter = ExploreRecentsAdapter(exploreItems)
+                        val recentsAdapter = ExploreRecentsAdapter(exploreItems, ctx)
                         rv_recents.adapter = recentsAdapter
                     }
                 })

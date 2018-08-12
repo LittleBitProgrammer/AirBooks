@@ -8,7 +8,7 @@ import android.view.ViewManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.fragment.intro.OnBoardingFragment
 import it.corelab.studios.airbooks.view.widget.RoundedImageView
@@ -35,7 +35,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                 roundImage{
                     id = Ids.ROUNDED_IMAGE_INTRO
 
-                    Picasso.get().load(R.drawable.profile_picture).into(this@roundImage)
+                    Glide.with(ctx).load(R.drawable.profile_picture).into(this@roundImage)
                     gravity = Gravity.CENTER_HORIZONTAL
 
                     y = -1500F
@@ -53,7 +53,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                     imageView{
                         id = Ids.STAR_ONE_INTRO
 
-                        Picasso.get().load(R.drawable.star).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -61,7 +61,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                     imageView{
                         id = Ids.STAR_TWO_INTRO
 
-                        Picasso.get().load(R.drawable.star).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -69,7 +69,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                     imageView{
                         id = Ids.STAR_THREE_INTRO
 
-                        Picasso.get().load(R.drawable.star).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -77,7 +77,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                     imageView{
                         id = Ids.STAR_FOUR_INTRO
 
-                        Picasso.get().load(R.drawable.star).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -85,7 +85,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                     imageView{
                         id = Ids.STAR_FIVE_INTRO
 
-                        Picasso.get().load(R.drawable.star).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.star).into(this@imageView)
                         y = -1500F
 
                     }.lparams(width = dip(25), height = dip(25))
@@ -109,7 +109,7 @@ class OnBoardingThreeLayout : AnkoComponent<OnBoardingFragment>{
                 imageView{
                     id = Ids.BOOK_INTRO_PAGE_THREE
 
-                    Picasso.get().load(R.drawable.book2).into(this@imageView)
+                    Glide.with(ctx).load(R.drawable.book2).into(this@imageView)
                     y = -1500F
                     scaleType = ImageView.ScaleType.FIT_XY
 

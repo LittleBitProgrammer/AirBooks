@@ -12,7 +12,7 @@ import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
 import android.support.v4.content.res.ResourcesCompat
 import android.util.Log
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.view.fragment.intro.OnBoardingFragment
 
 
@@ -605,7 +605,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView {
                             id = Ids.HIGH_LEFT_IMAGE
 
-                            Picasso.get().load(R.drawable.book6).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book6).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.y = -400.0F
@@ -630,7 +630,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView{
                             id = Ids.CENTER_LEFT_IMAGE
 
-                            Picasso.get().load(R.drawable.book5).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book5).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.x = -400.0F
@@ -653,7 +653,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView{
                             id = Ids.DOWN_LEFT_IMAGE
 
-                            Picasso.get().load(R.drawable.book7).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book7).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
 
@@ -696,7 +696,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView {
                             id = Ids.TOP_CENTER_IMAGE
 
-                            Picasso.get().load(R.drawable.book2).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book2).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.y = -600F
 
@@ -721,7 +721,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView {
                             id = Ids.DOWN_CENTER_IMAGE
 
-                            Picasso.get().load(R.drawable.book3).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book3).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.y = 600F
 
@@ -760,7 +760,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView{
                             id = Ids.TOP_RIGHT_IMAGE
 
-                            Picasso.get().load(R.drawable.book5).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book5).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
 
                             this@imageView.x = 400.0F
@@ -790,7 +790,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView {
                             id = Ids.CENTER_RIGHT_IMAGE
 
-                            Picasso.get().load(R.drawable.book6).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book6).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.x = 400.0F
 
@@ -812,7 +812,7 @@ class OnBoardingOneLayout : AnkoComponent<OnBoardingFragment> {
                         imageView {
                             id = Ids.DOWN_RIGHT_IMAGE
 
-                            Picasso.get().load(R.drawable.book1).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book1).into(this@imageView)
                             scaleType = ImageView.ScaleType.FIT_XY
                             this@imageView.x = 400.0F
                             this@imageView.y = 400.0F

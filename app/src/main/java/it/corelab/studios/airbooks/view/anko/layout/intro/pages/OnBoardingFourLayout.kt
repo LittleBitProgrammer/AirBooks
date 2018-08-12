@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.view.fragment.intro.OnBoardingFragment
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
@@ -58,7 +58,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                     imageView{
                         id = Ids.TEACUP
-                        Picasso.get().load(R.drawable.teacup).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.teacup).into(this@imageView)
 
                         y = 2200F
                     }.lparams(width = dip(160), height = dip(60)){
@@ -80,7 +80,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                     imageView{
                         id = Ids.SOFA
-                        Picasso.get().load(R.drawable.sofa).into(this@imageView)
+                        Glide.with(ctx).load(R.drawable.sofa).into(this@imageView)
 
                         y = 2200F
                     }.lparams(width = wrapContent, height = dip(100)){
@@ -105,7 +105,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                         imageView{
                             id = Ids.LEFT_BOOK_PAGE_FOUR
-                            Picasso.get().load(R.drawable.book2).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book2).into(this@imageView)
 
                             x = -1100F
 
@@ -115,7 +115,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                         imageView{
                             id = Ids.CENTER_BOOK_PAGE_FOUR
-                            Picasso.get().load(R.drawable.book3).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book3).into(this@imageView)
 
                             x = -1100F
                         }.lparams(width = dip(75), height = dip(107)){
@@ -124,7 +124,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                         imageView{
                             id = Ids.RIGHT_BOOK_PAGE_FOUR
-                            Picasso.get().load(R.drawable.book5).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.book5).into(this@imageView)
 
                             x =-1100F
                         }.lparams(width = dip(75), height = dip(107)){
@@ -149,7 +149,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                         imageView{
                             id = Ids.FACE_HEART
-                            Picasso.get().load(R.drawable.emoji_heart_face).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.emoji_heart_face).into(this@imageView)
 
                             y = 2200F
                         }.lparams(width = dip(30), height = dip(30)){
@@ -158,7 +158,7 @@ class OnBoardingFourLayout: AnkoComponent<OnBoardingFragment> {
 
                         imageView{
                             id = Ids.HEART_EMOJI
-                            Picasso.get().load(R.drawable.heart).into(this@imageView)
+                            Glide.with(ctx).load(R.drawable.heart).into(this@imageView)
 
                             y = 2200F
                         }.lparams(width = dip(30), height = dip(30)){

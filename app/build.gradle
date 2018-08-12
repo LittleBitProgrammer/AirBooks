@@ -68,8 +68,8 @@ dependencies {
 
     //navigation
     implementation "com.aurelhubert:ahbottomnavigation:$bottom_navigation"
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha04'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha04'
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha05'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha05'
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.1"
@@ -85,7 +85,8 @@ dependencies {
     //utility
     implementation "com.jakewharton:butterknife:$butter_knife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butter_knife"
-    implementation "com.squareup.picasso:picasso:$picasso"
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 
     //reactive
     implementation "io.reactivex.rxjava2:rxjava:$rx_java"
@@ -101,7 +102,7 @@ dependencies {
 
     /* ======================================================================
                                                   Anko
-                     ======================================================================*/
+     ======================================================================*/
 
     //anko
     implementation "org.jetbrains.anko:anko:$anko_version"
@@ -129,6 +130,7 @@ dependencies {
     // sdk15, sdk19, sdk21, sdk23 are also available
     implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
     implementation "org.jetbrains.anko:anko-cardview-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
     implementation "org.jetbrains.anko:anko-design:$anko_version"
     repositories {
         mavenCentral()

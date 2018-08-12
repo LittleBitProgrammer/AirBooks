@@ -4,30 +4,24 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
-import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.squareup.picasso.Picasso
 import it.corelab.studios.airbooks.view.widget.CustomNested
 import it.corelab.studios.airbooks.view.widget.DiagonalView
 import it.corelab.studios.airbooks.R
@@ -36,12 +30,10 @@ import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.Gesture.GestureHelper
 import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
-import kotlinx.android.synthetic.main.actionbar_book_detail.view.*
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onUiThread
-import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 
 class DetailBook: Fragment(), OnReselectedDelegate {
@@ -130,7 +122,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
                         customNestedExplore?.scrollTo(0, 0)
                     }
 
-                    Picasso.get().load(coverUrl).into(coverImage)
+                    Glide.with(ctx).load(coverUrl).into(coverImage)
                     title.text = bookTitle
                     author.text = bookAuthor
                     genre.text = bookGenre

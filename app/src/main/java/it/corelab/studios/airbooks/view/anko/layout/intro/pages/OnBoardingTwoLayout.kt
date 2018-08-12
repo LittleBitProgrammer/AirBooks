@@ -3,7 +3,7 @@ package it.corelab.studios.airbooks.view.anko.layout.intro.pages
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.view.fragment.intro.OnBoardingFragment
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
@@ -20,7 +20,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.SHELF_ONE
 
-                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -34,7 +34,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.SHELF_TWO
 
-                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -48,7 +48,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView{
                 id = Ids.SHELF_THREE
 
-                Picasso.get().load(R.drawable.scaffale).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.scaffale).into(this@imageView)
                 y = -1500F
             }.lparams(width = matchConstraint, height = wrapContent) {
                 rightToRight = PARENT_ID
@@ -62,7 +62,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.FIRST_FIRST_IMAGE
 
-                Picasso.get().load(R.drawable.book2).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book2).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -77,7 +77,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.FIRST_SECOND_IMAGE
 
-                Picasso.get().load(R.drawable.book3).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book3).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -92,7 +92,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView  {
                 id = Ids.FIRST_THIRD_IMAGE
 
-                Picasso.get().load(R.drawable.book5).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book5).into(this@imageView)
                 x = -800F
             }.lparams(width = dip(84), height = dip(106)){
                 leftToLeft = PARENT_ID
@@ -104,7 +104,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView{
                 id = Ids.SECOND_FIRST_IMAGE
 
-                Picasso.get().load(R.drawable.book1).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book1).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -117,7 +117,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.SECOND_SECOND_IMAGE
 
-                Picasso.get().load(R.drawable.book4).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book4).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {
@@ -130,7 +130,7 @@ class OnBoardingTwoLayout : AnkoComponent<OnBoardingFragment> {
             imageView {
                 id = Ids.SECOND_THIRD_IMAGE
 
-                Picasso.get().load(R.drawable.book7).into(this@imageView)
+                Glide.with(ctx).load(R.drawable.book7).into(this@imageView)
                 x = -800F
 
             }.lparams(width = dip(84), height = dip(106)) {

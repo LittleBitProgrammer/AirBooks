@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.fragment.login.SignUpFragment
 import org.jetbrains.anko.*
@@ -51,7 +51,7 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
                     imageView {
                         id = Ids.PERSON_ICON
 
-                        Picasso.get().load(R.drawable.person_icon).into(this)
+                        Glide.with(ctx).load(R.drawable.person_icon).into(this)
                         scaleType = ImageView.ScaleType.FIT_CENTER
 
                     }.lparams(width = dip(30), height = dip(50)){
