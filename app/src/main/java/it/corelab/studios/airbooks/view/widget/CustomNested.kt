@@ -66,7 +66,6 @@ class CustomNested : NestedScrollView {
             var variation = 43.25f - diff * 0.05f
 
             lastYPosition = -scrollY.toFloat()
-            //takeYPosition(diagonalView)
 
             if (diff <= 585) {
 
@@ -80,7 +79,6 @@ class CustomNested : NestedScrollView {
                 diagonalView.setAngle(variation)
                 diagonalView.y = -scrollY.toFloat()
                 lastAngleVariation = variation
-                Log.i("ANGLE", "$lastAngleVariation")
 
             }else{
                 diagonalView.y = -scrollY.toFloat()

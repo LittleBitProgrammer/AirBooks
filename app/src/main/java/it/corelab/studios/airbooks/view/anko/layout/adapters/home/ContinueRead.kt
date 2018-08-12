@@ -1,6 +1,5 @@
 package it.corelab.studios.airbooks.view.anko.layout.adapters.home
 
-import android.graphics.Outline
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
@@ -18,6 +17,7 @@ class ContinueRead : AnkoComponent<ViewGroup> {
             clipChildren = false
             outlineProvider = ViewOutlineProvider.BOUNDS
             orientation = LinearLayout.HORIZONTAL
+
 
             cardView {
                 id = Ids.CARD_VIEW

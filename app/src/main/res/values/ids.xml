@@ -157,6 +157,16 @@
     <item name="DIVIDER.UNDER.PASSWORD.SIGN.UP" type="id"/>
     <item name="SIGN.UP.BUTTON" type="id"/>
     <item name="BACK.TO.LOGIN.SIGN.UP" type="id"/>
+
+    //HOME
+    <item name="LINEAR.LAYOUT.HOME" type="id"/>
+    <item name="INFINITE.ROTATION.HOME" type="id"/>
+    <item name="CONTINUE.READ.LABEL" type="id"/>
+    <item name="CONTINUE.READING.RECYCLER.VIEW" type="id"/>
+    <item name="BEST.BOOK.LABEL" type="id"/>
+    <item name="BEST.BOOK.RV" type="id"/>
+    <item name="CATEGORIES.LABEL" type="id"/>
+    <item name="CATEGORIES.RV" type="id"/>
     
     
     

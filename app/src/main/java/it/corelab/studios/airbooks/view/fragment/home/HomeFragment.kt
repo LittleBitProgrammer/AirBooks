@@ -12,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.home.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.view.widget.InfiniteRotationView
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
@@ -21,14 +20,19 @@ import java.util.*
 import it.corelab.studios.airbooks.view.adapters.home.BestOfWeekAdapter
 import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.adapters.home.ContinueReadAdapter
+import it.corelab.studios.airbooks.view.anko.layout.home.Home
 import it.corelab.studios.airbooks.viewmodel.ViewModelHome
-import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.ctx
 
 
 class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
     private lateinit var viewModel: ViewModelHome
+
+    private lateinit var mainUI: Home
+
+    private lateinit var viewUI: View
 
     private lateinit var rotationView: InfiniteRotationView
     private lateinit var continueReading: RecyclerView
@@ -39,28 +43,33 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private lateinit var bestBookLabel: TextView
     private lateinit var categoriesLabel: TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(act, R.layout.home_fragment,null).apply {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-                viewModel = ViewModelProviders.of(activity!!).get(ViewModelHome::class.java)
 
-                setupActionBar()
+        mainUI = Home()
+        viewUI = mainUI.createView(AnkoContext.create(ctx, this))
 
-                rotationView = findViewById(R.id.rv_showcase)
-                continueReading = findViewById(R.id.rv_continue_reading)
-                bestBook = findViewById(R.id.rv_bestweek)
-                rvCategories = findViewById(R.id.rv_categories)
+        viewModel = ViewModelProviders.of(activity!!).get(ViewModelHome::class.java)
 
-                continueReadText = findViewById(R.id.continueReadLabel)
-                bestBookLabel = findViewById(R.id.best_book_label)
-                categoriesLabel = findViewById(R.id.categories_label)
+        setupActionBar()
 
-                val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
+        rotationView = mainUI.infiniteRotationView
+        continueReading = mainUI.continueReading
+        bestBook = mainUI.bestBookRV
+        rvCategories = mainUI.categoriesRV
 
-                val token = sharedPreferences.getString("token", "")
+        continueReadText = mainUI.continueReadLabel
+        bestBookLabel = mainUI.bestBookLabel
+        categoriesLabel = mainUI.categoriesLabel
 
-                getHomeFeed("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token!!)
-                Log.i("SECTION","Home Created")
+        val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
+
+        val token = sharedPreferences.getString("token", "")
+
+        getHomeFeed("http://airbooks.altervista.org/API/v2/feed/", Locale.getDefault().language, "android",token!!)
+        Log.i("SECTION","Home Created")
+
+        return viewUI
             }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){

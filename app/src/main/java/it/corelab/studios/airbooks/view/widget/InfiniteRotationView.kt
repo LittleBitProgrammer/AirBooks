@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Roberto_Vecchio on 16/02/18.
  */
-class InfiniteRotationView(context: Context, attributeSet: AttributeSet)
+class InfiniteRotationView(context: Context, attributeSet: AttributeSet?)
     : RelativeLayout(context, attributeSet) {
 
     private val layoutManager: LinearLayoutManager
