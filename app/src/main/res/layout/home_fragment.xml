@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="@string/continue_read"
             android:textColor="#FFF"
             android:textSize="14sp" />
@@ -27,6 +27,7 @@
             android:id="@+id/rv_continue_reading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="6dp"/>
 
         <TextView

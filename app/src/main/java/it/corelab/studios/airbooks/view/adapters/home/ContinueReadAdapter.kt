@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.ItemReading
+import it.corelab.studios.airbooks.view.anko.layout.adapters.home.ContinueRead
+import org.jetbrains.anko.AnkoContext
 
 /**
  * Created by Roberto_Vecchio on 18/02/18.
@@ -27,11 +29,9 @@ class ContinueReadAdapter(books: List<ItemReading>, private val context: Context
         Glide.with(context).load(book.coverUrl).into((holder as? ItemViewHolder)?.image!!)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.rv_continue_read, parent, false)
-        return ContinueReadAdapter.ItemViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+
+        return ItemViewHolder(ContinueRead().createView(AnkoContext.create(parent.context, parent)))
     }
 
 
@@ -39,9 +39,9 @@ class ContinueReadAdapter(books: List<ItemReading>, private val context: Context
     override fun getItemCount()= booksItems.size
 
 
-    internal class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var image: ImageView = view.findViewById(R.id.cover_image)
+        var image: ImageView = view.findViewById(R.id.IMAGE_VIEW_CONTINUE_READ_ADPTER)
 
 
         init {

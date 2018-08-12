@@ -157,5 +157,16 @@
     <item name="DIVIDER.UNDER.PASSWORD.SIGN.UP" type="id"/>
     <item name="SIGN.UP.BUTTON" type="id"/>
     <item name="BACK.TO.LOGIN.SIGN.UP" type="id"/>
+    
+    
+    
+    
+    //ADAPTER
+    
+    
+    //CONTINUE_READ_ADAPTER
+    <item name="LINEAR.LAYOUT.CONTINUE.READ.ADAPTER" type="id"/>
+    <item name="CARD.VIEW.CONTINUE.READ.ADAPTER" type="id"/>
+    <item name="IMAGE.VIEW.CONTINUE.READ.ADPTER" type="id"/>
 
 </resources>
