@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,15 +37,15 @@ class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : R
         //Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
         Glide.with(context).load(book.coverUrl).into(holderContainer?.coverImage!!)
 
-        holderContainer?.bookTitle?.text = book.title
-        holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)
-        holderContainer?.numbReaders?.text = "${book.readings}"
-        holderContainer?.colorGenre?.background = gd
-        holderContainer?.readersImage?.setColorFilter(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer?.numbReaders?.setTextColor(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer?.bookRatingImage?.setColorFilter(Color.parseColor("#${book.genre.secondColor}"))
-        holderContainer?.bookAverageRating?.text = "${book.averageRating}"
-        holderContainer?.bookAverageRating?.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
+        holderContainer.bookTitle.text = book.title
+        holderContainer.bookAuthor.text = (book.authorFirstName + book.authorLastName)
+        holderContainer.numbReaders.text = "${book.readings}"
+        holderContainer.colorGenre.background = gd
+        holderContainer.readersImage.setColorFilter(Color.parseColor("#${book.genre.firstColor}"))
+        holderContainer.numbReaders.setTextColor(Color.parseColor("#${book.genre.firstColor}"))
+        holderContainer.bookRatingImage.setColorFilter(Color.parseColor("#${book.genre.secondColor}"))
+        holderContainer.bookAverageRating.text = "${book.averageRating}"
+        holderContainer.bookAverageRating.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
         holderContainer?.itemView?.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook, Bundle().apply {
@@ -60,6 +59,7 @@ class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : R
                     putInt("bookReaders", book.readings)
                     putInt("bookLovers", book.lovers)
                     putInt("countNumb", book.reviewsCount)
+                    putDouble("star",book.averageRating)
                     putBoolean("comingHome", true)
                     putBoolean("isSaved", book.isSaved)
                     putStringArrayList("tags",book.tags)

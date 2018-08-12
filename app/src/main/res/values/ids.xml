@@ -167,6 +167,28 @@
     <item name="BEST.BOOK.RV" type="id"/>
     <item name="CATEGORIES.LABEL" type="id"/>
     <item name="CATEGORIES.RV" type="id"/>
+
+    //BOOK_DETAIL
+    <item name="CONSTRAINT.LAYOUT.BOOK.DETAIL" type="id"/>
+    <item name="CARD.VIEW.CATEGORIES.BOOK.DETAIL" type="id"/>
+    <item name="CARD.VIEW.BOOK.IMAGE" type="id"/>
+    <item name="IMAGE.VIEW.BOOK.IMAGE" type= "id"/>
+    <item name="LINEAR.LAYOUT.GENRE.BOOK.DETAIL" type="id"/>
+    <item name="GENRE.TYPE.BOOK.DETAIL" type="id"/>
+    <item name="LINEAR.ICON.GENRE.BOOK.DETAIL" type="id"/>
+    <item name="READERS.IMAGE.BOOK.DETAIL" type="id"/>
+    <item name="LOVERS.IMAGE.BOOK.DETAIL" type="id"/>
+    <item name="READERS.COUNT.BOOK.DETAIL" type="id"/>
+    <item name="LOVERS.COUNT.BOOK.DETAIL" type="id"/>
+    <item name="LINEAR.LAYOUT.BOTTOM.BOOK.DETAIL" type="id"/>
+    <item name="TITLE.BOOK.DETAIL" type="id"/>
+    <item name="AUTHOR.BOOK.DETAIL" type="id"/>
+    <item name="RATING.BAR.BOOK.DETAIL" type="id"/>
+    <item name="JUSTIFY_TEXT_VIEW_BOOK_DETAIL" type="id"/>
+    <item name="TAG_LABEL_BOOK_DETAIL" type="id"/>
+    <item name="TAG_RV_BOOK_DETAIL" type="id"/>
+    <item name="NO_TAG_LABEL_BOOK_DETAIL" type="id"/>
+    <item name="COPIRIGHT_LABEL" type="id"/>
     
     
     

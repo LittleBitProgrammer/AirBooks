@@ -104,7 +104,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:fontFamily="@font/didot"
         android:text="@string/author_book_detail"
         android:textColor="#4790E1"
         android:textSize="20sp"
