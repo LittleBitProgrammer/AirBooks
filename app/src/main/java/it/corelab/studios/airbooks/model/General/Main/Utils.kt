@@ -124,6 +124,17 @@ fun Fragment.setupActionBar(title: String, id: Int, string: String?){
                 linearBottom?.visibility = View.VISIBLE
                 Log.i("SECTION", title)
             }
+
+            5->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_all_review)
+
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+
+                this.customView.findViewById<ImageButton>(R.id.back_from_review).setOnClickListener {
+                    view?.findNavController()?.navigateUp()                }
+            }
         }
         setDisplayShowHomeEnabled(false)
         setDisplayHomeAsUpEnabled(false)

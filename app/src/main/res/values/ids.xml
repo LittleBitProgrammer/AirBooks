@@ -189,6 +189,10 @@
     <item name="TAG_RV_BOOK_DETAIL" type="id"/>
     <item name="NO_TAG_LABEL_BOOK_DETAIL" type="id"/>
     <item name="COPIRIGHT_LABEL" type="id"/>
+
+    //REVIEW
+    <item name="CONSTRAINT_LAYOUT_ALL_REVIEW" type="id"/>
+    <item name="LIST_VIEW_ALL_REVIEW" type="id"/>
     
     
     

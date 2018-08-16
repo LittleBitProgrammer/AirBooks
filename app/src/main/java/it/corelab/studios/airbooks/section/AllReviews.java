@@ -21,9 +21,9 @@ public class AllReviews extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_reviews);
+        //setContentView(R.layout.activity_all_reviews);
 
-        listView = findViewById(R.id.listView_all_reviews);
+        //listView = findViewById(R.id.listView_all_reviews);
 
         //createElementListView();
 

@@ -6,26 +6,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import org.jetbrains.anko.support.v4.act
+import it.corelab.studios.airbooks.view.anko.layout.review.ReviewView
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.support.v4.ctx
 
 class Review : Fragment(), OnReselectedDelegate {
 
+    private lateinit var mainUI: ReviewView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(act, R.layout.activity_all_reviews,null).apply {
-                if (isSectionVisible()) setupActionBar()
-            }
+    private lateinit var viewUI: View
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mainUI = ReviewView()
+
+        viewUI = mainUI.createView(AnkoContext.create(ctx, this))
+
+        return viewUI
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         Log.d("SECTION", "OnViewCreatedProfile")
-        //if (isSectionVisible()) setupActionBar()
+        if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("profile",4, null)
+    private fun setupActionBar() = setupActionBar("profile",5, null)
 
     override fun onReselected() = setupActionBar()
 }
