@@ -144,107 +144,124 @@ class BookDetailView: AnkoComponent<DetailBook> {
                 topToTop = PARENT_ID
             }
 
-            linearLayout {
-                id = Ids.LINEAR_BOTTOM
+            title = textView {
+                id = Ids.TITLE
 
-                gravity = Gravity.CENTER_HORIZONTAL
-                orientation = LinearLayout.VERTICAL
+                maxLines = 2
+                ellipsize = TextUtils.TruncateAt.END
+                text = resources.getString(R.string.title_book_detail)
+                textColor = Color.parseColor("#6C7A8C")
+                textSize = 22F
+                this.setTypeface(null,Typeface.BOLD)
+            }.lparams(width = wrapContent, height = wrapContent){
+                marginStart = dip(20)
+                marginEnd = dip(20)
 
-                title = textView {
-                    id = Ids.TITLE
+                topToBottom = Ids.CARD_VIEW_BOOK_IMAGE
+                startToStart = PARENT_ID
+                endToEnd = PARENT_ID
+            }
 
-                    maxLines = 2
-                    ellipsize = TextUtils.TruncateAt.END
-                    text = resources.getString(R.string.title_book_detail)
-                    textColor = Color.parseColor("#6C7A8C")
-                    textSize = 22F
-                    this.setTypeface(null,Typeface.BOLD)
-                }.lparams(width = wrapContent, height = wrapContent){
-                    marginStart = dip(20)
-                    marginEnd = dip(20)
-                }
+            author = textView {
+                id = Ids.AUTHOR
 
-                author = textView {
-                    id = Ids.AUTHOR
+                maxLines = 2
+                ellipsize = TextUtils.TruncateAt.END
+                typeface = Typeface.createFromAsset(context.assets,"didot.ttf")
+                text = resources.getString(R.string.author_book_detail)
+                textColor = Color.parseColor("#6C7A8C")
+                textSize = 18F
+            }.lparams(width = wrapContent, height = wrapContent){
+                marginStart = dip(12)
+                marginEnd = dip(12)
+                topMargin = dip(2)
 
-                    maxLines = 2
-                    ellipsize = TextUtils.TruncateAt.END
-                    typeface = Typeface.createFromAsset(context.assets,"didot.ttf")
-                    text = resources.getString(R.string.author_book_detail)
-                    textColor = Color.parseColor("#6C7A8C")
-                    textSize = 18F
-                }.lparams(width = wrapContent, height = wrapContent){
-                    marginStart = dip(12)
-                    marginEnd = dip(12)
-                    topMargin = dip(2)
-                }
+                topToBottom = Ids.TITLE
+                startToStart = PARENT_ID
+                endToEnd = PARENT_ID
+            }
 
-                ratingBar = ratingBarView {
-                    id = Ids.RATING_BAR
+            ratingBar = ratingBarView {
+                id = Ids.RATING_BAR
 
-                    this.setIsIndicator(true)
-                    numStars = 5
-                    scaleX = 0.5F
-                    scaleY = 0.5F
-                    stepSize = 0.5F
-                }.lparams(width = wrapContent, height = wrapContent){
-                    topMargin = dip(6)
-                }
+                this.setIsIndicator(true)
+                numStars = 5
+                scaleX = 0.5F
+                scaleY = 0.5F
+                stepSize = 0.5F
+            }.lparams(width = wrapContent, height = wrapContent){
+                topMargin = dip(6)
+                marginEnd = dip(0)
+                marginStart = dip(0)
 
-                justified = justifyView {
-                    id = Ids.JUSTIFY_TEXT
+                topToBottom = Ids.AUTHOR
+                startToStart = PARENT_ID
+                endToEnd = PARENT_ID
+            }
 
-                    text = resources.getString(R.string.placeholder_text_showMore_alert)
-                    textSize = 16F
-                }.lparams(width = matchParent, height = wrapContent){
-                    marginStart = dip(10)
-                    topMargin = dip(4)
-                }
+            justified = justifyView {
+                id = Ids.JUSTIFY_TEXT
 
-                textView {
-                    id = Ids.TAG_LABEL
+                text = resources.getString(R.string.placeholder_text_showMore_alert)
+                textSize = 16F
+            }.lparams(width = matchParent, height = wrapContent){
+                marginStart = dip(10)
+                topMargin = dip(4)
 
-                    text = "Tag:"
-                    textColor = Color.parseColor("#6C7A8C")
-                    textSize = 15F
-                }.lparams(width = matchParent, height = wrapContent){
-                    topMargin = dip(8)
-                    marginStart = dip(10)
-                }
+                topToBottom = Ids.RATING_BAR
+                startToStart = PARENT_ID
+            }
 
-                tagRv = recyclerView {
-                    id = Ids.TAG_RV
+            textView {
+                id = Ids.TAG_LABEL
 
-                }.lparams(width = matchParent, height = wrapContent){
-                    marginStart = dip(10)
-                }
+                text = "Tag:"
+                textColor = Color.parseColor("#6C7A8C")
+                textSize = 15F
+            }.lparams(width = matchParent, height = wrapContent){
+                topMargin = dip(8)
+                marginStart = dip(10)
 
-                noTag = textView {
-                    id = Ids.NO_TAG
+                topToBottom = Ids.JUSTIFY_TEXT
+                startToStart = PARENT_ID
+            }
 
-                    text = "Questo libro non ha nessun tag"
-                    textSize = 16F
-                    visibility = View.INVISIBLE
-                }.lparams(width = matchParent, height = wrapContent){
-                    topMargin = dip(4)
-                    marginStart = dip(10)
-                }
-
-                textView {
-                    id = Ids.COPIRIGHT
-
-                    text = "© Tutti i diritti riservati all'autore di questo libro."
-                    textSize = 13F
-                }.lparams(width = matchParent, height = wrapContent){
-                    topMargin = dip(2)
-                    marginStart = dip(10)
-                }
+            tagRv = recyclerView {
+                id = Ids.TAG_RV
 
             }.lparams(width = matchParent, height = wrapContent){
-                topMargin = dip(10)
-                endToEnd = PARENT_ID
+                topMargin = dip(0)
+                marginStart = dip(10)
+
+                topToBottom = Ids.TAG_LABEL
                 startToStart = PARENT_ID
-                topToBottom = Ids.CARD_VIEW_BOOK_IMAGE
+            }
+
+            noTag = textView {
+                id = Ids.NO_TAG
+
+                text = "Questo libro non ha nessun tag"
+                textSize = 16F
+                visibility = View.INVISIBLE
+            }.lparams(width = matchParent, height = wrapContent){
+                topMargin = dip(4)
+                marginStart = dip(10)
+
+                topToBottom = Ids.TAG_RV
+                startToStart = PARENT_ID
+            }
+
+            textView {
+                id = Ids.COPIRIGHT
+
+                text = "© Tutti i diritti riservati all'autore di questo libro."
+                textSize = 13F
+            }.lparams(width = matchParent, height = wrapContent){
+                topMargin = dip(2)
+                marginStart = dip(10)
+
+                topToBottom = Ids.NO_TAG
+                startToStart = PARENT_ID
             }
         }
     }

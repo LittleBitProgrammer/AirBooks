@@ -16,7 +16,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.findNavController
 import it.corelab.studios.airbooks.R
-import org.jetbrains.anko.support.v4.toast
+import it.corelab.studios.airbooks.view.dialog.CustomDialogClass
 
 fun <T> T?.or(default: T): T = this ?: default
 fun <T> T?.or(compute: () -> T): T = this ?: compute()
@@ -58,6 +58,11 @@ fun Fragment.setupActionBar(title: String, id: Int, string: String?){
                 linearBottom?.isEnabled = false
                 linearBottom?.visibility = View.INVISIBLE
                 Log.i("SECTION", title)
+
+                this.customView.findViewById<ImageButton>(R.id.add_book_home).setOnClickListener {
+                    val customDialog = CustomDialogClass(activity,R.layout.custom_dialog_book, firstColor)
+                    customDialog.show()
+                }
             }
 
             1->{

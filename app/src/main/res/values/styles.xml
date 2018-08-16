@@ -38,6 +38,8 @@
     <style name="CustomDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">95%</item>
     </style>
 
     <style name="CustomDialogAnimation">

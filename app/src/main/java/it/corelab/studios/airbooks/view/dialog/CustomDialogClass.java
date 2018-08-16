@@ -2,9 +2,14 @@ package it.corelab.studios.airbooks.view.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import it.corelab.studios.airbooks.R;
 
@@ -15,27 +20,33 @@ import it.corelab.studios.airbooks.R;
 public class CustomDialogClass extends Dialog implements
         android.view.View.OnClickListener {
 
-    public Activity c;
-    public Dialog d;
+    private int layout;
+    private String firstColor;
 
-
-    public CustomDialogClass(Activity a) {
-        super(a, R.style.CustomDialog);
-        this.c = a;
+    public CustomDialogClass(Activity activity,int layout, String firstColor) {
+        super(activity, R.style.CustomDialog);
+        this.layout = layout;
+        this.firstColor = firstColor;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.custom_dialog_book);
+        setContentView(layout);
 
+        LinearLayout header = findViewById(R.id.header_custom_dialog_home);
+        Button cancel = findViewById(R.id.cancel_button_home);
+        header.setBackgroundColor(Color.parseColor("#" + firstColor));
 
+        cancel.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
-        dismiss();
+        switch (view.getId()){
+            case R.id.cancel_button_home: dismiss();
+        }
     }
 }
