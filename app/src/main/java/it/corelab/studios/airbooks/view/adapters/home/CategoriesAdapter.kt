@@ -12,6 +12,9 @@ import butterknife.ButterKnife
 
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.Genre
+import it.corelab.studios.airbooks.view.anko.layout.adapters.home.Categories
+import it.corelab.studios.airbooks.view.anko.layout.adapters.home.ContinueRead
+import org.jetbrains.anko.AnkoContext
 
 /**
  * Created by Roberto_Vecchio on 19/02/18.
@@ -37,17 +40,14 @@ class CategoriesAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.categories_home, parent, false)
-        return CategoriesAdapter.ItemViewHolder(view)
+        return ItemViewHolder(Categories().createView(AnkoContext.create(parent.context, parent)))
     }
 
     override fun getItemCount() = items.size
 
     internal class ItemViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        var image: ImageView = view.findViewById(R.id.cardImage_categories_home)
-        var textView: TextView = view.findViewById(R.id.categories_home_id)
+        var image: ImageView = view.findViewById(R.id.IMAGE_VIEW_CATEGORIES_ADAPTER)
+        var textView: TextView = view.findViewById(R.id.TEXT_VIEW_CATEGORIES_ADAPTER)
 
         init {
             ButterKnife.bind(this,view)

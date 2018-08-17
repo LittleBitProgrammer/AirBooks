@@ -30,7 +30,6 @@ import java.util.Objects;
 import it.corelab.studios.airbooks.R;
 import it.corelab.studios.airbooks.view.adapters.CardViewReviewAdapter;
 import it.corelab.studios.airbooks.view.adapters.SnapLibraryAdapter;
-import it.corelab.studios.airbooks.view.adapters.SnapRecyclerAdapter;
 import it.corelab.studios.airbooks.view.widget.RoundedImageView;
 
 /*
@@ -255,7 +254,6 @@ public class FadeFragment extends Fragment {
 
          */
 
-       //SnapRecyclerAdapter adapter = new SnapRecyclerAdapter(getActivity(), items);
        //recyclerViewAllBooks.setAdapter(adapter);
 
        //CardViewReviewAdapter reviewAdapter = new CardViewReviewAdapter(getActivity(),reviewCard);

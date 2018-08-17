@@ -93,10 +93,10 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet?)
 
             if (firstItemVisible > 0 && firstItemVisible % (itemCount - 1) == 0) {
                 // When position reaches end of the list, it should go back to the beginning
-                recyclerView?.scrollToPosition(1)
+                recyclerView.scrollToPosition(1)
             } else if (firstItemVisible == 0) {
                 // When position reaches beginning of the list, it should go back to the end
-                recyclerView?.scrollToPosition(itemCount - 1)
+                recyclerView.scrollToPosition(itemCount - 1)
             }
         }
 

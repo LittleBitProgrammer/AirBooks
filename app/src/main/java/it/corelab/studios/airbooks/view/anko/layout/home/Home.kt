@@ -1,6 +1,9 @@
 package it.corelab.studios.airbooks.view.anko.layout.home
 
 import android.graphics.Color
+import android.support.v4.view.ViewCompat
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.ViewManager
@@ -37,6 +40,7 @@ class Home: AnkoComponent<HomeFragment> {
             infiniteRotationView = infiniteRotation {
                 id = Ids.INFINITE_ROTATION
 
+                ViewCompat.setNestedScrollingEnabled(this, false)
             }.lparams(width = matchParent, height = dip(171))
 
             continueReadLabel = textView {
@@ -53,6 +57,11 @@ class Home: AnkoComponent<HomeFragment> {
 
             continueReading = recyclerView {
                 id = Ids.CONTINUE_READING_RV
+
+                ViewCompat.setNestedScrollingEnabled(this, false)
+                this.setItemViewCacheSize(10)
+                this.layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.HORIZONTAL, false)
+                this.setHasFixedSize(true)
 
             }.lparams(width = matchParent, height = wrapContent){
                 topMargin = dip(6)
@@ -73,6 +82,15 @@ class Home: AnkoComponent<HomeFragment> {
             bestBookRV = recyclerView {
                 id = Ids.BEST_BOOK_RV
 
+                ViewCompat.setNestedScrollingEnabled(this, false)
+                this.setItemViewCacheSize(20)
+                this.layoutManager = object : GridLayoutManager(ctx, 2, GridLayoutManager.VERTICAL, false) {
+                    override fun canScrollVertically(): Boolean {
+                        return false
+                    }
+                }
+                this.setHasFixedSize(true)
+
             }.lparams(width = matchParent, height = wrapContent)
 
             categoriesLabel = textView {
@@ -88,8 +106,13 @@ class Home: AnkoComponent<HomeFragment> {
             categoriesRV = recyclerView {
                 id = Ids.CATEGORIES_RV
 
+                ViewCompat.setNestedScrollingEnabled(this, false)
+                this.setItemViewCacheSize(20)
+                this.layoutManager = GridLayoutManager(ctx, 2, GridLayoutManager.HORIZONTAL, false)
+                this.setHasFixedSize(true)
             }.lparams(width = matchParent, height = wrapContent){
                 topMargin = dip(6)
+                marginStart = dip(10)
             }
         }
     }

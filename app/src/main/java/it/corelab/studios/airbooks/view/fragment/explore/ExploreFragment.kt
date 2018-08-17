@@ -15,6 +15,7 @@ import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
 import it.corelab.studios.airbooks.model.General.Main.setupActionBar
 import it.corelab.studios.airbooks.viewmodel.ViewModelExplore
 import kotlinx.android.synthetic.main.explore_fragment.*
+import kotlinx.android.synthetic.main.explore_fragment.view.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
 import java.util.*
@@ -33,6 +34,14 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
                 val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
                 val token = sharedPreferences.getString("token", "")
 
+                ViewCompat.setNestedScrollingEnabled(rv_recents, false)
+
+                rv_recents.layoutManager = object : GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false) {
+                    override fun canScrollVertically(): Boolean {
+                        return false
+                    }
+                }
+                rv_recents.setHasFixedSize(true)
 
                 getExploreBook("http://airbooks.altervista.org/API/v2/explore/",Locale.getDefault().language, "android",token)
 
@@ -50,16 +59,6 @@ class ExploreFragment: Fragment(), OnReselectedDelegate, ExploreController{
         viewModel.getExplore(url!!,lang!!,os!!,token!!)
                 ?.observe(viewLifecycleOwner, android.arch.lifecycle.Observer { exploreItems->
                     if (exploreItems != null){
-
-                        ViewCompat.setNestedScrollingEnabled(rv_recents, false)
-
-                        rv_recents.layoutManager = object : GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false) {
-                            override fun canScrollVertically(): Boolean {
-                                return false
-                            }
-                        }
-                        rv_recents.setHasFixedSize(true)
-
                         val recentsAdapter = ExploreRecentsAdapter(exploreItems, ctx)
                         rv_recents.adapter = recentsAdapter
                     }

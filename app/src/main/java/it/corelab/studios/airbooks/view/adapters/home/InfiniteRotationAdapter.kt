@@ -21,7 +21,6 @@ class InfiniteRotationAdapter(itemList: List<it.corelab.studios.airbooks.model.d
         val showcase = list[position]
 
         Glide.with(context).load(showcase.imageUrl).into((holder as? ItemViewHolder)?.imageShowCase!!)
-        //(holder as? ItemViewHolder)?.imageShowCase?.setBackgroundResource(list[position % list.size].drawable)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

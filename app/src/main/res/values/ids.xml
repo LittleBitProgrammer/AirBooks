@@ -184,15 +184,15 @@
     <item name="TITLE.BOOK.DETAIL" type="id"/>
     <item name="AUTHOR.BOOK.DETAIL" type="id"/>
     <item name="RATING.BAR.BOOK.DETAIL" type="id"/>
-    <item name="JUSTIFY_TEXT_VIEW_BOOK_DETAIL" type="id"/>
-    <item name="TAG_LABEL_BOOK_DETAIL" type="id"/>
-    <item name="TAG_RV_BOOK_DETAIL" type="id"/>
-    <item name="NO_TAG_LABEL_BOOK_DETAIL" type="id"/>
-    <item name="COPIRIGHT_LABEL" type="id"/>
+    <item name="JUSTIFY.TEXT.VIEW.BOOK.DETAIL" type="id"/>
+    <item name="TAG.LABEL.BOOK.DETAIL" type="id"/>
+    <item name="TAG.RV.BOOK.DETAIL" type="id"/>
+    <item name="NO.TAG.LABEL.BOOK.DETAIL" type="id"/>
+    <item name="COPIRIGHT.LABEL" type="id"/>
 
     //REVIEW
-    <item name="CONSTRAINT_LAYOUT_ALL_REVIEW" type="id"/>
-    <item name="RECYCLER_VIEW_ALL_REVIEW" type="id"/>
+    <item name="CONSTRAINT.LAYOUT.ALL.REVIEW" type="id"/>
+    <item name="RECYCLER.VIEW.ALL.REVIEW" type="id"/>
     
     
     
@@ -204,5 +204,27 @@
     <item name="LINEAR.LAYOUT.CONTINUE.READ.ADAPTER" type="id"/>
     <item name="CARD.VIEW.CONTINUE.READ.ADAPTER" type="id"/>
     <item name="IMAGE.VIEW.CONTINUE.READ.ADPTER" type="id"/>
+
+    //CATEGORIES_ADAPTER
+    <item name="FRAME.LAYOUT.CATEGORIES.ADAPTER" type="id"/>
+    <item name="CARD.VIEW.CATEGORIES.ADAPTER" type="id"/>
+    <item name="IMAGE.VIEW.CATEGORIES.ADAPTER" type="id"/>
+    <item name="TEXT.VIEW.CATEGORIES.ADAPTER" type="id"/>
+
+    //BEST_WEEK_ADAPTER
+    <item name="FRAME.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="CARD.VIEW.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="CONSTRAINT.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="COVER.BOOK.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="RECTANGLE.OF.DIAGONAL.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="DIAGONAL.VIEW.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="COLOR.DIAGONAL.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="LINEAR.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="BOOK.TITLE.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="AUTHOR.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="AVERAGE.RATING.IMAGE.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="AVERAGE.RATING.TEXT.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="READERS.IMAGE.BEST.WEEK.ADAPTER" type="id"/>
+    <item name="READERS.TEXT.BEST.WEEK.ADAPTER" type="id"/>
 
 </resources>

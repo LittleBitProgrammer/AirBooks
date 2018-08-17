@@ -42,8 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/background_color"
             app:shape_diagonal_angle="4"
             app:shape_diagonal_position="bottom"
             app:shape_diagonal_direction="left"
