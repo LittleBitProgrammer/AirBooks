@@ -14,7 +14,7 @@ public class Utils {
     /**
      * This method help easily to animate an imageView on X axi, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param xPosition initial X position of the imageView
      * @param finalXPosition final X position of the imageView
      * @param delay if you want to put a delay of time on the animation start
@@ -46,7 +46,7 @@ public class Utils {
     /**
      * This method help easily to animate an imageView on X axi, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param finalXPosition final X position of the imageView
      * @param delay if you want to put a delay of time on the animation start
      * @param duration duration of the animation
@@ -76,7 +76,7 @@ public class Utils {
     /**
      * This method help easily to animate an imageView on y axi, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param yPosition initial Y position of the imageView
      * @param finalYPosition final Y position of the imageView
      * @param delay if you want to put a delay of time on the animation start
@@ -108,7 +108,7 @@ public class Utils {
     /**
      * This method help easily to animate an imageView on y axi, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param finalYPosition final Y position of the imageView
      * @param delay if you want to put a delay of time on the animation start
      * @param duration duration of the animation
@@ -138,7 +138,7 @@ public class Utils {
     /**
      *  This method help easily to animate an imageView on x/y axis, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param xPosition initial X position of the imageView
      * @param yPosition initial Y position of the imageView
      * @param finalXPosition final X position of the imageView
@@ -175,7 +175,7 @@ public class Utils {
     /**
      *  This method help easily to animate an imageView on x/y axis, you can also set a duration, delay and the interpolator with a tension value
      * @author Roberto Vecchio
-     * @param imageView image that you want to animate
+     * @param imageView roundedImage that you want to animate
      * @param finalXPosition final X position of the imageView
      * @param finalYPosition final Y position of the imageView
      * @param delay if you want to put a delay of time on the animation start

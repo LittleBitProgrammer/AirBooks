@@ -57,6 +57,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
     private var bookTitle:String? = null
     private var bookAuthor:String? = null
     private var bookGenre: String? = null
+    private var bookId: String? = null
     private var bookReaders: Int? = null
     private var bookLovers: Int? = null
     private var counterReview: Int? = null
@@ -122,6 +123,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
         counterReview = arguments?.getInt("countNumb")
         starCount = arguments?.getDouble("star")!!
         isSaved = arguments?.getBoolean("isSaved")!!
+        bookId = arguments?.getString("bookId")
 
         if (isComingFromHome) {
             customNestedHome?.animateToOriginal(diagonalView!!)
@@ -231,7 +233,7 @@ class DetailBook: Fragment(), OnReselectedDelegate {
         this.isSwipedCenter = true
     }
 
-    private fun setupActionBar() = setupActionBar("Book Detail", 4, counterReview.toString())
+    private fun setupActionBar() = setupActionBar(bookTitle, 4, counterReview.toString(), bookId)
 
     override fun onReselected() = setupActionBar()
 }

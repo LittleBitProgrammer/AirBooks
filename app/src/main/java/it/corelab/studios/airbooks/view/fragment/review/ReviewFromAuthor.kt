@@ -25,7 +25,7 @@ class ReviewFromAuthor : Fragment(), OnReselectedDelegate {
         //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("profile",4, null)
+    private fun setupActionBar() = setupActionBar("profile",4, null,null)
 
     override fun onReselected() = setupActionBar()
 }

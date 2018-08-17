@@ -1,106 +1,98 @@
 package it.corelab.studios.airbooks.view.adapters;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
+import it.corelab.studios.airbooks.model.data.REVIEW.GetReviews;
+import it.corelab.studios.airbooks.model.data.REVIEW.Item;
 import it.corelab.studios.airbooks.view.widget.ExpandableTextView;
 import it.corelab.studios.airbooks.R;
+import it.corelab.studios.airbooks.view.widget.RoundedImageView;
 
 /**
  * Created by Roberto_Vecchio on 10/03/18.
  */
-/*
-public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
 
-    public CustomListViewAdapter(Context context, int textViewResourceId, List<Reviews> objects) {
-        super(context, textViewResourceId, objects);
+public class CustomListViewAdapter extends ArrayAdapter<Item> {
+
+
+    private List<Item> objects;
+
+    private static class ViewHolder {
+        RoundedImageView roundedImageView;
+    }
+
+    public CustomListViewAdapter(Context context, List<Item> objects) {
+        super(context, R.layout.custom_listview_item_all_reviews, objects);
+        this.objects = objects;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, null);
+        // Check if an existing view is being reused, otherwise inflate the view
 
-        ImageView image = convertView.findViewById(R.id.image_profile_all_reviews);
-        TextView textView = convertView.findViewById(R.id.name_surname);
-        RatingBar ratingBar = convertView.findViewById(R.id.ratingBar_listView);
-        final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
+        Item reviews = getItem(position);
 
-        final Button buttonToggle = convertView.findViewById(R.id.read_all_button);
+        ViewHolder viewHolder; // view lookup cache stored in tag
 
-        final View parentReturn = (View) buttonToggle.getParent();  // button: the view you want to enlarge hit area
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
 
-        parentReturn.post( new Runnable() {
-                               public void run() {
-                                   final Rect rect = new Rect();
-                                   buttonToggle.getHitRect(rect);
-                                   rect.top -= 250;    // increase top hit area
-                                   rect.left -= 250;   // increase left hit area
-                                   rect.bottom += 250; // increase bottom hit area
-                                   rect.right += 250;  // increase right hit area
-                                   parentReturn.setTouchDelegate(new TouchDelegate(rect, buttonToggle));
-                               }
-                           });
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, parent, false);
+            viewHolder.roundedImageView = convertView.findViewById(R.id.rounded_review);
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
-        description.setAnimationDuration(450L);
+        Glide.with(convertView).load(reviews.getAuthorProfilePicture()).into(viewHolder.roundedImageView);
 
-        description.setDrawingCacheEnabled(true);
-        description.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        description.buildDrawingCache();
+        //GetReviews reviews = getItem(position);
+        //LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //convertView = inflater.inflate(R.layout.custom_listview_item_all_reviews, null);
+
+        //ImageView roundedImage = convertView.findViewById(R.id.image_profile_all_reviews);
+        //TextView textView = convertView.findViewById(R.id.name_surname);
+        //final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
+
+        //description.setAnimationDuration(450L);
+
+       // description.setDrawingCacheEnabled(true);
+        //description.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        //description.buildDrawingCache();
 
          // or set them separately
-        description.setExpandInterpolator(new OvershootInterpolator(1.0f));
-        description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
+        //description.setExpandInterpolator(new OvershootInterpolator(1.0f));
+        //description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
 
-        final Reviews items = getItem(position);
+        //final Reviews items = getItem(position);
 
-        image.setImageResource(items.getDrawable());
-        textView.setText(items.getName());
-        description.setText(items.getDescription());
+        //roundedImage.setImageResource(items.getDrawable());
+        //textView.setText(items.getName());
+        //description.setText(items.getDescription());
 
-        if (items.getDescription().length() < 100){
+        /*if (items.getDescription().length() < 100){
             buttonToggle.setEnabled(false);
             buttonToggle.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
-
-        int vote = items.getVote();
-
-        switch (vote){
-            case 5:
-                ratingBar.setRating(5);
-                break;
-            case 4:
-                ratingBar.setRating(4);
-                break;
-            case 3:
-                ratingBar.setRating(3);
-                break;
-            case 2:
-                ratingBar.setRating(2);
-                break;
-            case 1:
-                ratingBar.setRating(1);
-                break;
-            default:
-                ratingBar.setRating(0);
-
-        }
 
         // but, you can also do the checks yourself
-        buttonToggle.setOnClickListener(new View.OnClickListener()
+        /*buttonToggle.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(final View v)
@@ -108,22 +100,16 @@ public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
                 if (description.isExpanded())
                 {
                     description.collapse();
-                    buttonToggle.setText("Read all");
                 }
                 else
                 {
                     description.expand();
-                    buttonToggle.setText("Read more");
                 }
             }
-        });
-
-        buttonToggle.setDrawingCacheEnabled(true);
-        buttonToggle.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        buttonToggle.buildDrawingCache();
+        });*/
 
         // listen for expand / collapse events
-        description.setOnExpandListener(new ExpandableTextView.OnExpandListener()
+        /*description.setOnExpandListener(new ExpandableTextView.OnExpandListener()
         {
             @Override
             public void onExpand(final ExpandableTextView view)
@@ -136,8 +122,13 @@ public class CustomListViewAdapter extends ArrayAdapter<Reviews> {
             {
                 Log.d("COLLAPSE", "ExpandableTextView collapsed");
             }
-        });
+        });*/
 
         return convertView;
     }
-}*/
+
+    @Override
+    public int getCount() {
+        return this.objects.size();
+    }
+}

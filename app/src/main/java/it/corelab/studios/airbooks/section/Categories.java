@@ -39,8 +39,8 @@ public class Categories extends AppCompatActivity {
         String uriString = extra.getString("image");
         String title = extra.getString("bookTitle");
 
-        //take and set @URI image
-       /* Uri uri = Uri.parse(extra.getString("image"));
+        //take and set @URI roundedImage
+       /* Uri uri = Uri.parse(extra.getString("roundedImage"));
         imageView.setImageURI(uri);*/
 
         RecyclerView categoriesAddRv = findViewById(R.id.categories_add_rv);

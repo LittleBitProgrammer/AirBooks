@@ -36,7 +36,7 @@ public class SnapRecyclerAdapter extends RecyclerView.Adapter<SnapRecyclerAdapte
     public void onBindViewHolder(final ReyclerViewHolder holder, int position) {
         // Item item = items.get(position);
 
-        // holder.image.setImageResource(item.getDrawable());
+        // holder.roundedImage.setImageResource(item.getDrawable());
 
     }
 

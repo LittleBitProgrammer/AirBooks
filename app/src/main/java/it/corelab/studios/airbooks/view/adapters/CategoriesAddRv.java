@@ -45,7 +45,7 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.studios.air
     public void onBindViewHolder(final it.corelab.studios.airbooks.view.adapters.CategoriesAddRv.ReyclerViewHolder holder, int position) {
         //final Item item = items.get(position);
 
-        //holder.image.setImageResource(item.getDrawable());
+        //holder.roundedImage.setImageResource(item.getDrawable());
         //holder.categoriesName.setText(item.getGenreName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

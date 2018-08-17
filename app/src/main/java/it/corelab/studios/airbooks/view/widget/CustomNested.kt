@@ -23,6 +23,16 @@ class CustomNested : NestedScrollView {
     private var lastYPosition = 0F
     private var lastAngleVariation = 14F
 
+    fun animateToActionBar(diagonalView: DiagonalView?){
+        diagonalView?.animate()?.translationY(-900F)?.interpolator = DecelerateInterpolator()
+
+        ValueAnimator.ofFloat(diagonalView?.getAngle()!!,0F).apply {
+            addUpdateListener {
+                diagonalView.setAngle(animatedValue as Float)
+            duration = 500
+            interpolator = LinearOutSlowInInterpolator()}
+        }.start()
+    }
     fun animateToOriginal(diagonalView: DiagonalView){
         diagonalView.animate().translationY(0F).interpolator = DecelerateInterpolator()
 

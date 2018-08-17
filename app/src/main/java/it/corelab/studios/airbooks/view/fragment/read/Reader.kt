@@ -25,7 +25,7 @@ class Reader: Fragment(), OnReselectedDelegate {
         //if (isSectionVisible()) setupActionBar()
     }
 
-    private fun setupActionBar() = setupActionBar("profile",3, null)
+    private fun setupActionBar() = setupActionBar("profile",3, null,null)
 
     override fun onReselected() = setupActionBar()
 }

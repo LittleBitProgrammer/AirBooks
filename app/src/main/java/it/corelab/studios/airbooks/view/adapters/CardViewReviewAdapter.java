@@ -43,7 +43,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
     public void onBindViewHolder(@NonNull final CardViewReviewAdapter.ReyclerViewHolder holder, int position) {
        // final Item item = items.get(position);
 
-       // holder.image.setImageResource(item.getDrawable());
+       // holder.roundedImage.setImageResource(item.getDrawable());
        // holder.textView.setText(item.getReview());
        // holder.categories.setImageResource(item.getGenreColor());
        // holder.author.setText(item.getAuthor());
@@ -58,7 +58,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
                 Pair[] pairs = new Pair[1];
                 pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
 
-                //reviewSharedIntent.putExtra("image",item.getDrawable());
+                //reviewSharedIntent.putExtra("roundedImage",item.getDrawable());
                 //reviewSharedIntent.putExtra("bookTitle",item.getName());
                 //reviewSharedIntent.putExtra("bookAuthor",item.getAuthor());
                 //reviewSharedIntent.putExtra("review",item.getReview());

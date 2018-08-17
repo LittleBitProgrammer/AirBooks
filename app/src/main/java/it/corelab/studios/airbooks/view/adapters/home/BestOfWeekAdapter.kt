@@ -47,7 +47,7 @@ class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : R
         holderContainer.bookAverageRating.text = "${book.averageRating}"
         holderContainer.bookAverageRating.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
-        holderContainer?.itemView?.setOnClickListener(
+        holderContainer.itemView.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook, Bundle().apply {
                     putString("firstColor", book.genre.firstColor)
                     putString("secondColor", book.genre.secondColor)
@@ -56,6 +56,7 @@ class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : R
                     putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
                     putString("bookGenre", book.genre.name)
                     putString("bookDescription", book.description)
+                    putString("bookId", book.id)
                     putInt("bookReaders", book.readings)
                     putInt("bookLovers", book.lovers)
                     putInt("countNumb", book.reviewsCount)

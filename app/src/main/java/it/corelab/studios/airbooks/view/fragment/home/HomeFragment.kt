@@ -80,7 +80,7 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
 
     //HANDLER METHODS
 
-    private fun setupActionBar() = setupActionBar("Home", 0, null)
+    private fun setupActionBar() = setupActionBar("Home", 0, null,null)
     override fun onReselected() = setupActionBar()
 
     override fun onDestroy() {

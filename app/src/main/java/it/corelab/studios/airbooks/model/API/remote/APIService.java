@@ -9,6 +9,7 @@ import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.PostSignIn;
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.PostSignInResponse;
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNUP.PostSignUp;
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNUP.PostSignUpResponse;
+import it.corelab.studios.airbooks.model.data.REVIEW.GetReviews;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -54,5 +55,11 @@ public interface APIService {
                                           @Header("Language") String lang,
                                           @Header("Os") String os,
                                           @Header("Token") String token);
+
+    @GET
+    Observable<GetReviews> getReviews(@Url String url,
+                                      @Header("Language") String lang,
+                                      @Header("Os") String os,
+                                      @Header("Token") String token);
 
 }

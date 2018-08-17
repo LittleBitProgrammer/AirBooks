@@ -96,10 +96,10 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
             case R.id.placeholder_add:
 
                 Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                getIntent.setType("image/*");
+                getIntent.setType("roundedImage/*");
 
                 Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                pickIntent.setType("image/*");
+                pickIntent.setType("roundedImage/*");
 
                 Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
                 chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
@@ -119,11 +119,11 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
 
         // Here we need to check if the activity that was triggers was the Image Gallery.
         // If it is the requestCode will match the LOAD_IMAGE_RESULTS value.
-        // If the resultCode is RESULT_OK and there is some data we know that an image was picked.
+        // If the resultCode is RESULT_OK and there is some data we know that an roundedImage was picked.
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
-            // Let's read picked image data - its URI
+            // Let's read picked roundedImage data - its URI
             Uri pickedImage = data.getData();
-            // Let's read picked image path using content resolver
+            // Let's read picked roundedImage path using content resolver
             String[] filePath = { MediaStore.Images.Media.DATA };
             assert pickedImage != null;
             Cursor cursor = Objects.requireNonNull(getActivity()).getContentResolver().query(pickedImage, filePath, null, null, null);

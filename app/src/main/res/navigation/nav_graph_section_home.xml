@@ -10,10 +10,10 @@
         <action
             android:id="@+id/action_homeFragment_to_detailBook"
             app:destination="@id/detailBook"
-            app:enterAnim="@anim/slide_in_up"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
+            app:enterAnim="@anim/right_enter_animation"
+            app:exitAnim="@anim/left_exit_animation"
+            app:popEnterAnim="@anim/left_enter_animation"
+            app:popExitAnim="@anim/right_exit_animation" />
         <action
             android:id="@+id/action_homeFragment_to_showcaseDetail"
             app:destination="@id/showcaseDetail" />
@@ -26,18 +26,16 @@
         android:id="@+id/detailBook"
         android:name="it.corelab.studios.airbooks.view.fragment.book.detail.DetailBook"
         android:label="BookDetailFragment">
-        <argument
-            android:name="firstColor"
-            app:argType="string"/>
-        <argument
-            android:name="secondColor"
-            app:argType="string"/>
         <action
             android:id="@+id/action_detailBook_to_author_view"
             app:destination="@id/author_view" />
         <action
             android:id="@+id/action_detailBook_to_review_view"
-            app:destination="@id/book_review" />
+            app:destination="@id/book_review"
+            app:enterAnim="@anim/right_enter_animation"
+            app:exitAnim="@anim/left_exit_animation"
+            app:popEnterAnim="@anim/left_enter_animation"
+            app:popExitAnim="@anim/right_exit_animation"/>
         <action
             android:id="@+id/action_detailBook_to_reading_book"
             app:destination="@id/reading_book" />

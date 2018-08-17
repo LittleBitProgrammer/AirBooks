@@ -38,7 +38,7 @@ public class SnapExploreRecyclerAdapter extends RecyclerView.Adapter<SnapExplore
     public void onBindViewHolder(final SnapExploreRecyclerAdapter.ReyclerViewHolder holder, int position) {
         //Book book = books.get(position);
 
-        //Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        //Picasso.get().load(book.getCoverUrl()).into(holder.roundedImage);
         //holder.bookName.setText(book.getTitle());
         //holder.authorName.setText(book.getAuthorFirstName() + " " + book.getAuthorLastNAme());
         //holder.numberReviews.setText("93 Reviews");

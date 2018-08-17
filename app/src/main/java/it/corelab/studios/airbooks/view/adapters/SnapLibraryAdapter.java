@@ -36,7 +36,7 @@ public class SnapLibraryAdapter  extends RecyclerView.Adapter<SnapLibraryAdapter
         //Book book = books.get(position);
         int resto = position % 3;
 
-        //Picasso.get().load(book.getCoverUrl()).into(holder.image);
+        //Picasso.get().load(book.getCoverUrl()).into(holder.roundedImage);
 
         if (resto == 0){
             holder.scaffale.setVisibility(View.VISIBLE);

@@ -192,7 +192,7 @@
 
     //REVIEW
     <item name="CONSTRAINT_LAYOUT_ALL_REVIEW" type="id"/>
-    <item name="LIST_VIEW_ALL_REVIEW" type="id"/>
+    <item name="RECYCLER_VIEW_ALL_REVIEW" type="id"/>
     
     
     

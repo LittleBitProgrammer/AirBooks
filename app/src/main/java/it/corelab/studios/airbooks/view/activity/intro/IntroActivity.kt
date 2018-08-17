@@ -326,7 +326,7 @@ class IntroActivity : AppCompatActivity(), IntroMethod, AnimationPageTwo, Animat
 
     override fun animateUserImage() {
         animateImageY(userImage,0F,1000,550,OvershootInterpolator(0.81F))
-        Log.i(ANIMATION, "User image animated")
+        Log.i(ANIMATION, "User roundedImage animated")
     }
 
     override fun animateStarOne() {

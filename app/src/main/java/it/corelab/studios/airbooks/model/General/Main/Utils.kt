@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.ShareCompat
 import android.support.v7.app.ActionBar
@@ -23,7 +24,7 @@ fun <T> T?.or(compute: () -> T): T = this ?: compute()
 
 fun Fragment.isSectionVisible(): Boolean = (((view?.parent as? ViewGroup)?.parent as? ViewGroup)?.visibility == View.VISIBLE)
 
-fun Fragment.setupActionBar(title: String, id: Int, string: String?){
+fun Fragment.setupActionBar(title: String?, id: Int, string: String?, bookId: String?){
 
     val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
     val firstColor = sharedPreferences.getString("firstColor", "")
@@ -100,7 +101,13 @@ fun Fragment.setupActionBar(title: String, id: Int, string: String?){
                 }
                 this.customView.findViewById<TextView>(R.id.number_comments).text = string
                 this.customView.findViewById<ImageButton>(R.id.reviewButton).setOnClickListener {
-                    view?.findNavController()?.navigate(R.id.action_detailBook_to_review_view)
+
+                    view?.findNavController()?.navigate(R.id.action_detailBook_to_review_view, Bundle().apply {
+
+                        putString("bookTitle",title)
+                        putString("bookId", bookId)
+
+                    })
                 }
                 this.customView.findViewById<ImageButton>(R.id.share_button).setOnClickListener {
                     val shareIntent = ShareCompat.IntentBuilder.from(activity)
@@ -132,6 +139,7 @@ fun Fragment.setupActionBar(title: String, id: Int, string: String?){
                 linearBottom?.isEnabled = false
                 linearBottom?.visibility = View.INVISIBLE
 
+                this.customView.findViewById<TextView>(R.id.action_bar_title_all_review).text = title
                 this.customView.findViewById<ImageButton>(R.id.back_from_review).setOnClickListener {
                     view?.findNavController()?.navigateUp()                }
             }
