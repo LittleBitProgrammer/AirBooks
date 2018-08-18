@@ -1,11 +1,14 @@
 package it.corelab.studios.airbooks.view.anko.layout.book.detail
 
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.Typeface
+import android.graphics.drawable.LayerDrawable
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +18,12 @@ import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.model.Gesture.GestureHelper
+import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
 import it.corelab.studios.airbooks.view.fragment.book.detail.DetailBook
 import it.corelab.studios.airbooks.view.widget.JustifyTextView
 import org.jetbrains.anko.*
@@ -23,11 +31,15 @@ import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.recyclerview.v7.recyclerView
+import org.jetbrains.anko.support.v4.ctx
 
 inline fun ViewManager.ratingBarView(theme: Int = R.style.RatingBarSmall, init: RatingBar.() -> Unit) = ankoView({ RatingBar(it) }, theme, init)
 inline fun ViewManager.justifyView(theme: Int = 0, init: JustifyTextView.() -> Unit) = ankoView({ JustifyTextView(it,null) }, theme, init)
 
-class BookDetailView: AnkoComponent<DetailBook> {
+class BookDetailView(private val coverUrl: String?, private val bookTitle: String?, private val bookAuthor: String?,
+                     private val bookGenre: String?, private val bookReaders: Int?, private val bookLovers: Int?,
+                     private val bookDescription: String?, private val firstColor:String?, private val starCount: Double?,
+                     private val tagList: ArrayList<String>?): AnkoComponent<DetailBook> {
 
     lateinit var cardGenre: CardView
     lateinit var cardBook: CardView
@@ -47,6 +59,8 @@ class BookDetailView: AnkoComponent<DetailBook> {
     lateinit var ratingBar: RatingBar
 
     lateinit var tagRv: RecyclerView
+
+    internal var isSwipedCenter = true
 
     override fun createView(ui: AnkoContext<DetailBook>) = with(ui) {
 
@@ -70,7 +84,7 @@ class BookDetailView: AnkoComponent<DetailBook> {
                     genreName = textView {
                         id = Ids.GENRE_TEXT
 
-                        text = resources.getString(R.string.drawable_card_genre)
+                        text = bookGenre
                         textColor = Color.parseColor("#F9F9F9")
                         textSize = 14F
                     }.lparams(width = wrapContent, height = wrapContent)
@@ -92,7 +106,7 @@ class BookDetailView: AnkoComponent<DetailBook> {
                         readersCount = textView {
                             id = Ids.READERS_COUNT
 
-                            text = resources.getString(R.string.numbers_readers_text_placeHolder)
+                            text = "$bookReaders"
                             textColor = Color.parseColor("#FFFFFF")
                             textSize = 12F
                         }.lparams(width = wrapContent, height = wrapContent)
@@ -108,7 +122,7 @@ class BookDetailView: AnkoComponent<DetailBook> {
                         loversCount = textView {
                             id = Ids.LOVERS_COUNT
 
-                            text = resources.getString(R.string.numbers_lovers_text_placeHolder)
+                            text = "$bookLovers"
                             textColor = Color.parseColor("#FFFFFF")
                             textSize = 12F
                         }.lparams(width = wrapContent, height = wrapContent)
@@ -131,10 +145,21 @@ class BookDetailView: AnkoComponent<DetailBook> {
 
                 radius = dip(4).toFloat()
 
+                setOnTouchListener(object : GestureHelper(ctx) {
+                    override fun onClick() {
+                        if (isSwipedCenter) {
+                            tapDownAnimation()
+                        } else if (!isSwipedCenter) {
+                            tapTopAnimation()
+                        }
+
+                    }
+                })
                 coverBook = imageView {
                     id = Ids.IMAGE_VIEW_BOOK_IMAGE
 
                     scaleType = ImageView.ScaleType.FIT_XY
+                    Glide.with(ctx).load(coverUrl).into(this)
                 }.lparams(width = matchParent, height = matchParent)
 
             }.lparams(width = dip(175), height = dip(261)){
@@ -149,10 +174,10 @@ class BookDetailView: AnkoComponent<DetailBook> {
 
                 maxLines = 2
                 ellipsize = TextUtils.TruncateAt.END
-                text = resources.getString(R.string.title_book_detail)
                 textColor = Color.parseColor("#6C7A8C")
                 textSize = 22F
                 this.setTypeface(null,Typeface.BOLD)
+                text = bookTitle
             }.lparams(width = wrapContent, height = wrapContent){
                 marginStart = dip(20)
                 marginEnd = dip(20)
@@ -168,7 +193,7 @@ class BookDetailView: AnkoComponent<DetailBook> {
                 maxLines = 2
                 ellipsize = TextUtils.TruncateAt.END
                 typeface = Typeface.createFromAsset(context.assets,"didot.ttf")
-                text = resources.getString(R.string.author_book_detail)
+                text = bookAuthor
                 textColor = Color.parseColor("#6C7A8C")
                 textSize = 18F
             }.lparams(width = wrapContent, height = wrapContent){
@@ -189,6 +214,11 @@ class BookDetailView: AnkoComponent<DetailBook> {
                 scaleX = 0.5F
                 scaleY = 0.5F
                 stepSize = 0.5F
+                rating = starCount?.toFloat()!!
+
+                val stars: LayerDrawable = (this.progressDrawable as LayerDrawable)
+                stars.getDrawable(2).setColorFilter(Color.parseColor("#$firstColor"), PorterDuff.Mode.SRC_ATOP)
+
             }.lparams(width = wrapContent, height = wrapContent){
                 topMargin = dip(6)
                 marginEnd = dip(0)
@@ -202,7 +232,7 @@ class BookDetailView: AnkoComponent<DetailBook> {
             justified = justifyView {
                 id = Ids.JUSTIFY_TEXT
 
-                text = resources.getString(R.string.placeholder_text_showMore_alert)
+                text = bookDescription
                 textSize = 16F
             }.lparams(width = matchParent, height = wrapContent){
                 marginStart = dip(10)
@@ -229,6 +259,15 @@ class BookDetailView: AnkoComponent<DetailBook> {
             tagRv = recyclerView {
                 id = Ids.TAG_RV
 
+                val layoutManager = FlexboxLayoutManager(ctx)
+                layoutManager.flexDirection = FlexDirection.ROW
+                layoutManager.justifyContent = JustifyContent.FLEX_START
+                this.setItemViewCacheSize(20)
+                this.layoutManager = layoutManager
+                this.setHasFixedSize(true)
+
+                val tagAdapter = TagAdapter(tagList, firstColor!!)
+                this.adapter = tagAdapter
             }.lparams(width = matchParent, height = wrapContent){
                 topMargin = dip(0)
                 marginStart = dip(10)
@@ -243,6 +282,12 @@ class BookDetailView: AnkoComponent<DetailBook> {
                 text = "Questo libro non ha nessun tag"
                 textSize = 16F
                 visibility = View.INVISIBLE
+
+                if (tagList == null) {
+                    visibility = View.VISIBLE
+                    textColor = Color.parseColor("#$firstColor")
+                }
+
             }.lparams(width = matchParent, height = wrapContent){
                 topMargin = dip(4)
                 marginStart = dip(10)
@@ -264,6 +309,20 @@ class BookDetailView: AnkoComponent<DetailBook> {
                 startToStart = PARENT_ID
             }
         }
+    }
+
+    private fun tapDownAnimation() {
+        Log.d("swipe bookDetail", "click to bottom")
+        cardBook.animate().translationY(20f)
+        cardGenre.animate().translationY(-30f)
+        this.isSwipedCenter = false
+    }
+
+    private fun tapTopAnimation() {
+        Log.d("swipe bookDetail", "click to center")
+        cardBook.animate().translationY(0f)
+        cardGenre.animate().translationY(0f)
+        this.isSwipedCenter = true
     }
 
     private object Ids{
