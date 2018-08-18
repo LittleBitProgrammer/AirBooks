@@ -83,7 +83,7 @@ class Home: AnkoComponent<HomeFragment> {
                 id = Ids.BEST_BOOK_RV
 
                 ViewCompat.setNestedScrollingEnabled(this, false)
-                this.setItemViewCacheSize(20)
+                this.setItemViewCacheSize(10)
                 this.layoutManager = object : GridLayoutManager(ctx, 2, GridLayoutManager.VERTICAL, false) {
                     override fun canScrollVertically(): Boolean {
                         return false
@@ -107,7 +107,7 @@ class Home: AnkoComponent<HomeFragment> {
                 id = Ids.CATEGORIES_RV
 
                 ViewCompat.setNestedScrollingEnabled(this, false)
-                this.setItemViewCacheSize(20)
+                this.setItemViewCacheSize(10)
                 this.layoutManager = GridLayoutManager(ctx, 2, GridLayoutManager.HORIZONTAL, false)
                 this.setHasFixedSize(true)
             }.lparams(width = matchParent, height = wrapContent){

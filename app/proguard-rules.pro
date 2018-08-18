@@ -186,3 +186,4 @@
 -keep class it.corelab.studios.airbooks.model.data.REVIEW.GetReviews
 -keep class it.corelab.studios.airbooks.model.data.REVIEW.Item
 -keep class it.corelab.studios.airbooks.model.data.REVIEW.Result
+-keep class it.corelab.studios.airbooks.view.widget.DividerItemDecoration

@@ -1,7 +1,9 @@
 package it.corelab.studios.airbooks.view.anko.layout.review
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import it.corelab.studios.airbooks.R
@@ -25,8 +27,16 @@ class ReviewView: AnkoComponent<Review> {
                 setItemViewCacheSize(20)
                 layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false)
                 this.setHasFixedSize(true)
+                val itemDecorator = DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL)
+                itemDecorator.setDrawable(ContextCompat.getDrawable(ctx, R.drawable.divider)!!)
+                this.addItemDecoration(itemDecorator)
 
             }.lparams(width = matchParent, height = wrapContent){
+
+                marginEnd = dip(12)
+                marginStart = dip(12)
+                topMargin = dip(10)
+                bottomMargin = dip(10)
 
                 bottomToBottom = PARENT_ID
                 topToTop = PARENT_ID

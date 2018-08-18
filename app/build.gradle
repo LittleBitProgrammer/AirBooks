@@ -29,6 +29,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'int', 'DEFAULT_ANIMATION_DURATION', '450'
+        proguardFiles 'proguard-rules.pro'
+        manifestPlaceholders = [:]
+        multiDexEnabled = false
     }
 
     buildTypes {
@@ -39,6 +42,11 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    buildToolsVersion = '28.0.0'
 }
 
 dependencies {

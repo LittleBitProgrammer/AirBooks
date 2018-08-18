@@ -200,10 +200,12 @@
     //ADAPTER
     
     
-    //CONTINUE_READ_ADAPTER
+    //CONTINUE_READ_ADAPTER / LABEL
     <item name="LINEAR.LAYOUT.CONTINUE.READ.ADAPTER" type="id"/>
     <item name="CARD.VIEW.CONTINUE.READ.ADAPTER" type="id"/>
     <item name="IMAGE.VIEW.CONTINUE.READ.ADPTER" type="id"/>
+    // LABEL
+    <item name="TEXT_VIEW_CONTINUE_READ_LABEL" type="id"/>
 
     //CATEGORIES_ADAPTER
     <item name="FRAME.LAYOUT.CATEGORIES.ADAPTER" type="id"/>

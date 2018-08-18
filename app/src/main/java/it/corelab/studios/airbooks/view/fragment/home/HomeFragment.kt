@@ -39,7 +39,6 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
     private lateinit var bestBook: RecyclerView
     private lateinit var rvCategories: RecyclerView
 
-    private lateinit var continueReadText: TextView
     private lateinit var bestBookLabel: TextView
     private lateinit var categoriesLabel: TextView
 
@@ -58,7 +57,6 @@ class HomeFragment: Fragment(), OnReselectedDelegate, HomeController{
         bestBook = mainUI.bestBookRV
         rvCategories = mainUI.categoriesRV
 
-        continueReadText = mainUI.continueReadLabel
         bestBookLabel = mainUI.bestBookLabel
         categoriesLabel = mainUI.categoriesLabel
 

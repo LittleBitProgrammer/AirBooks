@@ -1,5 +1,6 @@
 package it.corelab.studios.airbooks.view.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ class ReviewAdapter(books: List<Item>, private val context: Context) : RecyclerV
 
     private val reviewItems: List<Item> = books
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val review = reviewItems[position]
