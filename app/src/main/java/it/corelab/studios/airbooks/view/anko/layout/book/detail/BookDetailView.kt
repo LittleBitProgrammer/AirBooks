@@ -6,7 +6,6 @@ import android.graphics.Typeface
 import android.graphics.drawable.LayerDrawable
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.support.v7.widget.CardView
-import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
@@ -16,7 +15,6 @@ import android.view.ViewManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -31,7 +29,6 @@ import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.constraint.layout.constraintLayout
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.ctx
 
 inline fun ViewManager.ratingBarView(theme: Int = R.style.RatingBarSmall, init: RatingBar.() -> Unit) = ankoView({ RatingBar(it) }, theme, init)
 inline fun ViewManager.justifyView(theme: Int = 0, init: JustifyTextView.() -> Unit) = ankoView({ JustifyTextView(it,null) }, theme, init)
@@ -41,25 +38,9 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                      private val bookDescription: String?, private val firstColor:String?, private val starCount: Double?,
                      private val tagList: ArrayList<String>?): AnkoComponent<DetailBook> {
 
-    lateinit var cardGenre: CardView
     lateinit var cardBook: CardView
-    lateinit var coverBook: ImageView
-
+    lateinit var cardGenre: CardView
     lateinit var linearGenre: LinearLayout
-
-    lateinit var genreName: TextView
-    lateinit var readersCount: TextView
-    lateinit var loversCount: TextView
-    lateinit var title: TextView
-    lateinit var author: TextView
-    lateinit var noTag: TextView
-
-    lateinit var justified: JustifyTextView
-
-    lateinit var ratingBar: RatingBar
-
-    lateinit var tagRv: RecyclerView
-
     internal var isSwipedCenter = true
 
     override fun createView(ui: AnkoContext<DetailBook>) = with(ui) {
@@ -81,7 +62,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                     orientation = LinearLayout.VERTICAL
                     gravity = Gravity.CENTER
 
-                    genreName = textView {
+                    textView {
                         id = Ids.GENRE_TEXT
 
                         text = bookGenre
@@ -103,7 +84,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                             topMargin = dip(2)
                         }
 
-                        readersCount = textView {
+                         textView {
                             id = Ids.READERS_COUNT
 
                             text = "$bookReaders"
@@ -119,7 +100,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                             topMargin = dip(2)
                         }
 
-                        loversCount = textView {
+                        textView {
                             id = Ids.LOVERS_COUNT
 
                             text = "$bookLovers"
@@ -155,7 +136,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
 
                     }
                 })
-                coverBook = imageView {
+                imageView {
                     id = Ids.IMAGE_VIEW_BOOK_IMAGE
 
                     scaleType = ImageView.ScaleType.FIT_XY
@@ -169,7 +150,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 topToTop = PARENT_ID
             }
 
-            title = textView {
+            textView {
                 id = Ids.TITLE
 
                 maxLines = 2
@@ -187,7 +168,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 endToEnd = PARENT_ID
             }
 
-            author = textView {
+            textView {
                 id = Ids.AUTHOR
 
                 maxLines = 2
@@ -206,7 +187,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 endToEnd = PARENT_ID
             }
 
-            ratingBar = ratingBarView {
+            ratingBarView {
                 id = Ids.RATING_BAR
 
                 this.setIsIndicator(true)
@@ -229,7 +210,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 endToEnd = PARENT_ID
             }
 
-            justified = justifyView {
+            justifyView {
                 id = Ids.JUSTIFY_TEXT
 
                 text = bookDescription
@@ -256,7 +237,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 startToStart = PARENT_ID
             }
 
-            tagRv = recyclerView {
+            recyclerView {
                 id = Ids.TAG_RV
 
                 val layoutManager = FlexboxLayoutManager(ctx)
@@ -276,7 +257,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 startToStart = PARENT_ID
             }
 
-            noTag = textView {
+            textView {
                 id = Ids.NO_TAG
 
                 text = "Questo libro non ha nessun tag"
@@ -337,7 +318,6 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
         const val READERS_COUNT = R.id.READERS_COUNT_BOOK_DETAIL
         const val LOVERS_IMAGE = R.id.LOVERS_IMAGE_BOOK_DETAIL
         const val LOVERS_COUNT = R.id.LOVERS_COUNT_BOOK_DETAIL
-        const val LINEAR_BOTTOM = R.id.LINEAR_LAYOUT_BOTTOM_BOOK_DETAIL
         const val TITLE = R.id.TITLE_BOOK_DETAIL
         const val AUTHOR = R.id.AUTHOR_BOOK_DETAIL
         const val RATING_BAR = R.id.RATING_BAR_BOOK_DETAIL
