@@ -10,7 +10,7 @@ buildscript {
     ext.test_espresso = '3.0.2'
 
     //group TWO -------> 2 <-------- Kotlin
-    ext.kotlin_version = '1.2.60'
+    ext.kotlin_version = '1.2.61'
 
     //group THREE -------> 3 <-------- Navigation
     ext.bottom_navigation = '2.2.0'

@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section
+package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.language
 
 import android.support.constraint.ConstraintLayout.LayoutParams.PARENT_ID
 import android.view.View

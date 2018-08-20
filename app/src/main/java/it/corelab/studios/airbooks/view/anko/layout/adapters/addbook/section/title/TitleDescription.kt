@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section
+package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.title
 
 import android.graphics.Color
 import android.text.Editable
