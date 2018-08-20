@@ -22,7 +22,6 @@ class CategoriesAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerVi
 
     private val items: List<Genre> = itemList
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
 

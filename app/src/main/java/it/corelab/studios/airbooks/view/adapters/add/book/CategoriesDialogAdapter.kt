@@ -10,16 +10,37 @@ import android.widget.TextView
 import butterknife.ButterKnife
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.Genre
+import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.CategoriesItem
 import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.backgroundColor
+import android.support.v7.widget.CardView
+
+
+
 
 class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items: List<Genre> = itemList
 
+    var mRecyclerView: RecyclerView? = null
+
+    var cardViewList: ArrayList<ImageView> = ArrayList()
+    var selectdPos = RecyclerView.NO_POSITION
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+
+        mRecyclerView = recyclerView
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
+
+        (holder as? ItemViewHolder)?.itemView?.setSelected(selectdPos == position)
+        if (!cardViewList.contains((holder as? ItemViewHolder)?.image)){
+        cardViewList.add((holder as? ItemViewHolder)?.image!!)
+            }
 
         val colors = intArrayOf(Color.parseColor("#" + item.firstColor), Color.parseColor("#" + item.secondColor))
         val gd = GradientDrawable(
@@ -30,6 +51,14 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
         (holder as? ItemViewHolder)?.image?.background = gd
         (holder as? ItemViewHolder)?.textView?.text = item.name
 
+        (holder as? ItemViewHolder)?.itemView?.setOnClickListener {
+            for (tempItemView in cardViewList) {
+                tempItemView.backgroundColor = Color.parseColor("#CCCCCC")
+
+            }
+            (holder as? ItemViewHolder)?.image?.background = gd
+            //mRecyclerView?.smoothScrollToPosition(position)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

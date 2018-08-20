@@ -3,6 +3,7 @@ package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.ca
 import android.content.Context
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearSnapHelper
 import android.view.View
 import android.view.ViewGroup
 import com.google.gson.Gson
@@ -21,7 +22,10 @@ class Categories : AnkoComponent<ViewGroup> {
             lparams(matchParent, wrapContent)
             recyclerView {
 
+                //val snapHelper: LinearSnapHelper = LinearSnapHelper()
+                //snapHelper.attachToRecyclerView(this)
                 this.layoutManager = GridLayoutManager(ctx, 2, GridLayoutManager.HORIZONTAL, false)
+                //onFlingListener = snapHelper
                 this.setHasFixedSize(true)
 
                 val sharedPreferences = ctx.getSharedPreferences(ctx.packageName, Context.MODE_PRIVATE)
