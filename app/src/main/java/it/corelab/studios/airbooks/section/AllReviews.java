@@ -8,8 +8,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import it.corelab.studios.airbooks.R;
-
 public class AllReviews extends AppCompatActivity {
 
     private ImageButton dismissButton;
@@ -44,12 +42,7 @@ public class AllReviews extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        dismissButton.setOnClickListener(v -> onBackPressed());
     }
 
 

@@ -229,7 +229,7 @@ class SignUpUI: AnkoComponent<SignUpFragment>{
 
                 backgroundColor = Color.parseColor("#00000000")
                 text = resources.getString(R.string.back_to_login_sign_up)
-                setAllCaps(false)
+                isAllCaps = false
                 textColor = Color.parseColor("#FFFFFF")
 
             }.lparams(width = wrapContent, height = wrapContent){

@@ -43,7 +43,7 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_add_section, container, false);
+        //view = inflater.inflate(R.layout.activity_add_section, container, false);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         initViews();
@@ -70,23 +70,18 @@ public class AddBook_fragment extends Fragment implements View.OnClickListener {
 
     private void setListeners(){
         centralCard.setOnClickListener(this);
-        view.setOnKeyListener( new View.OnKeyListener()
-        {
-            @Override
-            public boolean onKey( View v, int keyCode, KeyEvent event )
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if( keyCode == KeyEvent.KEYCODE_BACK )
             {
-                if( keyCode == KeyEvent.KEYCODE_BACK )
-                {
-                   /* fragmentManager
-                            .beginTransaction()
-                            .setCustomAnimations(R.anim.right_enter_animation,R.anim.left_exit_animation)
-                            .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
-                            .commit();
-                    return true;*/
-                }
-                return false;
+               /* fragmentManager
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.right_enter_animation,R.anim.left_exit_animation)
+                        .replace(R.id.view_pager,new FadeFragment(), "AddFragment")
+                        .commit();
+                return true;*/
             }
-        } );
+            return false;
+        });
     }
 
     @Override

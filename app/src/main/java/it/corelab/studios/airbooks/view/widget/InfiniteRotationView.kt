@@ -59,7 +59,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet?)
                 }
     }
 
-    fun autoScroll(listSize: Int, intervalInMillis: Long) {
+    private fun autoScroll(listSize: Int, intervalInMillis: Long) {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_horizontalList)
         dispose?.let {
             if(!it.isDisposed) return

@@ -34,10 +34,7 @@
     <string name="numbers_readers_text_placeHolder">0</string>
     <string name="all_books_profile">All Books (27)</string>
     <string name="all_reviews_profile">All reviews (220)</string>
-    <string name="topBar_alert">topBar alert</string>
-    <string name="title_topBar_alert">Description</string>
     <string name="placeholder_text_showMore_alert">No description</string>
-    <string name="category_type">category type</string>
     <string name="book_title">Title</string>
     <string name="author_book_home_card">author</string>
     <string name="numbers_lovers_image">numbers of lovers image</string>
@@ -56,10 +53,8 @@
     <string name="categories_home">Generi</string>
     <string name="best_weeek">Libri migliori</string>
     <string name="main_section_appName">Airbooks</string>
-    <string name="drawable_card_genre">Genre</string>
     <string name="title_book_detail">Title</string>
     <string name="author_book_detail">author</string>
-    <string name="all_review_section">ALL REVIEWS</string>
     <string name="reviews_button">reviews button</string>
     <string name="simple_circle_background">proflie border</string>
     <string name="review_detail_name">REVIEW DETAIL</string>

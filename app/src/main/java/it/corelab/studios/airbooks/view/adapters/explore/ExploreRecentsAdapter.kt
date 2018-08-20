@@ -34,17 +34,17 @@ class ExploreRecentsAdapter(books: List<Item>, private val context:Context) : Re
         //Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
         Glide.with(context).load(book.coverUrl).into(holderContainer?.coverImage!!)
 
-        holderContainer?.bookTitle?.text = book.title
-        holderContainer?.bookAuthor?.text = (book.authorFirstName + book.authorLastName)
-        holderContainer?.numbReaders?.text = "${book.readings}"
-        holderContainer?.colorGenre?.background = gd
-        holderContainer?.readersImage?.setColorFilter(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer?.numbReaders?.setTextColor(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer?.bookRatingImage?.setColorFilter(Color.parseColor("#${book.genre.secondColor}"))
-        holderContainer?.bookAverageRating?.text = "${book.averageRating}"
-        holderContainer?.bookAverageRating?.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
+        holderContainer.bookTitle.text = book.title
+        holderContainer.bookAuthor.text = (book.authorFirstName + book.authorLastName)
+        holderContainer.numbReaders.text = "${book.readings}"
+        holderContainer.colorGenre.background = gd
+        holderContainer.readersImage.setColorFilter(Color.parseColor("#${book.genre.firstColor}"))
+        holderContainer.numbReaders.setTextColor(Color.parseColor("#${book.genre.firstColor}"))
+        holderContainer.bookRatingImage.setColorFilter(Color.parseColor("#${book.genre.secondColor}"))
+        holderContainer.bookAverageRating.text = "${book.averageRating}"
+        holderContainer.bookAverageRating.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
 
-        holderContainer?.itemView?.setOnClickListener(
+        holderContainer.itemView.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook_explore, Bundle().apply {
                     putString("firstColor", book.genre.firstColor)
                     putString("secondColor", book.genre.secondColor)

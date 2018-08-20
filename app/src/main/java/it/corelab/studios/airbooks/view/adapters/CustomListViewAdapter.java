@@ -2,20 +2,16 @@ package it.corelab.studios.airbooks.view.adapters;
 
 import android.content.Context;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import it.corelab.studios.airbooks.model.data.REVIEW.GetReviews;
 import it.corelab.studios.airbooks.model.data.REVIEW.Item;
 import it.corelab.studios.airbooks.view.widget.ExpandableTextView;
 import it.corelab.studios.airbooks.R;
@@ -67,17 +63,12 @@ public class CustomListViewAdapter extends ArrayAdapter<Item> {
 
         //ImageView roundedImage = convertView.findViewById(R.id.image_profile_all_reviews);
         //TextView textView = convertView.findViewById(R.id.name_surname);
-        //final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
+        final ExpandableTextView description = convertView.findViewById(R.id.expandable_text);
 
-        //description.setAnimationDuration(450L);
-
-       // description.setDrawingCacheEnabled(true);
-        //description.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        //description.buildDrawingCache();
 
          // or set them separately
-        //description.setExpandInterpolator(new OvershootInterpolator(1.0f));
-        //description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
+        description.setExpandInterpolator(new OvershootInterpolator(1.0f));
+        description.setCollapseInterpolator(new LinearOutSlowInInterpolator());
 
         //final Reviews items = getItem(position);
 

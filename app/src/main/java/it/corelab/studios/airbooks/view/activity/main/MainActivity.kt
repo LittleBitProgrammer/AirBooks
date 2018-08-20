@@ -8,14 +8,11 @@ import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.ActionBar
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -28,8 +25,7 @@ import java.util.ArrayList
 import it.corelab.studios.airbooks.R
 import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import it.corelab.studios.airbooks.model.General.Main.or
-import mehdi.sakout.fancybuttons.FancyButton
+import it.corelab.studios.airbooks.model.general.main.or
 
 class MainActivity : AppCompatActivity() {
 

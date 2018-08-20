@@ -119,15 +119,10 @@ public class ExpandableTextView extends android.support.v7.widget.AppCompatTextV
             final int fullHeight = this.getMeasuredHeight();
 
             final ValueAnimator valueAnimator = ValueAnimator.ofInt(this.originalHeight, fullHeight);
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-            {
-                @Override
-                public void onAnimationUpdate(final ValueAnimator animation)
-                {
-                    final ViewGroup.LayoutParams layoutParams = ExpandableTextView.this.getLayoutParams();
-                    layoutParams.height = (int) animation.getAnimatedValue();
-                    ExpandableTextView.this.setLayoutParams(layoutParams);
-                }
+            valueAnimator.addUpdateListener(animation -> {
+                final ViewGroup.LayoutParams layoutParams = ExpandableTextView.this.getLayoutParams();
+                layoutParams.height = (int) animation.getAnimatedValue();
+                ExpandableTextView.this.setLayoutParams(layoutParams);
             });
             valueAnimator.addListener(new AnimatorListenerAdapter()
             {
@@ -173,15 +168,10 @@ public class ExpandableTextView extends android.support.v7.widget.AppCompatTextV
             final int fullHeight = this.getMeasuredHeight();
 
             final ValueAnimator valueAnimator = ValueAnimator.ofInt(fullHeight, this.originalHeight);
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-            {
-                @Override
-                public void onAnimationUpdate(final ValueAnimator animation)
-                {
-                    final ViewGroup.LayoutParams layoutParams = ExpandableTextView.this.getLayoutParams();
-                    layoutParams.height = (int) animation.getAnimatedValue();
-                    ExpandableTextView.this.setLayoutParams(layoutParams);
-                }
+            valueAnimator.addUpdateListener(animation -> {
+                final ViewGroup.LayoutParams layoutParams = ExpandableTextView.this.getLayoutParams();
+                layoutParams.height = (int) animation.getAnimatedValue();
+                ExpandableTextView.this.setLayoutParams(layoutParams);
             });
             valueAnimator.addListener(new AnimatorListenerAdapter()
             {

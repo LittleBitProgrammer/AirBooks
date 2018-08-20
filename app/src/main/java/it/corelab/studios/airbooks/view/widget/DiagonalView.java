@@ -24,7 +24,7 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
     public DiagonalView(Context context) {
         super(context);
         this.diagonalGravity = LEFT;
-        this.init(context, (AttributeSet)null);
+        this.init(context, null);
     }
 
     public DiagonalView(Context context, AttributeSet attrs) {

@@ -3,7 +3,6 @@ package it.corelab.studios.airbooks.view.adapters.home
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,7 +12,6 @@ import butterknife.ButterKnife
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.Genre
 import it.corelab.studios.airbooks.view.anko.layout.adapters.home.Categories
-import it.corelab.studios.airbooks.view.anko.layout.adapters.home.ContinueRead
 import org.jetbrains.anko.AnkoContext
 
 /**

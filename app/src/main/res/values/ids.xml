@@ -11,13 +11,10 @@
     <item type="id" name="upload_arrow_id"/>
     <item type="id" name="add_file_text"/>
     <item type="id" name="edit_text_hidden"/>
-    <item type="id" name="top_bar_categories"/>
-    <item type="id" name="top_bar_name"/>
     <item type="id" name="left_arrow_add_categories"/>
     <item type="id" name="text_input_layout"/>
     <item type="id" name="edit_text"/>
     <item type="id" name="color_button_next_add_book"/>
-    <item type="id" name="cardView"/>
     <item type="id" name="placeholder_add"/>
 
 
@@ -180,7 +177,6 @@
     <item name="LOVERS.IMAGE.BOOK.DETAIL" type="id"/>
     <item name="READERS.COUNT.BOOK.DETAIL" type="id"/>
     <item name="LOVERS.COUNT.BOOK.DETAIL" type="id"/>
-    <item name="LINEAR.LAYOUT.BOTTOM.BOOK.DETAIL" type="id"/>
     <item name="TITLE.BOOK.DETAIL" type="id"/>
     <item name="AUTHOR.BOOK.DETAIL" type="id"/>
     <item name="RATING.BAR.BOOK.DETAIL" type="id"/>
@@ -193,8 +189,6 @@
     //REVIEW
     <item name="CONSTRAINT.LAYOUT.ALL.REVIEW" type="id"/>
     <item name="RECYCLER.VIEW.ALL.REVIEW" type="id"/>
-    
-    
     
     
     //ADAPTER
@@ -211,20 +205,11 @@
     <item name="IMAGE.VIEW.CATEGORIES.ADAPTER" type="id"/>
     <item name="TEXT.VIEW.CATEGORIES.ADAPTER" type="id"/>
 
-    //BEST_WEEK_ADAPTER
-    <item name="FRAME.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="CARD.VIEW.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="CONSTRAINT.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="COVER.BOOK.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="RECTANGLE.OF.DIAGONAL.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="DIAGONAL.VIEW.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="COLOR.DIAGONAL.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="LINEAR.LAYOUT.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="BOOK.TITLE.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="AUTHOR.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="AVERAGE.RATING.IMAGE.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="AVERAGE.RATING.TEXT.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="READERS.IMAGE.BEST.WEEK.ADAPTER" type="id"/>
-    <item name="READERS.TEXT.BEST.WEEK.ADAPTER" type="id"/>
+    //ADD_BOOK
+
+    //SECTION_BOOK_COVER
+    <item name="LINEAR.LAYOUT.CHOOSE.BOOK.COVER" type="id"/>
+    <item name="CARD.VIEW.CHOOSE.BOOK.COVER" type="id"/>
+    <item name="BOOK.COVER.CHOOSE.BOOK.COVER" type="id"/>
 
 </resources>

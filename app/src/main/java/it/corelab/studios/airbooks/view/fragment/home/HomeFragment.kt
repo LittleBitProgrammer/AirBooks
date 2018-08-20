@@ -3,9 +3,6 @@ package it.corelab.studios.airbooks.view.fragment.home
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.ViewCompat
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,7 +12,7 @@ import android.widget.TextView
 import it.corelab.studios.airbooks.view.adapters.home.InfiniteRotationAdapter
 import it.corelab.studios.airbooks.view.widget.InfiniteRotationView
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import it.corelab.studios.airbooks.model.General.Main.setupActionBar
+import it.corelab.studios.airbooks.model.general.main.setupActionBar
 import java.util.*
 import it.corelab.studios.airbooks.view.adapters.home.BestOfWeekAdapter
 import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter

@@ -20,12 +20,12 @@ public class ReviewDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review_detail);
+        //setContentView(R.layout.activity_review_detail);
 
-        imageCover = findViewById(R.id.image_cover_shared);
-        title = findViewById(R.id.title_bookDetail);
-        author = findViewById(R.id.author_bookDetail);
-        review = findViewById(R.id.description_review_detail);
+        //imageCover = findViewById(R.id.image_cover_shared);
+        //title = findViewById(R.id.title_bookDetail);
+        //author = findViewById(R.id.author_bookDetail);
+        //review = findViewById(R.id.description_review_detail);
 
         //==========================
         //      hide status bar

@@ -2,14 +2,12 @@ package it.corelab.studios.airbooks.fragment;
 
 import android.app.ProgressDialog;
 import android.graphics.Rect;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TouchDelegate;
 import android.view.View;
@@ -18,18 +16,8 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Objects;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.view.adapters.CardViewReviewAdapter;
-import it.corelab.studios.airbooks.view.adapters.SnapLibraryAdapter;
 import it.corelab.studios.airbooks.view.widget.RoundedImageView;
 
 /*
@@ -279,16 +267,14 @@ public class FadeFragment extends Fragment {
          */
 
        final View parent = (View) buttonAction.getParent();  // button: the view you want to enlarge hit area
-       parent.post( new Runnable() {
-           public void run() {
-               final Rect rect = new Rect();
-               buttonAction.getHitRect(rect);
-               rect.top -= 200;    // increase top hit area
-               rect.left -= 200;   // increase left hit area
-               rect.bottom += 200; // increase bottom hit area
-               rect.right += 200;  // increase right hit area
-               parent.setTouchDelegate( new TouchDelegate( rect , buttonAction));
-           }
+       parent.post(() -> {
+           final Rect rect = new Rect();
+           buttonAction.getHitRect(rect);
+           rect.top -= 200;    // increase top hit area
+           rect.left -= 200;   // increase left hit area
+           rect.bottom += 200; // increase bottom hit area
+           rect.right += 200;  // increase right hit area
+           parent.setTouchDelegate( new TouchDelegate( rect , buttonAction));
        });
 
 
@@ -300,14 +286,11 @@ public class FadeFragment extends Fragment {
 
          */
 
-       buttonAction.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               PopupMenu popupMenu = new PopupMenu(getActivity(), buttonAction);
-               popupMenu.getMenuInflater().inflate(R.menu.actions, popupMenu.getMenu());
+       buttonAction.setOnClickListener(v -> {
+           PopupMenu popupMenu = new PopupMenu(getActivity(), buttonAction);
+           popupMenu.getMenuInflater().inflate(R.menu.actions, popupMenu.getMenu());
 
-               popupMenu.show();
-           }
+           popupMenu.show();
        });
 
    }

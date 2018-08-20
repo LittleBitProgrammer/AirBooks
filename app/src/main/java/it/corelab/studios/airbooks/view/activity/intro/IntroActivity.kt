@@ -11,8 +11,8 @@ import android.widget.TextView
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.setContentView
-import it.corelab.studios.airbooks.model.General.Global.Utils.*
-import it.corelab.studios.airbooks.model.General.costants.Constants.*
+import it.corelab.studios.airbooks.model.general.Global.Utils.*
+import it.corelab.studios.airbooks.model.general.costants.Constants.*
 import it.corelab.studios.airbooks.view.adapters.intro.OnBoardingAdapter
 import it.corelab.studios.airbooks.model.interfaces.intro.global.IntroMethod
 import it.corelab.studios.airbooks.model.interfaces.intro.page.four.animation.AnimationPageFour

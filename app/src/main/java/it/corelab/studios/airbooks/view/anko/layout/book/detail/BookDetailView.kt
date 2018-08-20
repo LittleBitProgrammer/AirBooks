@@ -38,8 +38,8 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                      private val bookDescription: String?, private val firstColor:String?, private val starCount: Double?,
                      private val tagList: ArrayList<String>?): AnkoComponent<DetailBook> {
 
-    lateinit var cardBook: CardView
-    lateinit var cardGenre: CardView
+    private lateinit var cardBook: CardView
+    private lateinit var cardGenre: CardView
     lateinit var linearGenre: LinearLayout
     internal var isSwipedCenter = true
 

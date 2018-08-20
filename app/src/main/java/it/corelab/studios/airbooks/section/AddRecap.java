@@ -64,42 +64,29 @@ public class AddRecap extends AppCompatActivity {
         filePath.setText(path);
 
 
-        dismiss.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(dismissIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
-            }
+        dismiss.setOnClickListener(v -> {
+            dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(dismissIntent);
+            overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
         });
 
-        leftArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        leftArrow.setOnClickListener(v -> onBackPressed());
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(addIntent);
-                Toast.makeText(getApplicationContext(),"Book added",Toast.LENGTH_LONG).show();
-            }
+        addButton.setOnClickListener(v -> {
+            addIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(addIntent);
+            Toast.makeText(getApplicationContext(),"Book added",Toast.LENGTH_LONG).show();
         });
 
         final View parentDismiss = (View) dismiss.getParent();  // button: the view you want to enlarge hit area
-        parentDismiss.post( new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                dismiss.getHitRect(rect);
-                rect.top -= 150;    // increase top hit area
-                rect.left -= 150;   // increase left hit area
-                rect.bottom += 100; // increase bottom hit area
-                rect.right += 150;  // increase right hit area
-                parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
-            }
+        parentDismiss.post(() -> {
+            final Rect rect = new Rect();
+            dismiss.getHitRect(rect);
+            rect.top -= 150;    // increase top hit area
+            rect.left -= 150;   // increase left hit area
+            rect.bottom += 100; // increase bottom hit area
+            rect.right += 150;  // increase right hit area
+            parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
         });
     }
 

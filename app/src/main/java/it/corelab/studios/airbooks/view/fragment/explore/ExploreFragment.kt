@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.explore.ExploreRecentsAdapter
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
-import it.corelab.studios.airbooks.model.General.Main.setupActionBar
+import it.corelab.studios.airbooks.model.general.main.isSectionVisible
+import it.corelab.studios.airbooks.model.general.main.setupActionBar
 import it.corelab.studios.airbooks.viewmodel.ViewModelExplore
 import kotlinx.android.synthetic.main.explore_fragment.*
 import kotlinx.android.synthetic.main.explore_fragment.view.*

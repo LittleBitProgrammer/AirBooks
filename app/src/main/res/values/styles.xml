@@ -8,10 +8,7 @@
         <item name="colorPrimaryDark">#FFFFFF</item>
         <item name="android:actionMenuTextColor">@color/blu_airbooks</item>
         <item name="colorControlHighlight">#FFF</item>
-
         <item name="colorControlNormal">#969696</item>
-
-
         <item name="colorControlActivated">#2280C5</item>
 
     </style>

@@ -74,7 +74,7 @@ class RecoverPasswordUI: AnkoComponent<RecoverPasswordFragment> {
 
                 backgroundColor = Color.parseColor("#00000000")
                 text = resources.getString(R.string.back_to_login_recover_password)
-                setAllCaps(false)
+                isAllCaps = false
                 textColor = Color.parseColor("#FFFFFF")
 
             }.lparams(width = wrapContent, height = wrapContent){

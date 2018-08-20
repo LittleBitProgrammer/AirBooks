@@ -106,7 +106,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
 
                 backgroundColor = Color.parseColor("#00000000")
                 text = resources.getString(R.string.forgot_password_sign_in)
-                setAllCaps(false)
+                isAllCaps = false
                 textColor = Color.parseColor("#FFFFFF")
 
             }.lparams(width = wrapContent, height = wrapContent){
@@ -169,7 +169,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     compoundDrawablePadding = dip(18)
                     background = ContextCompat.getDrawable(ctx,R.drawable.login_button_background)
                     text = resources.getString(R.string.facebook)
-                    setAllCaps(false)
+                    isAllCaps = false
                     textColor = Color.parseColor("#ffffff")
                     textSize = sp(6).toFloat()
                     typeface = ResourcesCompat.getFont(ctx,R.font.facebook)
@@ -184,7 +184,7 @@ class SignInLayout: AnkoComponent<LoginFragment> {
                     Ids.NO_ACCOUNT_BUTTON
 
                     backgroundColor = Color.parseColor("#00000000")
-                    setAllCaps(false)
+                    isAllCaps = false
                     textColor = Color.parseColor("#FFFFFF")
 
                 }.lparams(width = wrapContent, height = wrapContent){

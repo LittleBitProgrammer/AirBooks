@@ -22,6 +22,19 @@
         app:layout_constraintStart_toEndOf="@+id/rounded_review"
         app:layout_constraintTop_toTopOf="@+id/rounded_review" />
 
+    <RatingBar
+        style="@style/RatingBarSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        android:stepSize="0.5"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
+        app:layout_constraintStart_toEndOf="@+id/rounded_review"
+        app:layout_constraintTop_toBottomOf="@+id/name_surname_review" />
+
     <it.corelab.studios.airbooks.view.widget.ExpandableTextView
         android:id="@+id/expandable_text"
         android:layout_width="0dp"

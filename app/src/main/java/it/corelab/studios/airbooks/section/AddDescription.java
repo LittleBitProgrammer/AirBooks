@@ -78,40 +78,29 @@ public class AddDescription extends AppCompatActivity {
             }
         };
 
-        uploadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(intent,PICKFILE_RESULT_CODE);
-            }
+        uploadButton.setOnClickListener(v -> {
+            Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT);
+            intent1.setType("*/*");
+            startActivityForResult(intent1,PICKFILE_RESULT_CODE);
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String description = editText.getText().toString().trim();
+        nextButton.setOnClickListener(v -> {
+            String description = editText.getText().toString().trim();
 
-                nextIntent.putExtra("image",uri);
-                nextIntent.putExtra("categories",drawable);
-                nextIntent.putExtra("nameCat",genreName);
-                nextIntent.putExtra("description", description);
-                nextIntent.putExtra("bookTitle", title);
-                nextIntent.putExtra("path", fileNameString);
-                Toast.makeText(getApplicationContext(),description,Toast.LENGTH_LONG).show();
-                nextIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(nextIntent);
-            }
+            nextIntent.putExtra("image",uri);
+            nextIntent.putExtra("categories",drawable);
+            nextIntent.putExtra("nameCat",genreName);
+            nextIntent.putExtra("description", description);
+            nextIntent.putExtra("bookTitle", title);
+            nextIntent.putExtra("path", fileNameString);
+            Toast.makeText(getApplicationContext(),description,Toast.LENGTH_LONG).show();
+            nextIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(nextIntent);
         });
 
         editText.addTextChangedListener(txwatcher);
 
-        editText.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                isKeyboardShown(editText.getRootView());
-            }
-        });
+        editText.getViewTreeObserver().addOnGlobalLayoutListener(() -> isKeyboardShown(editText.getRootView()));
 
 
         //==========================
@@ -121,36 +110,26 @@ public class AddDescription extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        View.OnClickListener returnListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        };
+        View.OnClickListener returnListener = v -> onBackPressed();
 
-        View.OnClickListener dismissListner = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(dismissIntent);
-                overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
-            }
+        View.OnClickListener dismissListner = v -> {
+            dismissIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(dismissIntent);
+            overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
         };
 
         leftArrow.setOnClickListener(returnListener);
         dismiss.setOnClickListener(dismissListner);
 
         final View parentDismiss = (View) dismiss.getParent();  // button: the view you want to enlarge hit area
-        parentDismiss.post( new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                dismiss.getHitRect(rect);
-                rect.top -= 150;    // increase top hit area
-                rect.left -= 150;   // increase left hit area
-                rect.bottom += 100; // increase bottom hit area
-                rect.right += 150;  // increase right hit area
-                parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
-            }
+        parentDismiss.post(() -> {
+            final Rect rect = new Rect();
+            dismiss.getHitRect(rect);
+            rect.top -= 150;    // increase top hit area
+            rect.left -= 150;   // increase left hit area
+            rect.bottom += 100; // increase bottom hit area
+            rect.right += 150;  // increase right hit area
+            parentDismiss.setTouchDelegate( new TouchDelegate( rect , dismiss));
         });
     }
 
@@ -191,15 +170,6 @@ public class AddDescription extends AppCompatActivity {
                 break;
         }
         super.onActivityResult(requestCode,resultCode,data);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        final Intent returnIntent = new Intent(getApplicationContext(),Categories.class);
-        returnIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(returnIntent);
-        overridePendingTransition(R.anim.intent_from_right_in, R.anim.intent_from_right_out);
     }
 
     @Override

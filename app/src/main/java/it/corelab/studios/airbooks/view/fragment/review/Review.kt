@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import com.google.gson.GsonBuilder
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,13 +14,12 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.API.remote.ApiUtils
-import it.corelab.studios.airbooks.model.General.Main.isSectionVisible
-import it.corelab.studios.airbooks.model.General.Main.setupActionBar
+import it.corelab.studios.airbooks.model.general.main.isSectionVisible
+import it.corelab.studios.airbooks.model.general.main.setupActionBar
 import it.corelab.studios.airbooks.model.data.REVIEW.GetReviews
 import it.corelab.studios.airbooks.model.data.REVIEW.Item
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
-import it.corelab.studios.airbooks.view.adapters.CustomListViewAdapter
-import it.corelab.studios.airbooks.view.adapters.ReviewAdapter
+import it.corelab.studios.airbooks.view.adapters.review.ReviewAdapter
 import it.corelab.studios.airbooks.view.anko.layout.review.ReviewView
 import it.corelab.studios.airbooks.view.widget.CustomNested
 import it.corelab.studios.airbooks.view.widget.DiagonalView
@@ -86,10 +84,9 @@ class Review : Fragment(), OnReselectedDelegate {
             }
 
             override fun onNext(getReviewResponse: GetReviews) {
-
-                Log.i("REVIEW RESPONSE", GsonBuilder().setPrettyPrinting().create().toJson((getReviewResponse.result.items)))
+                
                 listItem = getReviewResponse.result.items
-                val customListViewAdapter =  ReviewAdapter(listItem, ctx )
+                val customListViewAdapter = ReviewAdapter(listItem, ctx)
                 recyclerView.adapter = customListViewAdapter
             }
 

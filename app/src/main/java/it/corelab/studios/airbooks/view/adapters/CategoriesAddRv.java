@@ -48,16 +48,13 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.studios.air
         //holder.roundedImage.setImageResource(item.getDrawable());
         //holder.categoriesName.setText(item.getGenreName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext() , AddDescription.class);
-                intent.putExtra("image", uri);
-                //intent.putExtra("categories", item.getDrawable());
-                //intent.putExtra("nameCat", item.getGenreName());
-                intent.putExtra("bookTitle", title);
-                view.getContext().startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext() , AddDescription.class);
+            intent.putExtra("image", uri);
+            //intent.putExtra("categories", item.getDrawable());
+            //intent.putExtra("nameCat", item.getGenreName());
+            intent.putExtra("bookTitle", title);
+            view.getContext().startActivity(intent);
         });
     }
 

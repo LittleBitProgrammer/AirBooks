@@ -39,9 +39,9 @@ public class AddSection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_section);
+        //setContentView(R.layout.activity_add_section);
 
-        final Intent categoriesIntent = new Intent(getApplicationContext(),Categories.class);
+        //final Intent categoriesIntent = new Intent(getApplicationContext(),Categories.class);
 
         centralCard = findViewById(R.id.placeholder_add);
         returnButton = findViewById(R.id.left_arrow_add_categories);
@@ -63,21 +63,18 @@ public class AddSection extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        View.OnClickListener centralCardListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        View.OnClickListener centralCardListener = v -> {
 
-                Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                getIntent.setType("roundedImage/*");
+            Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            getIntent.setType("roundedImage/*");
 
-                Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                pickIntent.setType("roundedImage/*");
+            Intent pickIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            pickIntent.setType("roundedImage/*");
 
-                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
+            Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 
-                startActivityForResult(chooserIntent, PICK_IMAGE);
-            }
+            startActivityForResult(chooserIntent, PICK_IMAGE);
         };
 
         centralCard.setOnClickListener(centralCardListener);
@@ -126,14 +123,7 @@ public class AddSection extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-            editTextInput.postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    editTextInput.clearFocus();
-                }
-
-            }, 100);
+            editTextInput.postDelayed(() -> editTextInput.clearFocus(), 100);
             return true;
         }
         return super.onKeyUp(keyCode, event);

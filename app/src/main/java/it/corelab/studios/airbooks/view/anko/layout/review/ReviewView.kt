@@ -24,7 +24,7 @@ class ReviewView: AnkoComponent<Review> {
                 id = Ids.RECYCLER_VIEW
 
                 ViewCompat.setNestedScrollingEnabled(this, false)
-                setItemViewCacheSize(20)
+                setItemViewCacheSize(10)
                 layoutManager = LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false)
                 this.setHasFixedSize(true)
                 val itemDecorator = DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL)

@@ -50,22 +50,19 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
        // holder.title.setText(item.getName());
        // holder.ratingBar.setRating(item.getVote());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent reviewSharedIntent = new Intent(context, ReviewDetail.class);
+        holder.itemView.setOnClickListener(v -> {
+            Intent reviewSharedIntent = new Intent(context, ReviewDetail.class);
 
-                Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
 
-                //reviewSharedIntent.putExtra("roundedImage",item.getDrawable());
-                //reviewSharedIntent.putExtra("bookTitle",item.getName());
-                //reviewSharedIntent.putExtra("bookAuthor",item.getAuthor());
-                //reviewSharedIntent.putExtra("review",item.getReview());
+            //reviewSharedIntent.putExtra("roundedImage",item.getDrawable());
+            //reviewSharedIntent.putExtra("bookTitle",item.getName());
+            //reviewSharedIntent.putExtra("bookAuthor",item.getAuthor());
+            //reviewSharedIntent.putExtra("review",item.getReview());
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
-                context.startActivity(reviewSharedIntent, options.toBundle());
-            }
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
+            context.startActivity(reviewSharedIntent, options.toBundle());
         });
     }
 
