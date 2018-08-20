@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.model.General.country
+package it.corelab.studios.airbooks.model.general.country
 
 import java.util.TreeMap
 

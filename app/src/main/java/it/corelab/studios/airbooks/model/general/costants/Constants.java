@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.model.General.costants;
+package it.corelab.studios.airbooks.model.general.costants;
 
 public class Constants {
 
