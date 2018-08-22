@@ -6,6 +6,7 @@ import android.support.v4.view.animation.FastOutLinearInInterpolator
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 
@@ -67,23 +68,42 @@ class CustomNested : NestedScrollView {
     }
 
     fun takeScrollVariation(diagonalView: DiagonalView) {
-        diagonalView.setAngle(14F)
+        val startAngle = 14F
+        diagonalView.setAngle(startAngle)
 
         setOnScrollChangeListener(OnScrollChangeListener { diagonal, _, scrollY, _, _ ->
-            val diff = diagonal.height + diagonal.scrollY - diagonal.bottom
+            val scrollAmount = diagonal.height + diagonal.scrollY - diagonal.bottom
+            val rightMaxScroll = 585F
+            val leftMaxScroll = 855F
+            val pHeight: Float = leftMaxScroll - rightMaxScroll
+            val diff:Float = scrollAmount - rightMaxScroll
 
-            var variation = 43.25f - diff * 0.05f
+            var angle = startAngle
 
             lastYPosition = -scrollY.toFloat()
 
-            if (diff <= 585) {
+            if (diff in 0..pHeight.toInt()){
+                angle = startAngle * (1 - diff / pHeight)
+            } else if (diff > pHeight) {
+                angle  = 0F
+            }
+
+            diagonalView.setAngle(angle)
+            diagonalView.y = -scrollY.toFloat()
+            lastAngleVariation = angle
+
+            /*
+            var variation = 43.25f - scrollAmount * 0.05f
+
+            if (scrollAmount <= 585) {
 
                 diagonalView.setAngle(14F)
                 diagonalView.y = -scrollY.toFloat()
+
                 variation = 14F
                 lastAngleVariation = variation
 
-            } else if (diff <= 906 && variation <= 14.0f) {
+            } else if (scrollAmount <= 906 && variation <= 14.0f) {
 
                 diagonalView.setAngle(variation)
                 diagonalView.y = -scrollY.toFloat()
@@ -92,6 +112,7 @@ class CustomNested : NestedScrollView {
             }else{
                 diagonalView.y = -scrollY.toFloat()
             }
+            */
         })
     }
 
