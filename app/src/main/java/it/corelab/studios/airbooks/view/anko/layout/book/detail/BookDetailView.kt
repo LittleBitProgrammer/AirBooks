@@ -288,6 +288,8 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
 
                 topToBottom = Ids.NO_TAG
                 startToStart = PARENT_ID
+
+                bottomPadding = dip(600)
             }
         }
     }

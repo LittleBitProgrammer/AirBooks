@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.v4.view.animation.FastOutLinearInInterpolator
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.support.v4.widget.NestedScrollView
+import android.support.v7.app.ActionBar
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -67,25 +68,33 @@ class CustomNested : NestedScrollView {
 
     }
 
-    fun takeScrollVariation(diagonalView: DiagonalView) {
-        val startAngle = 14F
+    fun takeScrollVariation(diagonalView: DiagonalView, actionBar: ActionBar) {
+        val startAngle = 14f
         diagonalView.setAngle(startAngle)
 
-        setOnScrollChangeListener(OnScrollChangeListener { diagonal, _, scrollY, _, _ ->
-            val scrollAmount = diagonal.height + diagonal.scrollY - diagonal.bottom
-            val rightMaxScroll = 585F
-            val leftMaxScroll = 855F
-            val pHeight: Float = leftMaxScroll - rightMaxScroll
-            val diff:Float = scrollAmount - rightMaxScroll
+        var firstTimeRun = true
+        var rightMaxScroll = 0F
+        var pHeight = 0F
+        var pointDiagonal: Float
 
+        setOnScrollChangeListener(OnScrollChangeListener { _, _, scrollY, _, _ ->
+            if(firstTimeRun) {
+                pHeight = diagonalView.getpHeight()
+                pointDiagonal = diagonalView.height - pHeight
+                rightMaxScroll = Math.abs(pointDiagonal)
+
+                firstTimeRun = false
+            }
+
+            val diff = scrollY - rightMaxScroll
             var angle = startAngle
 
             lastYPosition = -scrollY.toFloat()
 
-            if (diff in 0..pHeight.toInt()){
+            if (diff in 0f..pHeight){
                 angle = startAngle * (1 - diff / pHeight)
             } else if (diff > pHeight) {
-                angle  = 0F
+                angle  = 0f
             }
 
             diagonalView.setAngle(angle)

@@ -25,7 +25,7 @@ fun <T> T?.or(compute: () -> T): T = this ?: compute()
 
 fun Fragment.isSectionVisible(): Boolean = (((view?.parent as? ViewGroup)?.parent as? ViewGroup)?.visibility == View.VISIBLE)
 
-fun Fragment.setupActionBar(title: String?, id: Int, string: String?, bookId: String?){
+fun Fragment.setupActionBar(title: String?, id: Int, string: String?, bookId: String?) {
 
     val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
     val firstColor = sharedPreferences.getString("firstColor", "")
@@ -142,7 +142,8 @@ fun Fragment.setupActionBar(title: String?, id: Int, string: String?, bookId: St
 
                 this.customView.findViewById<TextView>(R.id.action_bar_title_all_review).text = title
                 this.customView.findViewById<ImageButton>(R.id.back_from_review).setOnClickListener {
-                    view?.findNavController()?.navigateUp()                }
+                    view?.findNavController()?.navigateUp()
+                }
             }
         }
         setDisplayShowHomeEnabled(false)

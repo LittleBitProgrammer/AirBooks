@@ -17,7 +17,7 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
     Paint mPaint;
     int diagonalColor;
     int backgroundColor;
-    private float perpendicularHeight;
+    private float pHeight;
     public static String RIGHT = "right";
     public static String LEFT = "left";
     String diagonalGravity;
@@ -55,15 +55,15 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
         canvas.drawColor(this.backgroundColor);
         this.height = this.getMeasuredHeight();
         this.width = this.getMeasuredWidth();
-        perpendicularHeight = (float)((double)this.width * Math.tan(Math.toRadians((double)this.angle)));
+        pHeight = (float)((double)this.width * Math.tan(Math.toRadians((double)this.angle)));
 
         if (this.diagonalGravity.equals("right")) {
             this.mPath.moveTo((float)this.width, (float)this.height);
-            this.mPath.lineTo(0.0F, (float)this.height - perpendicularHeight);
+            this.mPath.lineTo(0.0F, (float)this.height - pHeight);
             this.mPath.lineTo(0.0F, (float)(this.height + 1));
         } else {
             this.mPath.moveTo(0.0F, (float)this.height);
-            this.mPath.lineTo((float)this.width, (float)this.height - perpendicularHeight);
+            this.mPath.lineTo((float)this.width, (float)this.height - pHeight);
             this.mPath.lineTo((float)this.width, (float)(this.height + 1));
         }
 
@@ -96,7 +96,7 @@ public class DiagonalView extends android.support.v7.widget.AppCompatImageView {
         this.invalidate();
     }
 
-    public float getPerpendicularHeight() {
-        return perpendicularHeight;
+    public float getpHeight() {
+        return pHeight;
     }
 }

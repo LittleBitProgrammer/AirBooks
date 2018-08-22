@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.ActionBar
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
 import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
+import org.jetbrains.anko.act
 
 class MainActivity : AppCompatActivity() {
 
@@ -133,8 +135,8 @@ class MainActivity : AppCompatActivity() {
 
         initUI()
 
-        nested_home.takeScrollVariation(diagonal_main)
-        nested_explore.takeScrollVariation(diagonal_main)
+        nested_home.takeScrollVariation(diagonal_main,supportActionBar!!)
+        nested_explore.takeScrollVariation(diagonal_main, supportActionBar!!)
 
     }
 
