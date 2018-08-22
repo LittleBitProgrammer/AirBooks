@@ -1,26 +1,38 @@
 package it.corelab.studios.airbooks.view.adapters.add.book
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import butterknife.ButterKnife
+import com.bumptech.glide.Glide
+import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
+import it.corelab.studios.airbooks.view.activity.main.MainActivity
+import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.pdf.Pdf
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.Categories
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cover.CoverBook
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.language.Language
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.title.TitleDescription
-import it.corelab.studios.airbooks.view.anko.layout.adapters.home.ContinueRead
 import org.jetbrains.anko.AnkoContext
+import it.corelab.studios.airbooks.view.activity.main.MainActivity.Companion.pickedImage
 
 
+class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-class AddBookAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    val main: MainActivity = MainActivity()
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when(holder.itemViewType){
-            0->(holder as? ItemViewHolder0)?.itemView?.setOnClickListener {
-
-                //val i = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            0->{
+                if (pickedImage != null) {
+                    Glide.with(activity).load(pickedImage).into((holder as? ItemViewHolder0)?.imageCover!!)
+                }
             }
         }
     }
@@ -32,7 +44,7 @@ class AddBookAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             1-> ItemViewHolder1(TitleDescription().createView(AnkoContext.create(parent.context,parent)))
             2-> ItemViewHolder2(Language().createView(AnkoContext.create(parent.context,parent)))
             3-> ItemViewHolder3(Categories().createView(AnkoContext.create(parent.context,parent)))
-            else-> ItemViewHolder0(ContinueRead().createView(AnkoContext.create(parent.context, parent)))
+            else-> ItemViewHolder4(Pdf().createView(AnkoContext.create(parent.context, parent)))
         }
 
     }
@@ -46,11 +58,19 @@ class AddBookAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class ItemViewHolder0(view: View) : RecyclerView.ViewHolder(view) {
 
-        //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
-
+        var addCover: CardView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
+        var imageCover: ImageView = view.findViewById(R.id.BOOK_COVER_CHOOSE_BOOK_COVER)
 
         init {
             ButterKnife.bind(this,view)
+            addCover.setOnClickListener {
+                val intent = Intent()
+                intent.type = "image/*"
+                intent.action = Intent.ACTION_GET_CONTENT
+                activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+
+            }
+
         }
     }
 
@@ -75,6 +95,16 @@ class AddBookAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class ItemViewHolder3(view: View) : RecyclerView.ViewHolder(view) {
+
+        //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
+
+
+        init {
+            ButterKnife.bind(this,view)
+        }
+    }
+
+    inner class ItemViewHolder4(view: View) : RecyclerView.ViewHolder(view) {
 
         //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
 

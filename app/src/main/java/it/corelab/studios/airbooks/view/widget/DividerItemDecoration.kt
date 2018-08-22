@@ -4,7 +4,9 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.support.v4.content.ContextCompat
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.view.View
 
 
 class DividerItemDecoration : RecyclerView.ItemDecoration {
@@ -45,6 +47,12 @@ class DividerItemDecoration : RecyclerView.ItemDecoration {
         }
     }
 
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+        super.getItemOffsets(outRect, view, parent, state)
+
+        outRect.right=100
+        outRect.left=50
+    }
     companion object {
 
         private val ATTRS = intArrayOf(android.R.attr.listDivider)

@@ -38,7 +38,7 @@ class Language : AnkoComponent<ViewGroup> {
 
                 topMargin = dip(9)
                 bottomMargin = dip(8)
-                marginEnd = dip(16)
+                marginEnd = dip(10)
             }
         }
     }

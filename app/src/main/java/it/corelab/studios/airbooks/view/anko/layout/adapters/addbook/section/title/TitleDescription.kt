@@ -61,7 +61,8 @@ class TitleDescription : AnkoComponent<ViewGroup> {
                 textAlignment = TextView.TEXT_ALIGNMENT_TEXT_END
 
             }.lparams(width = matchParent, height = wrapContent, weight = 1F){
-                marginEnd = dip(12)
+                marginEnd = dip(16)
+                bottomMargin = dip(10)
             }
         }
     }

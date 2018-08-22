@@ -2,6 +2,7 @@ package it.corelab.studios.airbooks.view.dialog.add.book
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -15,7 +16,8 @@ import android.widget.LinearLayout
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter
 
-class CustomDialogClass(activity: Activity, private val layout: Int, private val firstColor: String?) : Dialog(activity, R.style.CustomDialog), android.view.View.OnClickListener {
+
+class CustomDialogClass(private val activity: Activity, private val layout: Int, private val firstColor: String?) : Dialog(activity, R.style.CustomDialog), android.view.View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +37,9 @@ class CustomDialogClass(activity: Activity, private val layout: Int, private val
         itemDecorator.setDrawable(ContextCompat.getDrawable(context, R.drawable.divider)!!)
         recyclerView.addItemDecoration(itemDecorator)
 
-        val addBookAdapter = AddBookAdapter()
+        val addBookAdapter = AddBookAdapter(activity)
         recyclerView.adapter = addBookAdapter
+
 
         cancel.setOnClickListener(this)
     }

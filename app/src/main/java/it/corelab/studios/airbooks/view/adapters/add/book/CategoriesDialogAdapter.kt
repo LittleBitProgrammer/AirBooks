@@ -2,7 +2,10 @@ package it.corelab.studios.airbooks.view.adapters.add.book
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,13 +13,9 @@ import android.widget.TextView
 import butterknife.ButterKnife
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.Genre
-import it.corelab.studios.airbooks.view.adapters.home.CategoriesAdapter
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.CategoriesItem
 import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.backgroundColor
-import android.support.v7.widget.CardView
-
-
+import kotlin.math.log
 
 
 class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -25,8 +24,9 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
 
     var mRecyclerView: RecyclerView? = null
 
-    var cardViewList: ArrayList<ImageView> = ArrayList()
     var selectdPos = RecyclerView.NO_POSITION
+
+    var layoutManager: GridLayoutManager? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -37,28 +37,15 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
 
-        (holder as? ItemViewHolder)?.itemView?.setSelected(selectdPos == position)
-        if (!cardViewList.contains((holder as? ItemViewHolder)?.image)){
-        cardViewList.add((holder as? ItemViewHolder)?.image!!)
-            }
-
         val colors = intArrayOf(Color.parseColor("#" + item.firstColor), Color.parseColor("#" + item.secondColor))
         val gd = GradientDrawable(
                 GradientDrawable.Orientation.TL_BR,
                 colors)
         gd.cornerRadius = 0f
 
-        (holder as? ItemViewHolder)?.image?.background = gd
+        if (selectdPos == position) (holder as? ItemViewHolder)?.image?.background = gd else
+            (holder as? ItemViewHolder)?.image?.setBackgroundColor( Color.parseColor("#CCCCCC"))
         (holder as? ItemViewHolder)?.textView?.text = item.name
-
-        (holder as? ItemViewHolder)?.itemView?.setOnClickListener {
-            for (tempItemView in cardViewList) {
-                tempItemView.backgroundColor = Color.parseColor("#CCCCCC")
-
-            }
-            (holder as? ItemViewHolder)?.image?.background = gd
-            //mRecyclerView?.smoothScrollToPosition(position)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -67,12 +54,31 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
 
     override fun getItemCount() = items.size
 
-    internal class ItemViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        var image: ImageView = view.findViewById(R.id.IMAGE_VIEW_CATEGORIES_DIALOG)
+    inner class ItemViewHolder (view: View) : RecyclerView.ViewHolder(view),View.OnClickListener {
+         override fun onClick(p0: View?) {
+             if (adapterPosition == RecyclerView.NO_POSITION) return
+
+             // Updating old as well as new positions
+             notifyItemChanged(selectdPos)
+             layoutManager = ((mRecyclerView?.layoutManager) as? GridLayoutManager)
+
+             if (adapterPosition < items.size-2){
+             layoutManager?.scrollToPositionWithOffset(adapterPosition,300)
+                 Log.i("GRANDEZZA", "$adapterPosition < ${items.size-2}")
+             }
+
+             selectdPos = adapterPosition
+             notifyItemChanged(selectdPos)
+
+         }
+
+         var image: ImageView = view.findViewById(R.id.IMAGE_VIEW_CATEGORIES_DIALOG)
         var textView: TextView = view.findViewById(R.id.TEXT_VIEW_CATEGORIES_DIALOG)
 
         init {
             ButterKnife.bind(this,view)
+            itemView.setOnClickListener(this)
         }
+
     }
 }
