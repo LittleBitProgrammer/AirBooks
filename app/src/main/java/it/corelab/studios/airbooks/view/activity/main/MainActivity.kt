@@ -3,17 +3,13 @@ package it.corelab.studios.airbooks.view.activity.main
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Rect
 import android.net.Uri
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.support.v4.app.Fragment
-import android.util.Base64
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -33,7 +29,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
 import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
-import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 

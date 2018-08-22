@@ -2,10 +2,8 @@ package it.corelab.studios.airbooks.view.adapters.add.book
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView

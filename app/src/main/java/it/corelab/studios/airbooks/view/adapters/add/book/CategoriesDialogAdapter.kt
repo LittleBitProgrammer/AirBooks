@@ -3,7 +3,6 @@ package it.corelab.studios.airbooks.view.adapters.add.book
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
@@ -15,7 +14,6 @@ import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.Genre
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.CategoriesItem
 import org.jetbrains.anko.AnkoContext
-import kotlin.math.log
 
 
 class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

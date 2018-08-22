@@ -1,9 +1,6 @@
 package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cover
 
-import android.content.Intent
 import android.graphics.Color
-import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +8,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 

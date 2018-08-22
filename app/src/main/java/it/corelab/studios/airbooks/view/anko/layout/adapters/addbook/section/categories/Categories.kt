@@ -1,14 +1,10 @@
 package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories
 
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Color
-import android.support.constraint.ConstraintLayout
-import android.support.v4.view.ViewCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
-import android.text.InputFilter
 import android.text.InputType
 import android.view.KeyEvent
 import android.view.View
@@ -24,8 +20,6 @@ import com.google.gson.reflect.TypeToken
 import it.corelab.studios.airbooks.model.data.HOME.Genre
 import it.corelab.studios.airbooks.view.adapters.add.book.CategoriesDialogAdapter
 import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
-import android.widget.Toast
-import android.view.KeyEvent.KEYCODE_ENTER
 
 
 
@@ -44,7 +38,7 @@ class Categories : AnkoComponent<ViewGroup> {
 
             recyclerView {
 
-                val snapHelper: LinearSnapHelper = LinearSnapHelper()
+                val snapHelper = LinearSnapHelper()
                 snapHelper.attachToRecyclerView(this)
                 this.layoutManager = GridLayoutManager(ctx, 2, GridLayoutManager.HORIZONTAL, false)
                 onFlingListener = snapHelper
