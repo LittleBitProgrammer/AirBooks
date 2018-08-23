@@ -29,16 +29,15 @@ class CustomDialogClass(private val activity: Activity, private val layout: Int,
 
         header.setBackgroundColor(Color.parseColor("#$firstColor"))
 
-        recyclerView.setItemViewCacheSize(10)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
+
         val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         itemDecorator.setDrawable(ContextCompat.getDrawable(context, R.drawable.divider)!!)
         recyclerView.addItemDecoration(itemDecorator)
 
         val addBookAdapter = AddBookAdapter(activity)
         recyclerView.adapter = addBookAdapter
-
 
         cancel.setOnClickListener(this)
     }

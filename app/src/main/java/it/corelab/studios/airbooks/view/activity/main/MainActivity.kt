@@ -30,6 +30,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
 import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion.image
 import org.jetbrains.anko.act
 
 class MainActivity : AppCompatActivity() {
@@ -289,13 +291,10 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode,resultCode,data)
          if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null) {
                 // Let's read picked roundedImage data - its URI
-                pickedImage = data.data!!
+                 val pickedImage = data.data!!
+                 image?.setImageURI(pickedImage)
                 //imageCover.setImageURI(pickedImage)
             }
-    }
-
-    companion object {
-        var pickedImage: Uri? = null
     }
 
 

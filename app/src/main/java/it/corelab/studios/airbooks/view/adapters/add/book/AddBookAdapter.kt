@@ -8,30 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import butterknife.ButterKnife
-import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
-import it.corelab.studios.airbooks.view.activity.main.MainActivity
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.pdf.Pdf
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.Categories
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cover.CoverBook
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.language.Language
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.title.TitleDescription
 import org.jetbrains.anko.AnkoContext
-import it.corelab.studios.airbooks.view.activity.main.MainActivity.Companion.pickedImage
 
 
 class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val main: MainActivity = MainActivity()
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when(holder.itemViewType){
-            0->{
-                if (pickedImage != null) {
-                    Glide.with(activity).load(pickedImage).into((holder as? ItemViewHolder0)?.imageCover!!)
-                }
+
+            0-> {
             }
+
         }
     }
 
@@ -61,21 +56,20 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
 
         init {
             ButterKnife.bind(this,view)
-            addCover.setOnClickListener {
+
+            image = imageCover
+            this.itemView.setOnClickListener {
                 val intent = Intent()
                 intent.type = "image/*"
                 intent.action = Intent.ACTION_GET_CONTENT
                 activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
-
             }
-
         }
     }
 
     inner class ItemViewHolder1(view: View) : RecyclerView.ViewHolder(view) {
 
         //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
-
 
         init {
             ButterKnife.bind(this,view)
@@ -111,4 +105,9 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
             ButterKnife.bind(this,view)
         }
     }
+
+    companion object {
+        var image: ImageView? = null
+    }
+
 }

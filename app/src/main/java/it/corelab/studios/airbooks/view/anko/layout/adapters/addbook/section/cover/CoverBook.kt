@@ -12,6 +12,9 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
 class CoverBook : AnkoComponent<ViewGroup> {
+
+   lateinit var bookCover: ImageView
+
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui) {
         linearLayout {
             id = Ids.LINEAR_LAYOUT
@@ -24,10 +27,10 @@ class CoverBook : AnkoComponent<ViewGroup> {
                 id = Ids.CARD_VIEW
 
                 elevation = dip(0).toFloat()
-                //backgroundColor = Color.parseColor("#000000")
+                this.setCardBackgroundColor(Color.TRANSPARENT)
                 radius = dip(4).toFloat()
 
-                imageView{
+                bookCover = imageView{
                     id = Ids.BOOK_COVER
 
                     Glide.with(ctx).load(R.drawable.ic_emptybook).into(this)
