@@ -2,6 +2,7 @@ package it.corelab.studios.airbooks.view.adapters.add.book
 
 import android.app.Activity
 import android.content.Intent
+import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -9,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import butterknife.ButterKnife
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.pdf.Pdf
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.Categories
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cover.CoverBook
@@ -19,6 +19,9 @@ import org.jetbrains.anko.AnkoContext
 
 
 class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val PICK_IMAGE = 1
+    private val PICKFILE_RESULT_CODE = 2
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
@@ -103,6 +106,12 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
 
         init {
             ButterKnife.bind(this,view)
+            this.itemView.setOnClickListener {
+
+                val intent1 = Intent(Intent.ACTION_GET_CONTENT)
+                intent1.type = "application/pdf"
+                activity.startActivityForResult(intent1, PICKFILE_RESULT_CODE)
+            }
         }
     }
 

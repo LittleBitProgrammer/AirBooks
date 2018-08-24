@@ -29,12 +29,11 @@ import it.corelab.studios.airbooks.R
 import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
-import it.corelab.studios.airbooks.section.AddSection.PICK_IMAGE
-import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion.image
-import org.jetbrains.anko.act
 
 class MainActivity : AppCompatActivity() {
+
+    val PICK_IMAGE = 1
 
     private val sectionHomeWrapper: FrameLayout by lazy { section_home_wrapper }
     private val sectionExploreWarapper: FrameLayout by lazy { section_explore_wrapper }
