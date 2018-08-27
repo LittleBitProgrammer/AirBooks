@@ -18,6 +18,7 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import com.google.gson.reflect.TypeToken
 import it.corelab.studios.airbooks.model.data.HOME.Genre
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookTagAdapter
 import it.corelab.studios.airbooks.view.adapters.add.book.CategoriesDialogAdapter
 import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
 
@@ -78,7 +79,7 @@ class Categories : AnkoComponent<ViewGroup> {
                         // Perform action on key press
                         if (this@editText.text.toString() != "") tagArrayList.add(this@editText.text.toString())
 
-                        val tagAdapter = TagAdapter(tagArrayList, "CCCCCC",true)
+                        val tagAdapter = AddBookTagAdapter(tagArrayList)
                         tagRecycler.adapter = tagAdapter
 
                         this@editText.text.clear()

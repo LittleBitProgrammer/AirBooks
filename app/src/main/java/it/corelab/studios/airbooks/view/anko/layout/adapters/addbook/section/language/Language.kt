@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
+import java.util.*
 
 class Language : AnkoComponent<ViewGroup> {
 
@@ -15,8 +16,9 @@ class Language : AnkoComponent<ViewGroup> {
             lparams(matchParent, wrapContent)
 
             textView {
-                text = "italian"
+                id = Ids.LANGUAGE
 
+                text = Locale.getDefault().displayLanguage
                 textSize = 16F
             }.lparams(width = wrapContent, height = wrapContent){
                 topToTop = PARENT_ID
@@ -41,5 +43,9 @@ class Language : AnkoComponent<ViewGroup> {
                 marginEnd = dip(10)
             }
         }
+    }
+
+    private object Ids{
+        const val LANGUAGE = R.id.TEXT_VIEW_LANGUAGE
     }
 }

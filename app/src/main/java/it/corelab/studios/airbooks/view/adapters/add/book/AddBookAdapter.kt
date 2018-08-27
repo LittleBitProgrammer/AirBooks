@@ -16,6 +16,7 @@ import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cov
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.language.Language
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.title.TitleDescription
 import org.jetbrains.anko.AnkoContext
+import it.corelab.studios.airbooks.view.dialog.add.book.LanguageDialog
 
 
 class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -81,11 +82,20 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
 
     inner class ItemViewHolder2(view: View) : RecyclerView.ViewHolder(view) {
 
-        //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
+        var language: TextView = view.findViewById(R.id.TEXT_VIEW_LANGUAGE)
 
 
         init {
             ButterKnife.bind(this,view)
+            _languageText = language
+
+            this.itemView.setOnClickListener {
+                val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
+                val firstColor = sharedPreferences.getString("firstColor", "")
+
+                val languageDialog = LanguageDialog(activity,firstColor)
+                languageDialog.show()
+            }
         }
     }
 
@@ -130,6 +140,7 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
         var _text: TextView? = null
         var _formatBackground: ImageView? = null
         var _extension: TextView? = null
+        var _languageText: TextView? = null
     }
 
 }

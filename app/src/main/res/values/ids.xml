@@ -212,6 +212,9 @@
     <item name="CARD.VIEW.CHOOSE.BOOK.COVER" type="id"/>
     <item name="BOOK.COVER.CHOOSE.BOOK.COVER" type="id"/>
 
+    //SECTION_ LANGUAGE
+    <item name="TEXT.VIEW.LANGUAGE" type="id"/>
+
     //SECTION_CHOOSE_CATEGORIES
     <item name="IMAGE.VIEW.CATEGORIES.DIALOG" type="id"/>
     <item name="TEXT.VIEW.CATEGORIES.DIALOG" type="id"/>
