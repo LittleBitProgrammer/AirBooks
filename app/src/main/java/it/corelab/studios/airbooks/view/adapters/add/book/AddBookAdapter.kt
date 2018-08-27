@@ -2,15 +2,15 @@ package it.corelab.studios.airbooks.view.adapters.add.book
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import butterknife.ButterKnife
 import it.corelab.studios.airbooks.R
-import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.pdf.Pdf
+import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.pdf.Pdf
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.categories.Categories
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.cover.CoverBook
 import it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.language.Language
@@ -64,8 +64,8 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
             this.itemView.setOnClickListener {
                 val intent = Intent()
                 intent.type = "image/*"
-                intent.action = Intent.ACTION_GET_CONTENT
-                activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+                intent.action = Intent.ACTION_OPEN_DOCUMENT
+                activity.startActivityForResult(intent, PICK_IMAGE)
             }
         }
     }
@@ -102,14 +102,24 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
     inner class ItemViewHolder4(view: View) : RecyclerView.ViewHolder(view) {
 
         //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
+        var fileText: TextView = view.findViewById(R.id.TEXT_VIEW_CHOOSE_FILE)
+        var fileImage: ImageView = view.findViewById(R.id.IMAGE_VIEW_CHOOSE_FILE)
+        var extension: TextView = view.findViewById(R.id.TEXT_VIEW_EXTENSION_CHOOSE_FILE)
 
 
         init {
             ButterKnife.bind(this,view)
+
+            _text = fileText
+            _formatBackground = fileImage
+            _extension = extension
+
             this.itemView.setOnClickListener {
 
                 val intent1 = Intent(Intent.ACTION_GET_CONTENT)
-                intent1.type = "application/pdf"
+                intent1.type = "*/*"
+                val mimetypes = arrayOf("application/epub+zip", "application/pdf")
+                intent1.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes)
                 activity.startActivityForResult(intent1, PICKFILE_RESULT_CODE)
             }
         }
@@ -117,6 +127,9 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
 
     companion object {
         var image: ImageView? = null
+        var _text: TextView? = null
+        var _formatBackground: ImageView? = null
+        var _extension: TextView? = null
     }
 
 }

@@ -2,7 +2,6 @@ package it.corelab.studios.airbooks.view.adapters;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
@@ -15,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import it.corelab.studios.airbooks.section.ReviewDetail;
 import it.corelab.studios.airbooks.R;
 
 
@@ -51,7 +49,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
        // holder.ratingBar.setRating(item.getVote());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent reviewSharedIntent = new Intent(context, ReviewDetail.class);
+            //Intent reviewSharedIntent = new Intent(context, ReviewDetail.class);
 
             Pair[] pairs = new Pair[1];
             pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
@@ -62,7 +60,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
             //reviewSharedIntent.putExtra("review",item.getReview());
 
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
-            context.startActivity(reviewSharedIntent, options.toBundle());
+            //context.startActivity(reviewSharedIntent, options.toBundle());
         });
     }
 

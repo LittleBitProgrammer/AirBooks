@@ -247,7 +247,7 @@ class BookDetailView(private val coverUrl: String?, private val bookTitle: Strin
                 this.layoutManager = layoutManager
                 this.setHasFixedSize(true)
 
-                val tagAdapter = TagAdapter(tagList, firstColor!!)
+                val tagAdapter = TagAdapter(tagList, firstColor!!,false)
                 this.adapter = tagAdapter
             }.lparams(width = matchParent, height = wrapContent){
                 topMargin = dip(0)

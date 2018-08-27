@@ -1,7 +1,6 @@
 package it.corelab.studios.airbooks.view.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import it.corelab.studios.airbooks.R;
-import it.corelab.studios.airbooks.section.AddDescription;
 
 
 /**
@@ -49,12 +47,12 @@ public class CategoriesAddRv extends RecyclerView.Adapter<it.corelab.studios.air
         //holder.categoriesName.setText(item.getGenreName());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext() , AddDescription.class);
-            intent.putExtra("image", uri);
+            //Intent intent = new Intent(view.getContext() , AddDescription.class);
+            //intent.putExtra("image", uri);
             //intent.putExtra("categories", item.getDrawable());
             //intent.putExtra("nameCat", item.getGenreName());
-            intent.putExtra("bookTitle", title);
-            view.getContext().startActivity(intent);
+            //intent.putExtra("bookTitle", title);
+            //view.getContext().startActivity(intent);
         });
     }
 

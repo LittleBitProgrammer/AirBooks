@@ -216,4 +216,9 @@
     <item name="IMAGE.VIEW.CATEGORIES.DIALOG" type="id"/>
     <item name="TEXT.VIEW.CATEGORIES.DIALOG" type="id"/>
 
+    //SECTION_CHOOSE_FILE
+    <item name="TEXT.VIEW.CHOOSE.FILE" type="id"/>
+    <item name="IMAGE.VIEW.CHOOSE.FILE" type="id"/>
+    <item name="TEXT.VIEW.EXTENSION.CHOOSE.FILE" type="id"/>
+
 </resources>

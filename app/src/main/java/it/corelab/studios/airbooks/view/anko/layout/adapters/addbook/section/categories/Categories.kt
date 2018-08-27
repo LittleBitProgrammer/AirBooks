@@ -78,7 +78,7 @@ class Categories : AnkoComponent<ViewGroup> {
                         // Perform action on key press
                         if (this@editText.text.toString() != "") tagArrayList.add(this@editText.text.toString())
 
-                        val tagAdapter = TagAdapter(tagArrayList, "CCCCCC")
+                        val tagAdapter = TagAdapter(tagArrayList, "CCCCCC",true)
                         tagRecycler.adapter = tagAdapter
 
                         this@editText.text.clear()

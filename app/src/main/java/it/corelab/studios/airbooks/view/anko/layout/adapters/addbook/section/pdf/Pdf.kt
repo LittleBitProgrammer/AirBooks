@@ -1,11 +1,13 @@
-package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.pdf
+package it.corelab.studios.airbooks.view.anko.layout.adapters.addbook.section.pdf
 
 import android.graphics.Color
+import android.opengl.Visibility
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import org.jetbrains.anko.*
@@ -22,13 +24,30 @@ class Pdf : AnkoComponent<ViewGroup> {
             cardView {
 
                 elevation = dip(0).toFloat()
-                backgroundColor = Color.parseColor("#00000000")
+                this.setCardBackgroundColor(Color.TRANSPARENT)
+                radius = dip(4).toFloat()
 
                 imageView {
+                    id = Ids.IMAGE
 
                     Glide.with(ctx).load(R.drawable.ic_empty_pdf).into(this)
                     scaleType = ImageView.ScaleType.FIT_XY
                 }.lparams(width = matchParent, height = matchParent)
+
+                textView {
+                    id = Ids.EXTENSION
+
+                    text = "   "
+                    textSize = 14F
+                    textColor = Color.parseColor("#FFFFFF")
+                    maxLines = 1
+
+                    textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+
+                    visibility = View.INVISIBLE
+                }.lparams(width = matchParent, height = wrapContent){
+                    gravity = Gravity.CENTER_VERTICAL
+                }
 
             }.lparams(width = dip(60), height = dip(85)) {
                 marginStart = dip(16)
@@ -37,6 +56,7 @@ class Pdf : AnkoComponent<ViewGroup> {
             }
 
             textView {
+                id = Ids.TEXT
 
                 text = "Tap to choose the book"
                 textSize = 15F
@@ -56,5 +76,11 @@ class Pdf : AnkoComponent<ViewGroup> {
                 topMargin = dip(1)
             }
         }
+    }
+
+    private object Ids{
+        const val TEXT = R.id.TEXT_VIEW_CHOOSE_FILE
+        const val IMAGE =  R.id.IMAGE_VIEW_CHOOSE_FILE
+        const val EXTENSION = R.id.TEXT_VIEW_EXTENSION_CHOOSE_FILE
     }
 }

@@ -3,14 +3,18 @@ package it.corelab.studios.airbooks.view.activity.main
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Color
 import android.graphics.Rect
 import android.net.Uri
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
+import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -24,16 +28,24 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+import com.bumptech.glide.Glide
 import java.util.ArrayList
 import it.corelab.studios.airbooks.R
 import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion._extension
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion._formatBackground
+import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion._text
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion.image
+import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.ctx
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
     val PICK_IMAGE = 1
+    private val PICKFILE_RESULT_CODE = 2
 
     private val sectionHomeWrapper: FrameLayout by lazy { section_home_wrapper }
     private val sectionExploreWarapper: FrameLayout by lazy { section_explore_wrapper }
@@ -288,12 +300,56 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode,resultCode,data)
-         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null) {
-                // Let's read picked roundedImage data - its URI
-                 val pickedImage = data.data!!
-                 image?.setImageURI(pickedImage)
-                //imageCover.setImageURI(pickedImage)
-            }
+        when(requestCode){
+            PICK_IMAGE->
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    // Let's read picked roundedImage data - its URI
+                    val pickedImage = data.data!!
+                    image?.setImageURI(pickedImage)
+                    //imageCover.setImageURI(pickedImage)
+                }
+            PICKFILE_RESULT_CODE->
+                if (resultCode == Activity.RESULT_OK && data != null){
+                    val uri = data.data!!
+                    val uriString = uri.toString()
+                    val myFile = File(uriString)
+                    val path = myFile.absolutePath
+                    val displayName: String
+
+                    if (uriString.startsWith("content://")) {
+                        var cursor: Cursor? = null
+                        try {
+                            cursor = this.contentResolver.query(uri, null, null, null, null)
+                            if (cursor != null && cursor.moveToFirst()) {
+                                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+
+                                val extension = displayName
+                                        .substring(displayName.lastIndexOf("."))
+                                        .replace(".","")
+                                        .toUpperCase()
+
+                                //fileNameString = displayName
+                                _text?.text = displayName
+                                Glide.with(ctx).load(R.drawable.background_pdf).into(_formatBackground!!)
+                                _extension?.visibility = View.VISIBLE
+                                _extension?.text = extension
+
+                                Log.e("UPLOAD", "upload file with name: upload file with name: $displayName")
+                                Log.e("UPLOAD", "upload file with name: upload file with name: $extension")
+                            }
+                        } finally {
+                            assert(cursor != null)
+                            cursor!!.close()
+                        }
+                    } else if (uriString.startsWith("file://")) {
+                        displayName = myFile.name
+                        //fileNameString = displayName
+                        _text?.text = displayName
+                        Log.e("UPLOAD", "upload file with name: upload file with name: $displayName")
+                    }
+                }
+        }
+
     }
 
 
