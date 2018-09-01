@@ -145,6 +145,13 @@ fun Fragment.setupActionBar(title: String?, id: Int, string: String?, bookId: St
                     view?.findNavController()?.navigateUp()
                 }
             }
+            6->{
+                this.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+                this.setCustomView(R.layout.actionbar_profile)
+
+                linearBottom?.isEnabled = false
+                linearBottom?.visibility = View.INVISIBLE
+            }
         }
         setDisplayShowHomeEnabled(false)
         setDisplayHomeAsUpEnabled(false)

@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/author_view"
-        android:name="it.corelab.studios.airbooks.view.fragment.profile.OtherProfile"
+        android:name="it.corelab.studios.airbooks.view.fragment.profile.OTHER.OtherProfile"
         android:label="author_view">
         <action
             android:id="@+id/action_author_view_to_detailBook"

@@ -179,43 +179,18 @@ public class FadeFragment extends Fragment {
 
    public void initProfile(View view){
 
-       /*
-
-        * Initialization of different variables @GROUP
-        *
-        * @1. GROUP = declare final to access to inner method
-        * @2. GROUP = normal widget and view variables
-        * @3. GROUP = recyclerView @creation and @initialization
-        *
-        * @CREATION and @INITIALIZATION must be done in one line
-
-         */
 
        //1. GROUP
-       final Button buttonAction = view.findViewById(R.id.buttonAction);
+       //final Button buttonAction = view.findViewById(R.id.buttonAction);
        final TextView nameSurname = view.findViewById(R.id.NameSurname);
        final TextView fromTo = view.findViewById(R.id.fromTo);
        final TextView followers = view.findViewById(R.id.followNumber);
-       final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
+       //final RoundedImageView profileImage = view.findViewById(R.id.profileImagePlaceHolder);
       
        //3.GROUP
        RecyclerView cardReviewRecycleView = view.findViewById(R.id.recycler_view_cardView);
        RecyclerView recyclerViewAllBooks = view.findViewById(R.id.recycler_view);
 
-       /*
-
-        * optimization of the recyclerView with the use of the @CACHE
-        * we are:
-        *
-        * 1.Setting the cache size
-        * 2.Enabling drawing cache
-        * 3.Setting cache quality
-
-         */
-
-       recyclerViewAllBooks.setItemViewCacheSize(20);
-       recyclerViewAllBooks.setDrawingCacheEnabled(true);
-       recyclerViewAllBooks.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
 
        /*
@@ -259,24 +234,6 @@ public class FadeFragment extends Fragment {
        //OverScrollDecoratorHelper.setUpOverScroll(cardReviewRecycleView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
 
 
-       /*
-
-        * This method is used to enlarge the hit area of @addButton
-        * for now the area is 200, to modify comunicate it to design team
-
-         */
-
-       final View parent = (View) buttonAction.getParent();  // button: the view you want to enlarge hit area
-       parent.post(() -> {
-           final Rect rect = new Rect();
-           buttonAction.getHitRect(rect);
-           rect.top -= 200;    // increase top hit area
-           rect.left -= 200;   // increase left hit area
-           rect.bottom += 200; // increase bottom hit area
-           rect.right += 200;  // increase right hit area
-           parent.setTouchDelegate( new TouchDelegate( rect , buttonAction));
-       });
-
 
 
        /*
@@ -286,12 +243,12 @@ public class FadeFragment extends Fragment {
 
          */
 
-       buttonAction.setOnClickListener(v -> {
-           PopupMenu popupMenu = new PopupMenu(getActivity(), buttonAction);
-           popupMenu.getMenuInflater().inflate(R.menu.actions, popupMenu.getMenu());
+       //buttonAction.setOnClickListener(v -> {
+         //  PopupMenu popupMenu = new PopupMenu(getActivity(), buttonAction);
+         // popupMenu.getMenuInflater().inflate(R.menu.actions, popupMenu.getMenu());
 
-           popupMenu.show();
-       });
+         //  popupMenu.show();
+       //});
 
    }
 

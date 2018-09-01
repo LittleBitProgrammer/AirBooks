@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="it.corelab.studios.airbooks.view.fragment.profile.ProfileFragment"
+        android:name="it.corelab.studios.airbooks.view.fragment.profile.ACTIVE.ProfileFragment"
         android:label="ProfileFragment"/>
 
 </navigation>

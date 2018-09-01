@@ -73,7 +73,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Item> {
         //final Reviews items = getItem(position);
 
         //roundedImage.setImageResource(items.getDrawable());
-        //textView.setText(items.getName());
+        //textView.setText(items.loadProfile());
         //description.setText(items.getDescription());
 
         /*if (items.getDescription().length() < 100){

@@ -45,7 +45,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
        // holder.textView.setText(item.getReview());
        // holder.categories.setImageResource(item.getGenreColor());
        // holder.author.setText(item.getAuthor());
-       // holder.title.setText(item.getName());
+       // holder.title.setText(item.loadProfile());
        // holder.ratingBar.setRating(item.getVote());
 
         holder.itemView.setOnClickListener(v -> {
@@ -55,7 +55,7 @@ public class CardViewReviewAdapter extends RecyclerView.Adapter<CardViewReviewAd
             pairs[0] = new Pair<View,String>(holder.image,"imageCoverTransition");
 
             //reviewSharedIntent.putExtra("roundedImage",item.getDrawable());
-            //reviewSharedIntent.putExtra("bookTitle",item.getName());
+            //reviewSharedIntent.putExtra("bookTitle",item.loadProfile());
             //reviewSharedIntent.putExtra("bookAuthor",item.getAuthor());
             //reviewSharedIntent.putExtra("review",item.getReview());
 

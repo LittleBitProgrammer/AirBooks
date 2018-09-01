@@ -1,4 +1,4 @@
-package it.corelab.studios.airbooks.view.fragment.profile
+package it.corelab.studios.airbooks.view.fragment.profile.OTHER
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
