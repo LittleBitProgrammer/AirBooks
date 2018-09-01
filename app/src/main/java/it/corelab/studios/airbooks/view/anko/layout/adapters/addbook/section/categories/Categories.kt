@@ -27,8 +27,6 @@ import it.corelab.studios.airbooks.view.adapters.bookDetail.TagAdapter
 
 class Categories : AnkoComponent<ViewGroup> {
 
-    private val tagArrayList: ArrayList<String> = ArrayList()
-
     private lateinit var tagRecycler: RecyclerView
 
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui) {
@@ -77,7 +75,7 @@ class Categories : AnkoComponent<ViewGroup> {
                     // If the event is a key-down event on the "enter" button
                     if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                         // Perform action on key press
-                        if (this@editText.text.toString() != "") tagArrayList.add(this@editText.text.toString())
+                        if (this@editText.text.toString() != "") tagArrayList?.add(this@editText.text.toString())
 
                         val tagAdapter = AddBookTagAdapter(tagArrayList)
                         tagRecycler.adapter = tagAdapter
@@ -107,5 +105,9 @@ class Categories : AnkoComponent<ViewGroup> {
                 bottomMargin = dip(10)
             }
         }
+    }
+
+    companion object {
+        var tagArrayList : ArrayList<String>? = ArrayList()
     }
 }

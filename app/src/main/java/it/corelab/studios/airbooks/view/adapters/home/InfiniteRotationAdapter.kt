@@ -37,6 +37,9 @@ class InfiniteRotationAdapter(itemList: List<it.corelab.studios.airbooks.model.d
 
         init {
             ButterKnife.bind(this,view)
+            this.itemView.setOnClickListener {
+
+            }
         }
     }
 }

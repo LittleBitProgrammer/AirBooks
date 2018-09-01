@@ -41,7 +41,9 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
                 colors)
         gd.cornerRadius = 0f
 
-        if (selectdPos == position) (holder as? ItemViewHolder)?.image?.background = gd else
+        if (selectdPos == position){ (holder as? ItemViewHolder)?.image?.background = gd
+            _genreId = item.id
+        } else
             (holder as? ItemViewHolder)?.image?.setBackgroundColor( Color.parseColor("#CCCCCC"))
         (holder as? ItemViewHolder)?.textView?.text = item.name
     }
@@ -78,5 +80,8 @@ class CategoriesDialogAdapter(itemList: List<Genre>) : RecyclerView.Adapter<Recy
             itemView.setOnClickListener(this)
         }
 
+    }
+    companion object {
+        var _genreId: Int? = null
     }
 }

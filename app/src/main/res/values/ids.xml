@@ -212,6 +212,10 @@
     <item name="CARD.VIEW.CHOOSE.BOOK.COVER" type="id"/>
     <item name="BOOK.COVER.CHOOSE.BOOK.COVER" type="id"/>
 
+    //SECTION_TITLE
+    <item name="DESCRIPTION_EDIT_TEXT" type="id"/>
+    <item name="TITLE_EDIT_TEXT" type="id"/>
+
     //SECTION_ LANGUAGE
     <item name="TEXT.VIEW.LANGUAGE" type="id"/>
 

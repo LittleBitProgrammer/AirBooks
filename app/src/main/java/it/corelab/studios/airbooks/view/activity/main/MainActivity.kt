@@ -4,16 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Rect
-import android.net.Uri
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.ActionBar
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -31,6 +30,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.bumptech.glide.Glide
 import java.util.ArrayList
 import it.corelab.studios.airbooks.R
+import it.corelab.studios.airbooks.model.general.Global.RealPathUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import it.corelab.studios.airbooks.model.interfaces.main.OnReselectedDelegate
 import it.corelab.studios.airbooks.model.general.main.or
@@ -38,9 +38,9 @@ import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Compani
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion._formatBackground
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion._text
 import it.corelab.studios.airbooks.view.adapters.add.book.AddBookAdapter.Companion.image
-import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.ctx
 import java.io.File
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -148,9 +148,10 @@ class MainActivity : AppCompatActivity() {
 
         initUI()
 
-        nested_home.takeScrollVariation(diagonal_main,supportActionBar!!)
-        nested_explore.takeScrollVariation(diagonal_main, supportActionBar!!)
-
+        thread(start = true) {
+            nested_home.takeScrollVariation(diagonal_main,supportActionBar!!)
+            nested_explore.takeScrollVariation(diagonal_main, supportActionBar!!)
+        }
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {
@@ -306,14 +307,14 @@ class MainActivity : AppCompatActivity() {
                     // Let's read picked roundedImage data - its URI
                     val pickedImage = data.data!!
                     image?.setImageURI(pickedImage)
-                    //imageCover.setImageURI(pickedImage)
+                    val imageStream = contentResolver.openInputStream(pickedImage)
+                    _bitmapSelectedImage = BitmapFactory.decodeStream(imageStream)
                 }
             PICKFILE_RESULT_CODE->
                 if (resultCode == Activity.RESULT_OK && data != null){
                     val uri = data.data!!
                     val uriString = uri.toString()
-                    val myFile = File(uriString)
-                    val path = myFile.absolutePath
+                    myFile = File(RealPathUtil.getRealPath(this,uri))
                     val displayName: String
 
                     if (uriString.startsWith("content://")) {
@@ -342,7 +343,7 @@ class MainActivity : AppCompatActivity() {
                             cursor!!.close()
                         }
                     } else if (uriString.startsWith("file://")) {
-                        displayName = myFile.name
+                        displayName = myFile?.name!!
                         //fileNameString = displayName
                         _text?.text = displayName
                         Log.e("UPLOAD", "upload file with name: upload file with name: $displayName")
@@ -352,6 +353,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    companion object {
+        var _bitmapSelectedImage: Bitmap? = null
+        var myFile: File? = null
+    }
 
 }

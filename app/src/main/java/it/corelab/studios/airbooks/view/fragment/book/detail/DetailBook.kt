@@ -20,7 +20,9 @@ import it.corelab.studios.airbooks.view.anko.layout.book.detail.BookDetailView
 import mehdi.sakout.fancybuttons.FancyButton
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.support.v4.ctx
+import kotlin.concurrent.thread
 
 class DetailBook: Fragment(), OnReselectedDelegate {
 
@@ -62,20 +64,20 @@ class DetailBook: Fragment(), OnReselectedDelegate {
         secondColor = arguments?.getString("secondColor")
         coverUrl = arguments?.getString("coverUrl")
         bookTitle = arguments?.getString("bookTitle")
-        bookAuthor= arguments?.getString("bookAuthor")
-        bookGenre= arguments?.getString("bookGenre")
-        bookId= arguments?.getString("bookId")
-        bookReaders= arguments?.getInt("bookReaders")
-        bookLovers= arguments?.getInt("bookLovers")
+        bookAuthor = arguments?.getString("bookAuthor")
+        bookGenre = arguments?.getString("bookGenre")
+        bookId = arguments?.getString("bookId")
+        bookReaders = arguments?.getInt("bookReaders")
+        bookLovers = arguments?.getInt("bookLovers")
         counterReview = arguments?.getInt("countNumb")
         starCount = arguments?.getDouble("star")
-        bookDescription  = arguments?.getString("bookDescription")
+        bookDescription = arguments?.getString("bookDescription")
         tagsList = arguments?.getStringArrayList("tags")
-        isComingFromHome= arguments?.getBoolean("comingHome")
-        isComingFromExplore= arguments?.getBoolean("comingExplore")
-        isSaved= arguments?.getBoolean("isSaved")
+        isComingFromHome = arguments?.getBoolean("comingHome")
+        isComingFromExplore = arguments?.getBoolean("comingExplore")
+        isSaved = arguments?.getBoolean("isSaved")
 
-        diagonalView= activity?.findViewById(R.id.diagonal_main)!!
+        diagonalView = activity?.findViewById(R.id.diagonal_main)!!
         customNestedHome = activity?.findViewById(R.id.nested_home)!!
         customNestedExplore = activity?.findViewById(R.id.nested_explore)!!
         button = activity?.findViewById(R.id.color_button_read_now)!!
@@ -90,47 +92,57 @@ class DetailBook: Fragment(), OnReselectedDelegate {
         mainUI = BookDetailView(coverUrl,bookTitle,bookAuthor,bookGenre,bookReaders,bookLovers,bookDescription,firstColor,starCount,tagsList)
         viewUI = mainUI.createView(AnkoContext.create(ctx, this))
 
-        linearCard = mainUI.linearGenre
+        thread {
 
-        if (isComingFromHome!!) {
-            customNestedHome.animateToOriginal(diagonalView)
-            customNestedHome.scrollTo(0, 0)
-        } else if (isComingFromExplore!!) {
-            customNestedExplore.animateToOriginal(diagonalView)
-            customNestedExplore.scrollTo(0, 0)
-        }
+            val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
+            sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
+            sharedPreferences?.edit()?.putString("secondColor", arguments!!.getString("secondColor"))?.apply()
 
-        val sharedPreferences = activity?.getSharedPreferences(activity?.packageName, Context.MODE_PRIVATE)
-        sharedPreferences?.edit()?.putString("firstColor", arguments!!.getString("firstColor"))?.apply()
-        sharedPreferences?.edit()?.putString("secondColor", arguments!!.getString("secondColor"))?.apply()
+            val colors = intArrayOf(Color.parseColor("#${arguments?.getString("firstColor")}"), Color.parseColor("#${arguments?.getString("secondColor")}"))
+            val gd = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
+            gd.cornerRadius = 0f
+            val gd2 = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
+            gd.cornerRadius = 0f
 
-        val colors = intArrayOf(Color.parseColor("#${arguments?.getString("firstColor")}"), Color.parseColor("#${arguments?.getString("secondColor")}"))
+            linearCard = mainUI.linearGenre
 
-        val gd = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
-        gd.cornerRadius = 0f
-
-        val gd2 = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors)
-        gd.cornerRadius = 0f
-
-        diagonalView.background = gd
-        linearCard.background = gd2
-        button.backgroundColor = Color.parseColor("#$firstColor")
-        buttonPreference.backgroundColor = Color.parseColor("#$secondColor")
-
-        if (!isSaved!!) {
-            buttonPreference.setIconResource(R.drawable.ic_bookmark_border)
-            buttonPreference.setOnClickListener {
-                buttonPreference.setIconResource(R.drawable.ic_bookmark)
-                isSaved = true
+            if (isComingFromHome!!) {
+                ctx.runOnUiThread {
+                    customNestedHome.animateToOriginal(diagonalView)
+                    customNestedHome.scrollTo(0, 0)
+                }
+            } else if (isComingFromExplore!!) {
+                ctx.runOnUiThread {
+                    customNestedExplore.animateToOriginal(diagonalView)
+                    customNestedExplore.scrollTo(0, 0)
+                }
             }
-        } else {
-            buttonPreference.setIconResource(R.drawable.ic_bookmark)
-            buttonPreference.setOnClickListener {
-                buttonPreference.setIconResource(R.drawable.ic_bookmark_border)
-                isSaved = false
+
+            ctx.runOnUiThread {
+                diagonalView.background = gd
+                linearCard.background = gd2
+                button.backgroundColor = Color.parseColor("#$firstColor")
+                buttonPreference.backgroundColor = Color.parseColor("#$secondColor")
+            }
+
+            if (!isSaved!!) {
+                ctx.runOnUiThread {
+                    buttonPreference.setIconResource(R.drawable.ic_bookmark_border)
+                    buttonPreference.setOnClickListener {
+                        buttonPreference.setIconResource(R.drawable.ic_bookmark)
+                        isSaved = true
+                    }
+                }
+            } else {
+                ctx.runOnUiThread {
+                    buttonPreference.setIconResource(R.drawable.ic_bookmark)
+                    buttonPreference.setOnClickListener {
+                        buttonPreference.setIconResource(R.drawable.ic_bookmark_border)
+                        isSaved = false
+                    }
+                }
             }
         }
-
 
         return viewUI
     }

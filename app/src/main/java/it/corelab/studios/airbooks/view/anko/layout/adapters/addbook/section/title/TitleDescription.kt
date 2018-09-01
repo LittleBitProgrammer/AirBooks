@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import org.jetbrains.anko.*
 import android.text.InputFilter
-
+import it.corelab.studios.airbooks.R
 
 
 class TitleDescription : AnkoComponent<ViewGroup> {
@@ -38,6 +38,8 @@ class TitleDescription : AnkoComponent<ViewGroup> {
             isFocusableInTouchMode = true
             lparams(width = matchParent, height = wrapContent)
             editText {
+                id = Ids.TITLE
+
                 hint = "Type a title"
                 hintTextColor = Color.parseColor("#BABABF")
                 textSize = 20F
@@ -46,6 +48,8 @@ class TitleDescription : AnkoComponent<ViewGroup> {
             }.lparams(width = matchParent, height = wrapContent)
 
             description = editText {
+                id = Ids.DESCRIPTION
+
                 hint = "Type a description"
                 hintTextColor = Color.parseColor("#AAAAAA")
                 textSize = 14F
@@ -65,5 +69,10 @@ class TitleDescription : AnkoComponent<ViewGroup> {
                 bottomMargin = dip(10)
             }
         }
+    }
+
+    private object Ids{
+        const val TITLE = R.id.TITLE_EDIT_TEXT
+        const val DESCRIPTION = R.id.DESCRIPTION_EDIT_TEXT
     }
 }

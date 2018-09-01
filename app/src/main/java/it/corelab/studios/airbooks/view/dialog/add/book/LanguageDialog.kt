@@ -26,7 +26,7 @@ class LanguageDialog(private val activity: Activity,private val firstColor: Stri
         val locales = Locale.getAvailableLocales()
         for( l:Locale in locales)
         {
-            hashSet.add(l.displayLanguage)
+            hashSet.add("${l.displayLanguage} (${l.isO3Language})")
         }
 
         val recyclerView: RecyclerView = findViewById(R.id.list_dynamics)

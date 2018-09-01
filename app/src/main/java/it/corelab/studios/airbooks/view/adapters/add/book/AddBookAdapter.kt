@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import butterknife.ButterKnife
@@ -73,10 +74,14 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
 
     inner class ItemViewHolder1(view: View) : RecyclerView.ViewHolder(view) {
 
-        //var bookCover: ImageView = view.findViewById(R.id.CARD_VIEW_CHOOSE_BOOK_COVER)
+        var title: EditText = view.findViewById(R.id.TITLE_EDIT_TEXT)
+        var description: EditText = view.findViewById(R.id.DESCRIPTION_EDIT_TEXT)
 
         init {
             ButterKnife.bind(this,view)
+
+            _descriptionText = description
+            _titleText = title
         }
     }
 
@@ -90,7 +95,7 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
             _languageText = language
 
             this.itemView.setOnClickListener {
-                val sharedPreferences = activity!!.getSharedPreferences(activity!!.packageName, android.content.Context.MODE_PRIVATE)
+                val sharedPreferences = activity.getSharedPreferences(activity.packageName, android.content.Context.MODE_PRIVATE)
                 val firstColor = sharedPreferences.getString("firstColor", "")
 
                 val languageDialog = LanguageDialog(activity,firstColor)
@@ -141,6 +146,8 @@ class AddBookAdapter(private val activity: Activity) : RecyclerView.Adapter<Recy
         var _formatBackground: ImageView? = null
         var _extension: TextView? = null
         var _languageText: TextView? = null
+        var _descriptionText: EditText? = null
+        var _titleText: EditText? = null
     }
 
 }

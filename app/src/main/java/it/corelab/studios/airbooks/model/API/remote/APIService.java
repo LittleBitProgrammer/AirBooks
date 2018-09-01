@@ -1,6 +1,9 @@
 package it.corelab.studios.airbooks.model.API.remote;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import it.corelab.studios.airbooks.model.data.ADD.BOOK.PostAddBook;
+import it.corelab.studios.airbooks.model.data.ADD.BOOK.PostAddBookResponse;
 import it.corelab.studios.airbooks.model.data.EXPLORE.GetExplore;
 import it.corelab.studios.airbooks.model.data.HOME.GetHome;
 import it.corelab.studios.airbooks.model.data.LOGIN.SIGNIN.AutomaticSignInResponse;
@@ -24,9 +27,9 @@ public interface APIService {
     @POST
     @FormUrlEncoded
     Observable<PostRecoverResponse> savePost(@Field("email") String email,
-                                             @Url String url,
-                                             @Header("Language") String lang,
-                                             @Header("Os") String os);
+                                                      @Url String url,
+                                                      @Header("Language") String lang,
+                                                      @Header("Os") String os);
     @POST
     Observable<PostSignUpResponse> signUpPost(@Body PostSignUp postSignUp,
                                             @Url String url,
@@ -38,6 +41,14 @@ public interface APIService {
                                               @Url String url,
                                               @Header("Language") String lang,
                                               @Header("Os") String os);
+
+    @POST
+    Observable<PostAddBookResponse> addBook(@Body PostAddBook postAddBook,
+                                            @Url String url,
+                                            @Header("Language") String lang,
+                                            @Header("Os") String os,
+                                            @Header("Token") String token);
+
     @GET
     Observable<AutomaticSignInResponse> automaticSignin(@Url String url,
                                                         @Header("Language") String lang,
@@ -61,5 +72,4 @@ public interface APIService {
                                       @Header("Language") String lang,
                                       @Header("Os") String os,
                                       @Header("Token") String token);
-
 }

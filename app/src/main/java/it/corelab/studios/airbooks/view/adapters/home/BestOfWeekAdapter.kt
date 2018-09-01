@@ -15,6 +15,8 @@ import butterknife.ButterKnife
 import com.bumptech.glide.Glide
 import it.corelab.studios.airbooks.R
 import it.corelab.studios.airbooks.model.data.HOME.ItemBest
+import org.jetbrains.anko.runOnUiThread
+import kotlin.concurrent.thread
 
 /**
  * Created by Roberto_Vecchio on 21/02/18.
@@ -26,44 +28,58 @@ class BestOfWeekAdapter(books: List<ItemBest>, private val context: Context) : R
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val book = bookItems[position]
-        val holderContainer = (holder as? ItemViewHolder)
 
-        val colors = intArrayOf(Color.parseColor("#" + book.genre.firstColor), Color.parseColor("#" + book.genre.secondColor))
-        val gd = GradientDrawable(
-                GradientDrawable.Orientation.TL_BR,
-                colors)
-        gd.cornerRadius = 0f
+        thread(start = true) {
+            val coverUrl = book.coverUrl
+            val title = book.title
+            val author = (book.authorFirstName + book.authorLastName)
+            val readersNumber = book.readings.toString()
+            val firstColor = Color.parseColor("#${book.genre.firstColor}")
+            val secondColor = Color.parseColor("#${book.genre.secondColor}")
+            val average = book.averageRating.toString()
 
-        //Picasso.get().load(book.coverUrl).into(holderContainer?.coverImage)
-        Glide.with(context).load(book.coverUrl).into(holderContainer?.coverImage!!)
+            val holderContainer = (holder as? ItemViewHolder)
 
-        holderContainer.bookTitle.text = book.title
-        holderContainer.bookAuthor.text = (book.authorFirstName + book.authorLastName)
-        holderContainer.numbReaders.text = "${book.readings}"
-        holderContainer.colorGenre.background = gd
-        holderContainer.readersImage.setColorFilter(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer.numbReaders.setTextColor(Color.parseColor("#${book.genre.firstColor}"))
-        holderContainer.bookRatingImage.setColorFilter(Color.parseColor("#${book.genre.secondColor}"))
-        holderContainer.bookAverageRating.text = "${book.averageRating}"
-        holderContainer.bookAverageRating.setTextColor(Color.parseColor("#${book.genre.secondColor}"))
+            val colors = intArrayOf(Color.parseColor("#" + book.genre.firstColor), Color.parseColor("#" + book.genre.secondColor))
+            val gd = GradientDrawable(
+                    GradientDrawable.Orientation.TL_BR,
+                    colors)
+            gd.cornerRadius = 0f
 
-        holderContainer.itemView.setOnClickListener(
+            context.runOnUiThread {
+                Glide.with(context).load(coverUrl).into(holderContainer?.coverImage!!)
+                holderContainer.bookTitle.text = title
+                holderContainer.bookAuthor.text = author
+                holderContainer.numbReaders.text = readersNumber
+                holderContainer.colorGenre.background = gd
+                holderContainer.readersImage.setColorFilter(firstColor)
+                holderContainer.numbReaders.setTextColor(firstColor)
+                holderContainer.bookRatingImage.setColorFilter(secondColor)
+                holderContainer.bookAverageRating.text = average
+                holderContainer.bookAverageRating.setTextColor(secondColor)
+            }
+
+        }
+
+        (holder as? ItemViewHolder)?.itemView?.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailBook, Bundle().apply {
-                    putString("firstColor", book.genre.firstColor)
-                    putString("secondColor", book.genre.secondColor)
-                    putString("coverUrl", book.coverUrl)
-                    putString("bookTitle", book.title)
-                    putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
-                    putString("bookGenre", book.genre.name)
-                    putString("bookDescription", book.description)
-                    putString("bookId", book.id)
-                    putInt("bookReaders", book.readings)
-                    putInt("bookLovers", book.lovers)
-                    putInt("countNumb", book.reviewsCount)
-                    putDouble("star",book.averageRating)
-                    putBoolean("comingHome", true)
-                    putBoolean("isSaved", book.isSaved)
-                    putStringArrayList("tags",book.tags)
+                    thread(start = true) {
+                        putString("firstColor", book.genre.firstColor)
+                        putString("secondColor", book.genre.secondColor)
+                        putString("coverUrl", book.coverUrl)
+                        putString("bookTitle", book.title)
+                        putString("bookAuthor", book.authorFirstName + " " + book.authorLastName)
+                        putString("bookGenre", book.genre.name)
+                        putString("bookDescription", book.description)
+                        putString("bookId", book.id)
+                        putInt("bookReaders", book.readings)
+                        putInt("bookLovers", book.lovers)
+                        putInt("countNumb", book.reviewsCount)
+                        putDouble("star",book.averageRating)
+                        putBoolean("comingHome", true)
+                        putBoolean("isSaved", book.isSaved)
+                        putStringArrayList("tags",book.tags)
+                    }
                 })
         )
     }
